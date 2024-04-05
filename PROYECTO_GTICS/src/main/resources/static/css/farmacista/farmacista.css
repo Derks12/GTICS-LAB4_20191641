@@ -1,0 +1,63 @@
+header {
+    background-color: var(--color-blue);
+    position: fixed;
+    z-index: 100;
+    min-width: 100vw;
+}
+
+.login-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 40px 10px 40px;
+}
+
+.logo {
+    max-width: 210px;
+    height: auto;
+    padding: 10px 0 10px 0;
+}
+
+.top-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: rgb(244 244 245);
+    transition: color 0.2s ease;
+}
+
+.menu-item:hover {
+    color: rgb(10, 45, 136);
+}
+
+.main-container {
+    height: 100%;
+    display: grid;
+}
+
+
+
+
+
+
+
+.footer {
+    background-color: var(--color-gray-2);
+    position: relative;
+    min-height: 10vh;
+}
+
+.footer-container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-gray);
+}
