@@ -1,3 +1,12 @@
+body {
+    margin: 0;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    overflow-x: hidden;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -11,8 +20,55 @@
     border-radius: 20px;       /* roundness of the scroll thumb */
 }
 
-body {
-    font-family: "Roboto", sans-serif;
+:root {
+    --color-white: #ffffff;
+    --color-light: #f1f5f9;
+    --color-black: #121212;
+    --color-night: #001632;
+
+    --color-red: #f44336;
+    --color-blue: #1a73e8;
+    --color-blue--hover: #378fff;
+    --color-gray: #80868b;
+    --color-gray-2: #2a2a2a;
+    --color-grayish: #dadce0;
+
+    --shadow-normal: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.text {
+    text-decoration: none;
+    font-family: inherit;
+    line-height: inherit;
+    text-transform: unset;
+    text-rendering: optimizeLegibility;
+}
+
+.text-normal {
+    font-size: 1rem;
     font-weight: 400;
-    font-style: normal;
+    color: var(--color-black);
+}
+
+.text-large {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.text-links {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-blue);
+}
+
+.text-links:hover {
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    color: var(--color-blue--hover);
 }
