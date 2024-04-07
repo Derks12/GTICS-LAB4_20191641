@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <!--=============== CSS ===============-->
+    <!-- Font Awesome -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <title>Responsive dropdown menu - Bedimcode</title>
+    <style>
+        body {
+            padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
+        }
+    </style>
+</head>
+<body>
+<!--=============== HEADER ===============-->
+<header class="header">
+    <nav class="nav container">
+        <div class="nav__data">
+            <a href="#" class="nav__logo">
+                <i class="ri-planet-line"></i> Company
+            </a>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line nav__burger"></i>
+                <i class="ri-close-line nav__close"></i>
+            </div>
+        </div>
+
+        <!--=============== NAV MENU ===============-->
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li><a href="#" class="nav__link">Inicio</a></li>
+
+                <li><a href="#" class="nav__link">Ordenes de Venta</a></li>
+
+                <li><a href="#" class="nav__link">Ordenes Web</a></li>
+
+                <li><a href="#" class="nav__link">Pre Ordenes</a></li>
+
+                <!--=============== DROPDOWN 2 ===============-->
+                <li class="dropdown__item">
+                    <div class="nav__link">
+                        Perfil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <ul class="dropdown__menu">
+                        <li>
+                            <a href="#" class="dropdown__link">
+                                <i class="ri-user-line"></i> Cambiar contraseña
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="dropdown__link">
+                                <i class="ri-lock-line"></i> Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+
+    <div style="margin-bottom: 50px"></div>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Crear nueva Orden</strong></h2>
+    <div style="margin-bottom: 20px"></div>
+
+    <hr style="border-top: 1px solid #262626;">
+
+    <div style="margin-bottom: 40px"></div>
+
+    <section class="container">
+        <form action="#" class="form">
+            <div class="input-box">
+                <label>Nombre completo</label>
+                <input type="text" placeholder="Ingrese su nombre compelto" required />
+            </div>
+            <div class="column">
+                <div class="input-box">
+                    <label>DNI</label>
+                    <input type="number" placeholder="Ingrese su DNI" required />
+                </div>
+                <div class="input-box">
+                    <label>Seguro</label>
+                    <input type="text" placeholder="Ingrese su seguro" required />
+                </div>
+            </div>
+            <div class="column">
+                <div class="input-box">
+                    <label>Doctor</label>
+                    <input type="text" placeholder="Ingrese su doctor" required />
+                </div>
+                <div class="input-box">
+                    <label>Fecha de nacimiento</label>
+                    <input type="date" placeholder="Ingrese su fecha de nacimiento" required />
+                </div>
+            </div>
+            <div class="column">
+                <div class="input-box">
+                    <label>Seguro</label>
+                    <input type="text" placeholder="Ingrese su seguro" required />
+                </div>
+                <div class="input-box">
+                    <label>Correo electronico</label>
+                    <input type="text" placeholder="Ingrese su correo electronico" required />
+                </div>
+            </div>
+            <div class="gender-box">
+                <h3>Genero</h3>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" id="check-male" name="gender" checked />
+                        <label for="check-male">Hombre</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-female" name="gender" />
+                        <label for="check-female">Mujer</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-other" name="gender" />
+                        <label for="check-other">Prefiero no decirlo</label>
+                    </div>
+                </div>
+            </div>
+            <button>Deshacer</button>
+            <button>Agregar al paciente</button>
+        </form>
+    </section>
+    </div>
+</body>
+</html>
