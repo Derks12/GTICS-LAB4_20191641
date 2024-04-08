@@ -24,4 +24,26 @@ public class adminSedeController {
         return "/adminSede/ordenes_reposicion";
     }
 
+    @GetMapping(value = {"/editar_farmacista"})
+    public String editFarmacista(){
+        return "/adminSede/editar_farmacista";
+    }
+
+    @GetMapping(value = {"/editar_orden_reposicion"})
+    public String editOrden(){
+        return "/adminSede/editar_orden_reposicion";
+    }
+
+    @GetMapping(value = {"/medicamentos"})
+    public String showMedicamentos(){
+        return "/adminSede/medicamentos_sede";
+    }
+
+    @GetMapping(value = {"/solicitud_farmacista"})
+    public String solicitudFarmacista(){
+        return "/adminSede/solicitud_agregar_farmacista";
+    }
+
+
+
 }
