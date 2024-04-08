@@ -5,9 +5,74 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!--=============== CSS ===============-->
+        <!-- Font Awesome -->
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+                integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" th:href="@{/css/adminsede/topbar.css}">
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
         <title>Inicio Administrador de <Sede -></title>
     </head>
     <body>
+        <!--=============== HEADER ===============-->
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__data">
+                    <a href="#" class="nav__logo">
+                        <i class="ri-planet-line"></i> Company
+                    </a>
+
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="ri-menu-line nav__burger"></i>
+                        <i class="ri-close-line nav__close"></i>
+                    </div>
+                </div>
+
+                <!--=============== NAV MENU ===============-->
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li><a href="#" class="nav__link">Inicio</a></li>
+
+                        <li><a href="#" class="nav__link">Ordenes de Venta</a></li>
+
+                        <li><a href="#" class="nav__link">Ordenes Web</a></li>
+
+                        <li><a href="#" class="nav__link">Pre Ordenes</a></li>
+
+                        <!--=============== DROPDOWN 2 ===============-->
+                        <li class="dropdown__item">
+                            <div class="nav__link">
+                                Perfil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                            </div>
+
+                            <ul class="dropdown__menu">
+                                <li>
+                                    <a href="#" class="dropdown__link">
+                                        <i class="ri-user-line"></i> Cambiar contraseña
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown__link">
+                                        <i class="ri-lock-line"></i> Cerrar sesión
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
 
     </body>
 </html>
