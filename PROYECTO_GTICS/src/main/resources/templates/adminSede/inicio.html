@@ -16,7 +16,7 @@
 
         <!--=============== JS ===============-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js" integrity="sha512-k37wQcV4v2h6jgYf5IUz1MoSKPpDs630XGSmCaCCOXxy2awgAWKHGZWr9nMyGgk3IOxA1NxdkN8r1JHgkUtMoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="static/js/graficos.js"></script>
+        <script src="js/graficos.js"></script>
         <!-- Font Awesome -->
         <link
                 rel="stylesheet"
@@ -113,40 +113,38 @@
             </div>
 
             <h1 style="justify-content: center">Estadísticas</h1>
+        </div>
 
-            <div class="container-track1">
-                <div class = "container-orden">
-                    <h2>ESQUEMA PASTEL</h2>
-                </div>
+        <div class="container-track1">
+            <div class = "container-graph">
+                <h2>ESQUEMA PASTEL</h2>
 
-                <div class = "container-orden">
-                    <h2>ESQUEMA 2</h2>
-                </div>
-            </div>
-
-            <div class="container-graph">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart1"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                        <div id="chart2"></div>
-                    </div>
-                </div>
+                <div id="chart1" class="chart"></div>
 
             </div>
 
+            <div class = "container-graph">
+                <h2>ESQUEMA 2</h2>
 
+                <div id="chart2" class="chart"></div>
 
+            </div>
+        </div>
 
+        <div class="container-track1">
+            <div class = "container-graph">
+                <h2>ESQUEMA 3</h2>
 
+                <div id="chart3" class="chart"></div>
 
+            </div>
 
+            <div class = "container-graph">
+                <h2>ESQUEMA 4</h2>
 
+                <div id="chart4" class="chart"></div>
 
-
-
-
+            </div>
         </div>
 
 
