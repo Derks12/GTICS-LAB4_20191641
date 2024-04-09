@@ -1,21 +1,19 @@
 footer {
     position: fixed;
     bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-left: 0;
-    padding-right: 0;
     width: 100%;
     padding: 0;
     margin: 0;
-    /* Asegura que el footer ocupe todo el ancho */
 }
 
-@media (max-height:800px) {
+@media (max-height:960px) {
     footer {
         position: static;
     }
 }
+
+
+
 .footer-container {
     position: relative;
     height: 10vh;
@@ -42,7 +40,6 @@ footer {
     text-align: left;
     font: bold 16px sans-serif;
     padding: 50px 50px 60px 50px;
-    margin-top: 80px;
 }
 
 .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
