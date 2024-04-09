@@ -7,6 +7,20 @@ body {
     overflow-x: hidden;
 }
 
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1340px;
+    margin-inline: auto;
+    padding: 0 30px 0 30px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }

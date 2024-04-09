@@ -1,69 +1,80 @@
-<!--DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bienestar San Miguel | Farmacista</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
-    <link th:href="@{/css/styles.css}" rel="stylesheet" />
-    <link th:href="@{/css/fonts.css}" rel="stylesheet" />
-    <link th:href="@{/css/farmacista/farmacista.css}" rel="stylesheet" />
-    <link th:href="@{/css/footer.css}" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-</head>
 
-<header>
-    <div class="login-top">
-        <div>
-            <a href="/farmacista"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
-        </div>
-
-        <div class="top-menu">
-            <a class="text menu-item roboto-regular" href="/farmacista">Inicio</a>
-            <a class="text menu-item roboto-regular" href="/farmacista/ordenes_venta">Ordenes de Venta</a>
-            <a class="text menu-item roboto-regular" href="/farmacista/ordenes_web">Ordenes Web</a>
-            <a class="text menu-item roboto-regular" href="/farmacista/pre_ordenes">Pre Ordenes</a>
-        </div>
-    </div>
-</header-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--=============== REMIXICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
     <!--=============== CSS ===============-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
-    <!-- Font Awesome -->
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-    />
-    <title>Bienestar San Miguel | Farmacista</title>
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
+    <!--=============== JAVASCRIPT ===============-->
     <script th:source="@{/js/app.js}" async></script>
-    <style>
-        body {
-            padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
-        }
-    </style>
+
+    <!--=============== FONT AWESOME ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <title>Bienestar San Miguel | Farmacista</title>
+
 </head>
 
 
 
-<!--=============== HEADER ===============-->
-<header class="header">
-    <nav class="nav container">
+<header class="header-topbar">
+    <nav class="nav-topbar container">
+
+
         <div class="nav__data">
-            <a href="#" class="nav__logo">
-                <i class="ri-planet-line"></i> Company
-            </a>
+            <div>
+                <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="#" class="menu-item roboto-regular">Inicio</a></li>
+
+                    <li><a href="#" class="menu-item roboto-regular">Ordenes de Venta</a></li>
+
+                    <li><a href="#" class="menu-item roboto-regular">Ordenes Web</a></li>
+
+                    <li><a href="#" class="menu-item roboto-regular">Pre Ordenes</a></li>
+
+                    <!--=============== DROPDOWN 2 ===============-->
+                    <li class="dropdown-item">
+                        <div class="menu-item roboto-regular">
+                            Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                        </div>
+
+                        <ul class="dropdown-menu">
+                            <div class="inside-dropdown">
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <i class="ri-user-line menu-item roboto-regular"></i> Cambiar contraseña
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <i class="ri-lock-line menu-item roboto-regular"></i> Cerrar sesión
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
 
             <div class="nav__toggle" id="nav-toggle">
                 <i class="ri-menu-line nav__burger"></i>
@@ -71,49 +82,16 @@
             </div>
         </div>
 
-        <!--=============== NAV MENU ===============-->
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li><a href="#" class="nav__link">Inicio</a></li>
-
-                <li><a href="#" class="nav__link">Ordenes de Venta</a></li>
-
-                <li><a href="#" class="nav__link">Ordenes Web</a></li>
-
-                <li><a href="#" class="nav__link">Pre Ordenes</a></li>
-
-                <!--=============== DROPDOWN 2 ===============-->
-                <li class="dropdown__item">
-                    <div class="nav__link">
-                        Perfil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                    </div>
-
-                    <ul class="dropdown__menu">
-                        <li>
-                            <a href="#" class="dropdown__link">
-                                <i class="ri-user-line"></i> Cambiar contraseña
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="dropdown__link">
-                                <i class="ri-lock-line"></i> Cerrar sesión
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
     </nav>
 </header>
 
 
 <body>
 
-<div class="container">
+    <div class="container" style="margin-top: 100px">
 
     <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Crear nueva Orden</strong></h2>
+    <h2><strong style="padding-left: 10px">Crear nueva Orden</strong></h2>
     <div style="margin-bottom: 20px"></div>
 
     <hr style="border-top: 1px solid #262626;">
