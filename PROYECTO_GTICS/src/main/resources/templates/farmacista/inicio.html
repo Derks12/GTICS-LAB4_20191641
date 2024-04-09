@@ -46,15 +46,17 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     />
-    <title>proyecto Gtics</title>
-    <script src="static/js/app.js" async></script>
+    <title>Bienestar San Miguel | Farmacista</title>
+    <script th:source="@{/js/app.js}" async></script>
     <style>
         body {
             padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
         }
     </style>
 </head>
-<body>
+
+
+
 <!--=============== HEADER ===============-->
 <header class="header">
     <nav class="nav container">
@@ -104,6 +106,10 @@
         </div>
     </nav>
 </header>
+
+
+<body>
+
 <div class="container">
 
     <div style="margin-bottom: 50px"></div>
@@ -119,56 +125,44 @@
         <div class="contenedor-items">
             <div class="item">
                 <span class="titulo-item">Sal de Andrews Efervesment</span>
-                <img src="static/img/andrews.jpg" alt="" class="img-item">
+                <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <span class="precio-item">$0.48</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
                 <span class="titulo-item">Apronax Tableta Recubierta</span>
-                <img src="static/img/apronax.jpg" alt="" class="img-item">
+                <img th:src="@{/img/apronax.jpg}" alt="Apronax Tableta Recubierta" class="img-item">
                 <span class="precio-item">$25.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item"></span>
-                <img src="static/img/betarretin.jpg" alt="" class="img-item">
+                <span class="titulo-item">Betarretin Tretinoína</span>
+                <img th:src="@{/img/betarretin.jpg}" alt="Betarretin Tretinoína" class="img-item">
                 <span class="precio-item">$35.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">La Night</span>
-                <img src="static/img/bismutol.jpg" alt="" class="img-item">
+                <span class="titulo-item">Bismutol Tabletas</span>
+                <img th:src="@{/img/bismutol.jpg}" alt="Bismutol Tabletas" class="img-item">
                 <span class="precio-item">$18.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Silver All</span>
-                <img src="static/img/doloral.jpg" alt="" class="img-item">
+                <span class="titulo-item">Doloral</span>
+                <img th:src="@{/img/doloral.jpg}" alt="Doloral" class="img-item">
                 <span class="precio-item">$32.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Skin Glam</span>
-                <img src="static/img/hepobionta.jpg" alt="" class="img-item">
+                <span class="titulo-item">Hepabionta</span>
+                <img th:src="@{/img/hepobionta.jpg}" alt="Hepabionta" class="img-item">
                 <span class="precio-item">$18.000</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Midimix</span>
-                <img src="static/img/isochek.jpg" alt="" class="img-item">
-                <span class="precio-item">$54.000</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Sir Blue</span>
-                <img src="static/img/nastzol.jpg" alt="" class="img-item">
+                <span class="titulo-item">Nastizol</span>
+                <img th:src="@{/img/nastzol.jpg}" alt="Nastizol" class="img-item">
                 <span class="precio-item">$32.000</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/nat-b.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
@@ -177,49 +171,9 @@
                 <span class="precio-item">$42.800</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="staticimg/omega3.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/panadol.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/pañales.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="staticimg/paracetamol.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/smartprol.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/supracal.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
-            <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img src="static/img/vickVaporub.jpg" alt="" class="img-item">
-                <span class="precio-item">$42.800</span>
-                <button class="boton-item">Agregar al Carrito</button>
-            </div>
+
         </div>
+
         <!-- Carrito de Compras -->
         <div class="carrito" id="carrito">
             <div class="header-carrito">
@@ -271,50 +225,54 @@
             </div>
         </div>
     </section>
-<div style="padding-right: 0; padding-left: 0">
-    <footer id="sticky-footer" class="footer-distributed" style="background-color: #383838">
-        <div class="footer-left">
-            <img src="images/logo_topbar.png" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
-            <p class="footer-links">
-                <a href="">Usuarios</a> |
-                <a href="">Actividades</a> |
-                <a href="">Estadisticas</a> |
-                <a href="">Donaciones</a> |
-                <a href="">Perfil</a>
-            </p>
-            <p class="footer-company-name">Copyright © 2023 <strong>Pontificia Universidad Catolica del Perú</strong> Todos los derechos reservados</p>
+
+
+        <div style="padding-right: 0; padding-left: 0">
+            <footer id="sticky-footer" class="footer-distributed" style="background-color: #383838">
+
+                <div class="footer-left">
+                    <img src="images/logo_topbar.png" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+                    <p class="footer-links">
+                        <a href="">Usuarios</a> |
+                        <a href="">Actividades</a> |
+                        <a href="">Estadisticas</a> |
+                        <a href="">Donaciones</a> |
+                        <a href="">Perfil</a>
+                    </p>
+                    <p class="footer-company-name">Copyright © 2023 <strong>Pontificia Universidad Catolica del Perú</strong> Todos los derechos reservados</p>
+                </div>
+
+            <div class="footer-center">
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Av. Universitaria 1801, San Miguel, 15088</span> Lima, Perú</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+51 982 876 098</p>
+                </div>
+
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:sagar00001.co@gmail.com">Lorem ipsum dolor sit amet.</a></p>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <p class="footer-company-about">
+                    <span>Lorem, ipsum dolor.</span>
+                    La carrera de <strong>Ingeniería de las telecomunicaciones</strong> de la <strong>Pontificia Universidad Catolica del Perú</strong> diseñó una pagina WEB.
+                </p>
+                <div class="footer-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100009473024310&mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/leo.leonar071/?igshid=OGQ5ZDc2ODk2ZA%3D%3Ds"><i class="fa fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@pucp"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
         </div>
-
-        <div class="footer-center">
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p><span>Av. Universitaria 1801, San Miguel, 15088</span> Lima, Perú</p>
-            </div>
-
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>+51 982 876 098</p>
-            </div>
-
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:sagar00001.co@gmail.com">Lorem ipsum dolor sit amet.</a></p>
-            </div>
-        </div>
-
-        <div class="footer-right">
-            <p class="footer-company-about">
-                <span>Lorem, ipsum dolor.</span>
-                La carrera de <strong>Ingeniería de las telecomunicaciones</strong> de la <strong>Pontificia Universidad Catolica del Perú</strong> diseñó una pagina WEB.
-            </p>
-            <div class="footer-icons">
-                <a href="https://www.facebook.com/profile.php?id=100009473024310&mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a>
-                <a href="https://www.instagram.com/leo.leonar071/?igshid=OGQ5ZDc2ODk2ZA%3D%3Ds"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@pucp"><i class="fa fa-youtube"></i></a>
-            </div>
-        </div>
-    </footer>
-</div>
+    </div>
 </body>
 
 </html>
