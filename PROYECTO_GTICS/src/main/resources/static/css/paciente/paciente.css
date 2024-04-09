@@ -1,0 +1,17 @@
+.btn-p{
+
+    padding:7px;
+    border:none;
+    border-radius: 4px;
+    color:white;
+    background-color: dimgrey;
+    cursor: pointer;
+
+}
+
+.select-p{
+    border-color: #DFDFDF;
+    border-radius: 6px;
+    padding:10px;
+    outline: none;
+}
