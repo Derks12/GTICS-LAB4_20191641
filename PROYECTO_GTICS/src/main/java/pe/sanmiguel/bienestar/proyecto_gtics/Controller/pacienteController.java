@@ -17,6 +17,9 @@ public class pacienteController {
     @GetMapping(value="/tracking")
     public String tracking(){ return "/paciente/tracking";}
 
+    @GetMapping(value="/ordenes")
+    public String ordenes(){return "/paciente/ordenes";}
+
 
 
 
