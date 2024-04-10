@@ -13,7 +13,6 @@ public class pacienteController {
     @GetMapping(value="")
     public String preOrdenes(){return "/paciente/pre_ordenes";}
 
-
     @GetMapping(value="/tracking")
     public String tracking(){ return "/paciente/tracking";}
 
@@ -22,6 +21,9 @@ public class pacienteController {
 
     @GetMapping(value="/new_orden")
     public String new_orden(){return "/paciente/new_orden";}
+
+    @GetMapping(value="/mensajeria")
+    public String mensajeria(){return "/paciente/mensajeria";}
 
     @GetMapping(value = "/chatbot")
     public String chatbot(){return "/paciente/chatbot";}

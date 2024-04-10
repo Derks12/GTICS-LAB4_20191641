@@ -37,7 +37,7 @@ const refresh = ()=>{
         nextBtn.classList.add("disabled")
     }else nextBtn.classList.remove('disabled');
 
-    
+
     if(currentStep === 1) prevBtn.classList.add("disabled");
     else prevBtn.classList.remove('disabled');
 
@@ -46,6 +46,6 @@ const refresh = ()=>{
     let width = (allActiveClasses.length / progressSteps.length) * 100 - 15;
 
     progress.style.width = width + allActiveClasses.length + "%"
-    
+
 };
 

@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 800px;
+  width: 700px;
 }
 
 .progress-container {
@@ -52,7 +52,7 @@
 
 
 .progress {
-  margin-left: 16px;
+  margin-left: 10px;
   position: absolute;
   left: 0;
   height: 3px;
@@ -70,7 +70,7 @@
   font-weight: 500;
   color: var(--black);
   z-index: 2;
-} 
+}
 
 .progress-step .fa-solid{
   display: flex;
