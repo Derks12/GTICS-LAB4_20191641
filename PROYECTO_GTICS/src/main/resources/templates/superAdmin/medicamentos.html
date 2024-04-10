@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
+    <!--=============== JAVASCRIPT ===============-->
+    <script th:source="@{/js/app.js}" async></script>
+
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+    <link rel="stylesheet" th:href="@{/css/superadmin/superadmin.css}">
+    <!-- Font Awesome -->
+    <link
+            rel="stylesheet"
+
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
+    <title>Bienestar San Miguel</title>
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">
+
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
+        }
+        .contenedor2{
+            display: flex;
+            justify-content: center;
+        }
+
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Aptos:wght@700&display=swap');
+    </style>
+</head>
+
+
+<body>
+<!--=============== HEADER ===============-->
+<header class="header-topbar">
+    <nav class="nav-topbar container">
+
+
+        <div class="nav__data">
+            <div>
+                <a href="/superadmin"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="/superadmin/pedidos" class="menu-item roboto-regular">Pedidos</a></li>
+
+                    <li><a href="/superadmin/solicitudes" class="menu-item roboto-regular">Solicitudes</a></li>
+
+                    <li><a href="/superadmin/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
+
+                    <li class="dropdown-item">
+                        <div class="menu-item roboto-regular">
+                            Usuarios <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                        </div>
+
+                        <ul class="dropdown-menu">
+                            <div class="inside-dropdown">
+                                <li>
+                                    <a href="/superadmin/administradoresSede" class="dropdown-link">
+                                        <i class="ri-user-line menu-item roboto-regular"></i> Admnistradores de Sede
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/superadmin/farmacistas" class="dropdown-link">
+                                        <i class="ri-user-line  menu-item roboto-regular"></i> Farmacistas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/superadmin/pacientes" class="dropdown-link">
+                                        <i class="ri-user-line  menu-item roboto-regular"></i> Pacientes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/superadmin/doctores" class="dropdown-link">
+                                        <i class="ri-user-line  menu-item roboto-regular"></i> Doctores
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!--=============== DROPDOWN 2 ===============-->
+                    <li class="dropdown-item">
+                        <div class="menu-item roboto-regular">
+                            <i class="fas fa-user fa-fw"></i>
+                            <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                        </div>
+
+                        <ul class="dropdown-menu">
+                            <div class="inside-dropdown">
+                                <li>
+                                    <a href="/superadmin/cambiarContraseña" class="dropdown-link">
+                                        <i class="ri-user-line menu-item roboto-regular"></i> Cambiar contraseña
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/" class="dropdown-link">
+                                        <i class="ri-lock-line menu-item roboto-regular"></i> Cerrar sesión
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-line nav__burger"></i>
+                <i class="ri-close-line nav__close"></i>
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+
+<div class="container">
+    <div style="margin-bottom: 20px"></div>
+    <div style="margin-bottom: 30px"></div>
+    <div class="titulo"><b>LISTA DE MEDICAMENTOS</b></div>
+    <div style="margin-bottom: 20px"></div>
+
+    <button class="boton-crear" style="align-content:end">Agregar medicamento</button>
+    <br>
+</div>>
+
+
+    <br><br>
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar...">
+        <button type="submit">Buscar</button>
+    </div>
+
+    <section class="contenedor">
+
+        <!-- Contenedor de elementos -->
+        <div class="contenedor-items">
+            <div class="item">
+                <span class="titulo-item">Sal de Andrews Efervesment</span>
+                <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
+                <span class="precio-item">$0.48</span>
+               <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Apronax Tableta Recubierta</span>
+                <img th:src="@{/img/apronax.jpg}" alt="Apronax Tableta Recubierta" class="img-item">
+                <span class="precio-item">$25.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Betarretin Tretinoína</span>
+                <img th:src="@{/img/betarretin.jpg}" alt="Betarretin Tretinoína" class="img-item">
+                <span class="precio-item">$35.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+
+            </div>
+            <div class="item">
+                <span class="titulo-item">Bismutol Tabletas</span>
+                <img th:src="@{/img/bismutol.jpg}" alt="Bismutol Tabletas" class="img-item">
+                <span class="precio-item">$18.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Doloral</span>
+                <img th:src="@{/img/doloral.jpg}" alt="Doloral" class="img-item">
+                <span class="precio-item">$32.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Hepabionta</span>
+                <img th:src="@{/img/hepobionta.jpg}" alt="Hepabionta" class="img-item">
+                <span class="precio-item">$18.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Nastizol</span>
+                <img th:src="@{/img/nastzol.jpg}" alt="Nastizol" class="img-item">
+                <span class="precio-item">$32.000</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+            <div class="item">
+                <span class="titulo-item">Middlesteel</span>
+                <img th:src="@{//img/neurobion.jpg}" alt="" class="img-item">
+                <span class="precio-item">$42.800</span>
+                <hr>
+                <div class="contenedor2">
+                    <button class="boton-item "><i class="fa-solid fa-edit" style="color: #ffffff;"></i></button>
+                    <button class="boton-item "><i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <br><br><br><br>
+
+    <div >
+    <footer id="sticky-footer" class="footer-distributed" style="background-color: #04011E">
+        <div class="footer-left">
+            <img src="images/logo_topbar.png" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+            <p class="footer-links">
+                <a href="">Usuarios</a> |
+                <a href="">Actividades</a> |
+                <a href="">Estadisticas</a> |
+                <a href="">Donaciones</a> |
+                <a href="">Perfil</a>
+            </p>
+            <p class="footer-company-name">Copyright © 2023 <strong>Pontificia Universidad Catolica del Perú</strong> Todos los derechos reservados</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Av. Universitaria 1801, San Miguel, 15088</span> Lima, Perú</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+51 982 876 098</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:sagar00001.co@gmail.com">Lorem ipsum dolor sit amet.</a></p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>Lorem, ipsum dolor.</span>
+                La carrera de <strong>Ingeniería de las telecomunicaciones</strong> de la <strong>Pontificia Universidad Catolica del Perú</strong> diseñó una pagina WEB.
+            </p>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/profile.php?id=100009473024310&mibextid=LQQJ4d"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/leo.leonar071/?igshid=OGQ5ZDc2ODk2ZA%3D%3Ds"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@pucp"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+
+
+</body>
+
+
+</html>
