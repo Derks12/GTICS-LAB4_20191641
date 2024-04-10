@@ -126,6 +126,8 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
     //Actualizamos total
     actualizarTotalCarrito();
 }
+
+
 //Aumento en uno la cantidad del elemento seleccionado
 function sumarCantidad(event){
     var buttonClicked = event.target;

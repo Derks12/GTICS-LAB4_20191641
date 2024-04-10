@@ -13,61 +13,64 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     />
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+
+
     <link th:href="@{/css/styles.css}" rel="stylesheet" >
     <link th:href="@{/css/fonts.css}" rel="stylesheet" >
     <link rel="stylesheet" th:href="@{/css/topbar.css}">
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
+    <link rel="stylesheet" th:href="@{/css/datatables.css}">
 
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+
+    <!--=============== DataTable ===============-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
+        <!-- Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
+    <!--==========================================-->
+
+
     <title>Pre Ordenes | Bienestar San Miguel</title>
 
     <style>
         body {
-            padding-top: 90px;
+            padding-top: 80px;
         }
         #filtroEstado:focus {
 
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
-        ul li a {
-            list-style-type: none;
-        }
 
-        ul li a {
-            text-decoration: none;
-            color: inherit;
-        }
     </style>
 </head>
 
 
-
-<body>
-<!--=============== HEADER ===============-->
 <header class="header-topbar">
     <nav class="nav-topbar container">
 
 
-        <div class="nav__data">
+        <div class="nav-data">
             <div>
                 <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
             </div>
 
             <!--=============== NAV MENU ===============-->
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
                     <li><a href="/paciente" class="menu-item roboto-regular">Pre Ordenes</a></li>
 
                     <li><a href="/paciente/ordenes" class="menu-item roboto-regular">Ordenes Web</a></li>
 
-                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajes</a></li>
+                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajeria</a></li>
 
-                    <!--=============== DROPDOWN 2 ===============-->
+
+                    <!--=============== DROPDOWN ===============-->
                     <li class="dropdown-item">
                         <div class="menu-item roboto-regular">
                             Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
@@ -77,13 +80,13 @@
                             <div class="inside-dropdown">
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-user-line menu-item roboto-regular"></i> Cambiar contraseña
+                                        <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-lock-line menu-item roboto-regular"></i> Cerrar sesión
+                                        <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
                                     </a>
                                 </li>
                             </div>
@@ -93,14 +96,40 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                <i class="ri-close-line nav-close"></i>
+
+                <div class="menu-small" id="menu-small">
+                    <div class="inside-menu-small">
+                        <div class="nav-menu-small" id="nav-menu-small">
+                            <ul class="nav-list-small">
+                                <li><a href="/paciente" class="menu-item roboto-regular">Pre Ordenes</a></li>
+
+                                <li><a href="/paciente/ordenes" class="menu-item roboto-regular">Ordenes Web</a></li>
+
+                                <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajeria</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
     </nav>
 </header>
+
+<body>
+
+
 
 
 
@@ -124,14 +153,18 @@
     <div style="display: flex; justify-content: space-between; align-items: center">
         <div style="display: flex; flex-direction: column">
         <label style="font-weight: 550; margin-left: 2px">Filtrar por Estado:</label>
-        <select id="filtroEstado" class="select-p" >
-            <option value="">Mostrar Todos</option>
-            <option value="RECIBIDO">Recibido</option>
-            <option value="EN PROCESO">En proceso</option>
-            <option value="EMPAQUETANDO">Empaquetando</option>
-            <option value="EN RUTA">En ruta</option>
-            <option value="ENTREGADO">Entregado</option>
-        </select>
+
+
+            <select id="filtroEstado" class="select-wrapper">
+                <option value="">Mostrar Todos</option>
+                <option value="RECIBIDO">Recibido</option>
+                <option value="EN PROCESO">En proceso</option>
+                <option value="EMPAQUETANDO">Empaquetando</option>
+                <option value="EN RUTA">En ruta</option>
+                <option value="ENTREGADO">Entregado</option>
+            </select>
+
+
         </div>
 
         <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
@@ -140,7 +173,7 @@
 
 
 
-    <table id="miTabla" class="display">
+    <table id="miTabla" class="table table-striped">
         <thead>
         <tr>
             <th>Número de Tracking</th>
@@ -183,6 +216,18 @@
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
             <td>EN RUTA</td>
+            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+        </tr>
+        <tr>
+            <td>XXYYZZWW</td>
+            <td>MM-DD-AA</td>
+            <td>EN RUTA</td>
+            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+        </tr>
+        <tr>
+            <td>XXYYZZWW</td>
+            <td>MM-DD-AA</td>
+            <td>RECIBIDO</td>
             <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
         </tr>
         <tr>
@@ -251,8 +296,12 @@
     </footer>
 </div>
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script th:src="@{/js/topbar.js}"></script>
 <script>
     $(document).ready(function() {
         var table = $('#miTabla').DataTable({
@@ -262,6 +311,7 @@
                 "emptyTable": "No hay registros disponibles",
                 "zeroRecords": "No se encontraron registros coincidentes",
                 "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "search" : "Buscar:",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",
@@ -289,8 +339,9 @@
 </script>
 
 
-
-
+<!-- DataTable -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<!------>
 </body>
 
 </html>

@@ -13,10 +13,7 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
     />
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+
 
     <link th:href="@{/css/styles.css}" rel="stylesheet" >
     <link th:href="@{/css/fonts.css}" rel="stylesheet" >
@@ -27,7 +24,42 @@
     <link rel="stylesheet" th:href="@{/css/paciente/progress-bar.css}">
 
 
+    <style>
+        /* Estilos personalizados para los botones de paginación */
+        #miTabla_paginate .paginate_button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #b0b0b0;
+            border-radius: 3px;
+            background-color: white;
+            color: #0d6efd !important;
+            cursor: pointer;
+        }
+
+        /* Estilos al pasar el mouse */
+        #miTabla_paginate .paginate_button:hover {
+            background-color: #e0e0e0 !important; /* !important para garantizar prioridad */
+            color: #ffffff !important; /* Cambia el color del texto al pasar el mouse */
+        }
+
+        /* Estilos para el botón de paginación activo */
+        #miTabla_paginate .paginate_button.current {
+            background-color: #0d6efd !important;
+            color: #0d6efd !important;
+            border-color: none;
+        }
+
+        /* Estilos para el botón de paginación desactivado */
+        #miTabla_paginate .paginate_button.disabled {
+            cursor: not-allowed;
+            background-color: #DFDFDF !important;
+            color: #5a6268 !important;
+        }
+    </style>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAce4klBZuD60aEQidMVIbsoaiitxxQFpo"></script>
     <script scr="/js/map.js"></script>
@@ -54,6 +86,8 @@
          }
 
     </style>
+
+
 
     <script>
         // Puntos del mapa
@@ -102,29 +136,27 @@
 </head>
 
 
-
-<body>
-<!--=============== HEADER ===============-->
 <header class="header-topbar">
     <nav class="nav-topbar container">
 
 
-        <div class="nav__data">
+        <div class="nav-data">
             <div>
                 <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
             </div>
 
             <!--=============== NAV MENU ===============-->
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
                     <li><a href="/paciente" class="menu-item roboto-regular">Pre Ordenes</a></li>
 
                     <li><a href="/paciente/ordenes" class="menu-item roboto-regular">Ordenes Web</a></li>
 
-                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajes</a></li>
+                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajeria</a></li>
 
-                    <!--=============== DROPDOWN 2 ===============-->
+
+                    <!--=============== DROPDOWN ===============-->
                     <li class="dropdown-item">
                         <div class="menu-item roboto-regular">
                             Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
@@ -134,13 +166,13 @@
                             <div class="inside-dropdown">
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-user-line menu-item roboto-regular"></i> Cambiar contraseña
+                                        <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-lock-line menu-item roboto-regular"></i> Cerrar sesión
+                                        <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
                                     </a>
                                 </li>
                             </div>
@@ -150,14 +182,39 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                <i class="ri-close-line nav-close"></i>
+
+                <div class="menu-small" id="menu-small">
+                    <div class="inside-menu-small">
+                        <div class="nav-menu-small" id="nav-menu-small">
+                            <ul class="nav-list-small">
+                                <li><a href="/paciente" class="menu-item roboto-regular">Pre Ordenes</a></li>
+
+                                <li><a href="/paciente/ordenes" class="menu-item roboto-regular">Ordenes Web</a></li>
+
+                                <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajeria</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
     </nav>
 </header>
+
+<body>
+
 
 
 
@@ -305,8 +362,7 @@
 
 <br>
 <br>
-<br>
-<br>
+
 
 <div style="display: flex; justify-content: center">
     <div id="map"></div>
@@ -365,7 +421,10 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="/js/progress-bar.js"></script>
+
+<script th:src="@{/js/progress-bar.js}"></script>
+<script th:src="@{/js/topbar.js}"></script>
+
 <script>
     google.maps.event.addDomListener(window, 'load', initMap);
 </script>
@@ -378,6 +437,7 @@
                 "emptyTable": "No hay registros disponibles",
                 "zeroRecords": "No se encontraron registros coincidentes",
                 "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "Search" : "Buscar:",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",

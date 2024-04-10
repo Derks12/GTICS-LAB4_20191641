@@ -106,7 +106,6 @@
     }
 
     .inside-menu-small {
-        padding: 20px 40px;
         position: fixed;
         top: 71px;
         left: 0;
@@ -133,7 +132,6 @@
     }
 
     .nav-list-small-perfil {
-        padding-top: 30px;
         display: flex;
         flex-direction: column;
         gap: 0.3rem;

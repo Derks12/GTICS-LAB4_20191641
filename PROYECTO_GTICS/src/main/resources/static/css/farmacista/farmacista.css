@@ -286,15 +286,33 @@ hr.style-one {
 
 
 /* LISTA MEDICAMENTOS */
-.contenedor .contenedor-items{
+
+
+.items-preview {
+    max-height: 600px;
+    overflow: auto;
+}
+
+.selected-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.med-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    padding-top: 30px;
+    padding-bottom: 50px;
     grid-gap:30px;
     grid-row-gap: 30px;
     width: 100%;
     transition: .3s;
 }
-.contenedor .contenedor-items .item{
+
+.item {
     max-width: 240px;
     padding: 20px;
     transition: .3s;
@@ -309,36 +327,36 @@ hr.style-one {
 
 
 
-.contenedor .contenedor-items .item .img-item{
+.img-item {
     width: 100%;
 }
-.contenedor .contenedor-items .item:hover{
+.item:hover {
     border: 1px solid rgba(66, 157, 250, 0.3);
     box-shadow: 0 0 10px rgba(66, 157, 250, 0.3);
     scale: 1.01;
 }
-.contenedor .contenedor-items .item .titulo-item{
+.titulo-item {
     display: block;
     color: var(--color-text-1);
     padding-top: 5px;
     font-size: 1rem;
     text-align: start;
 }
-.contenedor .contenedor-items .item .subtitulo-item{
+.subtitulo-item {
     display: block;
     color: var(--color-text-2);
     padding-top: 5px;
     font-size: 0.8rem;
     text-align: start;
 }
-.contenedor .contenedor-items .item .precio-item{
+.item-price {
     display: block;
     text-align: start;
     padding-top: 15px;
     font-size: 1.15rem;
 }
 
-.contenedor .contenedor-items .item .boton-item{
+.add-item-button {
     display: block;
     font-size: 1rem;
     margin: 10px auto;
@@ -351,12 +369,74 @@ hr.style-one {
     transition: background-color ease 0.2s;
 }
 
-.contenedor .contenedor-items .item .boton-item:hover{
+.add-item-button:hover{
     background-color: var(--color-blue--hover);
 }
 
 
+.search-bar {
+    width: 100%;
+    max-width: 600px; /* Puedes ajustar el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centrar el cuadro de búsqueda */
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    flex: 1; /* Para que el campo de entrada ocupe todo el espacio disponible */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Bordes redondeados a la izquierda */
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0; /* Bordes redondeados a la derecha */
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #e0e0e0;
+}
+
 /* END LISTA MEDICAMENTOS */
+
+
+
+/* FILTRO DATATABLES */
+.select-p{
+    border-color: #DFDFDF;
+    border-radius: 6px;
+    padding:8px;
+    outline: none;
+    margin-top: 4px;
+}
+
+
+.btn-p {
+    display: inline-block;
+    padding: 10px 20px;
+    color:white;
+    background-color: dimgrey;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 14px;
+}
+
+.btn-p:hover {
+    background-color: white;
+    color: dimgrey;
+    border:2px solid dimgrey;
+    padding: 8px 18px;
+}
+/* END FILTRO DATATABLES */
+
 
 
 
