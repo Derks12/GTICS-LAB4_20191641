@@ -1,0 +1,17 @@
+.container-orden-view{
+    display: flex;
+}
+
+.container-map{
+    width: 50%;
+    height: 100%;
+    padding: 25px;
+    margin: 0 10px;
+
+}
+.container-tracking{
+    width: 50%;
+    height: 100%;
+    padding: 25px;
+    margin: 0 10px;
+}
