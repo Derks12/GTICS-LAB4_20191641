@@ -24,8 +24,40 @@
     <link rel="stylesheet" th:href="@{/css/paciente/progress-bar.css}">
 
 
+    <style>
+        /* Estilos personalizados para los botones de paginación */
+        #miTabla_paginate .paginate_button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: 1px solid #b0b0b0;
+            border-radius: 3px;
+            background-color: white;
+            color: #0d6efd !important;
+            cursor: pointer;
+        }
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+        /* Estilos al pasar el mouse */
+        #miTabla_paginate .paginate_button:hover {
+            background-color: #e0e0e0 !important; /* !important para garantizar prioridad */
+            color: #ffffff !important; /* Cambia el color del texto al pasar el mouse */
+        }
+
+        /* Estilos para el botón de paginación activo */
+        #miTabla_paginate .paginate_button.current {
+            background-color: #0d6efd !important;
+            color: #0d6efd !important;
+            border-color: none;
+        }
+
+        /* Estilos para el botón de paginación desactivado */
+        #miTabla_paginate .paginate_button.disabled {
+            cursor: not-allowed;
+            background-color: #DFDFDF !important;
+            color: #5a6268 !important;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
 
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
@@ -55,35 +87,7 @@
 
     </style>
 
-    <style>
-        /* Estilos personalizados para los botones de paginación */
-        #miTabla_paginate .paginate_button {
-            padding: 5px 10px;
-            margin: 0 5px;
-            border: 1px solid #b0b0b0;
-            border-radius: 3px;
-            background-color: white;
-            color: #0d6efd !important;
-            cursor: pointer;
-        }
 
-        #miTabla_paginate .paginate_button:hover {
-            background-color: #e0e0e0 !important; /* !important para garantizar prioridad */
-            color: #ffffff !important; /* Cambia el color del texto al pasar el mouse */
-        }
-
-        #miTabla_paginate .paginate_button.current {
-            background-color: #0d6efd !important;
-            color: white !important;
-            border-color: none;
-        }
-
-        #miTabla_paginate .paginate_button.disabled {
-            cursor: not-allowed;
-            background-color: #DFDFDF !important;
-            color: #5a6268 !important;
-        }
-    </style>
 
     <script>
         // Puntos del mapa
@@ -416,7 +420,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <script th:src="@{/js/progress-bar.js}"></script>
 <script th:src="@{/js/topbar.js}"></script>
