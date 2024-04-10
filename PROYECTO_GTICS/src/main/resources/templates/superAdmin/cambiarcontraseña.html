@@ -16,6 +16,9 @@
     <link th:href="@{/css/fonts.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/topbar.css}">
+    <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
 
     <!--=============== JAVASCRIPT ===============-->
     <script th:source="@{/js/app.js}" async></script>
@@ -42,23 +45,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">
+
     <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
-    <link th:href="@{/css/styles.css}" rel="stylesheet" />
-    <link th:href="@{/css/fonts.css}" rel="stylesheet" />
     <link th:href="@{/css/login-styles/login.css}" rel="stylesheet" />
+
+
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
 
     <style>
         body {
             padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
         }
-        .contenedor2{
-            display: flex;
-            justify-content: center;
-        }
-
-
-
 
         @import url('https://fonts.googleapis.com/css2?family=Aptos:wght@700&display=swap');
     </style>
@@ -71,15 +68,15 @@
     <nav class="nav-topbar container">
 
 
-        <div class="nav__data">
+        <div class="nav-data">
             <div>
                 <a href="/superadmin"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
             </div>
 
             <!--=============== NAV MENU ===============-->
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
                     <li><a href="/superadmin/pedidos" class="menu-item roboto-regular">Pedidos</a></li>
 
                     <li><a href="/superadmin/solicitudes" class="menu-item roboto-regular">Solicitudes</a></li>
@@ -100,7 +97,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/superadmin/farmacistas" class="dropdown-link">
+                                    <a  href="/superadmin/farmacistas"  class="dropdown-link">
                                         <i class="ri-user-line  menu-item roboto-regular"></i> Farmacistas
                                     </a>
                                 </li>
@@ -145,49 +142,76 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                <i class="ri-close-line nav-close"></i>
+
+                <div class="menu-small" id="menu-small">
+                    <div class="inside-menu-small">
+                        <div class="nav-menu-small" id="nav-menu-small">
+                            <ul class="nav-list-small">
+                                <li><a href="/superadmin/pedidos" class="menu-item-small roboto-regular">Pedidos</a></li>
+
+                                <li><a href="/superadmin/solicitudes" class="menu-item-small roboto-regular">Solicitudes</a></li>
+
+                                <li><a href="/superadmin/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/superadmin/administradoresSede" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Administradores de sede</a></li>
+                                <li><a  href="/superadmin/farmacistas" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Farmacistas</a></li>
+                                <li><a href="/superadmin/pacientes" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Pacientes</a></li>
+                                <li><a href="/superadmin/doctores" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Doctores</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/superadmin/cambiarContraseña" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                <li><a href="/" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
     </nav>
 </header>
 
+<main style="margin-left: 130px; margin-right: 130px">
+    <div class="container">
+        <div style="margin-bottom: 20px"></div>
+        <div style="margin-bottom: 30px"></div>
+        <div class="titulo"><b>MI PERFIL</b></div>
+        <div style="margin-bottom: 20px"></div>
+    </div>
 
-<div class="container">
-    <div style="margin-bottom: 20px"></div>
-    <div style="margin-bottom: 30px"></div>
-    <div class="titulo"><b>MI PERFIL</b></div>
-    <div style="margin-bottom: 20px"></div>
+    <div class="main-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="login-container">
+            <div class="wrapper" style="text-align: center;">
+                <h3 style="color: #0c3452; font-size: 20px;">CAMBIAR MI CONTRASEÑA</h3>
+                <img alt="" class="img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                <form name="signin" class="login-form">
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Contraseña</label>
+                        <input type="password" name="password" id="password" class="input-field" placeholder="Contraseña">
+                    </div>
 
-</div>
-<div class="login-container flex-content" >
-    <div class="wrapper" style="align-content: center">
-        <img alt="" class="img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar1.png">
-        <div>
-            <h2 class="panel-title">
-                <span class="glyphicon glyphicon-th" style="text-align: center"></span>
-                Cambiar mi contraseña
-            </h2>
-            <br>
-            <form name="signin" class="login-form">
-                <div class="input-control" style="align-content: center">
-                    <label for="password" class="input-label" hidden>Ingrese su contraseña</label>
-                    <input type="password" name="password" id="password1" class="input-field" placeholder="Contraseña">
-                </div>
-                <div class="input-control" style="align-content: center">
-                    <label for="password" class="input-label" hidden>Ingrese su nueva contraseña</label>
-                    <input type="password" name="password" id="password" class="input-field" placeholder="Nueva contraseña">
-                </div>
-                <div class="input-control" >
-                    <input style="align-content: center" type="submit" name="submit" class="input-submit" value="Guardar cambios" disabled >
-                </div>
-            </form>
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Nueva contraseña</label>
+                        <input type="password" name="password" id="password1" class="input-field" placeholder="Nueva contraseña">
+                    </div>
+                    <div class="input-control">
+                        <input type="submit" name="submit" class="input-submit" value="Guardar y continuar" disabled>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
+</main>
 
 
 <br>
@@ -195,7 +219,7 @@
 <div >
     <footer id="sticky-footer" class="footer-distributed" style="background-color: #04011E">
         <div class="footer-left">
-            <img src="images/logo_topbar.png" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+            <img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo" style="width: 400px; height: auto;">
             <p class="footer-links">
                 <a href="">Usuarios</a> |
                 <a href="">Actividades</a> |
@@ -240,7 +264,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
+<script>
+    $(document).ready(function() {
+        var opened = false;
 
+        $('#menu-small').hide();
+
+        $('#nav-toggle').click(function (e) {
+            e.stopPropagation();
+            if (opened) {
+                $('#menu-small').hide();
+            } else {
+                $('#menu-small').show();
+            }
+            opened = !opened;
+        });
+    });
+</script>
 
 </body>
 

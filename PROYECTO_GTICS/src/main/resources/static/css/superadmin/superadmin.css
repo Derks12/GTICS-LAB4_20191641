@@ -7,12 +7,34 @@
     padding-right: 25px;
     padding-bottom: 14px;
     padding-top: 12px;
-    border: 0px solid #2071b7;
+    border: 0px solid #ffffff;
     border-radius: 1px;
     font-size: 25px;
     font-weight: bold;
-    background-color: #afe5e5;
+    background-color: #51595f;
     margin: 0 auto;
+}
+
+.disponible {
+    width: 25px;
+    height: 25px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.no_disponible {
+    width: 25px;
+    height: 25px;
+    background-color: #e81128;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    font-size: 10px;
+    cursor: pointer;
 }
 
 .titulo {
@@ -23,10 +45,10 @@
     padding-top: 12px;
     font-size: 25px; /* Tamaño del texto */
     font-weight: normal; /* Texto en peso normal */
-    background-color: rgb(215, 250, 250);
+    background-color: rgb(22, 50, 121);
     text-align: center;
     border-radius: 7px;
-    color: #0c0808; /* Color del texto */
+    color: #ffffff; /* Color del texto */
     text-decoration: black;
 }
 
