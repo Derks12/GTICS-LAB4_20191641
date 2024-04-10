@@ -63,11 +63,12 @@
 }
 
 .input-div2 input {
+    margin-top: 4px;
     width: 400px; /* Ancho del input */
     padding: 8px; /* Espacio interior del input */
     border: 1px solid #ccc; /* Borde del input */
     border-radius: 4px; /* Bordes redondeados del input */
-    margin-top: 4px;
+
 }
 
 
