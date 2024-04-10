@@ -26,5 +26,13 @@ public class farmacistaController {
     public String preOrdenes() {
         return "/farmacista/pre_ordenes";
     }
+    @GetMapping("/farmacista/formularioPaciente")
+    public String forPaciente() {
+        return "/farmacista/formularioPaciente";
+    }
+    @GetMapping("/farmacista/detallesOrdenWeb")
+    public String detaOrdenWeb() {
+        return "/farmacista/detallesOrdenWeb";
+    }
 
 }
