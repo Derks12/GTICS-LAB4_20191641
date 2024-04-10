@@ -173,25 +173,24 @@ function ocultarCarrito(){
         items.style.width = '100%';
     }
 }
-//Actualizamos el total de Carrito
-function actualizarTotalCarrito(){
-    //seleccionamos el contenedor carrito
+// Actualizamos el total de Carrito
+function actualizarTotalCarrito() {
     var carritoContenedor = document.getElementsByClassName('carrito')[0];
     var carritoItems = carritoContenedor.getElementsByClassName('carrito-item');
-    var total = 0;
-    //recorremos cada elemento del carrito para actualizar el total
-    for(var i=0; i< carritoItems.length;i++){
+    var totalCentavos = 0; // Utilizamos enteros para la suma total
+    // Recorremos cada elemento del carrito para actualizar el total
+    for (var i = 0; i < carritoItems.length; i++) {
         var item = carritoItems[i];
         var precioElemento = item.getElementsByClassName('carrito-item-precio')[0];
-        //quitamos el simobolo peso y el punto de milesimos.
-        var precio = parseFloat(precioElemento.innerText.replace('$','').replace('.',''));
+        // Convertimos el precio a centavos y lo redondeamos
+        var precioCentavos = Math.round(parseFloat(precioElemento.innerText.replace('S/', '').replace(/,/g, '')) * 100);
         var cantidadItem = item.getElementsByClassName('carrito-item-cantidad')[0];
-        console.log(precio);
         var cantidad = cantidadItem.value;
-        total = total + (precio * cantidad);
+        totalCentavos += precioCentavos * cantidad;
     }
-    total = Math.round(total * 100)/100;
+    // Convertimos el total de centavos a soles
+    var totalSoles = totalCentavos / 100;
 
-    document.getElementsByClassName('carrito-precio-total')[0].innerText = '$'+total.toLocaleString("es") + ",00";
-
+    // Actualizamos el total en el carrito
+    document.getElementsByClassName('carrito-precio-total')[0].innerText = 'S/' + totalSoles.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
