@@ -13,6 +13,8 @@ const showMenu = (toggleId, navId) =>{
 }
 showMenu('nav-toggle','nav-menu')
 /*===============THE END MENU===============*/
+
+
 //INICIO DATA TABLE
 let dataTable;
 let dataTableIsInitialized = false;
@@ -39,12 +41,11 @@ let dataTableOptions = {
       className: 'btn btn-info',
     },
   ],
-  lengthMenu: [5, 10, 15, 20, 100, 200, 500],
+  lengthMenu: [5, 10, 15, 20, 100],
   columnDefs: [
     { className: 'centered', targets: [0, 1, 2, 3, 4, 5] },
-    { orderable: false, targets: [2] },
-    { searchable: false, targets: [1] },
-    { width: '20%', targets: [1] },
+    { orderable: false, targets: [1] },
+    { orderable: false, targets: [4] },
   ],
   pageLength: 3,
   destroy: true,
