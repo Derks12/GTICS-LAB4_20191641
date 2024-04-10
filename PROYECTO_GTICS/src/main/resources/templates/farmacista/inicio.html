@@ -19,7 +19,6 @@
 
     <!--=============== JAVASCRIPT ===============-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script th:src="@{/js/farmacista.js}" async></script>
 
     <!--=============== FONT AWESOME ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -127,139 +126,280 @@
             <button type="submit">Buscar</button>
         </div>
 
-    <section class="contenedor">
+
+        <div class="items-preview" id="items-preview">
+
+            <div class="container-preview">
+
+                <div class="preview-title roboto-regular">
+                    Lista de Productos Seleccionados - Nueva Orden de Venta
+                </div>
+
+                <div class="lista-items-clicked">
+
+
+                </div>
+
+                <div class="price-total-div">
+                    <span class="price-total">S/120.000,00</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    <section class="medicamentos">
         <!-- Contenedor de elementos -->
-        <div class="contenedor-items">
+        <div class="med-container">
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item1">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item2">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item3">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item4">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item5">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item6">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item7">Añadir a la Orden</button>
             </div>
             <div class="item">
                 <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
                 <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="titulo-item roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="precio-item roboto-regular">S/1.20</span>
-                <button class="boton-item montserrat-medium">Agregar al Carrito</button>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item8">Añadir a la Orden</button>
+            </div>
+            <div class="item">
+                <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
+                <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item9">Añadir a la Orden</button>
+            </div>
+            <div class="item">
+                <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
+                <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
+                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
+                <span class="item-price roboto-regular">S/1.20</span>
+                <button class="add-item-button montserrat-medium" id="item10">Añadir a la Orden</button>
             </div>
 
         </div>
 
-        <!-- Carrito de Compras -->
-        <div class="carrito" id="carrito">
-            <div class="header-carrito">
-                <h2>Tu Carrito</h2>
-            </div>
-
-            <div class="carrito-items">
-                <!--
-                <div class="carrito-item">
-                    <img src="img/boxengasse.png" width="80px" alt="">
-                    <div class="carrito-item-detalles">
-                        <span class="carrito-item-titulo">Box Engasse</span>
-                        <div class="selector-cantidad">
-                            <i class="fa-solid fa-minus restar-cantidad"></i>
-                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
-                            <i class="fa-solid fa-plus sumar-cantidad"></i>
-                        </div>
-                        <span class="carrito-item-precio">$15.000,00</span>
-                    </div>
-                   <span class="btn-eliminar">
-                        <i class="fa-solid fa-trash"></i>
-                   </span>
-                </div>
-                <div class="carrito-item">
-                    <img src="img/skinglam.png" width="80px" alt="">
-                    <div class="carrito-item-detalles">
-                        <span class="carrito-item-titulo">Skin Glam</span>
-                        <div class="selector-cantidad">
-                            <i class="fa-solid fa-minus restar-cantidad"></i>
-                            <input type="text" value="3" class="carrito-item-cantidad" disabled>
-                            <i class="fa-solid fa-plus sumar-cantidad"></i>
-                        </div>
-                        <span class="carrito-item-precio">$18.000,00</span>
-                    </div>
-                   <button class="btn-eliminar">
-                        <i class="fa-solid fa-trash"></i>
-                   </button>
-                </div>
-                 -->
-            </div>
-            <div class="carrito-total">
-                <div class="fila">
-                    <strong>Tu Total</strong>
-                    <span class="carrito-precio-total">
-                            $120.000,00
-                        </span>
-                </div>
-                <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping"></i> </button>
-            </div>
-        </div>
     </section>
 
     </div>
 
-            <script>
-                $(document).ready(function() {
-                    var opened = false;
+    <script>
+        $(document).ready(function() {
 
-                    $('#menu-small').hide();
+            $('#items-preview').hide();
 
-                    $('#nav-toggle').click(function (e) {
-                        e.stopPropagation();
-                        if (opened) {
-                            $('#menu-small').hide();
-                        } else {
-                            $('#menu-small').show();
+
+            var botonesEliminarItem = document.getElementsByClassName('btn-eliminar');
+            for(var i=0;i<botonesEliminarItem.length; i++){
+                var button = botonesEliminarItem[i];
+                button.addEventListener('click',eliminarItemCarrito);
+            }
+            var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');
+            for(var i=0;i<botonesSumarCantidad.length; i++){
+                var button = botonesSumarCantidad[i];
+                button.addEventListener('click',sumarCantidad);
+            }
+            var botonesRestarCantidad = document.getElementsByClassName('restar-cantidad');
+            for(var i=0;i<botonesRestarCantidad.length; i++){
+                var button = botonesRestarCantidad[i];
+                button.addEventListener('click',restarCantidad);
+            }
+            var botonesAgregarAlCarrito = document.getElementsByClassName('add-item-button');
+            for(var i=0; i<botonesAgregarAlCarrito.length;i++){
+                var button = botonesAgregarAlCarrito[i];
+                button.addEventListener('click', clickItemAdd);
+            }
+
+            function clickItemAdd(event){
+                var button = event.target;
+                var item = button.parentElement;
+                var titulo = item.getElementsByClassName('item-title')[0].innerText;
+                var precio = item.getElementsByClassName('item-price')[0].innerText;
+                var imagenSrc = item.getElementsByClassName('img-item')[0].src;
+                addItemToList(titulo, precio, imagenSrc);
+                ShowList();
+            }
+
+
+            function addItemToList(titulo, precio, imagenSrc){
+                var item = document.createElement('div');
+                item.classList.add = ('item-clicked');
+                var itemsList = document.getElementsByClassName('lista-items-clicked')[0];
+
+                if (itemsList.getElementsByClassName('item-title-clicked').length > 0){
+
+                    var alreadyOnList = itemsList.getElementsByClassName('item-title-clicked');
+
+                    for(var i=0;i < alreadyOnList.length;i++){
+                        if(alreadyOnList[i].innerText===titulo){
+                            alert("El item ya se encuentra en el carrito");
+                            return;
                         }
-                        opened = !opened;
-                    });
-                });
-            </script>
+                    }
+                }
+
+                var itemNewSelected = `
+        <div class="selected-item">
+
+            <img src="${imagenSrc}" width="40px" height="auto" alt="">
+
+            <span class="item-title-clicked">${titulo}</span>
+
+            <div class="item-details">
+                <div class="selector-cantidad">
+                    <i class="fa-solid fa-minus restar-cantidad"></i>
+                    <input type="text" value="1" class="item-quantity-clicked" disabled>
+                    <i class="fa-solid fa-plus sumar-cantidad"></i>
+                </div>
+                <span class="item-price-clicked">${precio}</span>
+            </div>
+
+            <button class="btn-eliminar btn-danger">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+
+        </div>
+    `
+                item.innerHTML = itemNewSelected;
+                itemsList.append(item);
+
+                item.getElementsByClassName('btn-eliminar')[0].addEventListener('click', deleteItem);
+
+                var botonRestarCantidad = item.getElementsByClassName('restar-cantidad')[0];
+                botonRestarCantidad.addEventListener('click',restarCantidad);
+
+                var botonSumarCantidad = item.getElementsByClassName('sumar-cantidad')[0];
+                botonSumarCantidad.addEventListener('click',sumarCantidad);
+
+                actualizarMontoTotal();
+            }
+
+
+            function sumarCantidad(event){
+                var buttonClicked = event.target;
+                var selector = buttonClicked.parentElement;
+                console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
+                var cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
+                cantidadActual++;
+                selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
+                actualizarMontoTotal();
+            }
+
+            function restarCantidad(event){
+                var buttonClicked = event.target;
+                var selector = buttonClicked.parentElement;
+                console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
+                var cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
+                cantidadActual--;
+                if(cantidadActual>=1){
+                    selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
+                    actualizarMontoTotal();
+                }
+            }
+
+            function deleteItem(event){
+                var buttonClicked = event.target;
+                buttonClicked.parentElement.parentElement.remove();
+                actualizarMontoTotal();
+                hideorShowList();
+            }
+
+            function actualizarMontoTotal() {
+                var listItems = document.getElementsByClassName('lista-items-clicked')[0];
+                var selectedItems = listItems.getElementsByClassName('selected-item');
+                var totalCentavos = 0;
+
+                for (var i = 0; i < selectedItems.length; i++) {
+                    var item = selectedItems[i];
+                    var precioItem = Math.round(parseFloat(item.getElementsByClassName('item-price-clicked')[0].innerText.replace('S/', '').replace(/,/g, '')) * 100);
+                    var cantidadItem = item.getElementsByClassName('item-quantity-clicked')[0].value;
+                    totalCentavos += precioItem * cantidadItem;
+                }
+                var totalSoles = totalCentavos / 100;
+                document.getElementsByClassName('price-total')[0].innerText = 'S/' + totalSoles.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+            }
+
+            function hideorShowList(){
+                var listaItems = document.getElementsByClassName('lista-items-clicked');
+                if(listaItems.childElementCount === undefined){
+                    $('#items-preview').hide();
+                } else {
+                    $('#items-preview').show();
+                }
+            }
+
+            function ShowList(){
+                $('#items-preview').show();
+            }
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            var opened = false;
+
+            $('#menu-small').hide();
+
+            $('#nav-toggle').click(function (e) {
+                e.stopPropagation();
+                if (opened) {
+                    $('#menu-small').hide();
+                } else {
+                    $('#menu-small').show();
+                }
+                opened = !opened;
+            });
+        });
+    </script>
 
 
     </body>
