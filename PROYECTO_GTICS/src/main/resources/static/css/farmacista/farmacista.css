@@ -341,7 +341,7 @@ hr.style-one {
 .contenedor .contenedor-items .item .boton-item{
     display: block;
     font-size: 1rem;
-    margin: 20px auto;
+    margin: 10px auto;
     border: none;
     background-color: var(--color-blue);
     color: #fff;
