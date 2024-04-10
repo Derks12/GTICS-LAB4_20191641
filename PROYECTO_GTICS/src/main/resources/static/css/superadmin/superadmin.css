@@ -37,6 +37,39 @@
     cursor: pointer;
 }
 
+.estado_pendiente {
+    width: 70px;
+    height: 30px;
+    background-color: #dde810;
+    color: #0c0808;
+    border: none;
+    border-radius: 15px; /* Hace que el botón sea redondo */
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.estado_entregado {
+    width: 70px;
+    height: 30px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 15px; /* Hace que el botón sea redondo */
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.estado_cancelado {
+    width: 70px;
+    height: 30px;
+    background-color: #9d1515;
+    color: white;
+    border: none;
+    border-radius: 15px; /* Hace que el botón sea redondo */
+    font-size: 12px;
+    cursor: pointer;
+}
+
 .titulo {
     font-family: "Rubik";
     padding-left: 25px;

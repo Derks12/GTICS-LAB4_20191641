@@ -49,4 +49,9 @@ public class superAdminController {
         return "/superAdmin/cambiarcontraseña";
     }
 
+    @GetMapping(value = {"/masdetallesPedidos"})
+    public String masDetallesPedidos(){
+        return "/superAdmin/masdetallesPedidos";
+    }
+
 }
