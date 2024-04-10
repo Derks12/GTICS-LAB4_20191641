@@ -1,0 +1,234 @@
+/*=============== HEADER ===============*/
+.header-topbar {
+    width: 100%;
+    background-color: var(--color-blue);
+    box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+}
+
+/*=============== NAV ===============*/
+
+.logo {
+    max-width: 210px;
+    height: auto;
+    padding: 10px 0 10px 0;
+}
+
+.nav-topbar {
+    height: auto;
+}
+
+.nav__logo,
+.nav__burger,
+.nav__close {
+    color: rgb(255,255,255);
+}
+
+.nav__data {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+}
+
+.nav__logo i {
+    font-weight: initial;
+    font-size: 1.25rem;
+}
+
+.nav__toggle {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.nav__burger,
+.nav__close {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    inset: 0;
+    margin: auto;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity .1s, transform .4s;
+}
+
+.nav__close {
+    opacity: 0;
+}
+
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1000px) {
+    .nav__menu {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: auto;
+        overflow: auto;
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+.menu-item {
+    text-decoration: none;
+    color: rgb(244 244 245);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.menu-item:hover {
+    color: rgb(10, 45, 136);
+}
+
+/*=============== DROPDOWN ===============*/
+.dropdown-item {
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    font-size: 1.25rem;
+    font-weight: initial;
+    transition: transform .4s;
+}
+
+.dropdown-item:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    max-height: initial;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow: initial;
+    position: fixed;
+    right: 120px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s, top .3s;
+}
+
+@media(max-width: 1600px) {
+    .dropdown-menu {
+        right: 30px;
+    }
+}
+
+.dropdown-item:hover .dropdown-menu {
+    transition: max-height .4s ease-in;
+}
+
+.inside-dropdown {
+    margin-top: 25px;
+}
+
+.dropdown-link {
+    padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+    color: var(--color-white);
+    background-color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    font-weight: var(--font-semi-bold);
+    transition: background-color .3s;
+}
+
+.dropdown-link i {
+    font-size: 1.25rem;
+    font-weight: initial;
+}
+
+.dropdown-link:hover {
+    background-color: var(--color-blue--hover);
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+    .container {
+        margin-inline: 1rem;
+    }
+
+    .nav__link {
+        padding-inline: 1rem;
+    }
+}
+
+/* For large devices */
+@media screen and (min-width: 1000px) {
+
+    .nav {
+        height: calc(var(--header-height) + 2rem);
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav__toggle {
+        display: none;
+    }
+    .nav__list {
+        height: 100%;
+        display: flex;
+        column-gap: 3rem;
+    }
+    .nav__link {
+        height: 100%;
+        padding: 0;
+        justify-content: initial;
+        column-gap: .25rem;
+    }
+    .nav__link:hover {
+        background-color: transparent;
+    }
+
+    .dropdown-item,
+    .dropdown-subitem {
+        position: relative;
+    }
+
+
+
+    .dropdown-link,
+    .dropdown-sublink {
+        padding-inline: 1rem 3.5rem;
+    }
+
+    .dropdown-subitem .dropdown-link {
+        padding-inline: 1rem;
+    }
+
+    .dropdown-submenu {
+        position: absolute;
+        left: 100%;
+        top: .5rem;
+    }
+
+    /* Show dropdown menu */
+    .dropdown-item:hover .dropdown-menu {
+        opacity: 1;
+        pointer-events: initial;
+        transition: top .3s;
+    }
+
+    /* Show dropdown submenu */
+    .dropdown-subitem:hover > .dropdown-submenu {
+        opacity: 1;
+        top: 0;
+        pointer-events: initial;
+        transition: top .3s;
+    }
+}
+/*====================THE END TOP-BAR==========*/

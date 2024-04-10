@@ -29,7 +29,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-    <title>Ordenes Web | Bienestar San Miguel</title>
+    <title>Pre Ordenes | Bienestar San Miguel</title>
 
     <style>
         body {
@@ -113,7 +113,7 @@
 <div class="container">
 
     <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Ordenes Web:</strong></h2>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Generar nuevo orden:</strong></h2>
     <div style="margin-bottom: 20px"></div>
     <hr style="border-top: 1px solid #DFDFDF;">
     <div style="margin-bottom: 40px"></div>
@@ -121,94 +121,81 @@
     <div style="padding-right: 0; padding-left: 0"> </div>
 </div>
 
+<div class="container-grid">
+
+    <div class="input-div ">
+        <label style="margin-right: 365px">Doctor:</label>
+        <select class="select-p" style="width: 420px">
+            <option selected disabled>Seleccionar Doctor</option>
+            <option>Doctor 1</option>
+            <option>Doctor 2</option>
+            <option>Doctor 3</option>
+        </select>
+
+        <br>
+        <br>
+        <label style="margin-right: 260px">Nombre del paciente:</label>
+        <input type="text">
+
+        <br>
+        <br>
+        <label style="margin-right: 260px">Apellido del paciente:</label>
+        <input type="text">
 
 
+        <br>
+        <br>
+        <label style="margin-right: 355px">Seguro:</label>
+        <input type="text">
 
-<div class="container">
-    <div style="padding-top:1px; display:flex; justify-content: end " >
-        <a class="btn-p" href="/paciente/new_orden">Generar nueva orden</a>
+
+        <br>
+        <br>
+        <label style="margin-right: 340px">Dirección:</label>
+        <input type="text">
+
+
 
     </div>
-    <br>
 
 
-    <div style="display: flex; justify-content: space-between; align-items: center">
-        <div style="display: flex; flex-direction: column">
-            <label style="font-weight: 550; margin-left: 2px; margin-bottom:10px">Filtrar por Estado:</label>
-            <select id="filtroEstado" class="select-p">
-                <option value="">Mostrar Todos</option>
-                <option value="RECIBIDO">Recibido</option>
-                <option value="EN PROCESO">En proceso</option>
-                <option value="EMPAQUETANDO">Empaquetando</option>
-                <option value="EN RUTA">En ruta</option>
-                <option value="ENTREGADO">Entregado</option>
-            </select>
-        </div>
+    <div class="input-div2 ">
 
-        <button class="btn-p" id="limpiarFiltros"  >Limpiar Filtros</button>
+        <label>Medicamentos y cantidades:</label>
+        <input type="text">
+
+        <br>
+        <br>
+        <label>Hora de entrega:</label>
+        <input type="text">
+
+
+        <br>
+        <br>
+        <label>Distrito:</label>
+        <input type="text">
+
+
+        <br>
+        <br>
+        <label>Telefono:</label>
+        <input type="number">
+
+
+        <br>
+        <br>
+        <label>DNI:</label>
+        <input type="number">
     </div>
-    <br>
 
 
 
-    <table id="miTabla" class="display">
-        <thead>
-        <tr>
-            <th>Número de Tracking</th>
-            <th>Fecha de registro</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>EMPAQUETANDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>EN PROCESO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr><tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>ENTREGADO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>EN RUTA</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr>
 
-
-
-        </tbody>
-    </table>
 
 </div>
+
+
+
 
 <br>
 <br>
@@ -263,44 +250,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var table = $('#miTabla').DataTable({
-            "pageLength":5,
-            "lengthChange": false,
-            "language": {
-                "emptyTable": "No hay registros disponibles",
-                "zeroRecords": "No se encontraron registros coincidentes",
-                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Último",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                },
-                "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
-            },
-
-        });
-
-        $('#filtroEstado').on('change', function() {
-            var estado = $(this).val();
-            table.column(2).search(estado).draw();
-
-        });
-
-        $('#limpiarFiltros').on('click', function() {
-            $('#filtroEstado').val('');
-            table.search('').columns().search('').draw();
-        });
-    });
-
-
-</script>
-
-
-
 
 </body>
 

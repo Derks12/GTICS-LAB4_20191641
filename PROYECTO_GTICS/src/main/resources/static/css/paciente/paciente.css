@@ -1,0 +1,75 @@
+.select-p{
+    border-color: #DFDFDF;
+    border-radius: 6px;
+    padding:8px;
+    outline: none;
+    margin-top: 4px;
+}
+
+
+.btn-p {
+    display: inline-block;
+    padding: 10px 20px;
+    color:white;
+    background-color: dimgrey;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 14px;
+}
+
+.btn-p:hover {
+    background-color: white;
+    color: dimgrey;
+    border:2px solid dimgrey;
+    padding: 8px 18px;
+}
+
+.container-grid{
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+    padding-top:20px;
+
+    padding-left:20px;
+    padding-right: 20px;
+
+
+}
+
+.input-div {
+    display: flex;
+    flex-direction: column;
+   text-align: start;
+    align-items: center;
+}
+
+.input-div2{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+}
+
+
+.input-div input {
+    margin-top: 4px;
+    width: 400px; /* Ancho del input */
+    padding: 8px; /* Espacio interior del input */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 4px; /* Bordes redondeados del input */
+}
+
+.input-div2 input {
+    width: 400px; /* Ancho del input */
+    padding: 8px; /* Espacio interior del input */
+    border: 1px solid #ccc; /* Borde del input */
+    border-radius: 4px; /* Bordes redondeados del input */
+    margin-top: 4px;
+}
+
+
+
+

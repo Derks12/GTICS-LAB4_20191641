@@ -20,6 +20,9 @@ public class pacienteController {
     @GetMapping(value="/ordenes")
     public String ordenes(){return "/paciente/ordenes";}
 
+    @GetMapping(value="/new_orden")
+    public String new_orden(){return "/paciente/new_orden";}
+
 
 
 
