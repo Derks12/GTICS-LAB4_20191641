@@ -312,7 +312,7 @@ const listUsers = async () => {
                     <td> ${user.address.city} </td>
                     <td> ${user.company.name} </td>
                     <td><i class="fa-solid fa-circle-check"></i></td>
-                    <td>
+                    <td style="display: flex; flex-direction: row; gap: 5px;">
                         <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
                         <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
