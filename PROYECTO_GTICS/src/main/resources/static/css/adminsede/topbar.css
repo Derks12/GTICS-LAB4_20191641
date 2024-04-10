@@ -56,9 +56,11 @@ a {
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
+
 .container {
-    max-width: 1120px;
-    margin-inline: 1.5rem;
+    max-width: 1540px;
+    margin-inline: auto;
+    padding: 0 30px 0 30px;
 }
 
 /*=============== HEADER ===============*/
