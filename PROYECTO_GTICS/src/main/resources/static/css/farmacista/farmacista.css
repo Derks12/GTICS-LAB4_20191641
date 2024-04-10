@@ -441,7 +441,6 @@ hr.style-one {
 
 
 /*=======================FORMULARIO PACIENTE=====================*/
-
 .form .input-box {
     width: 100%;
     margin-top: 20px;
@@ -452,7 +451,7 @@ hr.style-one {
 .form :where(.input-box input, .select-box) {
     position: relative;
     height: 50px;
-    width: 100%;
+    width: 95%;
     outline: none;
     font-size: 1rem;
     color: #707070;
@@ -732,7 +731,6 @@ hr.style-one {
     color: var(--color-gray);
 }
 /*===========COMPRAS===============*/
-
 .card {
     box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
 }

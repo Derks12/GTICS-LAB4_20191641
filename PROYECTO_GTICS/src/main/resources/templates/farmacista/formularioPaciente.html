@@ -6,89 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--=============== REMIXICONS ===============-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-    <!--=============== CSS ===============-->
-    <!-- Font Awesome -->
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-    <title>Responsive dropdown menu - Bedimcode</title>
-    <style>
-        body {
-            padding-top: 100px; /* Ajusta el valor del padding-top según sea necesario */
-        }
-    </style>
-</head>
-<body>
-<!--=============== HEADER ===============-->
-<header class="header">
-    <nav class="nav container">
-        <div class="nav__data">
-            <a href="#" class="nav__logo">
-                <i class="ri-planet-line"></i> Company
-            </a>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
+    <!--=============== CSS ===============-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <link th:href="@{/css/fonts.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <title>Bienestar San Miguel | Farmacista</title>
+</head>
+
+<header class="header-topbar">
+    <nav class="nav-topbar container">
+
+
+        <div class="nav-data">
+            <div>
+                <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/farmacista" class="menu-item roboto-regular">Inicio</a></li>
+
+                    <li><a href="/farmacista/ordenes_venta" class="menu-item roboto-regular">Ordenes de Venta</a></li>
+
+                    <li><a href="/farmacista/ordenes_web" class="menu-item roboto-regular">Ordenes Web</a></li>
+
+                    <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular">Pre Ordenes</a></li>
+
+                    <!--=============== DROPDOWN ===============-->
+                    <li class="dropdown-item">
+                        <div class="menu-item roboto-regular">
+                            Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                        </div>
+
+                        <ul class="dropdown-menu">
+                            <div class="inside-dropdown">
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="dropdown-link">
+                                        <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                <i class="ri-close-line nav-close"></i>
+
+                <div class="menu-small" id="menu-small">
+                    <div class="inside-menu-small">
+                        <div class="nav-menu-small" id="nav-menu-small">
+                            <ul class="nav-list-small">
+                                <li><a href="/farmacista" class="menu-item-small roboto-regular">Inicio</a></li>
+
+                                <li><a href="/farmacista/ordenes_venta" class="menu-item-small roboto-regular">Ordenes de Venta</a></li>
+
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular">Ordenes Web</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular">Pre Ordenes</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
-        <!--=============== NAV MENU ===============-->
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li><a href="#" class="nav__link">Inicio</a></li>
-
-                <li><a href="#" class="nav__link">Ordenes de Venta</a></li>
-
-                <li><a href="#" class="nav__link">Ordenes Web</a></li>
-
-                <li><a href="#" class="nav__link">Pre Ordenes</a></li>
-
-                <!--=============== DROPDOWN 2 ===============-->
-                <li class="dropdown__item">
-                    <div class="nav__link">
-                        Perfil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                    </div>
-
-                    <ul class="dropdown__menu">
-                        <li>
-                            <a href="#" class="dropdown__link">
-                                <i class="ri-user-line"></i> Cambiar contraseña
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="dropdown__link">
-                                <i class="ri-lock-line"></i> Cerrar sesión
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
     </nav>
 </header>
-<div class="container">
 
-    <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Crear nueva Orden</strong></h2>
-    <div style="margin-bottom: 20px"></div>
+
+
+
+<body>
+
+    <div class="container" style="margin-top: 90px">
+
+        <div style="padding-top: 20px; padding-bottom: 20px">
+            <div class="main-title montserrat-bold"> Interfaz de Atención al Cliente </div>
+            <div class="main-subtitle montserrat-regular"> Creación de Orden de Venta </div>
+        </div>
 
     <hr style="border-top: 1px solid #262626;">
 
     <div style="margin-bottom: 40px"></div>
 
     <section class="container">
-        <form action="#" class="form">
-            <div class="input-box">
-                <label>Nombre completo</label>
-                <input type="text" placeholder="Ingrese su nombre compelto" required />
+        <form th:object="${persona}" class="form">
+            <div class="column">
+                <div class="input-box">
+                    <label>Nombres</label>
+                    <input type="text" placeholder="Ingrese su nombre" required />
+                </div>
+                <div class="input-box">
+                    <label>Apellidos</label>
+                    <input type="text" placeholder="Ingrese su apellido" required />
+                </div>
             </div>
             <div class="column">
                 <div class="input-box">
@@ -96,8 +134,8 @@
                     <input type="number" placeholder="Ingrese su DNI" required />
                 </div>
                 <div class="input-box">
-                    <label>Seguro</label>
-                    <input type="text" placeholder="Ingrese su seguro" required />
+                    <label>Edad</label>
+                    <input type="number" placeholder="Ingrese su edad" required />
                 </div>
             </div>
             <div class="column">
