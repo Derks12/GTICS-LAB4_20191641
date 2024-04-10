@@ -11,37 +11,42 @@ public class adminSedeController {
 
     @GetMapping(value = {""})
     public String showIndexAdminSede(){
-        return "/adminSede/inicio";
+        return "/adminsede/inicio";
     }
 
     @GetMapping(value = {"/doctores"})
     public String showDoctors(){
-        return "/adminSede/doctores";
+        return "/adminsede/doctores";
+    }
+
+    @GetMapping(value = {"/farmacista"})
+    public String showFarmacistas(){
+        return "/adminsede/farmacistas";
     }
 
     @GetMapping(value = {"/ordenes"})
     public String showOrders(){
-        return "/adminSede/ordenes_reposicion";
+        return "/adminsede/ordenes_reposicion";
     }
 
     @GetMapping(value = {"/editar_farmacista"})
     public String editFarmacista(){
-        return "/adminSede/editar_farmacista";
+        return "/adminsede/editar_farmacista";
     }
 
     @GetMapping(value = {"/editar_orden_reposicion"})
     public String editOrden(){
-        return "/adminSede/editar_orden_reposicion";
+        return "/adminsede/editar_orden_reposicion";
     }
 
     @GetMapping(value = {"/medicamentos"})
     public String showMedicamentos(){
-        return "/adminSede/medicamentos_sede";
+        return "/adminsede/medicamentos_sede";
     }
 
     @GetMapping(value = {"/solicitud_farmacista"})
     public String solicitudFarmacista(){
-        return "/adminSede/solicitud_agregar_farmacista";
+        return "/adminsede/solicitud_agregar_farmacista";
     }
 
 
