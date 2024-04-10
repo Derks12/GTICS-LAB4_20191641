@@ -18,7 +18,8 @@
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
 
     <!--=============== JAVASCRIPT ===============-->
-    <script th:src="@{/js/app.js}" async></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/js/farmacista.js}" async></script>
 
     <!--=============== FONT AWESOME ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -33,15 +34,15 @@
     <nav class="nav-topbar container">
 
 
-        <div class="nav__data">
+        <div class="nav-data">
             <div>
                 <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
             </div>
 
             <!--=============== NAV MENU ===============-->
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
                     <li><a href="/farmacista" class="menu-item roboto-regular">Inicio</a></li>
 
                     <li><a href="/farmacista/ordenes_venta" class="menu-item roboto-regular">Ordenes de Venta</a></li>
@@ -50,7 +51,7 @@
 
                     <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular">Pre Ordenes</a></li>
 
-                    <!--=============== DROPDOWN 2 ===============-->
+                    <!--=============== DROPDOWN ===============-->
                     <li class="dropdown-item">
                         <div class="menu-item roboto-regular">
                             Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
@@ -60,13 +61,13 @@
                             <div class="inside-dropdown">
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-user-line menu-item roboto-regular"></i> Cambiar contraseña
+                                        <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#" class="dropdown-link">
-                                        <i class="ri-lock-line menu-item roboto-regular"></i> Cerrar sesión
+                                        <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
                                     </a>
                                 </li>
                             </div>
@@ -76,9 +77,33 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="ri-menu-line nav__burger"></i>
-                <i class="ri-close-line nav__close"></i>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                <i class="ri-close-line nav-close"></i>
+
+                <div class="menu-small" id="menu-small">
+                    <div class="inside-menu-small">
+                        <div class="nav-menu-small" id="nav-menu-small">
+                            <ul class="nav-list-small">
+                                <li><a href="/farmacista" class="menu-item-small roboto-regular">Inicio</a></li>
+
+                                <li><a href="/farmacista/ordenes_venta" class="menu-item-small roboto-regular">Ordenes de Venta</a></li>
+
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular">Ordenes Web</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular">Pre Ordenes</a></li>
+                            </ul>
+
+                            <ul class="nav-list-small-perfil">
+                                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
@@ -144,8 +169,8 @@
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
             <div class="item">
-                <span class="titulo-item">Middlesteel</span>
-                <img th:src="@{//img/neurobion.jpg}" alt="" class="img-item">
+                <span class="titulo-item">Neurobion</span>
+                <img th:src="@{/img/neurobion.jpg}" alt="Neurobion" class="img-item">
                 <span class="precio-item">$42.800</span>
                 <button class="boton-item">Agregar al Carrito</button>
             </div>
@@ -209,7 +234,7 @@
             <footer id="sticky-footer" class="footer-distributed" style="background-color: #383838">
 
                 <div class="footer-left">
-                    <img src="images/logo_topbar.png" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+                    <img alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
                     <p class="footer-links">
                         <a href="">Usuarios</a> |
                         <a href="">Actividades</a> |
@@ -251,6 +276,26 @@
         </footer>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            var opened = false;
+
+            $('#menu-small').hide();
+
+            $('#nav-toggle').click(function (e) {
+                e.stopPropagation();
+                if (opened) {
+                    $('#menu-small').hide();
+                } else {
+                    $('#menu-small').show();
+                }
+                opened = !opened;
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>
