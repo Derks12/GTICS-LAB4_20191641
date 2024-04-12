@@ -1,5 +1,7 @@
 
-.select-wrapper {
+/***********--SELECT--************/
+
+.select-p {
     width: 100%;
     margin-top:4px;
     padding: 10px 12px;
@@ -10,19 +12,33 @@
     outline: none;
 }
 
-.select-wrapper option {
+.select-p option {
     padding: 8px 12px;
+    font-size: 14px;
+    background-color: white;
+    color: #333;
+    border:10px solid red;
+
 }
 
-.select-wrapper option:hover {
-    background-color: #f8f9fa;
+.select-p:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+
+
+.select-p option:hover {
+    background-color: red;
+}
+
+
+
+/***********--BOTONES - GENERAL --************/
 .btn-p {
     display: inline-block;
     padding: 10px 20px;
     color:white;
-    background-color: dimgrey;
+    background-color: #378fff;
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -31,24 +47,107 @@
     font-size: 14px;
 }
 
+
 .btn-p:hover {
     background-color: white;
-    color: dimgrey;
-    border:2px solid dimgrey;
+    color: #378fff;
+    border:2px solid #378fff;
     padding: 8px 18px;
 }
 
-.container-grid{
-    display: grid;
-    gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
-    padding-top:20px;
 
-    padding-left:20px;
-    padding-right: 20px;
 
+
+
+
+/***********-- TABLA --************/
+td{
+    text-align: center !important;
+}
+
+.action{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+
+
+
+
+
+/***********--BOTONES - ESTADO TRACKING --************/
+
+.btn-pend{
+    padding: 9px;
+    background-color: #CF480D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+
+    /*
+    width: 120px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+    */
+}
+
+.btn-rcb{
+    padding: 8px;
+    background-color: #ECCB44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+
+.btn-pro{
+    padding: 8px;
+    background-color: #ECCB44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+
+.btn-empa{
+    padding: 8px;
+    background-color: #ECCB44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+
+}
+
+.btn-ruta{
+    padding: 8px;
+    background-color: #ECCB44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+
+.btn-listo{
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+
+
+
+
+
+
+
 
 input{
     outline: none;

@@ -25,6 +25,8 @@
     <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
+    <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+
 
 
 
@@ -44,18 +46,6 @@
     <style>
         body {
             padding-top: 90px;
-        }
-        #filtroEstado:focus {
-
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-        ul li a {
-            list-style-type: none;
-        }
-
-        ul li a {
-            text-decoration: none;
-            color: inherit;
         }
     </style>
 </head>
@@ -167,7 +157,7 @@
     <div style="display: flex; justify-content: space-between; align-items: center">
         <div style="display: flex; flex-direction: column">
             <label style="font-weight: 550; margin-left: 2px; margin-bottom:10px">Filtrar por Estado:</label>
-            <select id="filtroEstado" class="select-wrapper">
+            <select id="filtroEstado" class="select-p">
                 <option value="">Mostrar Todos</option>
                 <option value="RECIBIDO">Recibido</option>
                 <option value="EN PROCESO">En proceso</option>
@@ -185,55 +175,80 @@
 
     <table id="miTabla" class="table table-striped">
         <thead>
-        <tr>
-            <th>Número de Tracking</th>
-            <th>Fecha de registro</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+        <tr style="background-color: #378fff">
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Número de Tracking</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Fecha de registro</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Acciones</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-pend">PENDIENTE</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>EMPAQUETANDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-listo">ENTREGADO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>EN PROCESO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
-        </tr><tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td>ENTREGADO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-rcb">RECIBIDO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-rcb">RECIBIDO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>EN RUTA</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-pro">EN PROCESO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
         <tr>
             <td>XXYYZZWW</td>
             <td>MM-DD-AA</td>
-            <td>RECIBIDO</td>
-            <td><a href="/paciente/tracking"><img width="24" height="24" src="https://img.icons8.com/material-outlined/24/visible--v1.png" alt="visible--v1"/></a></td>
+            <td><button class="btn-empa">EMPAQUETANDO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
         </tr>
+        <tr>
+            <td>XXYYZZWW</td>
+            <td>MM-DD-AA</td>
+            <td><button class="btn-ruta">EN RUTA</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
+        </tr>
+        <tr>
+            <td>XXYYZZWW</td>
+            <td>MM-DD-AA</td>
+            <td><button class="btn-listo">ENTREGADO</button></td>
+            <td class="action" >
+                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
+        </tr>
+
+
 
 
 
@@ -242,6 +257,16 @@
 
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -309,6 +334,7 @@
                 "emptyTable": "No hay registros disponibles",
                 "zeroRecords": "No se encontraron registros coincidentes",
                 "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "search" : "Buscar:",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",

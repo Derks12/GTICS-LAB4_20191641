@@ -1,15 +1,27 @@
-const progress = document.getElementById("progress")
+const progress = document.getElementById("barra")
 const nextBtn = document.getElementById("next")
 const prevBtn = document.getElementById("prev")
 const progressSteps = document.querySelectorAll(".progress-step .fa-solid")
 
 
+
+
 let currentStep = 1;
 
-const next = () => {
+
+console.log(currentStep)
+const next = (currentStep) => {
     console.log("next")
-    currentStep++;
-    refresh();
+    console.log(currentStep)
+
+    if (currentStep < progressSteps.length) {
+        if (currentStep === 1) {
+            currentStep++;
+        } else {
+            currentStep++;
+        }
+        refresh();
+    }
 };
 
 
@@ -32,8 +44,7 @@ const refresh = ()=>{
 
 
     if(currentStep>progressSteps.length-1){
-        currentStep = progressSteps.length;
-
+        currentStep = progressSteps.length-1;
         nextBtn.classList.add("disabled")
     }else nextBtn.classList.remove('disabled');
 
@@ -41,11 +52,18 @@ const refresh = ()=>{
     if(currentStep === 1) prevBtn.classList.add("disabled");
     else prevBtn.classList.remove('disabled');
 
+
+
+
     const allActiveClasses  = document.querySelectorAll(".active");
 
     let width = (allActiveClasses.length / progressSteps.length) * 100 - 15;
 
-    progress.style.width = width + allActiveClasses.length + "%"
+
+
+    progress.style.width = width + (allActiveClasses.length)+ "%"
+
+
 
 };
 
