@@ -148,43 +148,117 @@ td{
 
 
 
+/***********-- FORM --************/
 
-input{
+
+.container-form{
+    max-width: 1540px;
+    margin-inline: auto;
+    padding: 0 30px 0 30px;
+}
+
+.column{
+    display: flex;
+    flex-direction: row;
+    row-gap: 28px;
+    column-gap: 40px;
+    padding-top: 20px;
+    padding-bottom: 22px;
+    justify-content: center;
+}
+
+.input-label-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label-radio{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+
+
+
+.select-form {
+    width: 570px;
+    height: 48px;
+    margin-top:4px;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 15px;
     outline: none;
+
+}
+.select-form:focus{
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.input-div {
+
+
+
+
+
+.input-form{
+    margin-top:6px;
+    padding-left: 15px;
+    outline: none;
+    width: 550px;
+    height: 42px;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.input-form:focus{
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+
+.radios{
     display: flex;
     flex-direction: column;
-   text-align: start;
-    align-items: center;
-}
-
-.input-div2{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-
-}
-
-
-.input-div input {
-    margin-top: 4px;
-    width: 400px; /* Ancho del input */
-    padding: 8px; /* Espacio interior del input */
-    border: 1px solid #ccc; /* Borde del input */
-    border-radius: 4px; /* Bordes redondeados del input */
-}
-
-.input-div2 input {
-    margin-top: 4px;
-    width: 400px; /* Ancho del input */
-    padding: 8px; /* Espacio interior del input */
-    border: 1px solid #ccc; /* Borde del input */
-    border-radius: 4px; /* Bordes redondeados del input */
-
+    padding-right: 800px;
+    flex-wrap: wrap;
 }
 
 
 
+
+
+/*Responsive*/
+@media screen and (max-width: 1250px) {
+    .container-form .column {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .select-form{
+        width: 210px;
+    }
+    .input-form {
+        width: 100%; /* Cambia el ancho a 100% para ocupar todo el ancho disponible */
+    }
+}
+
+
+@media screen and (max-width: 1243px) {
+    .radios{
+        padding-right: 200px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .radios{
+        padding-right: 10px;
+    }
+
+}
 
