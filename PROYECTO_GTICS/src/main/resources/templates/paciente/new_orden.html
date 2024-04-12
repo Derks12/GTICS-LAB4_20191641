@@ -37,6 +37,16 @@
 
 
 
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/js/uikit-icons.min.js"></script>
+
+
+
+
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
     <title>Pre Ordenes | Bienestar San Miguel</title>
 
@@ -216,70 +226,89 @@
 
     </div>
 
-    <div class="column">
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Seguro:</label>
-            <input class="input-form" type="text" placeholder="Ingrese su seguro" required>
-        </div>
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Correo electrónico:</label>
-            <input class="input-form" type="text" placeholder="Ingrese su correo" required>
-        </div>
-
-    </div>
 
 
-    <div class="column" >
-
+    <div class="column" style="justify-content: start">
         <div class="radios">
-
             <label style="font-weight: bold;padding-bottom: 8px">Género:</label>
 
             <div class="input-label-radio">
 
                 <div>
-                    <input  type="radio" required>
+                    <input  type="radio" name="genero" vale="m" checked>
                     <label>Hombre</label>
                 </div>
                 <div>
-                    <input  type="radio" required>
+                    <input  type="radio" name="genero" vale="f">
                     <label>Mujer</label>
                 </div>
                 <div>
-                    <input  type="radio" required>
+                    <input  type="radio" name="genero" vale="na">
                     <label>Prefiero no decirlo</label>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+
+    <div class="column" >
+
+        <button class="btn-popup">Elegir Medicamentos</button>
+
+        <div class="popup-container">
+            <div class="popup-box">
+
+                <h1>Hello World</h1>
+                <p>lorem25lorem25lorem25lorem25lorem25lorem25lorem25
+                    lorem25
+                    lorem25lorem25lorem25lorem25
+                    lorem25lorem25lorem25lorem25
+                    lorem25lorem25lorem25lorem25
+                </p>
+                <button class="btn-p" id="closePopup">Cancelar</button>
+                <button class="btn-p">Confirmar</button>
 
             </div>
         </div>
-
-
-
-
 
     </div>
 
 
 
+    <div class="column">
+
+        <div class="container" style="padding-left: 6rem; padding-right: 6rem">
+            <div class="uk-upload-box">
+                <div id="error-alert" class="uk-alert-danger uk-margin-top uk-hidden" uk-alert>
+                    <p id="error-messages"></p>
+                </div>
+
+                <div class="drop__zone uk-placeholder uk-text-center">
+                    <span uk-icon="icon: cloud-upload"></span>
+                    <span class="uk-text-middle uk-margin-small-left">Adjunte arrastrando el archivo o</span>
+                    <div uk-form-custom>
+                        <input type="file" name="fileFoto" accept="image/png, image/jpeg, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+                        <span class="uk-link">seleccione la imagen</span>
+                    </div>
+                    <ul id="preview" class="uk-list uk-grid-match uk-child-width-1-2 uk-child-width-1-4@l uk-child-width-1-5@xl uk-text-center" uk-grid uk-scrollspy="cls: uk-animation-scale-up; target: .list-item; delay: 80"></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 
-
-
-
-
-
-
+    <div class="column" >
+                <a id="redirect-button" class="btn-p" >Cancelar</a>
+                <button type="submit" class="btn-p">Guardar</button>
+         
+    </div>
 
 
 
 </div>
-
-
-
 
 
 <br>
@@ -333,7 +362,27 @@
         </div>
     </footer>
 </div>
+<script>
 
+    const showPopup = document.querySelector('.btn-popup');
+    const popupContainer = document.querySelector('.popup-container');
+    const closePopup = document.getElementById('closePopup');
+
+    showPopup.onclick = () =>{
+        popupContainer.classList.add('active');
+    }
+
+    closePopup.onclick = () =>{
+        popupContainer.classList.remove('active');
+    }
+
+
+
+
+
+
+
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
 </body>

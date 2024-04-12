@@ -148,11 +148,11 @@ td{
 
 
 
-/***********-- FORM --************/
+/***********-- FORM NUEVA ORDEN--************/
 
 
 .container-form{
-    max-width: 1540px;
+    max-width: 1160px;
     margin-inline: auto;
     padding: 0 30px 0 30px;
 }
@@ -222,11 +222,8 @@ td{
 .radios{
     display: flex;
     flex-direction: column;
-    padding-right: 800px;
     flex-wrap: wrap;
 }
-
-
 
 
 
@@ -248,17 +245,88 @@ td{
 }
 
 
-@media screen and (max-width: 1243px) {
+@media screen and (max-width: 1250px) {
     .radios{
-        padding-right: 200px;
+        padding-left: 300px;
     }
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 914px) {
     .radios{
-        padding-right: 10px;
+        padding-left: 140px;
     }
 
 }
 
+@media screen and (max-width: 650px) {
+    .radios{
+        padding-left: 50px;
+    }
+
+}
+
+
+/***********-- POP UP NUEVA ORDEN--************/
+
+.btn-popup {
+    display: inline-block;
+    padding: 10px 20px;
+    color:white;
+    background-color: dimgray;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-size: 16px;
+}
+
+
+.btn-popup:hover {
+    background-color: white;
+    color: dimgray;
+    border:2px solid dimgray;
+    padding: 8px 18px;
+}
+
+.popup-container{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.popup-container.active{
+    opacity: 1;
+    pointer-events: auto;
+    transition: .4s ease;
+}
+
+.popup-container .popup-box{
+    width: 500px;
+    background: white;
+    border: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0, .1);
+    padding: 30px;
+    transform: scale(0);
+}
+
+
+.popup-container.active .popup-box{
+    transform: scale(1);
+    transition: .4s ease;
+    transition-delay: .25s;
+}
+
+.popup-box{
+    color: #333;
+    line-height: 1;
+    border-radius: 6px;
+}
