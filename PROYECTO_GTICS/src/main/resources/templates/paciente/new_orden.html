@@ -24,25 +24,20 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
+    <link rel="stylesheet" th:href="@{/css/paciente/upload_img.css}">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/datatables.css}">
+
+
+
 
 
 
     <!--=============== DataTable ===============-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
-    <!-- Bootstrap-->
+    <!--  Bootstrap-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
     <!--==========================================-->
-
-
-
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/css/uikit.min.css" />
-
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.4/dist/js/uikit-icons.min.js"></script>
 
 
 
@@ -53,10 +48,6 @@
     <style>
         body {
             padding-top: 90px;
-        }
-        #filtroEstado:focus {
-
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
     </style>
 </head>
@@ -157,166 +148,317 @@
 
 
 
+<form method="post" action="" enctype="multipart/form-data">
 
-<div class="container-form">
+    <div class="container-form">
 
+        <div class="column">
 
-
-
-    <div class="column">
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Nombre del paciente:</label>
-            <input class="input-form" type="text" placeholder="Ingrese sus nombres" required>
-        </div>
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Apellidos del paciente:</label>
-            <input class="input-form" type="text" placeholder="Ingrese sus apellidos" required>
-        </div>
-
-    </div>
-
-    <div class="column">
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">DNI:</label>
-            <input class="input-form" type="text" placeholder="Ingrese su DNI" required>
-        </div>
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Edad:</label>
-            <input class="input-form" type="number" placeholder="Ingrese su edad:" required>
-        </div>
-
-    </div>
-
-
-    <div class="column">
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Doctor:</label>
-            <select class="select-form" required>
-                <option selected disabled>Seleccionar Doctor</option>
-                <option>Doctor 1</option>
-                <option>Doctor 2</option>
-                <option>Doctor 3</option>
-            </select>
-        </div>
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Fecha de nacimiento:</label>
-            <input class="input-form" type="date" required>
-        </div>
-
-    </div>
-
-
-    <div class="column">
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Seguro:</label>
-            <input class="input-form" type="text" placeholder="Ingrese su seguro" required>
-        </div>
-
-        <div class="input-label-box">
-            <label style="font-weight: bold">Correo electrónico:</label>
-            <input class="input-form" type="text" placeholder="Ingrese su correo" required>
-        </div>
-
-    </div>
-
-
-
-    <div class="column" style="justify-content: start">
-        <div class="radios">
-            <label style="font-weight: bold;padding-bottom: 8px">Género:</label>
-
-            <div class="input-label-radio">
-
-                <div>
-                    <input  type="radio" name="genero" vale="m" checked>
-                    <label>Hombre</label>
-                </div>
-                <div>
-                    <input  type="radio" name="genero" vale="f">
-                    <label>Mujer</label>
-                </div>
-                <div>
-                    <input  type="radio" name="genero" vale="na">
-                    <label>Prefiero no decirlo</label>
-                </div>
-
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Nombre del paciente:</label>
+                <input class="input-form" type="text" placeholder="Ingrese sus nombres" required>
             </div>
-        </div>
-    </div>
 
-
-    <div class="column" >
-
-        <button class="btn-popup">Elegir Medicamentos</button>
-
-        <div class="popup-container">
-            <div class="popup-box">
-
-                <h1>Hello World</h1>
-                <p>lorem25lorem25lorem25lorem25lorem25lorem25lorem25
-                    lorem25
-                    lorem25lorem25lorem25lorem25
-                    lorem25lorem25lorem25lorem25
-                    lorem25lorem25lorem25lorem25
-                </p>
-                <button class="btn-p" id="closePopup">Cancelar</button>
-                <button class="btn-p">Confirmar</button>
-
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Apellidos del paciente:</label>
+                <input class="input-form" type="text" placeholder="Ingrese sus apellidos" required>
             </div>
+
         </div>
 
-    </div>
+        <div class="column">
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">DNI:</label>
+                <input class="input-form" type="text" placeholder="Ingrese su DNI" required>
+            </div>
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Edad:</label>
+                <input class="input-form" type="number" placeholder="Ingrese su edad:" required>
+            </div>
+
+        </div>
+
+
+        <div class="column">
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Doctor:</label>
+                <select class="select-form" required>
+                    <option selected disabled>Seleccionar Doctor</option>
+                    <option>Doctor 1</option>
+                    <option>Doctor 2</option>
+                    <option>Doctor 3</option>
+                </select>
+            </div>
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Fecha de nacimiento:</label>
+                <input class="input-form" type="date" required>
+            </div>
+
+        </div>
+
+
+        <div class="column">
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Seguro:</label>
+                <input class="input-form" type="text" placeholder="Ingrese su seguro" required>
+            </div>
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
+                <input class="input-form" type="text" placeholder="Ingrese su correo" required>
+            </div>
+
+        </div>
 
 
 
-    <div class="column">
+        <div class="column-start">
+            <div class="input-label-box">
+                <label style="font-weight: bold;padding-bottom: 8px;color:dimgray">Género:</label>
 
-        <div class="container" style="padding-left: 6rem; padding-right: 6rem">
-            <div class="uk-upload-box">
-                <div id="error-alert" class="uk-alert-danger uk-margin-top uk-hidden" uk-alert>
-                    <p id="error-messages"></p>
-                </div>
+                <div class="input-label-radio">
 
-                <div class="drop__zone uk-placeholder uk-text-center">
-                    <span uk-icon="icon: cloud-upload"></span>
-                    <span class="uk-text-middle uk-margin-small-left">Adjunte arrastrando el archivo o</span>
-                    <div uk-form-custom>
-                        <input type="file" name="fileFoto" accept="image/png, image/jpeg, application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
-                        <span class="uk-link">seleccione la imagen</span>
+                    <div>
+                        <input  type="radio" name="genero" vale="m" checked>
+                        <label style="font-size:18px">Hombre</label>
                     </div>
-                    <ul id="preview" class="uk-list uk-grid-match uk-child-width-1-2 uk-child-width-1-4@l uk-child-width-1-5@xl uk-text-center" uk-grid uk-scrollspy="cls: uk-animation-scale-up; target: .list-item; delay: 80"></ul>
+                    <div>
+                        <input  type="radio" name="genero" vale="f">
+                        <label style="font-size:18px">Mujer</label>
+                    </div>
+                    <div>
+                        <input  type="radio" name="genero" vale="na">
+                        <label style="font-size:18px">Prefiero no decirlo</label>
+                    </div>
+
                 </div>
             </div>
         </div>
 
+
+        <div class="column-start" >
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray; margin-bottom: 8px">Medicamentos:</label>
+                <button class="btn-popup" TYPE="button">Elegir Medicamentos</button>
+
+                <div class="popup-container">
+                    <div class="popup-box">
+
+                        <div class="container">
+
+                            <div style="display: flex; justify-content: space-between; align-items: center">
+                                <div style="display: flex; flex-direction: column">
+
+                                </div>
+
+                                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
+                            </div>
+                            <br>
+
+
+
+                            <table id="miTabla" class="table table-striped">
+
+                                <thead>
+                                <tr style="background-color: #378fff">
+                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
+                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
+                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
+                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
+                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
+                                </tr>
+                                </thead>
+
+
+                                <tbody>
+                                <tr>
+                                    <td>Paracetamol 100 mg</td>
+                                    <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+                                <tr>
+                                    <td>Neurobion 100 mg</td>
+                                    <td><img class="medicamento" src="/img/neurobion.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+                                <tr>
+                                    <td>Nastzol 100 mg</td>
+                                    <td><img class="medicamento" src="/img/nastzol.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+                                <tr>
+                                    <td>Panadol 100 mg</td>
+                                    <td><img class="medicamento"  src="/img/panadol.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+                                <tr>
+                                    <td>Apronax 100 mg</td>
+                                    <td><img class="medicamento"  src="/img/apronax.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+                                <tr>
+                                    <td>Doloral 100 mg</td>
+                                    <td><img class="medicamento"  src="/img/doloral.jpg"></td>
+                                    <td>5</td>
+                                    <td>S/. 6</td>
+                                    <td>S/. 30</td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <br>
+                        <br>
+                        <div class="column">
+                            <button class="btn-cancel" id="closePopup" type="button">Cancelar</button>
+                            <button class="btn-p" type="button">Confirmar</button>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="column-start">
+
+
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray; margin-bottom:8px">Captura de Receta Médica:</label>
+                <div id="upload" class="modal" data-state="0" data-ready="false">
+
+                    <div class="modal__body">
+                        <div class="modal__col">
+                            <!-- up -->
+                            <svg class="modal__icon modal__icon--blue" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                                <g fill="none" stroke="hsl(223,90%,50%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+                                    <polyline class="modal__icon-sdo14" points="7 12 12 7 17 12" stroke-dasharray="14.2 14.2" />
+                                    <line class="modal__icon-sdo10" x1="12" y1="7" x2="12" y2="17" stroke-dasharray="10 10" />
+                                </g>
+                            </svg>
+                            <!-- error -->
+                            <svg class="modal__icon modal__icon--red" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true" display="none">
+                                <g fill="none" stroke="hsl(3,90%,50%)" stroke-width="2" stroke-linecap="round">
+                                    <circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+                                    <line class="modal__icon-sdo14" x1="7" y1="7" x2="17" y2="17" stroke-dasharray="14.2 14.2" />
+                                    <line class="modal__icon-sdo14" x1="17" y1="7" x2="7" y2="17" stroke-dasharray="14.2 14.2" />
+                                </g>
+                            </svg>
+                            <!-- check -->
+                            <svg class="modal__icon modal__icon--green" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true" display="none">
+                                <g fill="none" stroke="hsl(138,90%,50%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle class="modal__icon-sdo69" cx="12" cy="12" r="11" stroke-dasharray="69.12 69.12" />
+                                    <polyline class="modal__icon-sdo14" points="7 12.5 10 15.5 17 8.5" stroke-dasharray="14.2 14.2" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="modal__col">
+                            <div class="modal__content">
+                                <h2 class="modal__title" style="font-weight: 600">Sube una imagen de tu receta médica:</h2>
+                                <p class="modal__message" style="color:dimgray">Selecciona la imagen para subirla desde tu dispositivo. Cuando estes seguro de subir el archivo correcto da click en el botón confirmar.</p>
+                                <div class="modal__actions">
+                                    <button style="color:#333"  class="modal__button modal__button--upload" type="button" data-action="file">Seleccionar imagen</button>
+                                    <input id="file" type="file" hidden>
+                                </div>
+                                <div class="modal__actions" hidden>
+                                    <svg class="modal__file-icon" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
+                                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polygon points="4 1 12 1 20 8 20 23 4 23" />
+                                            <polyline points="12 1 12 8 20 8" />
+                                        </g>
+                                    </svg>
+                                    <div class="modal__file" data-file></div>
+                                    <button class="modal__close-button" type="button" data-action="fileReset">
+                                        <svg class="modal__close-icon" viewBox="0 0 16 16" width="16px" height="16px" aria-hidden="true">
+                                            <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                                                <polyline points="4,4 12,12" />
+                                                <polyline points="12,4 4,12" />
+                                            </g>
+                                        </svg>
+                                        <span class="modal__sr">Remove</span>
+                                    </button>
+                                    <button class="btn-p" type="button" data-action="upload">Confirmar</button>
+                                </div>
+                            </div>
+                            <div class="modal__content" hidden>
+                                <h2 class="modal__title">Subiendo imagen…</h2>
+                                <p class="modal__message">Solo danos un momento para procesar tu archivo.</p>
+                                <div class="modal__actions">
+                                    <div class="modal__progress">
+                                        <div class="modal__progress-value" data-progress-value>0%</div>
+                                        <div class="modal__progress-bar">
+                                            <div class="modal__progress-fill" data-progress-fill></div>
+                                        </div>
+                                    </div>
+                                    <button class="btn-cancel" type="button" data-action="cancel">Cancelar</button>
+                                </div>
+                            </div>
+                            <div class="modal__content" hidden>
+                                <h2 class="modal__title">Oops!</h2>
+                                <p class="modal__message">Your file could not be uploaded due to an error. Try uploading it again?</p>
+                                <div class="modal__actions modal__actions--center">
+                                    <button class="modal__button" type="button" data-action="upload">Retry</button>
+                                    <button class="modal__button" type="button" data-action="cancel">Cancel</button>
+                                </div>
+                            </div>
+                            <div class="modal__content" hidden>
+                                <h2 class="modal__title">Carga Exitosa!</h2>
+                                <p class="modal__message">Tu receta médica ha sido subido con éxito.</p>
+                                <div class="modal__actions modal__actions--center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="column">
+
+            <button class="btn-cancel" type="button">Cancelar</button>
+            <button class="btn-p" type="button">Confirmar</button>
+
+        </div>
+
+
     </div>
-
-
-
-    <div class="column" >
-                <a id="redirect-button" class="btn-p" >Cancelar</a>
-                <button type="submit" class="btn-p">Guardar</button>
-
-    </div>
-
-
-
-</div>
-
+</form>
 
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
+
 
 <div >
     <footer id="sticky-footer" class="footer-distributed" >
@@ -362,8 +504,8 @@
         </div>
     </footer>
 </div>
-<script>
 
+<script>
     const showPopup = document.querySelector('.btn-popup');
     const popupContainer = document.querySelector('.popup-container');
     const closePopup = document.getElementById('closePopup');
@@ -375,16 +517,48 @@
     closePopup.onclick = () =>{
         popupContainer.classList.remove('active');
     }
-
-
-
-
-
-
-
 </script>
+<script th:src="@{/js/upload_img.js}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#miTabla').DataTable({
+            "pageLength":4,
+            "lengthChange": false,
+            "language": {
+                "emptyTable": "No hay registros disponibles",
+                "zeroRecords": "No se encontraron registros coincidentes",
+                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "Search" : "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
+            },
+
+        });
+
+        $('#filtroEstado').on('change', function() {
+            var estado = $(this).val();
+            table.column(2).search(estado).draw();
+
+        });
+
+        $('#limpiarFiltros').on('click', function() {
+            $('#filtroEstado').val('');
+            table.search('').columns().search('').draw();
+        });
+    });
+</script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+
 </body>
 
 </html>
