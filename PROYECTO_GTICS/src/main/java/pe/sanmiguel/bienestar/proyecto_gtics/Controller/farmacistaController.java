@@ -35,4 +35,18 @@ public class farmacistaController {
         return "/farmacista/detallesOrdenWeb";
     }
 
+    @GetMapping("/farmacista/perfil")
+    public String profile() {
+        return "/farmacista/perfil";
+    }
+    @GetMapping("/farmacista/facturacion")
+    public String facturacion() {
+        return "/farmacista/facturacion";
+    }
+
+    @GetMapping("/farmacista/cambioContraseña")
+    public String cambioContra() {
+        return "/farmacista/cambioContraseña";
+    }
+
 }
