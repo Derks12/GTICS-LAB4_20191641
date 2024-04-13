@@ -39,7 +39,7 @@ public class farmacistaController {
     public String profile() {
         return "/farmacista/perfil";
     }
-    @GetMapping("/farmacista/facturacion")
+    @GetMapping("/farmacista/facturacion")/*LO PODEMOS USAR EN PACIENTE */
     public String facturacion() {
         return "/farmacista/facturacion";
     }
@@ -49,4 +49,8 @@ public class farmacistaController {
         return "/farmacista/cambioContraseña";
     }
 
+    @GetMapping("/farmacista/notificacion")
+    public String notificaciones() {
+        return "/farmacista/notificacion";
+    }
 }
