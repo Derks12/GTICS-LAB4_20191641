@@ -1,89 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
         <!--=============== REMIXICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--=============== CSS ===============-->
-        <link rel="stylesheet" th:href="@{/css/footer.css}">
         <!-- Font Awesome -->
-        <link
-                rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-                integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-                crossorigin="anonymous"
-                referrerpolicy="no-referrer"
-        />
-        <link rel="stylesheet" th:href="@{/css/adminsede/topbar.css}">
+
+        <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+
+
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="stylesheet" th:href="@{/css/fonts.css}">
+        <link rel="stylesheet" th:href="@{/css/topbar.css}">
+        <link rel="stylesheet" th:href="@{/css/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
+        <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
+        <link rel="stylesheet" th:href="@{/css/datatables.css}">
+        <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+        <link rel="stylesheet" th:href="@{/css/adminsede/estilos.css}">
+
+
+
+
+        <!--=============== DataTable ===============-->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+        <!--  Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css"/>
+        <!--==========================================-->
 
 
         <title>Editar orden de reposición</title>
-    </head>
-    <body>
-        <!--=============== HEADER ===============-->
-        <header class="header">
-            <nav class="nav container">
-                <div class="nav__data">
-                    <a href="#" class="nav__logo">
-                        <i class="ri-planet-line"></i> Company
-                    </a>
 
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class="ri-menu-line nav__burger"></i>
-                        <i class="ri-close-line nav__close"></i>
-                    </div>
+        <style>
+            body {
+                padding-top: 80px;
+            }
+        </style>
+    </head>
+
+
+    <header class="header-topbar">
+        <nav class="nav-topbar container">
+
+
+            <div class="nav-data">
+                <div>
+                    <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
                 </div>
 
                 <!--=============== NAV MENU ===============-->
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li><a href="#" class="nav__link">Inicio</a></li>
 
-                        <li><a href="#" class="nav__link">Doctores</a></li>
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="/adminsede" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
 
-                        <li><a href="#" class="nav__link">Farmacista</a></li>
+                        <li><a href="/adminsede/doctores" class="menu-item roboto-regular">Doctores</a></li>
 
-                        <li><a href="#" class="nav__link">Pedidos de Reposición</a></li>
+                        <li><a href="/adminsede/farmacista" class="menu-item roboto-regular">Farmacistas</a></li>
 
-                        <li><a href="#" class="nav__link">Medicamentos</a></li>
+                        <li><a href="/adminsede/ordenes" class="menu-item roboto-regular">Pedidos de Reposición</a></li>
 
-                        <!--=============== DROPDOWN 2 ===============-->
-                        <li class="dropdown__item">
-                            <div class="nav__link">
-                                Perfil <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        <li><a href="/adminsede/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
+
+                        <!--=============== DROPDOWN ===============-->
+                        <li class="dropdown-item">
+                            <div class="menu-item roboto-regular">
+                                Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
                             </div>
 
-                            <ul class="dropdown__menu">
-                                <li>
-                                    <a href="#" class="dropdown__link">
-                                        <i class="ri-user-line"></i> Cambiar contraseña
-                                    </a>
-                                </li>
+                            <ul class="dropdown-menu">
+                                <div class="inside-dropdown">
+                                    <li>
+                                        <a href="#" class="dropdown-link">
+                                            <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a href="#" class="dropdown__link">
-                                        <i class="ri-lock-line"></i> Cerrar sesión
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a href="#" class="dropdown-link">
+                                            <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
+                                        </a>
+                                    </li>
+                                </div>
                             </ul>
                         </li>
+
                     </ul>
                 </div>
-            </nav>
-        </header>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                    <i class="ri-close-line nav-close"></i>
+
+                    <div class="menu-small" id="menu-small">
+                        <div class="inside-menu-small">
+                            <div class="nav-menu-small" id="nav-menu-small">
+                                <ul class="nav-list-small">
+                                    <li><a href="/adminsede" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
+
+                                    <li><a href="/adminsede/doctores" class="menu-item-small roboto-regular">Doctores</a></li>
+
+                                    <li><a href="/adminsede/farmacista" class="menu-item-small roboto-regular">Farmacistas</a></li>
+
+                                    <li><a href="/adminsede/ordenes" class="menu-item-small roboto-regular">Pedidos de Reposición</a></li>
+
+                                    <li><a href="/adminsede/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                                </ul>
+
+                                <ul class="nav-list-small-perfil">
+                                    <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                    <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <body>
 
 
 
-        <!--Footer -->
-        <br/>
+
+
+
+        <div class="container">
+
+            <div style="margin-bottom: 50px"></div>
+            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Editar orden de reposición:</strong></h2>
+            <div style="margin-bottom: 20px"></div>
+            <hr style="border-top: 1px solid #DFDFDF;">
+            <div style="margin-bottom: 40px"></div>
+
+            <div style="padding-right: 0; padding-left: 0"> </div>
+        </div>
+
+
+
+
+        <div class="container">
+
+            <div style="display: flex; justify-content: right; align-items: center">
+                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
+            </div>
+            <br>
+
+
+
+            <table id="miTabla" class="table table-striped">
+
+                <thead>
+                    <tr style="background-color: #378fff">
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Stock</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad a reponer</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    <tr>
+                        <td>Paracetamol 100 mg</td>
+                        <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+                    <tr>
+                        <td>Neurobion 100 mg</td>
+                        <td><img class="medicamento" src="/img/neurobion.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+                    <tr>
+                        <td>Nastzol 100 mg</td>
+                        <td><img class="medicamento" src="/img/nastzol.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+                    <tr>
+                        <td>Panadol 100 mg</td>
+                        <td><img class="medicamento"  src="/img/panadol.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+                    <tr>
+                        <td>Apronax 100 mg</td>
+                        <td><img class="medicamento"  src="/img/apronax.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+                    <tr>
+                        <td>Doloral 100 mg</td>
+                        <td><img class="medicamento"  src="/img/doloral.jpg"></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="column">
+
+                <button class="btn-cancel" type="button" onclick="window.location.href = '/adminsede/ordenes'">Cancelar</button>
+                <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/ordenes'">Guardar cambios</button>
+
+            </div>
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
         <div >
-            <footer id="sticky-footer" class="footer-distributed" style="background-color: #04011E">
+            <footer id="sticky-footer" class="footer-distributed">
                 <div class="footer-left">
-                    <img src="" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+                    <img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo" style="width: 400px; height: auto;">
                     <p class="footer-links">
                         <a href="">Usuarios</a> |
                         <a href="">Actividades</a> |
@@ -126,5 +287,51 @@
         </div>
 
 
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script th:src="@{/js/topbar.js}"></script>
+        <script>
+            $(document).ready(function() {
+                var table = $('#miTabla').DataTable({
+                    "pageLength":5,
+                    "lengthChange": false,
+                    "language": {
+                        "emptyTable": "No hay registros disponibles",
+                        "zeroRecords": "No se encontraron registros coincidentes",
+                        "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                        "search" : "Buscar:",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
+                    },
+
+                });
+
+                $('#filtroEstado').on('change', function() {
+                    var estado = $(this).val();
+                    table.column(2).search(estado).draw();
+
+                });
+
+                $('#limpiarFiltros').on('click', function() {
+                    $('#filtroEstado').val('');
+                    table.search('').columns().search('').draw();
+                });
+            });
+
+
+        </script>
+        <!-- DataTable -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <!------>
+
     </body>
+
 </html>
