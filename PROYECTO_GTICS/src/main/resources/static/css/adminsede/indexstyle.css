@@ -4,7 +4,8 @@
 
 .container-track1{
     display: flex;
-
+    justify-content: center;
+    align-items: center;
 }
 
 .container-orden{

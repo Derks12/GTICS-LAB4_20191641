@@ -87,7 +87,7 @@ const getOptionChart2=()=>{
         ]
     };
 };
-
+/*
 const getOptionChart3=()=>{
     return {
         tooltip:{
@@ -108,7 +108,7 @@ const getOptionChart3=()=>{
         ]
     };
 }
-
+*/
 const getOptionChart4=()=>{
     return {
         tooltip: {
@@ -158,12 +158,12 @@ const getOptionChart4=()=>{
 const initCharts=()=>{
     const chart1 = echarts.init(document.getElementById("chart1"));
     const chart2 = echarts.init(document.getElementById("chart2"));
-    const chart3 = echarts.init(document.getElementById("chart3"));
+    //const chart3 = echarts.init(document.getElementById("chart3"));
     const chart4 = echarts.init(document.getElementById("chart4"));
 
     chart1.setOption(getOptionChart1());
     chart2.setOption(getOptionChart2());
-    chart3.setOption(getOptionChart3());
+    //chart3.setOption(getOptionChart3());
     chart4.setOption(getOptionChart4());
 }
 
