@@ -54,6 +54,12 @@ public class adminSedeController {
         return "/adminsede/generar_orden";
     }
 
+    @GetMapping(value = {"/ver_ordenes_entregadas"})
+    public String verOrdenesEntregadas(){
+        return "/adminsede/ver_ordenes_entregadas";
+    }
+
+
 
 
 }
