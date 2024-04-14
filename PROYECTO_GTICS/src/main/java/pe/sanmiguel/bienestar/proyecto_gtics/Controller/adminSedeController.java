@@ -49,6 +49,11 @@ public class adminSedeController {
         return "/adminsede/solicitud_agregar_farmacista";
     }
 
+    @GetMapping(value = {"/generar_orden"})
+    public String generarOrden(){
+        return "/adminsede/generar_orden";
+    }
+
 
 
 }

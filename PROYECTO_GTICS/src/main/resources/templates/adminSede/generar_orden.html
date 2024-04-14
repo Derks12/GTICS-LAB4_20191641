@@ -134,7 +134,7 @@
         <div class="container">
 
             <div style="margin-bottom: 50px"></div>
-            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Medicamentos:</strong></h2>
+            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Generar nueva orden de reposición:</strong></h2>
             <div style="margin-bottom: 20px"></div>
             <hr style="border-top: 1px solid #DFDFDF;">
             <div style="margin-bottom: 40px"></div>
@@ -147,12 +147,8 @@
 
         <div class="container">
 
-            <div style="display: flex; justify-content: right; align-items: center; margin-bottom: 20px">
-                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
-            </div>
-
             <div style="display: flex; justify-content: right; align-items: center">
-                <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/generar_orden'">Generar nueva orden</button>
+                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
             </div>
             <br>
 
@@ -164,8 +160,8 @@
                     <tr style="background-color: #378fff">
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
-                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Stock</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad a reponer</th>
                     </tr>
                 </thead>
 
@@ -174,38 +170,38 @@
                     <tr>
                         <td>Paracetamol 100 mg</td>
                         <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
-                        <td>60</td>
-                        <td><button class="btn-rcb">ACEPTABLE</button></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
                     <tr>
                         <td>Neurobion 100 mg</td>
                         <td><img class="medicamento" src="/img/neurobion.jpg"></td>
-                        <td>0</td>
-                        <td><button class="btn-pend">AGOTADO</button></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
                     <tr>
                         <td>Nastzol 100 mg</td>
                         <td><img class="medicamento" src="/img/nastzol.jpg"></td>
-                        <td>0</td>
-                        <td><button class="btn-pend">AGOTADO</button></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
                     <tr>
                         <td>Panadol 100 mg</td>
                         <td><img class="medicamento"  src="/img/panadol.jpg"></td>
-                        <td>80</td>
-                        <td><button class="btn-rcb">ACEPTABLE</button></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
                     <tr>
                         <td>Apronax 100 mg</td>
                         <td><img class="medicamento"  src="/img/apronax.jpg"></td>
-                        <td>55</td>
-                        <td><button class="btn-rcb">ACEPTABLE</button></td>
+                        <td>5</td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
                     <tr>
                         <td>Doloral 100 mg</td>
                         <td><img class="medicamento"  src="/img/doloral.jpg"></td>
                         <td>5</td>
-                        <td><button class="btn-listo">POR AGOTAR</button></td>
+                        <td><input class="input-form" type="number" style="width: 80px;" required></td>
                     </tr>
 
 
@@ -216,6 +212,13 @@
             <br>
             <br>
             <br>
+
+            <div class="column">
+
+                <button class="btn-cancel" type="button" onclick="window.location.href = '/adminsede/ordenes'">Cancelar</button>
+                <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/ordenes'">Confirmar</button>
+
+            </div>
 
         </div>
 

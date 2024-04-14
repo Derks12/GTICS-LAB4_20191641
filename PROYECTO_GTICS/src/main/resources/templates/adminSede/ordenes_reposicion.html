@@ -1,347 +1,285 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-    <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+        <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
 
-    <!--=============== REMIXICONS ===============-->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!--=============== REMIXICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" th:href="@{/css/adminsede/indexstyle.css}">
+        <link rel="stylesheet" th:href="@{/css/adminsede/graficos.css}">
+        <link rel="stylesheet" th:href="@{/css/adminsede/tracking.css}">
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+        <link rel="stylesheet" th:href="@{/css/fonts.css}">
+        <link rel="stylesheet" th:href="@{/css/topbar.css}">
+        <link rel="stylesheet" th:href="@{/css/footer.css}">
+        <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
 
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
-    <link rel="stylesheet" th:href="@{/css/fonts.css}">
-    <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
+        <!--=============== JS ===============-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js" integrity="sha512-k37wQcV4v2h6jgYf5IUz1MoSKPpDs630XGSmCaCCOXxy2awgAWKHGZWr9nMyGgk3IOxA1NxdkN8r1JHgkUtMoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script th:src="@{/js/graficos.js}"></script>
+        <script th:src="@{/js/tracking.js}"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" th:href="@{/css/paciente/progress-bar.css}">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAce4klBZuD60aEQidMVIbsoaiitxxQFpo"></script>
-    <script th:src="@{/js/map.js}"></script>
-
-        <title>Pre Ordenes | Bienestar San Miguel</title>
-
-        <style>
-            body {
-                padding-top: 90px;
-            }
-            #filtroEstado:focus {
-
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-            }
-            ul li a {
-                list-style-type: none;
-                font-weight: normal !important;
-            }
-
-            ul li a {
-                text-decoration: none;
-                color: inherit;
-                font-weight: normal !important;
-            }
-            .medicamento{
-                max-width: 180px; max-height: 180px;
-            }
-
-            #map {
-                height: 250px;
-                width: 150px;
-            }
-
-        </style>
-
-        <script>
-            // Puntos del mapa
-
-            const locations = [
-                { lat: -12.067713, lng: -77.067505 },
-                { lat: -12.067739299285414, lng: -77.07048533833166 },
-                { lat: -12.067991537715104, lng: -77.07550755645634 },
-                { lat : -12.068533248724986, lng: -77.07808532986617},
-                { lat: -12.069724275588285, lng: -77.07804924250952}
-            ]
-
-
-            // Inicializar mapa
-            function initMap() {
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 16,
-                    center: locations[0],
-                });
-
-                // Crear marcador
-                const marker = new google.maps.Marker({
-                    position: locations[0],
-                    map: map,
-                    icon: {
-                        url: "../img/moto_icon.png", // Ruta de la imagen de la moto
-                        scaledSize: new google.maps.Size(55, 50) // Tamaño personalizado (ancho, alto)
-                    } // Ruta de la imagen de la moto
-                });
-
-                // Mover el marcador a través de los puntos
-
-                let i = 0;
-                const interval = setInterval(() => {
-                    i++;
-                    if (i >= locations.length) {
-                        clearInterval(interval); // Detener el intervalo cuando llega a la tercera posición
-                        return;
-                    }
-                    marker.setPosition(locations[i]);
-                }, 2000); // Cambia de ubicación cada 3 segundos
-
-            }
-
-        </script>
+        <title>Órdenes de reposición</title>
     </head>
 
 
-<header class="header-topbar">
-    <nav class="nav-topbar container">
+    <header class="header-topbar">
+        <nav class="nav-topbar container">
 
 
-        <div class="nav-data">
-            <div>
-                <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
-            </div>
+            <div class="nav-data">
+                <div>
+                    <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
+                </div>
 
-            <!--=============== NAV MENU ===============-->
+                <!--=============== NAV MENU ===============-->
 
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li><a href="/adminsede" class="menu-item roboto-regular">Inicio</a></li>
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="/adminsede" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
 
-                    <li><a href="/adminsede/doctores" class="menu-item roboto-regular">Doctores</a></li>
+                        <li><a href="/adminsede/doctores" class="menu-item roboto-regular">Doctores</a></li>
 
-                    <li><a href="/adminsede/farmacista" class="menu-item roboto-regular">Farmacistas</a></li>
+                        <li><a href="/adminsede/farmacista" class="menu-item roboto-regular">Farmacistas</a></li>
 
-                    <li><a href="/adminsede/ordenes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Pedidos de Reposición</a></li>
+                        <li><a href="/adminsede/ordenes" class="menu-item roboto-regular">Pedidos de Reposición</a></li>
 
-                    <li><a href="/adminsede/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
+                        <li><a href="/adminsede/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
 
-                    <!--=============== DROPDOWN ===============-->
-                    <li class="dropdown-item">
-                        <div class="menu-item roboto-regular">
-                            Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
-                        </div>
-
-                        <ul class="dropdown-menu">
-                            <div class="inside-dropdown">
-                                <li>
-                                    <a href="#" class="dropdown-link">
-                                        <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="dropdown-link">
-                                        <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
-                                    </a>
-                                </li>
+                        <!--=============== DROPDOWN ===============-->
+                        <li class="dropdown-item">
+                            <div class="menu-item roboto-regular">
+                                Perfil <i class="ri-arrow-down-s-line dropdown-arrow"></i>
                             </div>
-                        </ul>
-                    </li>
 
-                </ul>
-            </div>
+                            <ul class="dropdown-menu">
+                                <div class="inside-dropdown">
+                                    <li>
+                                        <a href="#" class="dropdown-link">
+                                            <i class="ri-user-line menu-item dropdown-item roboto-regular"></i> Cambiar contraseña
+                                        </a>
+                                    </li>
 
-            <div class="nav-toggle" id="nav-toggle">
-                <i class="ri-menu-line nav-burger" id="menu-icon"></i>
-                <i class="ri-close-line nav-close"></i>
-
-                <div class="menu-small" id="menu-small">
-                    <div class="inside-menu-small">
-                        <div class="nav-menu-small" id="nav-menu-small">
-                            <ul class="nav-list-small">
-                                <li><a href="/adminsede" class="menu-item-small roboto-regular">Inicio</a></li>
-
-                                <li><a href="/adminsede/doctores" class="menu-item-small roboto-regular">Doctores</a></li>
-
-                                <li><a href="/adminsede/farmacista" class="menu-item-small roboto-regular">Farmacistas</a></li>
-
-                                <li><a href="/adminsede/ordenes" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Pedidos de Reposición</a></li>
-
-                                <li><a href="/adminsede/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                                    <li>
+                                        <a href="#" class="dropdown-link">
+                                            <i class="ri-lock-line menu-item dropdown-item roboto-regular"></i> Cerrar sesión
+                                        </a>
+                                    </li>
+                                </div>
                             </ul>
+                        </li>
 
-                            <ul class="nav-list-small-perfil">
-                                <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+                    </ul>
+                </div>
 
-                                <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
-                            </ul>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav-burger" id="menu-icon"></i>
+                    <i class="ri-close-line nav-close"></i>
+
+                    <div class="menu-small" id="menu-small">
+                        <div class="inside-menu-small">
+                            <div class="nav-menu-small" id="nav-menu-small">
+                                <ul class="nav-list-small">
+                                    <li><a href="/adminsede" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
+
+                                    <li><a href="/adminsede/doctores" class="menu-item-small roboto-regular">Doctores</a></li>
+
+                                    <li><a href="/adminsede/farmacista" class="menu-item-small roboto-regular">Farmacistas</a></li>
+
+                                    <li><a href="/adminsede/ordenes" class="menu-item-small roboto-regular">Pedidos de Reposición</a></li>
+
+                                    <li><a href="/adminsede/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                                </ul>
+
+                                <ul class="nav-list-small-perfil">
+                                    <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-user-line roboto-regular"></i>Cambiar contraseña</a></li>
+
+                                    <li><a href="/adminsede/" class="menu-item-small roboto-regular"><i class="ri-lock-line roboto-regular"></i>Cerrar sesión</a></li>
+                                </ul>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
-
             </div>
-        </div>
 
-    </nav>
-</header>
+        </nav>
+    </header>
 
 
     <body>
 
-        <div class="container">
+        <div style="margin-top: 110px"></div>
 
-            <div style="margin-bottom: 50px"></div>
-            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Contenido de la Orden:</strong></h2>
-            <div style="margin-bottom: 20px"></div>
-            <hr style="border-top: 1px solid #262626;">
-            <div style="margin-bottom: 40px"></div>
+        <div class = "container">
+            <div class="container">
 
-            <div style="padding-right: 0; padding-left: 0"> </div>
-        </div>
+                <div style="margin-bottom: 50px"></div>
+                <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking órdenes de reposición</strong></h2>
+                <div style="margin-bottom: 10px"></div>
+                <hr style="border-top: 1px solid #262626;">
+                <div style="margin-bottom: 10px"></div>
 
-
-
-
-        <div class="container">
-
-            <div style="display: flex; justify-content: space-between; align-items: center">
-                <div style="display: flex; flex-direction: column">
-
-                </div>
-
-                <button id="limpiarFiltros" style="padding:7px;border:none;border-radius: 4px;color:white; background-color: dimgrey;">Limpiar Filtros</button>
+                <div style="padding-right: 0; padding-left: 0"> </div>
             </div>
-            <br>
+            <br/>
+            <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/generar_orden'">Generar nueva orden</button>
+            <br/>
+            <br/>
+            <h2>Orden de reposicion #1</h2>
+            <a href="/adminsede/editar_orden_reposicion" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
 
+            <div class="container-track1">
+                <div class="wrapper">
+                    <h3>Estado de la orden</h3>
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-list-ul active"></i>Recibido
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-cart-shopping"></i>En proceso
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-box"></i>Empaquetado
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-truck"></i>En ruta
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-check-double"></i>Entregado
+                        </div>
 
-
-            <table id="miTabla" class="display">
-
-                <thead>
-                    <tr>
-                        <th>Nombre/Detalles</th>
-                        <th>Tracking</th>
-                        <th>Mapa</th>
-                        <th>Editar/Eliminar</th>
-                    </tr>
-                </thead>
-
-
-                <tbody>
-                    <tr>
-                        <td>Paracetamol 100 mg</td>
-                        <td><img class="medicamento" src="/img/paracetamol.jpg"></td>
-                        <td>
-                            <div id="map"></div>
-                        </td>
-                        <td>S/. 6</td>
-                    </tr>
-                    <tr>
-                        <td>Neurobion 100 mg</td>
-                        <td><img class="medicamento" src="/img/neurobion.jpg"></td>
-                        <td>5</td>
-                        <td>S/. 6</td>
-                    </tr>
-                    <tr>
-                        <td>Nastzol 100 mg</td>
-                        <td><img class="medicamento" src="/img/nastzol.jpg"></td>
-                        <td>5</td>
-                        <td>S/. 6</td>
-                    </tr>
-                    <tr>
-                        <td>Panadol 100 mg</td>
-                        <td><img class="medicamento"  src="/img/panadol.jpg"></td>
-                        <td>5</td>
-                        <td>S/. 6</td>
-                    </tr>
-                    <tr>
-                        <td>Apronax 100 mg</td>
-                        <td><img class="medicamento"  src="/img/apronax.jpg"></td>
-                        <td>5</td>
-                        <td>S/. 6</td>
-                    </tr>
-                    <tr>
-                        <td>Doloral 100 mg</td>
-                        <td><img class="medicamento"  src="/img/doloral.jpg"></td>
-                        <td>5</td>
-                        <td>S/. 6</td>
-                    </tr>
-
-
-                </tbody>
-            </table>
-
-        </div>
-
-
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-        <div class="container">
-
-            <div style="margin-bottom: 50px"></div>
-            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
-            <div style="margin-bottom: 20px"></div>
-            <hr style="border-top: 1px solid #262626;">
-            <div style="margin-bottom: 40px"></div>
-
-            <div style="padding-right: 0; padding-left: 0"> </div>
-        </div>
-
-        <div class="container-progress">
-            <div class="wrapper">
-                <div class="progress-container">
-                    <div class="progress" id="progress"></div>
-                    <div class="progress-step">
-                        <i class="fa-solid fa-file-text active"></i>Recibido
                     </div>
-                    <div class="progress-step">
-                        <i class="fa-solid fa fa-refresh"></i>En proceso
+                    <!--
+                    <div class="btn-container">
+                        <button class="btn" id="prev">Previous</button>
+                        <button class="btn" id="next">Next</button>
                     </div>
-
-                    <div class="progress-step">
-                        <i class="fa-solid fa-archive"></i>Empaquetando
-                    </div>
-                    <div class="progress-step">
-                        <i class="fa-solid fa fa-truck"></i>En ruta
-                    </div>
-                    <div class="progress-step">
-                        <i class="fa-solid fa-check-square"></i>Entregado
-                    </div>
+                    -->
                 </div>
 
-                <div class="btn-container">
-                    <button class="btn" id="prev" onclick="prev()">Anterior</button>
-                    <button class="btn" id="next" onclick="next()">Siguiente</button>
+                <div class = "container-orden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.575971232228!2d-77.07181742216821!3d-12.072669257653358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c91a6f8fbefb%3A0x408ed032eafa9864!2sMultilab%20Pueblo%20Libre!5e0!3m2!1ses!2spe!4v1712592591241!5m2!1ses!2spe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
+            <h2>Orden de reposicion #2</h2>
+            <a href="/adminsede/editar_orden_reposicion" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+            <div class="container-track1">
+                <div class="wrapper">
+                    <h3>Estado de la orden</h3>
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-list-ul active"></i>Recibido
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-cart-shopping"></i>En proceso
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-box"></i>Empaquetado
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-truck"></i>En ruta
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-check-double"></i>Entregado
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class = "container-orden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.575971232228!2d-77.07181742216821!3d-12.072669257653358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c91a6f8fbefb%3A0x408ed032eafa9864!2sMultilab%20Pueblo%20Libre!5e0!3m2!1ses!2spe!4v1712592591241!5m2!1ses!2spe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <h2>Orden de reposicion #3</h2>
+            <a href="/adminsede/editar_orden_reposicion" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+            <div class="container-track1">
+                <div class="wrapper">
+                    <h3>Estado de la orden</h3>
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-list-ul active"></i>Recibido
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-cart-shopping"></i>En proceso
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-box"></i>Empaquetado
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-truck"></i>En ruta
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-check-double"></i>Entregado
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class = "container-orden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.575971232228!2d-77.07181742216821!3d-12.072669257653358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c91a6f8fbefb%3A0x408ed032eafa9864!2sMultilab%20Pueblo%20Libre!5e0!3m2!1ses!2spe!4v1712592591241!5m2!1ses!2spe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <h2>Orden de reposicion #4</h2>
+            <a href="/adminsede/editar_orden_reposicion" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
+            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+            <div class="container-track1">
+                <div class="wrapper">
+                    <h3>Estado de la orden</h3>
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-list-ul active"></i>Recibido
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-cart-shopping"></i>En proceso
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-box"></i>Empaquetado
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-truck"></i>En ruta
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-check-double"></i>Entregado
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class = "container-orden">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.575971232228!2d-77.07181742216821!3d-12.072669257653358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c91a6f8fbefb%3A0x408ed032eafa9864!2sMultilab%20Pueblo%20Libre!5e0!3m2!1ses!2spe!4v1712592591241!5m2!1ses!2spe" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+
         </div>
+        <br/>
 
 
 
-        <br>
-        <br>
-        <br>
-        <br>
-
-
-        <div id="map"></div>
-
-
+        <!--Footer -->
+        <br/>
         <div >
             <footer id="sticky-footer" class="footer-distributed" style="background-color: #04011E">
                 <div class="footer-left">
@@ -387,47 +325,6 @@
             </footer>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-        <script src="/js/progress-bar.js"></script>
-        <script>
-            google.maps.event.addDomListener(window, 'load', initMap);
-        </script>
-        <script>
-            $(document).ready(function() {
-                var table = $('#miTabla').DataTable({
-                    "pageLength":5,
-                    "lengthChange": false,
-                    "language": {
-                        "emptyTable": "No hay registros disponibles",
-                        "zeroRecords": "No se encontraron registros coincidentes",
-                        "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
-                        "paginate": {
-                            "first": "Primero",
-                            "last": "Último",
-                            "next": "Siguiente",
-                            "previous": "Anterior"
-                        },
-                        "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
-                    },
-
-                });
-
-                $('#filtroEstado').on('change', function() {
-                    var estado = $(this).val();
-                    table.column(2).search(estado).draw();
-
-                });
-
-                $('#limpiarFiltros').on('click', function() {
-                    $('#filtroEstado').val('');
-                    table.search('').columns().search('').draw();
-                });
-            });
-
-
-        </script>
-
         <script>
             $(document).ready(function() {
                 var opened = false;
@@ -446,7 +343,5 @@
             });
         </script>
 
-
     </body>
-
 </html>

@@ -1,56 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <link rel="icon" type="image/x-icon" th:href="@{/media/favicon.png}">
-
         <!--=============== REMIXICONS ===============-->
         <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
         <!--=============== CSS ===============-->
+        <!-- Font Awesome -->
+
+        <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+
+
         <link rel="stylesheet" th:href="@{/css/styles.css}">
         <link rel="stylesheet" th:href="@{/css/fonts.css}">
-        <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+        <link rel="stylesheet" th:href="@{/css/topbar.css}">
         <link rel="stylesheet" th:href="@{/css/footer.css}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+        <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
+        <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
+        <link rel="stylesheet" th:href="@{/css/datatables.css}">
+        <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+        <link rel="stylesheet" th:href="@{/css/adminsede/estilos.css}">
 
-        <!--=============== JS ===============-->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+
+
+        <!--=============== DataTable ===============-->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
+        <!--  Bootstrap-->
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css"/>
+        <!--==========================================-->
+
+
+        <title>Generar orden de reposición</title>
 
         <style>
             body {
-                padding-top: 90px;
+                padding-top: 80px;
             }
-            #filtroEstado:focus {
-
-                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-            }
-            ul li a {
-                list-style-type: none;
-                font-weight: normal !important;
-            }
-
-            ul li a {
-                text-decoration: none;
-                color: inherit;
-                font-weight: normal !important;
-            }
-            .doctor{
-                max-width: 180px; max-height: 180px;
-            }
-
         </style>
-
-
-        <title>Bienestar San Miguel | Doctores</title>
     </head>
+
 
     <header class="header-topbar">
         <nav class="nav-topbar container">
@@ -65,9 +53,9 @@
 
                 <div class="nav-menu" id="nav-menu">
                     <ul class="nav-list">
-                        <li><a href="/adminsede" class="menu-item roboto-regular" >Inicio</a></li>
+                        <li><a href="/adminsede" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
 
-                        <li><a href="/adminsede/doctores" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Doctores</a></li>
+                        <li><a href="/adminsede/doctores" class="menu-item roboto-regular">Doctores</a></li>
 
                         <li><a href="/adminsede/farmacista" class="menu-item roboto-regular">Farmacistas</a></li>
 
@@ -109,9 +97,9 @@
                         <div class="inside-menu-small">
                             <div class="nav-menu-small" id="nav-menu-small">
                                 <ul class="nav-list-small">
-                                    <li><a href="/adminsede" class="menu-item-small roboto-regular">Inicio</a></li>
+                                    <li><a href="/adminsede" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
 
-                                    <li><a href="/adminsede/doctores" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Doctores</a></li>
+                                    <li><a href="/adminsede/doctores" class="menu-item-small roboto-regular">Doctores</a></li>
 
                                     <li><a href="/adminsede/farmacista" class="menu-item-small roboto-regular">Farmacistas</a></li>
 
@@ -136,15 +124,19 @@
         </nav>
     </header>
 
-
     <body>
+
+
+
+
+
 
         <div class="container">
 
             <div style="margin-bottom: 50px"></div>
-            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Doctores</strong></h2>
+            <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Doctores:</strong></h2>
             <div style="margin-bottom: 20px"></div>
-            <hr style="border-top: 1px solid #262626;">
+            <hr style="border-top: 1px solid #DFDFDF;">
             <div style="margin-bottom: 40px"></div>
 
             <div style="padding-right: 0; padding-left: 0"> </div>
@@ -152,28 +144,23 @@
 
 
 
+
         <div class="container">
 
-            <div style="display: flex; justify-content: space-between; align-items: center">
-                <div style="display: flex; flex-direction: column">
-
-                </div>
-
-                <button id="limpiarFiltros" style="padding:7px;border:none;border-radius: 4px;color:white; background-color: dimgrey;">Limpiar Filtros</button>
+            <div style="display: flex; justify-content: right; align-items: center; margin-bottom: 20px">
+                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
             </div>
-            <br>
+            <br/>
 
 
 
-            <table id="tabladoctores" class="display">
+            <table id="miTabla" class="table table-striped">
 
                 <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Foto de perfil</th>
-                        <th>Datos</th>
-                        <th>Editar/Eliminar</th>
-
+                    <tr style="background-color: #378fff">
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Nombre y apellidos</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Datos</th>
                     </tr>
                 </thead>
 
@@ -181,122 +168,111 @@
                 <tbody>
                     <tr>
                         <td>Sergio Andre Bustamante Salcedo</td>
-                        <td><img class="doctor" src="/img/doctor.png"></td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
                             Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
+                            <br/><br/>
                             Código (colegio médico): 111000
-                            <br/>
-                            <br/>
-                            correo: correo1@gmail.com
-                            <br/>
-                            <br/>
+                            <br/><br/>
+                            correo: correo6@gmail.com
+                            <br/><br/>
                             DNI: 11111111
-                        </td>
-                        <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Piero Enrique Huancas Coripuna</td>
-                        <td><img class="doctor" src="/img/doctor.png"></td>
-                        <td>
-                            Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
-                            Código (colegio médico): 111000
-                            <br/>
-                            <br/>
-                            correo: correo2@gmail.com
-                            <br/>
-                            <br/>
-                            DNI: 11111111
-                        </td>
-                        <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>David Alonso Escobedo Cerrón</td>
-                        <td><img class="doctor" src="/img/doctor.png"></td>
-                        <td>
-                            Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
-                            Código (colegio médico): 111000
-                            <br/>
-                            <br/>
-                            correo: correo3@gmail.com
-                            <br/>
-                            <br/>
-                            DNI: 11111111
-                        </td>
-                        <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>Alexander Daniel Abrisqueta Zevallos</td>
-                        <td><img class="doctor"  src="/img/doctor.png"></td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
                             Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
+                            <br/><br/>
+
                             Código (colegio médico): 111000
-                            <br/>
-                            <br/>
-                            correo: correo4@gmail.com
-                            <br/>
-                            <br/>
-                            DNI: 11111111
-                        </td>
-                        <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gerardo Manuel Aguilar Gutierrez</td>
-                        <td><img class="doctor"  src="/img/doctor.png"></td>
-                        <td>
-                            Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
-                            Código (colegio médico): 111000
-                            <br/>
-                            <br/>
+                            <br/><br/>
+
                             correo: correo5@gmail.com
-                            <br/>
-                            <br/>
+                            <br/><br/>
+
                             DNI: 11111111
-                        </td>
-                        <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>Aracelli Milene La Rosa Castro</td>
-                        <td><img class="doctor"  src="/img/doctor.png"></td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
                             Distrito de residencia: San Miguel
-                            <br/>
-                            <br/>
+                            <br/><br/>
+
                             Código (colegio médico): 111000
-                            <br/>
-                            <br/>
-                            correo: correo6@gmail.com
-                            <br/>
-                            <br/>
+                            <br/><br/>
+
+                            correo: correo4@gmail.com
+                            <br/><br/>
+
                             DNI: 11111111
                         </td>
+                    </tr>
+                    <tr>
+                        <td>David Alonso Escobedo Cerrón</td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
-                            <a href="#" class="edit-icon"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt"></i></a>
+                            Distrito de residencia: San Miguel
+                            <br/><br/>
+
+                            Código (colegio médico): 111000
+                            <br/><br/>
+
+                            correo: correo3@gmail.com
+                            <br/><br/>
+
+                            DNI: 11111111
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gerardo Manuel Aguilar Gutierrez</td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
+                        <td>
+                            Distrito de residencia: San Miguel
+                            <br/><br/>
+
+                            Código (colegio médico): 111000
+                            <br/><br/>
+
+                            correo: correo2@gmail.com
+                            <br/><br/>
+
+                            DNI: 11111111
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Piero Enrique Huancas Coripuna</td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
+                        <td>
+                            Distrito de residencia: San Miguel
+                            <br/><br/>
+
+                            Código (colegio médico): 111000
+                            <br/><br/>
+
+                            correo: correo1@gmail.com
+                            <br/><br/>
+
+                            DNI: 11111111
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Manuel Augusto Yarlequé Medina</td>
+                        <td><img class="medicamento" src="/img/doctor.png"></td>
+                        <td>
+                            Distrito de residencia: San Miguel
+                            <br/><br/>
+
+                            Código (colegio médico): 111000
+                            <br/><br/>
+
+                            correo: correo4@gmail.com
+                            <br/><br/>
+
+                            DNI: 11111111
                         </td>
                     </tr>
 
@@ -304,14 +280,36 @@
                 </tbody>
             </table>
 
+            <br>
+            <br>
+            <br>
+            <br>
+
         </div>
 
-        <!--Footer -->
-        <br/>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
         <div >
-            <footer id="sticky-footer" class="footer-distributed" style="background-color: #04011E">
+            <footer id="sticky-footer" class="footer-distributed">
                 <div class="footer-left">
-                    <img src="" alt="Logo de Ingeniería de las Telecomunicaciones" style="width: 400px; height: auto;">
+                    <img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo" style="width: 400px; height: auto;">
                     <p class="footer-links">
                         <a href="">Usuarios</a> |
                         <a href="">Actividades</a> |
@@ -354,15 +352,22 @@
         </div>
 
 
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script th:src="@{/js/topbar.js}"></script>
         <script>
             $(document).ready(function() {
-                var table = $('#tabladoctores').DataTable({
+                var table = $('#miTabla').DataTable({
                     "pageLength":5,
                     "lengthChange": false,
                     "language": {
                         "emptyTable": "No hay registros disponibles",
                         "zeroRecords": "No se encontraron registros coincidentes",
                         "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                        "search" : "Buscar:",
                         "paginate": {
                             "first": "Primero",
                             "last": "Último",
@@ -388,25 +393,10 @@
 
 
         </script>
-
-        <script>
-            $(document).ready(function() {
-                var opened = false;
-
-                $('#menu-small').hide();
-
-                $('#nav-toggle').click(function (e) {
-                    e.stopPropagation();
-                    if (opened) {
-                        $('#menu-small').hide();
-                    } else {
-                        $('#menu-small').show();
-                    }
-                    opened = !opened;
-                });
-            });
-        </script>
-
+        <!-- DataTable -->
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+        <!------>
 
     </body>
+
 </html>
