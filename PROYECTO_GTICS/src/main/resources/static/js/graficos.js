@@ -7,18 +7,18 @@ const getOptionChart1=()=>{
         },
         dataZoom:{
           show: true,
-            start: 50
+            start: 5
         },
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Apronax', 'Doloral', 'Ibuprofeno', 'Panadol', 'Paracetamol', 'Salbutamol', 'Loratadina']
         },
         yAxis: {
             type: 'value'
         },
         series: [
             {
-                data: [150, 230, 224, 218, 135, 147, 260],
+                data: [5, 7, 9, 10, 14, 20, 3],
                 type: 'line'
             }
         ]
@@ -27,12 +27,12 @@ const getOptionChart1=()=>{
 
 const getOptionChart2=()=>{
     return {
-        color:["#3246a8","#00cc66","#ff5050","#c6de76","#D96A8D"],
+        color:["#3246a8","#00cc66","#ff5050"],
         tooltip: {
             trigger: 'axis'
         },
         legend: {
-            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+            data: ['7 días', '15 días', '31 días']
         },
         grid: {
             left: '3%',
@@ -48,41 +48,29 @@ const getOptionChart2=()=>{
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Apronax', 'Doloral', 'Ibuprofeno', 'Panadol', 'Paracetamol', 'Salbutamol', 'Loratadina']
         },
         yAxis: {
             type: 'value'
         },
         series: [
             {
-                name: 'Email',
+                name: '7 días',
                 type: 'line',
                 stack: 'Total',
                 data: [120, 132, 101, 134, 90, 230, 210]
             },
             {
-                name: 'Union Ads',
+                name: '15 días',
                 type: 'line',
                 stack: 'Total',
                 data: [220, 182, 191, 234, 290, 330, 310]
             },
             {
-                name: 'Video Ads',
+                name: '31 días',
                 type: 'line',
                 stack: 'Total',
                 data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-                name: 'Direct',
-                type: 'line',
-                stack: 'Total',
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: 'Search Engine',
-                type: 'line',
-                stack: 'Total',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
             }
         ]
     };
@@ -144,11 +132,11 @@ const getOptionChart4=()=>{
                     show: false
                 },
                 data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
+                    { value: 1048, name: 'Pando Etapa 2' },
+                    { value: 735, name: 'San Miguelito' },
+                    { value: 580, name: 'Pando Etapa 7' },
+                    { value: 484, name: 'Pando Etapa 3' },
+                    { value: 300, name: 'Pando Etapa 4' }
                 ]
             }
         ]
