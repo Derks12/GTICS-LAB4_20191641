@@ -548,21 +548,29 @@ hr.style-one {
     width: 100%; /* Ajustar el ancho del campo de entrada */
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px; /* Bordes redondeados a la izquierda */
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 .search-bar button {
     padding: 10px 20px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 0 5px 5px 0; /* Bordes redondeados a la derecha */
+    border: 1px solid #f0f0f0;
+    border-radius: 0 5px 5px 0;
     background-color: #f0f0f0;
     cursor: pointer;
 }
 
 .search-bar button:hover {
     background-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+}
+
+.search-bar input[type="text"]:focus {
+    outline: none !important;
+    border: 1px solid;
+    border-image: linear-gradient(to right, var(--color-blue), #ffffff); /* Crea un gradiente horizontal que va de var(--color-blue) a transparente */
+    border-image-slice: 1; /* Asegura que el gradiente cubra todo el borde */
 }
 
 /* END LISTA MEDICAMENTOS */
