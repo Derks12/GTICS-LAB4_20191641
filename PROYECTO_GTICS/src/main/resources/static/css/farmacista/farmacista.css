@@ -287,24 +287,63 @@ hr.style-one {
 
 /* LISTA MEDICAMENTOS */
 
+.hide {
+    display: none;
+}
 
 .items-preview {
-    max-height: 600px;
+    padding-top: 20px;
+    max-height: 200px;
     overflow: auto;
 }
 
+.container-preview {
+    border-radius: 0.25rem;
+    border: 1px solid #d9d9d9;
+    color: var(--color-black);
+    background: var(--color-white);
+    box-shadow: var(--shadow-large);
+    padding: 20px;
+}
+
 .selected-item {
+    border-bottom: solid 1px #d3d3d3;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 15px;
 }
+
+.item-on-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-title {
+    display: block;
+    color: var(--color-text-1);
+    border-bottom: solid 1px #d3d3d3;
+    padding-top: 5px;
+    font-size: 1.2rem;
+    text-align: start;
+    padding-bottom: 15px;
+}
+
+.price-total-div {
+    padding-top: 20px;
+}
+
+
 
 
 .med-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    padding-top: 30px;
+    padding-top: 10px;
     padding-bottom: 50px;
     grid-gap:30px;
     grid-row-gap: 30px;
@@ -374,15 +413,27 @@ hr.style-one {
 }
 
 
+
+
+
+
+
 .search-bar {
     width: 100%;
-    max-width: 600px; /* Puedes ajustar el ancho máximo según tus necesidades */
+    max-width: 1540px; /* Puedes ajustar el ancho máximo según tus necesidades */
     margin: 0 auto; /* Centrar el cuadro de búsqueda */
     display: flex;
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+}
+
+.search-label {
+    flex: 1; /* Para que el campo de entrada ocupe todo el espacio disponible */
+    margin-right: 10px; /* Separación entre el campo de entrada y el botón */
 }
 
 .search-bar input[type="text"] {
-    flex: 1; /* Para que el campo de entrada ocupe todo el espacio disponible */
+    width: 100%; /* Ajustar el ancho del campo de entrada */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;

@@ -17,7 +17,10 @@
     <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
 
-
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
 
     <!--=============== FONT AWESOME ===============-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -120,13 +123,8 @@
 
     <hr class="style-one">
 
-        <div class="search-bar" style="padding-bottom: 20px; padding-top: 20px;">
-            <input type="text" placeholder="Buscar...">
-            <button type="submit">Buscar</button>
-        </div>
 
-
-        <div class="items-preview" id="items-preview">
+        <div class="items-preview hide" id="items-preview">
 
             <div class="container-preview">
 
@@ -140,13 +138,19 @@
                 </div>
 
                 <div class="price-total-div">
-                    <span class="price-total">S/120.000,00</span>
+                    Monto Total = <span class="price-total">S/0.00</span>
                 </div>
 
             </div>
 
         </div>
 
+        <div class="search-bar" style="padding-bottom: 20px; padding-top: 20px;">
+            <label class="search-label">
+                <input type="text" placeholder="Buscar...">
+            </label>
+            <button type="submit">Buscar</button>
+        </div>
 
     <section class="medicamentos">
         <!-- Contenedor de elementos -->
@@ -166,10 +170,10 @@
                 <button class="add-item-button montserrat-medium" id="item2">Añadir a la Orden</button>
             </div>
             <div class="item">
-                <img th:src="@{/img/andrews.jpg}" alt="Sal de Andrews Efervesment" class="img-item">
-                <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
-                <span class="item-price roboto-regular">S/1.20</span>
+                <img th:src="@{/img/bismutol.jpg}" alt="Bismutol Jarabe" class="img-item">
+                <div class="subtitulo-item roboto-bold">JARABE 520mL</div>
+                <div class="item-title roboto-regular">Bismutol Jarabe</div>
+                <span class="item-price roboto-regular">S/5.20</span>
                 <button class="add-item-button montserrat-medium" id="item3">Añadir a la Orden</button>
             </div>
             <div class="item">
@@ -231,8 +235,6 @@
     <script>
         $(document).ready(function() {
 
-            $('#items-preview').hide();
-
 
             var botonesEliminarItem = document.getElementsByClassName('btn-eliminar');
             for(var i=0;i<botonesEliminarItem.length; i++){
@@ -290,18 +292,21 @@
 
             <span class="item-title-clicked">${titulo}</span>
 
-            <div class="item-details">
-                <div class="selector-cantidad">
-                    <i class="fa-solid fa-minus restar-cantidad"></i>
-                    <input type="text" value="1" class="item-quantity-clicked" disabled>
-                    <i class="fa-solid fa-plus sumar-cantidad"></i>
-                </div>
-                <span class="item-price-clicked">${precio}</span>
-            </div>
+            <div class="item-on-list">
 
-            <button class="btn-eliminar btn-danger">
-                <i class="fa-solid fa-trash"></i>
-            </button>
+                <div class="item-details">
+                    <div class="selector-cantidad">
+                        <i class="fa-solid fa-minus restar-cantidad"></i>
+                        <input type="text" value="1" class="item-quantity-clicked" disabled>
+                        <i class="fa-solid fa-plus sumar-cantidad"></i>
+                    </div>
+                    <span class="item-price-clicked">${precio}</span>
+                </div>
+
+                <button class="btn-eliminar btn-danger">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
 
         </div>
     `
@@ -317,6 +322,7 @@
                 botonSumarCantidad.addEventListener('click',sumarCantidad);
 
                 actualizarMontoTotal();
+                ShowList();
             }
 
 
@@ -344,9 +350,9 @@
 
             function deleteItem(event){
                 var buttonClicked = event.target;
-                buttonClicked.parentElement.parentElement.remove();
-                actualizarMontoTotal();
+                buttonClicked.parentElement.parentElement.parentElement.remove();
                 hideorShowList();
+                actualizarMontoTotal();
             }
 
             function actualizarMontoTotal() {
@@ -366,14 +372,21 @@
             }
 
             function hideorShowList(){
-                var listaItems = document.getElementsByClassName('lista-items-clicked');
-                if(listaItems.childElementCount === undefined){
-                    $('#items-preview').hide();
+                var someElement = document.getElementsByClassName('selected-item');
+
+                if(someElement.length === 0){
+                    HideList();
                 }
             }
 
+            function HideList(){
+                const itemsPreview = document.getElementById('items-preview');
+                itemsPreview.classList.add('hide');
+            }
+
             function ShowList(){
-                $('#items-preview').show();
+                const itemsPreview = document.getElementById('items-preview');
+                itemsPreview.classList.remove('hide');
             }
 
         });
