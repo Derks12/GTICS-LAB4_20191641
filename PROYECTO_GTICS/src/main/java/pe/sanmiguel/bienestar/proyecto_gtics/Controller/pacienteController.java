@@ -7,13 +7,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
 @RequestMapping(value="/paciente", method= RequestMethod.GET)
 public class pacienteController {
+
+
+
+    /*----------------- Repositories -----------------*/
+    final MedicamentoRepository medicamentoRepository;
+
+    public pacienteController(MedicamentoRepository medicamentoRepository){
+        this.medicamentoRepository = medicamentoRepository;
+    }
+
+
+
+
+    /*----------------- Method: GET -----------------*/
 
     @GetMapping(value="")
     public String preOrdenes(){return "/paciente/pre_ordenes";}
@@ -25,7 +42,12 @@ public class pacienteController {
     public String ordenes(){return "/paciente/ordenes";}
 
     @GetMapping(value="/new_orden")
-    public String new_orden(){return "/paciente/new_orden";}
+    public String new_orden(Model model){
+
+        List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
+        model.addAttribute("listaMedicamentos", listaMedicamentos);
+
+        return "/paciente/new_orden";}
 
     @GetMapping(value="/mensajeria")
     public String mensajeria(){return "/paciente/mensajeria";}
@@ -34,10 +56,15 @@ public class pacienteController {
     public String chatbot(){return "/paciente/chatbot";}
 
     @GetMapping(value = "/orden_paciente")
-    public String ordenPaciente(){return "/paciente/orden_paciente";}
+    public String ordenPaciente(){
+        return "/paciente/orden_paciente";
+    }
 
 
 
+
+
+    /*----------------- Method: POST -----------------*/
 
     @PostMapping(value = "/guardarOrden")
     public String guardarOrden(@RequestParam(value = "name", required = false) String name ,
@@ -52,10 +79,6 @@ public class pacienteController {
                                @RequestParam(value = "imagen", required = false) MultipartFile archivo,
                                Model model){
 
-
-        System.out.println("genero: " + genero);
-
-
         try{
             byte[] bytes = archivo.getBytes();
             String base64Encoded = java.util.Base64.getEncoder().encodeToString(bytes);
@@ -65,11 +88,7 @@ public class pacienteController {
             return "error";
         }
 
-
-
         return "/paciente/prueba";
         //return "redirect:/paciente/ordenes";
     }
-
-
 }

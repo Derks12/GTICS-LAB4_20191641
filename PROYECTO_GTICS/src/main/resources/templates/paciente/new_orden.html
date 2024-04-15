@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+    <link rel="stylesheet" th:href="@{/css/paciente/lista_medicamentos.css}">
 
 
     <!--=============== DataTable ===============-->
@@ -235,7 +236,7 @@
                 <div class="popup-container">
                     <div class="popup-box">
 
-                        <div>
+
 
 
 
@@ -268,7 +269,10 @@
                                             </div>
 
                                             <div>
-                                                <a href="/farmacista/formulario_paciente"><button class="continue-button montserrat-medium">Continuar</button></a>
+                                                <form th:action="@{/farmacista/continuar_compra}" method="post">
+                                                    <input type="hidden" name="listaIds" th:value="${#strings.arrayJoin(listaSelectedIds, ',')}" />
+                                                    <button type="submit" class="continue-button montserrat-medium">Continuar</button>
+                                                </form>
                                             </div>
                                         </div>
 
@@ -341,7 +345,7 @@
                                                     <span class="item-symbol">S/. </span><span class="item-price roboto-regular" th:text="${medicamento.precioVenta}">Precio</span>
                                                 </div>
 
-                                                <button class="add-item-button montserrat-medium" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
+                                                <button class="add-item-button montserrat-medium" type="button" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
                                             </div>
                                         </div>
 
@@ -373,11 +377,6 @@
 
 
 
-
-
-
-
-                        </div>
 
                         <br>
                         <br>
@@ -555,6 +554,8 @@
     </footer>
 </div>
 
+
+<!---------Pop up---------->
 <script>
     const showPopup = document.querySelector('.btn-popup');
     const popupContainer = document.querySelector('.popup-container');
@@ -568,11 +569,15 @@
         popupContainer.classList.remove('active');
     }
 </script>
+
+
 <script th:src="@{/js/upload_img.js}"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
 
+
+<!---------Datatabe---------->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
         var table = $('#miTabla').DataTable({
@@ -607,9 +612,15 @@
     });
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+<!---------SweetAlert---------->
 <style>
     .swal2-title {
         font-size: 24px; }
+    .swal2-footer {
+        color:#0d6efd;
+    }
 </style>
 <script>
 
@@ -657,6 +668,7 @@
 
 
 
+<!---------Medicamentos---------->
 <script>
 
     let listaSelectedIds = [];
