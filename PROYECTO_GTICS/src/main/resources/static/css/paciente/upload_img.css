@@ -198,7 +198,7 @@ button {
 .modal__message {
     animation-delay: 0.1s;
     font-size: 17px;
-    margin-bottom: 1.5em;
+    margin-bottom: 1px;
     min-height: 3em;
     color:dimgray;
 }
