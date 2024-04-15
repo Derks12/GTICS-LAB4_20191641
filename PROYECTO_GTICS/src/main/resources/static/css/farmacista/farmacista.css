@@ -284,6 +284,58 @@ hr.style-one {
     background: #333 linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+/* INTERFAZ TOTAL */
+.interface {
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    gap: 25px;
+}
+/* END INTERFAZ TOTAL */
+
+
+/* FILTROS PANEL */
+
+.filtros {
+    margin-top: 10px;
+    border-radius: 0.25rem;
+    max-height: 440px;
+    color: var(--color-black);
+    background: var(--color-white);
+}
+
+.container-filters {
+    padding: 20px;
+}
+
+.filter-title {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #d3d3d3;
+}
+
+.list-categorias{
+    max-height: 240px;
+    overflow: auto;
+}
+
+.categorias-title {
+    font-size: 1.2rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.categoria {
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.alert {
+    padding-top: 25px;
+    color: #80868b;
+}
+
+
+/* END FILTROS PANEL */
 
 /* LISTA MEDICAMENTOS */
 
@@ -292,17 +344,15 @@ hr.style-one {
 }
 
 .items-preview {
-    padding-top: 20px;
-    max-height: 200px;
+    margin-top: 20px;
+    max-height: 240px;
     overflow: auto;
+    border-radius: 0.25rem;
+    color: var(--color-black);
+    background: var(--color-white);
 }
 
 .container-preview {
-    border-radius: 0.25rem;
-    border: 1px solid #d9d9d9;
-    color: var(--color-black);
-    background: var(--color-white);
-    box-shadow: var(--shadow-large);
     padding: 20px;
 }
 
@@ -324,13 +374,31 @@ hr.style-one {
 }
 
 .preview-title {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     color: var(--color-text-1);
     border-bottom: solid 1px #d3d3d3;
     padding-top: 5px;
     font-size: 1.2rem;
     text-align: start;
     padding-bottom: 15px;
+}
+
+.continue-button {
+    display: block;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--color-blue);
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color ease 0.2s;
+}
+
+.continue-button:hover{
+    background-color: var(--color-blue--hover);
 }
 
 .item-quantity-clicked {
@@ -341,10 +409,6 @@ hr.style-one {
     color: #0c0808;
     border: solid 1px #d3d3d3;
     border-radius: 10px;
-}
-
-.price-total-div {
-    padding-top: 20px;
 }
 
 .item-details {
@@ -410,11 +474,9 @@ hr.style-one {
     transition: .3s;
     width: 100%;
     outline: none;
-    border-radius: 0.25rem;
-    border: 1px solid #d9d9d9;
+    border-radius: 5px;
     color: var(--color-black);
     background: var(--color-white);
-    box-shadow: var(--shadow-large);
 }
 
 
@@ -422,11 +484,8 @@ hr.style-one {
 .img-item {
     width: 100%;
 }
-.item:hover {
-    border: 1px solid rgba(66, 157, 250, 0.3);
-    box-shadow: 0 0 10px rgba(66, 157, 250, 0.3);
-    scale: 1.01;
-}
+
+
 .titulo-item {
     display: block;
     color: var(--color-text-1);
