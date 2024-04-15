@@ -4,7 +4,11 @@ package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 import jakarta.servlet.annotation.MultipartConfig;
 import org.springframework.http.codec.multipart.Part;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 
 @Controller
@@ -44,16 +48,27 @@ public class pacienteController {
                                @RequestParam(value = "fecha", required = false) String fecha,
                                @RequestParam(value = "seguro", required = false) String seguro,
                                @RequestParam(value = "correo", required = false) String correo,
-                               @RequestParam(value = "genero", required = false) String genero ){
+                               @RequestParam(value = "genero", required = false) String genero,
+                               @RequestParam(value = "imagen", required = false) MultipartFile archivo,
+                               Model model){
 
 
-        System.out.println("Nombre:" + name);
-        System.out.println("Apellido: " + lastname);
-        System.out.println("Doctor: " + doctor);
-        System.out.println("Fecha: " + fecha);
         System.out.println("genero: " + genero);
 
-        return "redirect:/paciente/ordenes";
+
+        try{
+            byte[] bytes = archivo.getBytes();
+            String base64Encoded = java.util.Base64.getEncoder().encodeToString(bytes);
+            model.addAttribute("imagen", base64Encoded);
+        } catch (IOException e){
+            e.printStackTrace();
+            return "error";
+        }
+
+
+
+        return "/paciente/prueba";
+        //return "redirect:/paciente/ordenes";
     }
 
 

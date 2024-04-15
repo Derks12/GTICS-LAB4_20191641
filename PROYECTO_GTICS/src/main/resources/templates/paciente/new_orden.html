@@ -27,6 +27,8 @@
     <link rel="stylesheet" th:href="@{/css/paciente/upload_img.css}">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
 
@@ -147,8 +149,7 @@
 
 
 
-
-<form method="post" action="/paciente/guardarOrden" enctype="multipart/form-data">
+<form id="form"  method="post" th:action="@{'/paciente/guardarOrden'}" enctype="multipart/form-data">
 
     <div class="container-form">
 
@@ -216,7 +217,6 @@
         </div>
 
 
-
         <div class="column-start">
             <div class="input-label-box">
                 <label style="font-weight: bold;padding-bottom: 8px;color:dimgray">Género:</label>
@@ -224,15 +224,15 @@
                 <div class="input-label-radio">
 
                     <div>
-                        <input  type="radio" name="genero" vale="m" checked>
+                        <input  type="radio" name="genero" value="m" checked>
                         <label style="font-size:18px">Hombre</label>
                     </div>
                     <div>
-                        <input  type="radio" name="genero" vale="f">
+                        <input  type="radio" name="genero" value="f">
                         <label style="font-size:18px">Mujer</label>
                     </div>
                     <div>
-                        <input  type="radio" name="genero" vale="na">
+                        <input  type="radio" name="genero" value="na">
                         <label style="font-size:18px">Prefiero no decirlo</label>
                     </div>
 
@@ -245,86 +245,22 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray; margin-bottom: 8px">Medicamentos:</label>
-                <button class="btn-popup" TYPE="button">Elegir Medicamentos</button>
+                <button class="btn-popup" type="button">Elegir Medicamentos</button>
 
                 <div class="popup-container">
                     <div class="popup-box">
 
-                        <div class="container">
-
-                            <div style="display: flex; justify-content: space-between; align-items: center">
-                                <div style="display: flex; flex-direction: column">
-
-                                </div>
-
-                                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
-                            </div>
-                            <br>
+                        <div>
 
 
 
-                            <table id="miTabla" class="table table-striped">
-
-                                <thead>
-                                <tr style="background-color: #378fff">
-                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
-                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
-                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
-                                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
-                                </tr>
-                                </thead>
 
 
-                                <tbody>
-                                <tr>
-                                    <td>Paracetamol 100 mg</td>
-                                    <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
-                                <tr>
-                                    <td>Neurobion 100 mg</td>
-                                    <td><img class="medicamento" src="/img/neurobion.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
-                                <tr>
-                                    <td>Nastzol 100 mg</td>
-                                    <td><img class="medicamento" src="/img/nastzol.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
-                                <tr>
-                                    <td>Panadol 100 mg</td>
-                                    <td><img class="medicamento"  src="/img/panadol.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
-                                <tr>
-                                    <td>Apronax 100 mg</td>
-                                    <td><img class="medicamento"  src="/img/apronax.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
-                                <tr>
-                                    <td>Doloral 100 mg</td>
-                                    <td><img class="medicamento"  src="/img/doloral.jpg"></td>
-                                    <td>5</td>
-                                    <td>S/. 6</td>
-                                    <td>S/. 30</td>
-                                </tr>
 
 
-                                </tbody>
-                            </table>
 
                         </div>
+
                         <br>
                         <br>
                         <div class="column">
@@ -335,8 +271,6 @@
 
 
                     </div>
-
-
                 </div>
             </div>
 
@@ -345,8 +279,6 @@
         </div>
 
         <div class="column-start">
-
-
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray; margin-bottom:8px">Captura de Receta Médica:</label>
@@ -381,10 +313,10 @@
                         <div class="modal__col">
                             <div class="modal__content">
                                 <h2 class="modal__title" style="font-weight: 600">Sube una imagen de tu receta médica:</h2>
-                                <p class="modal__message" style="color:dimgray">Selecciona la imagen para subirla desde tu dispositivo. Cuando estes seguro de subir el archivo correcto da click en el botón confirmar.</p>
+                                <p class="modal__message" style="color:dimgray">Selecciona la imagen para subirla desde tu dispositivo</p>
                                 <div class="modal__actions">
                                     <button style="color:#333"  class="modal__button modal__button--upload" type="button" data-action="file">Seleccionar imagen</button>
-                                    <input id="file" name="imagen" type="file" hidden required>
+                                    <input id="file" name="imagen" type="file" hidden >
                                 </div>
                                 <div class="modal__actions" hidden>
                                     <svg class="modal__file-icon" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
@@ -403,7 +335,7 @@
                                         </svg>
                                         <span class="modal__sr">Remove</span>
                                     </button>
-                                    <button class="btn-p" type="button" data-action="upload">Confirmar</button>
+                                    <!--     <button class="btn-p" type="button" data-action="upload">Confirmar</button>     -->
                                 </div>
                             </div>
                             <div class="modal__content" hidden>
@@ -459,7 +391,7 @@
 <br>
 <br>
 
-
+<!--Footer-->
 <div >
     <footer id="sticky-footer" class="footer-distributed" >
         <div class="footer-left">
@@ -557,7 +489,53 @@
     });
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<style>
+    .swal2-title {
+        font-size: 24px; }
+</style>
+<script>
 
+    const form = document.getElementById("form");
+    var img = document.getElementById("file");
+
+    form.addEventListener("submit", e =>{
+        e.preventDefault();
+
+
+        if(img.files.length === 0){
+            Swal.fire({
+                icon: "error",
+                iconColor: '#DC3545',
+                title: "ERROR",
+                text: "Aún le falta subir la imagen de su receta médica",
+                confirmButtonText: "OK",
+                confirmButtonColor: '#0D6EFD',
+                width: 500,
+            });
+        }
+
+        else{
+            Swal.fire({
+                title: '¿Estás seguro de generar esta nueva orden de compra?',
+                text: "No se podrá volver a editar los datos",
+                icon: 'warning',
+                iconColor: '#DC3545',
+                showCancelButton: true,
+                cancelButtonColor: '#DC3545',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#0D6EFD',
+                confirmButtonText: 'Confirmar',
+                footer: '<a href="">Volver a ingresar los datos</a>'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
+
+    })
+
+</script>
 
 </body>
 
