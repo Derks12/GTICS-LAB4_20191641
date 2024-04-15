@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 public class Medicamento {
 
     @Id
-    private Integer idmedicamento;
+    private Integer idMedicamento;
     @Column
     private String nombre;
     @Column
@@ -32,12 +32,12 @@ public class Medicamento {
     @Column
     private String imagen;
 
-    public Integer getIdmedicamento() {
-        return idmedicamento;
+    public Integer getIdMedicamento() {
+        return idMedicamento;
     }
 
-    public void setIdmedicamento(Integer idmedicamento) {
-        this.idmedicamento = idmedicamento;
+    public void setIdMedicamento(Integer idmedicamento) {
+        this.idMedicamento = idmedicamento;
     }
 
     public String getNombre() {
