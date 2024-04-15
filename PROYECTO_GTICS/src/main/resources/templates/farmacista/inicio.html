@@ -297,13 +297,13 @@
                 <div class="item-details">
                     <div class="selector-cantidad">
                         <i class="fa-solid fa-minus restar-cantidad"></i>
-                        <input type="text" value="1" class="item-quantity-clicked" disabled>
+                        <input type="text" value="1" class="item-quantity-clicked">
                         <i class="fa-solid fa-plus sumar-cantidad"></i>
                     </div>
                     <span class="item-price-clicked">${precio}</span>
                 </div>
 
-                <button class="btn-eliminar btn-danger">
+                <button class="btn btn-danger btn-eliminar">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -320,6 +320,12 @@
 
                 var botonSumarCantidad = item.getElementsByClassName('sumar-cantidad')[0];
                 botonSumarCantidad.addEventListener('click',sumarCantidad);
+
+                var inputCantidad = item.getElementsByClassName('item-quantity-clicked')[0];
+                inputCantidad.addEventListener('change', setearCantidad);
+                inputCantidad.addEventListener('focus', function(event) {
+                    event.target.dataset.previousValue = event.target.value;
+                });
 
                 actualizarMontoTotal();
                 ShowList();
@@ -345,6 +351,21 @@
                 if(cantidadActual>=1){
                     selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
                     actualizarMontoTotal();
+                }
+            }
+
+            function setearCantidad(event){
+                var inputFilled = event.target;
+                var valor = inputFilled.value;
+                var cantidadActual = parseInt(valor); // Convertir a número entero
+
+                // Verificar si el valor es un número válido
+                if (!isNaN(cantidadActual) && cantidadActual >= 1) {
+                    // Actualizar el valor del input y el monto total
+                    actualizarMontoTotal();
+                } else {
+                    // Restaurar el valor anterior si no es válido
+                    inputFilled.value = inputFilled.dataset.previousValue;
                 }
             }
 
