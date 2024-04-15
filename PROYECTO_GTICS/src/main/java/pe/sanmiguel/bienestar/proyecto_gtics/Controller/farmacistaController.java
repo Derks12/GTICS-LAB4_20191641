@@ -3,7 +3,9 @@ package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 
 import java.util.List;
@@ -14,17 +16,19 @@ public class farmacistaController {
 
 
     final UsuarioRepository usuarioRepository;
-    public farmacistaController(UsuarioRepository usuarioRepository) {
+    final MedicamentoRepository medicamentoRepository;
+    public farmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.medicamentoRepository = medicamentoRepository;
     }
 
     @GetMapping("/farmacista")
     public String farmacistaInicio() {
 
-        List<Usuario> listaUsuarios = usuarioRepository.findAll();
+        List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
 
-        for (Usuario u : listaUsuarios){
-            System.out.println(u.getIdusuario());
+        for (Medicamento medicamento : listaMedicamentos){
+            System.out.println(medicamento.getNombre());
         }
 
         return "/farmacista/inicio";
