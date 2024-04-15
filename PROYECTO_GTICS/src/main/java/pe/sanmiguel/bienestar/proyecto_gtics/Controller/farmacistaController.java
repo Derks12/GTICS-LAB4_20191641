@@ -2,6 +2,7 @@ package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
@@ -30,7 +31,7 @@ public class farmacistaController {
     public String forPaciente() {
         return "/farmacista/formularioPaciente";
     }
-    @GetMapping("/farmacista/detallesOrdenWeb")
+    @PostMapping("/farmacista/detallesOrdenWeb")
     public String detaOrdenWeb() {
         return "/farmacista/detallesOrdenWeb";
     }

@@ -171,7 +171,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-falta-stock">FALTA STOCK</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            </form>
           </td>
         </tr>
         <tr>
@@ -180,7 +182,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-pendiente">PENDIENTE</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            </form>
           </td>
         </tr>
         <tr>
@@ -189,7 +193,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-pendiente">PENDIENTE</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button href="/farmacista/detallesOrdenWeb" class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button href="/farmacista/detallesOrdenWeb" class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
+            </form>
           </td>
         </tr>
         <tr>
@@ -198,7 +204,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-pagado">PAGADO</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            </form>
           </td>
         </tr>
         <tr>
@@ -207,7 +215,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-pagado">PAGADO</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            </form>
           </td>
         </tr>
         <tr>
@@ -216,7 +226,9 @@
           <td style="text-align: center">Sergio Bustamante</td>
           <td style="text-align: center"><button class="estado-pagado">PAGADO</button></td>
           <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            <form action="/farmacista/detallesOrdenWeb" method="post">
+              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+            </form>
           </td>
         </tr>
         </tbody>
@@ -331,7 +343,7 @@
     <div class="footer-left">
       <img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo" style="width: 400px; height: auto;">
       <p class="footer-links">
-        <a hhref="/farmacista/inicio">Inicio</a> |
+        <a href="/farmacista">Inicio</a> |
         <a href="/farmacista/ordenes_venta">Ordenes de Venta</a> |
         <a href="/farmacista/ordenes_web">Ordenes Web</a> |
         <a href="/farmacista/pre_ordenes">Pre Ordenes</a> |
