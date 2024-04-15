@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <!--=============== REMIXICONS ===============-->
@@ -148,7 +148,7 @@
 
 
 
-<form method="post" action="" enctype="multipart/form-data">
+<form method="post" action="/paciente/guardarOrden" enctype="multipart/form-data">
 
     <div class="container-form">
 
@@ -156,12 +156,12 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Nombre del paciente:</label>
-                <input class="input-form" type="text" placeholder="Ingrese sus nombres" required>
+                <input class="input-form" type="text" name="name" placeholder="Ingrese sus nombres" required>
             </div>
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Apellidos del paciente:</label>
-                <input class="input-form" type="text" placeholder="Ingrese sus apellidos" required>
+                <input class="input-form" type="text" name="lastname" placeholder="Ingrese sus apellidos" required>
             </div>
 
         </div>
@@ -170,12 +170,12 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">DNI:</label>
-                <input class="input-form" type="text" placeholder="Ingrese su DNI" required>
+                <input class="input-form" type="text" name="dni" placeholder="Ingrese su DNI" required>
             </div>
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Edad:</label>
-                <input class="input-form" type="number" placeholder="Ingrese su edad:" required>
+                <input class="input-form" type="number" name="edad" placeholder="Ingrese su edad:" required>
             </div>
 
         </div>
@@ -185,7 +185,7 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Doctor:</label>
-                <select class="select-form" required>
+                <select class="select-form" name="doctor" required>
                     <option selected disabled>Seleccionar Doctor</option>
                     <option>Doctor 1</option>
                     <option>Doctor 2</option>
@@ -195,7 +195,7 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Fecha de nacimiento:</label>
-                <input class="input-form" type="date" required>
+                <input class="input-form" name="fecha" type="date" required>
             </div>
 
         </div>
@@ -205,12 +205,12 @@
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Seguro:</label>
-                <input class="input-form" type="text" placeholder="Ingrese su seguro" required>
+                <input class="input-form" type="text" name="seguro" placeholder="Ingrese su seguro" required>
             </div>
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
-                <input class="input-form" type="text" placeholder="Ingrese su correo" required>
+                <input class="input-form" type="text" name="correo" placeholder="Ingrese su correo" required>
             </div>
 
         </div>
@@ -384,7 +384,7 @@
                                 <p class="modal__message" style="color:dimgray">Selecciona la imagen para subirla desde tu dispositivo. Cuando estes seguro de subir el archivo correcto da click en el botón confirmar.</p>
                                 <div class="modal__actions">
                                     <button style="color:#333"  class="modal__button modal__button--upload" type="button" data-action="file">Seleccionar imagen</button>
-                                    <input id="file" type="file" hidden>
+                                    <input id="file" name="imagen" type="file" hidden required>
                                 </div>
                                 <div class="modal__actions" hidden>
                                     <svg class="modal__file-icon" viewBox="0 0 24 24" width="24px" height="24px" aria-hidden="true">
@@ -446,7 +446,7 @@
         <div class="column">
 
             <button class="btn-cancel" type="button">Cancelar</button>
-            <button class="btn-p" type="button">Confirmar</button>
+            <button class="btn-p" type="submit">Confirmar</button>
 
         </div>
 
