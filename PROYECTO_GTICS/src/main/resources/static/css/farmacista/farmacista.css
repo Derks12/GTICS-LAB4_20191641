@@ -288,7 +288,8 @@ hr.style-one {
 .interface {
     display: grid;
     grid-template-columns: 0.2fr 0.8fr;
-    gap: 25px;
+    gap: 10px;
+    justify-content: center;
 }
 /* END INTERFAZ TOTAL */
 
@@ -327,6 +328,7 @@ hr.style-one {
 .categoria {
     cursor: pointer;
     padding-bottom: 10px;
+    padding-right: 20px;
 }
 
 .alert {
@@ -456,23 +458,21 @@ hr.style-one {
 }
 
 
-
 .med-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     padding-top: 10px;
     padding-bottom: 50px;
-    grid-gap:30px;
-    grid-row-gap: 30px;
+    gap: 15px;
     width: 100%;
     transition: .3s;
 }
 
 .item {
-    max-width: 240px;
     padding: 20px;
     transition: .3s;
-    width: 100%;
+    width: auto;
     outline: none;
     border-radius: 5px;
     color: var(--color-black);
@@ -506,15 +506,20 @@ hr.style-one {
     padding-top: 15px;
     font-size: 1.15rem;
 }
-
+.item-symbol {
+    display: block;
+    text-align: start;
+    padding-top: 15px;
+    font-size: 0.9rem;
+}
 .add-item-button {
     display: block;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 10px auto;
     border: none;
     background-color: var(--color-blue);
     color: #fff;
-    padding: 10px 45px;
+    padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color ease 0.2s;

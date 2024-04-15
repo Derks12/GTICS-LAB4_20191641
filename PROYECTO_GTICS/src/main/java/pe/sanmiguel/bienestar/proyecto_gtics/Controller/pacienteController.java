@@ -33,6 +33,8 @@ public class pacienteController {
     @GetMapping(value = "/chatbot")
     public String chatbot(){return "/paciente/chatbot";}
 
+    @GetMapping(value = "/orden_paciente")
+    public String ordenPaciente(){return "/paciente/orden_paciente";}
 
 
 
