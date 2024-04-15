@@ -9,6 +9,7 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +31,12 @@ public class farmacistaController {
         model.addAttribute("listaMedicamentos", listaMedicamentos);
 
         return "/farmacista/inicio";
+    }
+
+    @PostMapping("/farmacista/continuar_compra")
+    public String continuarCompra(String listaSelectedIds){
+        System.out.println("A:" + listaSelectedIds);
+        return "redirect:/farmacista/formulario_paciente";
     }
 
     @GetMapping("/farmacista/ordenes_venta")

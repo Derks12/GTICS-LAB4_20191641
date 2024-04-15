@@ -138,7 +138,10 @@
                     </div>
 
                     <div>
-                        <a href="/farmacista/formulario_paciente"><button class="continue-button montserrat-medium">Continuar</button></a>
+                            <form th:action="@{/farmacista/continuar_compra}" method="post">
+                                <input type="hidden" name="listaIds" th:value="${#strings.arrayJoin(listaSelectedIds, ',')}" />
+                                <button type="submit" class="continue-button montserrat-medium">Continuar</button>
+                            </form>
                     </div>
                 </div>
 
