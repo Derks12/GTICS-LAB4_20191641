@@ -29,6 +29,8 @@ public class Medicamento {
     private String precioVenta;
     @Column
     private String recetable;
+    @Column
+    private String imagen;
 
     public Integer getIdmedicamento() {
         return idmedicamento;
@@ -108,5 +110,13 @@ public class Medicamento {
 
     public void setRecetable(String recetable) {
         this.recetable = recetable;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

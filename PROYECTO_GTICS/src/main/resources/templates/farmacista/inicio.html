@@ -199,78 +199,13 @@
             <section class="medicamentos">
                 <!-- Contenedor de elementos -->
                 <div class="med-container">
-                    <div class="item">
-                        <img th:src="@{/img/aspirina.png}" alt="Aspirina Tabletas" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 150 U.</div>
-                        <div class="item-title roboto-regular">Aspirina 100mg Tabletas</div>
-                        <span class="item-price roboto-regular">S/10.60</span>
+                    <div class="item" th:each="medicamento : ${listaMedicamentos}">
+                        <img th:src="${medicamento.imagen}" th:alt="${medicamento.nombre}" class="img-item">
+                        <div class="subtitulo-item roboto-bold" th:text="${medicamento.nombre}" >Medicamento</div>
+                        <div class="item-title roboto-regular" th:text="${medicamento.unidad}">Unidad</div>
+                        <span class="item-price roboto-regular" th:text=" 'S/. ' + ${medicamento.precioVenta}">Precio</span>
                         <button class="add-item-button montserrat-medium" id="item1">Añadir a la Orden</button>
                     </div>
-                    <div class="item">
-                        <img th:src="@{/img/apronax.png}" alt="Sal de Andrews Efervesment" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 50 U.</div>
-                        <div class="item-title roboto-regular">Apronax</div>
-                        <span class="item-price roboto-regular">S/1.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/andrews.png}" alt="Sal de Andrews Efervesment" class="img-item">
-                        <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                        <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
-                        <span class="item-price roboto-regular">S/1.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/gingisona.png}" alt="Gingisona Spray" class="img-item">
-                        <div class="subtitulo-item roboto-bold">SPRAY 700 mL</div>
-                        <div class="item-title roboto-regular">Gingisona Spray</div>
-                        <span class="item-price roboto-regular">S/8.90</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/doloneurobion.png}" alt="Dolo Neurobion Forte" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 100 U.</div>
-                        <div class="item-title roboto-regular">Dolo Neurobion Forte</div>
-                        <span class="item-price roboto-regular">S/10.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/aspirina.png}" alt="Aspirina Tabletas" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 150 U.</div>
-                        <div class="item-title roboto-regular">Aspirina 100mg Tabletas</div>
-                        <span class="item-price roboto-regular">S/10.60</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/apronax.png}" alt="Sal de Andrews Efervesment" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 50 U.</div>
-                        <div class="item-title roboto-regular">Apronax</div>
-                        <span class="item-price roboto-regular">S/1.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/andrews.png}" alt="Sal de Andrews Efervesment" class="img-item">
-                        <div class="subtitulo-item roboto-bold">SOBRE 20G</div>
-                        <div class="item-title roboto-regular">Sal de Andrews Efervesment</div>
-                        <span class="item-price roboto-regular">S/1.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/gingisona.png}" alt="Gingisona Spray" class="img-item">
-                        <div class="subtitulo-item roboto-bold">SPRAY 700 mL</div>
-                        <div class="item-title roboto-regular">Gingisona Spray</div>
-                        <span class="item-price roboto-regular">S/8.90</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-                    <div class="item">
-                        <img th:src="@{/img/doloneurobion.png}" alt="Dolo Neurobion Forte" class="img-item">
-                        <div class="subtitulo-item roboto-bold">TABLETAS 100 U.</div>
-                        <div class="item-title roboto-regular">Dolo Neurobion Forte</div>
-                        <span class="item-price roboto-regular">S/10.20</span>
-                        <button class="add-item-button montserrat-medium">Añadir a la Orden</button>
-                    </div>
-
-
                 </div>
 
             </section>

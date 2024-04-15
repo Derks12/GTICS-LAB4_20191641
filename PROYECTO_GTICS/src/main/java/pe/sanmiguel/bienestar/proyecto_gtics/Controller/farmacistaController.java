@@ -1,6 +1,7 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
@@ -23,13 +24,10 @@ public class farmacistaController {
     }
 
     @GetMapping("/farmacista")
-    public String farmacistaInicio() {
+    public String farmacistaInicio(Model model) {
 
         List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
-
-        for (Medicamento medicamento : listaMedicamentos){
-            System.out.println(medicamento.getNombre());
-        }
+        model.addAttribute("listaMedicamentos", listaMedicamentos);
 
         return "/farmacista/inicio";
     }
