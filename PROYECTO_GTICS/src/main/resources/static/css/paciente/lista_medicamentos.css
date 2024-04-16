@@ -42,9 +42,6 @@
     padding-right: 20px;
 }
 
-
-
-
 /* END FILTROS PANEL */
 
 
@@ -59,7 +56,7 @@
 
 .items-preview {
     margin-top: 20px;
-    max-height: 220px;
+    max-height: 276px;
     overflow: auto;
     border-radius: 0.25rem;
     color: var(--color-black);
