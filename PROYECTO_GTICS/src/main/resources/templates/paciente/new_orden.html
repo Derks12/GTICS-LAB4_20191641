@@ -208,7 +208,7 @@
 
 
         <div class="column-start">
-            <div class="input-label-box">
+            <div class="radio-label-box"  >
                 <label style="font-weight: bold;padding-bottom: 8px;color:dimgray">Género:</label>
 
                 <div class="input-label-radio">
@@ -271,7 +271,6 @@
 
 
                     <div style="padding-bottom: 20px; padding-top: 20px; display: flex; flex-direction: column; row-gap:3px; align-items: start">
-
                         <div>
 
                             <input id="searchInput" type="text" class="input-form" style="outline: none" placeholder="Buscar medicamento" >
@@ -287,11 +286,12 @@
                             <!-- Contenedor de elementos -->
                             <div class="med-container">
                                 <div class="item" th:each="medicamento : ${listaMedicamentos}">
+                                    <input type="hidden" class="item" data-categoria="${medicamento.categorias}" th:each="medicamento : ${listaMedicamentos}">
                                     <img th:src="${medicamento.imagen}" th:alt="${medicamento.nombre}" class="img-item">
                                     <div class="subtitulo-item roboto-bold" th:text="${medicamento.unidad}" >Unidad</div>
                                     <div class="item-title roboto-regular" th:text="${medicamento.nombre}"   th:style="${medicamento.nombre.length()>=21 ? 'font-size:15px' : ''}"  >Medicamento</div>
                                     <div style="display: flex; flex-direction: row; gap: 5px; align-items: end;">
-                                        <span class="item-symbol">S/. </span><span class="item-price roboto-regular" th:text="${medicamento.precioVenta}">Precio</span>
+                                        <span class="item-symbol">S/. </span><span class="item-price roboto-regular" th:text="${medicamento.categorias}">Precio</span>
                                     </div>
 
                                     <button class="add-item-button montserrat-medium" type="button" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
@@ -472,9 +472,6 @@
         </div>
     </footer>
 </div>
-
-
-
 
 
 
