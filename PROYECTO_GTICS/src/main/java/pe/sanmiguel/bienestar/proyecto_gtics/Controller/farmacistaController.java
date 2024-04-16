@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -27,18 +27,36 @@ public class farmacistaController {
 
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
-
         List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
         model.addAttribute("listaMedicamentos", listaMedicamentos);
-
         return "/farmacista/inicio";
     }
 
     @PostMapping("/farmacista/continuar_compra")
-    public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
-        System.out.println("A:" + listaSelectedIds);
+    public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds, Model model){
+
+        ArrayList<Optional<Medicamento>> medicamentosSeleccionados = new ArrayList<>();
+        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
+            medicamentosSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+        }
+        model.addAttribute("listaIds", listaSelectedIds);
+        model.addAttribute("medicamentosList", medicamentosSeleccionados);
         return "redirect:/farmacista/formulario_paciente";
     }
+
+    @PostMapping("/farmacista/finalizar_compra")
+    public String finalizarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
+
+        ArrayList<Optional<Medicamento>> medicamentosSeleccionados = new ArrayList<>();
+
+        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
+            medicamentosSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+        }
+
+        return "redirect:/farmacista/detallesOrdenWeb";
+    }
+
+
 
     @GetMapping("/farmacista/ordenes_venta")
     public String OrdenesVenta() {
