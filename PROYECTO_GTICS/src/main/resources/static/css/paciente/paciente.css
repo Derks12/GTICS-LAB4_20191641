@@ -211,6 +211,13 @@ td{
     flex-direction: column;
 }
 
+.radio-label-box{
+    display: flex;
+    flex-direction: column;
+    margin-left: 104px ;
+
+}
+
 .input-label-radio{
     display: flex;
     flex-direction: row;
@@ -221,9 +228,9 @@ td{
 
 
 .select-form {
-    width: 550px;
-    height: 48px;
-    margin-top:4px;
+    width: 450px;
+    height: 42px;
+    margin-top:7px;
     padding: 10px 12px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -245,7 +252,7 @@ td{
     margin-top:6px;
     padding-left: 15px;
     outline: none;
-    width: 550px;
+    width: 450px;
     height: 42px;
     border: 1px solid #DFDFDF;
     border-radius: 5px;
@@ -278,11 +285,14 @@ td{
 }
 
 
-@media screen and (max-width: 1205px) {
+@media screen and (max-width: 1005px) {
     .column-start{
         justify-content: center;
+        margin-left: 1px;
     }
-
+    .radio-label-box{
+        margin-left: 1px;
+    }
 }
 
 
