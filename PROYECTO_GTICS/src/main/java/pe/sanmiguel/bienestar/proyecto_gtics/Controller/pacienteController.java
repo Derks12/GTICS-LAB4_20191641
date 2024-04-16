@@ -77,7 +77,12 @@ public class pacienteController {
                                @RequestParam(value = "correo", required = false) String correo,
                                @RequestParam(value = "genero", required = false) String genero,
                                @RequestParam(value = "imagen", required = false) MultipartFile archivo,
+                               @RequestParam(value = "listaIds", required = false) List<String> lista,
                                Model model){
+
+
+        System.out.println("Nombre: " + name);
+        System.out.println("Lista: " + lista);
 
         try{
             byte[] bytes = archivo.getBytes();
