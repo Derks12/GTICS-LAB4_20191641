@@ -334,7 +334,7 @@ td{
 }
 
 .popup-container .popup-box{
-    width: 1500px;
+    width: 1600px;
     background: white;
     border: 6px;
     box-shadow: 0 0 10px rgba(0,0,0, .1);
@@ -345,7 +345,7 @@ td{
 
 
 .popup-container.active .popup-box{
-    transform: scale(.7);
+    transform: scale(1);
     transition: .4s ease;
     transition-delay: .25s;
     z-index: 9999;

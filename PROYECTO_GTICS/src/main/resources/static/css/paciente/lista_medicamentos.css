@@ -1,3 +1,56 @@
+/* INTERFAZ TOTAL */
+.interface {
+    justify-content: center;
+}
+/* END INTERFAZ TOTAL */
+
+
+/* FILTROS PANEL */
+
+.filtros {
+    margin-top: 10px;
+    border-radius: 0.25rem;
+    max-height: 440px;
+    color: var(--color-black);
+    background: var(--color-white);
+}
+
+.container-filters {
+    padding: 20px;
+}
+
+.filter-title {
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #d3d3d3;
+}
+
+.list-categorias{
+    max-height: 240px;
+    overflow: auto;
+}
+
+.categorias-title {
+    font-size: 1.2rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.categoria {
+    cursor: pointer;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}
+
+
+
+
+/* END FILTROS PANEL */
+
+
+
+
+
 /* LISTA MEDICAMENTOS */
 
 .hide {
@@ -208,33 +261,9 @@
     margin-right: 10px; /* Separación entre el campo de entrada y el botón */
 }
 
-.search-bar input[type="text"] {
-    width: 100%; /* Ajustar el ancho del campo de entrada */
-    padding: 10px;
-    font-size: 16px;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-}
 
-.search-bar button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 1px solid #f0f0f0;
-    border-radius: 0 5px 5px 0;
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
 
-.search-bar button:hover {
-    background-color: #e0e0e0;
-    border: 1px solid #e0e0e0;
-}
 
-.search-bar input[type="text"]:focus {
-    outline: none !important;
-    border: 1px solid;
-    border-image: linear-gradient(to right, var(--color-blue), #ffffff); /* Crea un gradiente horizontal que va de var(--color-blue) a transparente */
-    border-image-slice: 1; /* Asegura que el gradiente cubra todo el borde */
-}
+
 
 /* END LISTA MEDICAMENTOS */
