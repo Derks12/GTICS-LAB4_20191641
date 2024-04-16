@@ -12,7 +12,7 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 @Controller
 public class farmacistaController {
@@ -25,6 +25,9 @@ public class farmacistaController {
         this.medicamentoRepository = medicamentoRepository;
     }
 
+    ArrayList<Medicamento> medicamentosSeleccionados = new ArrayList<>();
+    List<String> listaSelectedIds = new ArrayList<>();
+
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
         List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
@@ -33,14 +36,17 @@ public class farmacistaController {
     }
 
     @PostMapping("/farmacista/continuar_compra")
-    public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds, Model model){
+    public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
 
-        ArrayList<Optional<Medicamento>> medicamentosSeleccionados = new ArrayList<>();
+        ArrayList<Optional<Medicamento>> OptSeleccionados = new ArrayList<>();
+
+        this.listaSelectedIds = listaSelectedIds;
         for (int i = 0; i < listaSelectedIds.size(); i += 2) {
-            medicamentosSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+            OptSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
         }
-        model.addAttribute("listaIds", listaSelectedIds);
-        model.addAttribute("medicamentosList", medicamentosSeleccionados);
+
+        medicamentosSeleccionados = (ArrayList<Medicamento>) OptSeleccionados.stream().flatMap(Optional::stream).collect(Collectors.toList());
+
         return "redirect:/farmacista/formulario_paciente";
     }
 
@@ -73,7 +79,11 @@ public class farmacistaController {
         return "/farmacista/pre_ordenes";
     }
     @GetMapping("/farmacista/formulario_paciente")
-    public String forPaciente() {
+    public String forPaciente(Model model) {
+        System.out.println(listaSelectedIds);
+        System.out.println(medicamentosSeleccionados.get(0));
+        model.addAttribute("listaSelectedIds", listaSelectedIds);
+        model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         return "/farmacista/formularioPaciente";
     }
     @PostMapping("/farmacista/detallesOrdenWeb")

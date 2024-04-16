@@ -411,6 +411,7 @@ hr.style-one {
     color: #0c0808;
     border: solid 1px #d3d3d3;
     border-radius: 10px;
+    width: 55px;
 }
 
 .item-details {
@@ -551,16 +552,18 @@ hr.style-one {
 
 .search-bar input[type="text"] {
     width: 100%; /* Ajustar el ancho del campo de entrada */
-    padding: 10px;
-    font-size: 16px;
+    padding: 10px 92px 10px 10px;
+    font-size: 1.1rem;
     background-color: #ffffff;
-    border: 1px solid #ffffff;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    outline: none;
 }
 
 .search-bar button {
     padding: 10px 20px;
     font-size: 16px;
-    border: 1px solid #f0f0f0;
+    border: 2px solid #f0f0f0;
     border-radius: 0 5px 5px 0;
     background-color: #f0f0f0;
     cursor: pointer;
@@ -568,15 +571,27 @@ hr.style-one {
 
 .search-bar button:hover {
     background-color: #e0e0e0;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #e0e0e0;
 }
 
 .search-bar input[type="text"]:focus {
-    outline: none !important;
-    border: 1px solid;
-    border-image: linear-gradient(to right, var(--color-blue), #ffffff); /* Crea un gradiente horizontal que va de var(--color-blue) a transparente */
-    border-image-slice: 1; /* Asegura que el gradiente cubra todo el borde */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+
+
+.input-form{
+    width: 400px;
+    margin-top:6px;
+    padding-left: 15px;
+    outline: none;
+    height: 42px;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+
 
 /* END LISTA MEDICAMENTOS */
 
@@ -618,102 +633,122 @@ hr.style-one {
 
 /*=======================FORMULARIO PACIENTE=====================*/
 
-.interface-formulario {
+.interface-formulario{
     display: grid;
     grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    padding-bottom: 30px;
 }
 
+.container-form{
+    max-width: 1100px;
+}
 
-.formulario {
+.column{
+    display: flex;
+    flex-direction: row;
+    row-gap: 28px;
+    column-gap: 40px;
+    padding-top: 20px;
+    padding-bottom: 22px;
+    justify-content: center;
+}
+
+.column-start{
+    display: flex;
+    flex-direction: row;
+    row-gap: 28px;
+    column-gap: 40px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    justify-content: start;
+}
+
+.input-label-box{
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
-.container-formulario {
+.input-label-radio{
     display: flex;
-    justify-content: center;
-    padding-right: 30px;
+    flex-direction: row;
+    column-gap: 30px;
 }
 
-.formulario-outside {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-    column-gap: 60px;
-    row-gap: 15px;
+
+.select-form {
+    width: 400px;
+    height: 48px;
+    margin-top:4px;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 15px;
+    outline: none;
+
+}
+.select-form:focus{
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-@media screen and (max-width: 1000px)  {
-    .formulario-outside {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+.input-form{
+    width: 400px;
+    margin-top:6px;
+    padding-left: 15px;
+    outline: none;
+    height: 42px;
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.input-form:focus{
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+
+/*Responsive*/
+@media screen and (max-width: 1250px) {
+    .container-form .column {
+        flex-wrap: wrap;
     }
 }
 
-.formulario-inside {
-    display: flex;
-    width: max-content;
-    flex-direction: column;
-    gap: 10px;
+@media screen and (max-width: 768px) {
+    .select-form{
+        width: 210px;
+    }
+    .input-form {
+        width: 100%; /* Cambia el ancho a 100% para ocupar todo el ancho disponible */
+    }
 }
 
-.input-box label {
-    color: #333;
-    margin-bottom: 5px;
+
+@media screen and (max-width: 1205px) {
+    .column-start{
+        justify-content: center;
+    }
+
 }
 
-.input-box input {
-    height: 50px;
-    width: 100%;
-    padding: 0 15px;
-    font-size: 1rem;
-    color: #707070;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.input-box input:focus {
-    border-color: var(--color-blue);
-}
-
-.gender-box {
+.items-list {
     margin-top: 20px;
+    border-radius: 0.25rem;
+    color: var(--color-black);
+    background: var(--color-white);
 }
 
-.gender-option {
-    display: flex;
-    gap: 15px;
-}
-.gender-option .gender {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.inside-items-list {
+    padding: 20px;
 }
 
-
-.gender-option .gender input[type="radio"]:checked {
-    border-color: var(--color-blue);
+.order-items {
+    min-height: 520px;
+    max-height: 520px;
+    overflow: auto;
 }
-
-.gender-option .gender label {
-    color: #707070;
-    cursor: pointer;
-}
-
-.form button {
-    height: 55px;
-    width: 100%;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-top: 30px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background: rgb(154, 154, 157);
-}
-
 
 
 /*===============FIN FORMULARIO PACIENTE================*/

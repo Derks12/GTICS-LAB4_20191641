@@ -136,72 +136,97 @@
 
                 <div class="container-formulario">
 
-                    <form method="post" th:action="@{/farmacista/confirmar_compra}">
+                    <form id="form" method="post" th:action="@{/farmacista/confirmar_compra}">
 
-                        <div class="formulario-outside">
+                        <div class="container-form">
 
-                            <div class="input-box">
-                                <label>Nombres</label>
-                                <input type="text" placeholder="Ingrese su nombre" required />
+                            <div class="column">
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Nombre del paciente:</label>
+                                    <input class="input-form" type="text" name="name" placeholder="Ingrese sus nombres" required>
+                                </div>
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Apellidos del paciente:</label>
+                                    <input class="input-form" type="text" name="lastname" placeholder="Ingrese sus apellidos" required>
+                                </div>
+
                             </div>
 
-                            <div class="input-box">
-                                <label>DNI</label>
-                                <input type="number" placeholder="Ingrese su DNI" required />
+                            <div class="column">
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">DNI:</label>
+                                    <input class="input-form" type="text" name="dni" placeholder="Ingrese su DNI" required>
+                                </div>
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Edad:</label>
+                                    <input class="input-form" type="number" name="edad" placeholder="Ingrese su edad:" required>
+                                </div>
+
                             </div>
 
-                            <div class="input-box">
-                                <label>Doctor</label>
-                                <input type="text" placeholder="Ingrese su doctor" required />
+
+                            <div class="column">
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Doctor:</label>
+                                    <select class="select-form" name="doctor" required>
+                                        <option selected disabled>Seleccionar Doctor</option>
+                                        <option>Doctor 1</option>
+                                        <option>Doctor 2</option>
+                                        <option>Doctor 3</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Fecha de nacimiento:</label>
+                                    <input class="input-form" name="fecha" type="date" required>
+                                </div>
+
                             </div>
 
-                            <div class="input-box">
-                                <label>Seguro</label>
-                                <input type="text" placeholder="Ingrese su seguro" required />
+
+                            <div class="column">
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Seguro:</label>
+                                    <input class="input-form" type="text" name="seguro" placeholder="Ingrese su seguro" required>
+                                </div>
+
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
+                                    <input class="input-form" type="text" name="correo" placeholder="Ingrese su correo" required>
+                                </div>
+
                             </div>
 
-                            <div class="input-box">
-                                <label>Apellidos</label>
-                                <input type="text" placeholder="Ingrese su apellido" required />
-                            </div>
 
-                            <div class="input-box">
-                                <label>Edad</label>
-                                <input type="number" placeholder="Ingrese su edad" required />
-                            </div>
+                            <div class="column-start">
+                                <div class="input-label-box">
+                                    <label style="font-weight: bold;padding-bottom: 8px;color:dimgray">Género:</label>
 
-                            <div class="input-box">
-                                <label>Fecha de nacimiento</label>
-                                <input type="date" required />
-                            </div>
+                                    <div class="input-label-radio">
 
-                            <div class="input-box">
-                                <label>Correo electrónico</label>
-                                <input type="email" placeholder="Ingrese su correo electrónico" required />
+                                        <div>
+                                            <input  type="radio" name="genero" value="m" checked>
+                                            <label style="font-size:16px">Hombre</label>
+                                        </div>
+                                        <div>
+                                            <input  type="radio" name="genero" value="f">
+                                            <label style="font-size:16px">Mujer</label>
+                                        </div>
+                                        <div>
+                                            <input  type="radio" name="genero" value="na">
+                                            <label style="font-size:16px">Prefiero no decirlo</label>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="gender-box">
-                            <label>Genero</label>
-                            <div class="gender-option">
-                                <div class="gender">
-                                    <input type="radio" id="check-male" name="gender" checked />
-                                    <label for="check-male">Hombre</label>
-                                </div>
-                                <div class="gender">
-                                    <input type="radio" id="check-female" name="gender" />
-                                    <label for="check-female">Mujer</label>
-                                </div>
-                                <div class="gender">
-                                    <input type="radio" id="check-other" name="gender" />
-                                    <label for="check-other">Prefiero no decirlo</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit">Agregar al paciente</button>
-                        <a href="/farmacista"><button>Regresar</button></a>
                     </form>
 
                 </div>
@@ -211,7 +236,47 @@
 
             <section class="items-list">
 
+                <div class="inside-items-list">
+                    <div class="preview-title roboto-regular">
+                        Lista de Productos Seleccionados
+                    </div>
 
+                    <div class="order-items">
+                        <div class="selected-item" th:each="medicamento : ${medicamentosSeleccionados}">
+                            <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
+                            <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
+                            <div class="item-on-list">
+                                <div class="item-details">
+                                    <div class="selector-cantidad">
+                                        <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                        <input type="text" value="1" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
+                                        <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: row; gap: 5px; align-items: center;">
+                                        <span style="padding-top: 5px;">S/. </span><span class="item-price-clicked" th:text="${medicamento.precioVenta}"></span>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger btn-eliminar" th:data-item-id="${medicamento.idMedicamento}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-title roboto-regular" style="padding-top: 20px">
+
+                        <div class="price-total-div roboto-medium">
+                            TOTAL <span class="price-total">S/0.00</span>
+                        </div>
+
+                        <form th:action="@{/farmacista/finalizar_compra}" method="post">
+                            <input id="listaIds" type="hidden" name="listaIds" value=""/>
+                            <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
+                        </form>
+                    </div>
+
+                </div>
 
             </section>
 
