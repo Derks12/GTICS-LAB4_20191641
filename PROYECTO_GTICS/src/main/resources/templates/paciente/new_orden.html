@@ -253,10 +253,7 @@
                                 </div>
 
                                 <div>
-
-                                        <input type="hidden" name="listaIds" th:value="${#strings.arrayJoin(listaSelectedIds, ',')}" required>
-                                        <button type="button" class="continue-button montserrat-medium">Continuar</button>
-
+                                        <input type="hidden" name="listaIds" th:value="${#strings.arrayJoin(listaSelectedIds, ',')}" >
                                 </div>
                             </div>
 
@@ -306,6 +303,7 @@
                                     <button class="add-item-button montserrat-medium" type="button" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
                                 </div>
                             </div>
+
                         </section>
 
                     </div>
@@ -667,7 +665,7 @@
                         Swal.fire({
                             icon: "warning",
                             iconColor: '#DC3545',
-                            title: "Ese medicamento ya ha sido seleccionado",
+                            title: "Ese medicamento ya ha sido añadido",
                             confirmButtonText: "OK",
                             confirmButtonColor: '#0D6EFD',
                             width: 500,
