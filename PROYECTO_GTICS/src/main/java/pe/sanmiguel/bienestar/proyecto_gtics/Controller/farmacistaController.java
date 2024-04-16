@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
@@ -34,7 +35,7 @@ public class farmacistaController {
     }
 
     @PostMapping("/farmacista/continuar_compra")
-    public String continuarCompra(String listaSelectedIds){
+    public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
         System.out.println("A:" + listaSelectedIds);
         return "redirect:/farmacista/formulario_paciente";
     }
