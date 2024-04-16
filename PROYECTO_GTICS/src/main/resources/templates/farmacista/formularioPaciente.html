@@ -22,7 +22,9 @@
     <!--=============== JQUERY ===============-->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-
+    <!--=============== SWEETALERT ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css" rel="stylesheet">
 
     <title>Bienestar San Miguel | Farmacista</title>
 </head>
@@ -118,75 +120,106 @@
             <div class="main-subtitle montserrat-regular"> Creación de Orden de Venta </div>
         </div>
 
-    <hr style="border-top: 1px solid #262626;">
+        <hr class="style-one">
 
-    <div style="margin-bottom: 40px"></div>
+        <div class="interface-formulario">
 
-    <section class="container">
-        <form th:object="${persona}" class="form">
-            <div class="column">
-                <div class="input-box">
-                    <label>Nombres</label>
-                    <input type="text" placeholder="Ingrese su nombre" required />
+
+            <section class="formulario">
+
+                <div class="search-bar" style="padding-bottom: 20px; padding-top: 20px;">
+                    <label class="search-label">
+                        <input type="text" placeholder="Buscar paciente...">
+                    </label>
+                    <button type="submit">Buscar</button>
                 </div>
-                <div class="input-box">
-                    <label>Apellidos</label>
-                    <input type="text" placeholder="Ingrese su apellido" required />
+
+                <div class="container-formulario">
+
+                    <form method="post" th:action="@{/farmacista/confirmar_compra}">
+
+                        <div class="formulario-outside">
+
+                            <div class="input-box">
+                                <label>Nombres</label>
+                                <input type="text" placeholder="Ingrese su nombre" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>DNI</label>
+                                <input type="number" placeholder="Ingrese su DNI" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Doctor</label>
+                                <input type="text" placeholder="Ingrese su doctor" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Seguro</label>
+                                <input type="text" placeholder="Ingrese su seguro" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Apellidos</label>
+                                <input type="text" placeholder="Ingrese su apellido" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Edad</label>
+                                <input type="number" placeholder="Ingrese su edad" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Fecha de nacimiento</label>
+                                <input type="date" required />
+                            </div>
+
+                            <div class="input-box">
+                                <label>Correo electrónico</label>
+                                <input type="email" placeholder="Ingrese su correo electrónico" required />
+                            </div>
+                        </div>
+
+
+                        <div class="gender-box">
+                            <label>Genero</label>
+                            <div class="gender-option">
+                                <div class="gender">
+                                    <input type="radio" id="check-male" name="gender" checked />
+                                    <label for="check-male">Hombre</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="check-female" name="gender" />
+                                    <label for="check-female">Mujer</label>
+                                </div>
+                                <div class="gender">
+                                    <input type="radio" id="check-other" name="gender" />
+                                    <label for="check-other">Prefiero no decirlo</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit">Agregar al paciente</button>
+                        <a href="/farmacista"><button>Regresar</button></a>
+                    </form>
+
                 </div>
-            </div>
-            <div class="column">
-                <div class="input-box">
-                    <label>DNI</label>
-                    <input type="number" placeholder="Ingrese su DNI" required />
-                </div>
-                <div class="input-box">
-                    <label>Edad</label>
-                    <input type="number" placeholder="Ingrese su edad" required />
-                </div>
-            </div>
-            <div class="column">
-                <div class="input-box">
-                    <label>Doctor</label>
-                    <input type="text" placeholder="Ingrese su doctor" required />
-                </div>
-                <div class="input-box">
-                    <label>Fecha de nacimiento</label>
-                    <input type="date" placeholder="Ingrese su fecha de nacimiento" required />
-                </div>
-            </div>
-            <div class="column">
-                <div class="input-box">
-                    <label>Seguro</label>
-                    <input type="text" placeholder="Ingrese su seguro" required />
-                </div>
-                <div class="input-box">
-                    <label>Correo electronico</label>
-                    <input type="text" placeholder="Ingrese su correo electronico" required />
-                </div>
-            </div>
-            <div class="gender-box">
-                <h3>Genero</h3>
-                <div class="gender-option">
-                    <div class="gender">
-                        <input type="radio" id="check-male" name="gender" checked />
-                        <label for="check-male">Hombre</label>
-                    </div>
-                    <div class="gender">
-                        <input type="radio" id="check-female" name="gender" />
-                        <label for="check-female">Mujer</label>
-                    </div>
-                    <div class="gender">
-                        <input type="radio" id="check-other" name="gender" />
-                        <label for="check-other">Prefiero no decirlo</label>
-                    </div>
-                </div>
-            </div>
-            <button>Agregar al paciente</button>
-        </form>
-    </section>
+            </section>
+
+
+
+            <section class="items-list">
+
+
+
+            </section>
+
+        </div>
+
+
     </div>
 
-    <a href="/farmacista"><button>Regresar</button></a>
 
 
     <div>
@@ -234,8 +267,161 @@
         </footer>
     </div>
 
-
-
-
 </body>
+
+<script>
+
+    listaSelectedIds = [];
+
+    $(document).ready(function() {
+
+
+        const botonesEliminarItem = document.getElementsByClassName('btn-eliminar');
+        for(var i=0;i<botonesEliminarItem.length; i++){
+            const buttonEliminar = botonesEliminarItem[i];
+            buttonEliminar.addEventListener('click',eliminarItemCarrito);
+        }
+        var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');
+        for(var i=0;i<botonesSumarCantidad.length; i++){
+            const buttonSumar = botonesSumarCantidad[i];
+            buttonSumar.addEventListener('click',sumarCantidad);
+        }
+        var botonesRestarCantidad = document.getElementsByClassName('restar-cantidad');
+        for(var i=0;i<botonesRestarCantidad.length; i++){
+            const buttonRestar = botonesRestarCantidad[i];
+            buttonRestar.addEventListener('click',restarCantidad);
+        }
+        var botonesAgregar = document.getElementsByClassName('add-item-button');
+        for(var i=0; i<botonesAgregar.length;i++){
+            const buttonAgregar = botonesAgregar[i];
+            buttonAgregar.addEventListener('click', clickItemAdd);
+        }
+        var botonesQuitar = document.getElementsByClassName('delete-item-button');
+        for(var i=0; i<botonesQuitar.length;i++){
+            const buttonAgregar = botonesQuitar[i];
+            buttonAgregar.addEventListener('click', deleteItem);
+        }
+
+        const inputCantidad = document.getElementsByClassName('item-quantity-clicked')[0];
+        inputCantidad.addEventListener('change', setearCantidad);
+        inputCantidad.addEventListener('focus', function(event) {
+            event.target.dataset.previousValue = event.target.value;
+        });
+
+        function deleteItem(event){
+
+            const button = event.target;
+            const idDelete = button.dataset.itemId;
+
+            let pos = listaSelectedIds.indexOf(idDelete);
+            listaSelectedIds.splice(pos,1);
+            listaSelectedIds.splice(pos+1,1);
+
+            const listaIdsInput = document.getElementById('listaIds');
+            listaIdsInput.value = listaSelectedIds;
+
+            button.parentElement.parentElement.parentElement.remove();
+            actualizarMontoTotal();
+        }
+
+        function sumarCantidad(event){
+            const buttonClicked = event.target;
+            const idAddQuantity = buttonClicked.dataset.itemId;
+            const selector = buttonClicked.parentElement;
+            console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
+            let cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
+            cantidadActual++;
+            selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
+
+            const toPlus = listaSelectedIds.indexOf(idAddQuantity);
+
+            listaSelectedIds[toPlus+1] = cantidadActual;
+
+            actualizarMontoTotal();
+        }
+
+        function restarCantidad(event){
+            const buttonClicked = event.target;
+            const idQuitQuantity = buttonClicked.dataset.itemId;
+            const selector = buttonClicked.parentElement;
+            console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
+
+
+            let cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
+            cantidadActual--;
+            if(cantidadActual>=1){
+                selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
+
+                const toMinus = listaSelectedIds.indexOf(idQuitQuantity);
+
+                listaSelectedIds[toMinus+1] = cantidadActual;
+
+                actualizarMontoTotal();
+            }
+        }
+
+        function setearCantidad(event){
+            const inputFilled = event.target;
+            const idSetQuantity = inputFilled.dataset.itemId;
+            const valor = inputFilled.value;
+            const cantidadActual = parseInt(valor); // Convertir a número entero
+
+            // Verificar si el valor es un número válido
+            if (!isNaN(cantidadActual) && cantidadActual >= 1) {
+                // Actualizar el valor del input y el monto total
+
+                const toSet = listaSelectedIds.indexOf(idSetQuantity);
+
+                listaSelectedIds[toSet+1] = cantidadActual;
+
+                actualizarMontoTotal();
+            } else {
+                // Restaurar el valor anterior si no es válido
+                inputFilled.value = inputFilled.dataset.previousValue;
+            }
+        }
+
+        function actualizarMontoTotal() {
+            const listItems = document.getElementsByClassName('lista-items-clicked')[0];
+            const selectedItems = listItems.getElementsByClassName('selected-item');
+            let totalCentavos = 0;
+
+            for (let i = 0; i < selectedItems.length; i++) {
+                const item = selectedItems[i];
+                const precioItem = Math.round(parseFloat(item.getElementsByClassName('item-price-clicked')[0].innerText.replace('S/', '').replace(/,/g, '')) * 100);
+                const cantidadItem = item.getElementsByClassName('item-quantity-clicked')[0].value;
+                totalCentavos += precioItem * cantidadItem;
+            }
+            const totalSoles = totalCentavos / 100;
+            document.getElementsByClassName('price-total')[0].innerText = 'S/' + totalSoles.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+            const listaIdsInput = document.getElementById('listaIds');
+            listaIdsInput.value = listaSelectedIds.join(',');
+
+        }
+
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        let opened = false;
+
+        $('#menu-small').hide();
+
+        $('#nav-toggle').click(function (e) {
+            e.stopPropagation();
+            if (opened) {
+                $('#menu-small').hide();
+            } else {
+                $('#menu-small').show();
+            }
+            opened = !opened;
+        });
+    });
+</script>
+
+
+
 </html>
