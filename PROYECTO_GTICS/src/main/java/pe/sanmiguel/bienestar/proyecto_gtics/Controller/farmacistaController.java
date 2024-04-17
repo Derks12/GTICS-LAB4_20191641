@@ -15,9 +15,7 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenContenidoRepository
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -37,6 +35,7 @@ public class farmacistaController {
 
     ArrayList<Medicamento> medicamentosSeleccionados = new ArrayList<>();
     ArrayList<String> listaCantidades = new ArrayList<>();
+    Integer ordenIdFind;
 
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
@@ -61,8 +60,6 @@ public class farmacistaController {
 
         medicamentosSeleccionados = (ArrayList<Medicamento>) OptSeleccionados.stream().flatMap(Optional::stream).collect(Collectors.toList());
 
-        System.out.println(listaCantidades);
-
         return "redirect:/farmacista/formulario_paciente";
     }
 
@@ -74,23 +71,22 @@ public class farmacistaController {
     }
 
     @PostMapping("/farmacista/finalizar_compra")
+
     public String finalizarCompra(@RequestParam(value = "name") String name,
                                   @RequestParam(value = "lastname") String lastname,
                                   @RequestParam(value = "dni") String dni,
-                                  @RequestParam(value = "edad") String edad,
+                                  @RequestParam(value = "distrito") String distrito,
+                                  @RequestParam(value = "direccion") String direccion,
                                   @RequestParam(value = "doctor") String doctor,
-                                  @RequestParam(value = "fecha") String fecha,
                                   @RequestParam(value = "seguro") String seguro,
                                   @RequestParam(value = "correo") String correo,
-                                  @RequestParam(value = "genero") String genero,
-                                  @RequestParam(value = "listaIds") List<String> listaSelectedIds,
-                                  @RequestParam(value = "priceTotal") String priceTotal,
-                                  Model model) {
 
-        System.out.println(priceTotal);
+                                  @RequestParam(value = "listaIds") List<String> listaSelectedIds,
+                                  @RequestParam(value = "priceTotal") String priceTotal) {
+
+        ordenIdFind = 0;
 
         ArrayList<Optional<Medicamento>> listaFinalMedicamentosOpt = new ArrayList<>();
-        ArrayList<Medicamento> listaFinalMedicamentos = new ArrayList<>();
         ArrayList<String> listaFinalCantidades = new ArrayList<>();
 
         for (int i = 0; i < listaSelectedIds.size(); i += 2) {
@@ -101,9 +97,7 @@ public class farmacistaController {
             listaFinalCantidades.add(listaSelectedIds.get(i + 1));
         }
 
-        listaFinalMedicamentos = (ArrayList<Medicamento>) listaFinalMedicamentosOpt.stream().flatMap(Optional::stream).collect(Collectors.toList());
-
-        System.out.println(listaFinalCantidades);
+        ArrayList<Medicamento> listaFinalMedicamentos = (ArrayList<Medicamento>) listaFinalMedicamentosOpt.stream().flatMap(Optional::stream).collect(Collectors.toList());
 
 
         Usuario pacienteOrden = new Usuario();
@@ -124,8 +118,8 @@ public class farmacistaController {
             pacienteOrden.setNombres(name);
             pacienteOrden.setApellidos(lastname);
             pacienteOrden.setDni(dni);
-            pacienteOrden.setDireccion("San Miguel");
-            pacienteOrden.setDistrito("San Miguel");
+            pacienteOrden.setDireccion(direccion);
+            pacienteOrden.setDistrito(distrito);
             pacienteOrden.setSeguro(seguro);
             pacienteOrden.setAceptado(false);
             pacienteOrden.setBaneado(false);
@@ -157,36 +151,70 @@ public class farmacistaController {
 
         for (int i = 0; i < listaFinalMedicamentos.size(); i++){
             OrdenContenido contenido = new OrdenContenido();
+
+            if (ordenContenidoRepository.findLastOrdenContenidoId() != null){
+                contenido.setIdEntrada(ordenContenidoRepository.findLastOrdenContenidoId()+1);
+            }
             contenido.setIdOrden(nuevaOrdenId);
             contenido.setIdMedicamento(listaFinalMedicamentos.get(i).getIdMedicamento());
             contenido.setCantidad(Integer.parseInt(listaFinalCantidades.get(i)));
             ordenContenidoRepository.save(contenido);
         }
 
-        model.addAttribute("idOrden",nuevaOrdenId);
+        ordenIdFind = nuevaOrdenId;
+
         return "redirect:/farmacista/ver_orden_venta";
     }
 
     @GetMapping("/farmacista/ver_orden_venta")
-    public String verOrdenesVenta(@RequestParam(value = "idOrden", required = false) Integer nuevaOrdenId, Model model) {
+    public String verOrdenesVenta(Model model) {
 
-        /*
-        if (nuevaOrdenId != null){
-            model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
-            return "/farmacista/ver_orden_venta";
-        } else {
-            return "/farmacista/errorPages/no_existe_orden";
+        if (ordenIdFind != null){
+
+            Optional<Orden> ordenOptional = ordenRepository.findById(ordenIdFind);
+
+            if (ordenOptional.isPresent()){
+                Orden ordenComprobada = ordenOptional.get();
+
+                Optional<Usuario> usuarioOptional = usuarioRepository.findById(ordenComprobada.getIdPaciente());
+                Usuario usuarioComprobado = usuarioOptional.get();
+                ArrayList<OrdenContenido> medicamentosOnOrden = ordenContenidoRepository.findAllByIdOrden(ordenIdFind);
+                ArrayList<Optional<Medicamento>> medicamentosListOptional = new ArrayList<>();
+
+                for (OrdenContenido cont : medicamentosOnOrden){
+                    Integer idMed = cont.getIdMedicamento();
+                    medicamentosListOptional.add(medicamentoRepository.findById(idMed));
+                }
+                ArrayList<Medicamento> medicamentosList = (ArrayList<Medicamento>) medicamentosListOptional.stream().flatMap(Optional::stream).collect(Collectors.toList());;
+
+                model.addAttribute("OrdenComprobada", ordenComprobada);
+                model.addAttribute("usuarioComprobado", usuarioComprobado);
+                model.addAttribute("medicamentosOnOrden", medicamentosOnOrden);
+                model.addAttribute("medicamentosList", medicamentosList);
+                return "/farmacista/ver_orden_venta";
+            }
         }
-        */
-        return "/farmacista/ver_orden_venta";
-
+        return "/farmacista/errorPages/no_existe_orden";
     }
 
 
     @GetMapping("/farmacista/ordenes_venta")
-    public String OrdenesVenta() {
+    public String OrdenesVenta(Model model) {
+
+        List<Orden> listaOrdenes = ordenRepository.findAll();
+
+        model.addAttribute("listaOrdenes",listaOrdenes);
         return "/farmacista/ordenes_venta";
     }
+
+    @PostMapping("/farmacista/ver_orden_venta_tabla")
+    public String verOrdenesVentaTabla(@RequestParam(value = "idOrden") String idOrdenTabla){
+
+        ordenIdFind = Integer.valueOf(idOrdenTabla);
+
+        return "redirect:/farmacista/ver_orden_venta";
+    }
+
     @GetMapping("/farmacista/ordenes_web")
     public String OrdenesWeb() {
         return "/farmacista/ordenes_web";
