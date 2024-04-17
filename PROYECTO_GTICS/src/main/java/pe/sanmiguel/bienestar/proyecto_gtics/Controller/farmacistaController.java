@@ -185,7 +185,7 @@ public class farmacistaController {
                     Integer idMed = cont.getIdMedicamento();
                     medicamentosListOptional.add(medicamentoRepository.findById(idMed));
                 }
-                ArrayList<Medicamento> medicamentosList = (ArrayList<Medicamento>) medicamentosListOptional.stream().flatMap(Optional::stream).collect(Collectors.toList());;
+                ArrayList<Medicamento> medicamentosList = (ArrayList<Medicamento>) medicamentosListOptional.stream().flatMap(Optional::stream).collect(Collectors.toList());
 
                 model.addAttribute("OrdenComprobada", ordenComprobada);
                 model.addAttribute("usuarioComprobado", usuarioComprobado);
@@ -202,8 +202,22 @@ public class farmacistaController {
     public String OrdenesVenta(Model model) {
 
         List<Orden> listaOrdenes = ordenRepository.findAll();
+        List<Integer> IdsUsuarios = new ArrayList<>();
+
+        for (Orden orden : listaOrdenes){
+            IdsUsuarios.add(orden.getIdPaciente());
+        }
+
+        List<Optional<Usuario>> listaUsuariosOptional = new ArrayList<>();
+
+        for (Integer idU : IdsUsuarios){
+            listaUsuariosOptional.add(usuarioRepository.findById(idU));
+        }
+
+        ArrayList<Usuario> listaUsuarios = (ArrayList<Usuario>) listaUsuariosOptional.stream().flatMap(Optional::stream).collect(Collectors.toList());
 
         model.addAttribute("listaOrdenes",listaOrdenes);
+        model.addAttribute("listaUsuarios",listaUsuarios);
         return "/farmacista/ordenes_venta";
     }
 

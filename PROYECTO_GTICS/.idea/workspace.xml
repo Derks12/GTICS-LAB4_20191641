@@ -5,24 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce3b6800-79c3-4ffd-bc67-818873174999" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/cambioContraseña.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/cambioContraseña.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/detallesOrdenWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/detallesOrdenWeb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/facturacion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/facturacion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/notificacion.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_web.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/perfil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/pre_ordenes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/pre_ordenes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_web.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -41,9 +35,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Gerardo/Documents/proyectoGtics/PROYECTO_GTICS/PROYECTO_GTICS",
     "node.js.detected.package.eslint": "true",
