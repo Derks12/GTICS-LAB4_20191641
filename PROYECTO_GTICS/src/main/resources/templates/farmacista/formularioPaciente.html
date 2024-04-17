@@ -246,24 +246,23 @@
                     </div>
 
                     <div class="order-items">
-                        <div class="selected-item" th:each="medicamento : ${medicamentosSeleccionados}">
-                            <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
-                            <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
-                            <div class="item-on-list">
-                                <div class="item-details">
-                                    <div class="selector-cantidad">
-                                        <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
-                                        <input type="text" value="1" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
-                                        <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSeleccionados}">
+
+                                <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
+                                <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
+                                <div class="item-on-list">
+                                    <div class="item-details">
+                                        <div class="selector-cantidad">
+                                            <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                            <input type="text" th:value="${listaCantidades.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
+                                            <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                        </div>
+
+                                        <div style="display: flex; flex-direction: row; gap: 5px; align-items: center;">
+                                            <span style="padding-top: 5px;">S/. </span><span class="item-price-clicked" th:text="${medicamento.precioVenta}"></span>
+                                        </div>
                                     </div>
 
-                                    <div style="display: flex; flex-direction: row; gap: 5px; align-items: center;">
-                                        <span style="padding-top: 5px;">S/. </span><span class="item-price-clicked" th:text="${medicamento.precioVenta}"></span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-danger btn-eliminar" th:data-item-id="${medicamento.idMedicamento}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -344,31 +343,18 @@
 
     $(document).ready(function() {
 
+        actualizarMontoTotal();
 
-        const botonesEliminarItem = document.getElementsByClassName('btn-eliminar');
-        for(var i=0;i<botonesEliminarItem.length; i++){
-            const buttonEliminar = botonesEliminarItem[i];
-            buttonEliminar.addEventListener('click',eliminarItemCarrito);
-        }
         var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');
         for(var i=0;i<botonesSumarCantidad.length; i++){
             const buttonSumar = botonesSumarCantidad[i];
             buttonSumar.addEventListener('click',sumarCantidad);
         }
+
         var botonesRestarCantidad = document.getElementsByClassName('restar-cantidad');
         for(var i=0;i<botonesRestarCantidad.length; i++){
             const buttonRestar = botonesRestarCantidad[i];
             buttonRestar.addEventListener('click',restarCantidad);
-        }
-        var botonesAgregar = document.getElementsByClassName('add-item-button');
-        for(var i=0; i<botonesAgregar.length;i++){
-            const buttonAgregar = botonesAgregar[i];
-            buttonAgregar.addEventListener('click', clickItemAdd);
-        }
-        var botonesQuitar = document.getElementsByClassName('delete-item-button');
-        for(var i=0; i<botonesQuitar.length;i++){
-            const buttonAgregar = botonesQuitar[i];
-            buttonAgregar.addEventListener('click', deleteItem);
         }
 
         const inputCantidad = document.getElementsByClassName('item-quantity-clicked')[0];
@@ -376,22 +362,6 @@
         inputCantidad.addEventListener('focus', function(event) {
             event.target.dataset.previousValue = event.target.value;
         });
-
-        function deleteItem(event){
-
-            const button = event.target;
-            const idDelete = button.dataset.itemId;
-
-            let pos = listaSelectedIds.indexOf(idDelete);
-            listaSelectedIds.splice(pos,1);
-            listaSelectedIds.splice(pos+1,1);
-
-            const listaIdsInput = document.getElementById('listaIds');
-            listaIdsInput.value = listaSelectedIds;
-
-            button.parentElement.parentElement.parentElement.remove();
-            actualizarMontoTotal();
-        }
 
         function sumarCantidad(event){
             const buttonClicked = event.target;
@@ -451,7 +421,7 @@
         }
 
         function actualizarMontoTotal() {
-            const listItems = document.getElementsByClassName('lista-items-clicked')[0];
+            const listItems = document.getElementsByClassName('order-items')[0];
             const selectedItems = listItems.getElementsByClassName('selected-item');
             let totalCentavos = 0;
 

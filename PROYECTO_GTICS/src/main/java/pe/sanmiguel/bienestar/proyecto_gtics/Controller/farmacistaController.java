@@ -26,7 +26,7 @@ public class farmacistaController {
     }
 
     ArrayList<Medicamento> medicamentosSeleccionados = new ArrayList<>();
-    List<String> listaSelectedIds = new ArrayList<>();
+    ArrayList<String> listaCantidades = new ArrayList<>();
 
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
@@ -39,13 +39,19 @@ public class farmacistaController {
     public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
 
         ArrayList<Optional<Medicamento>> OptSeleccionados = new ArrayList<>();
+        listaCantidades = new ArrayList<>();
 
-        this.listaSelectedIds = listaSelectedIds;
         for (int i = 0; i < listaSelectedIds.size(); i += 2) {
             OptSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
         }
 
+        for (int i = 0; i + 1 < listaSelectedIds.size(); i += 2) {
+            listaCantidades.add(listaSelectedIds.get(i + 1));
+        }
+
         medicamentosSeleccionados = (ArrayList<Medicamento>) OptSeleccionados.stream().flatMap(Optional::stream).collect(Collectors.toList());
+
+        System.out.println(listaCantidades);
 
         return "redirect:/farmacista/formulario_paciente";
     }
@@ -80,10 +86,8 @@ public class farmacistaController {
     }
     @GetMapping("/farmacista/formulario_paciente")
     public String forPaciente(Model model) {
-        System.out.println(listaSelectedIds);
-        System.out.println(medicamentosSeleccionados.get(0));
-        model.addAttribute("listaSelectedIds", listaSelectedIds);
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
+        model.addAttribute("listaCantidades", listaCantidades);
         return "/farmacista/formularioPaciente";
     }
     @PostMapping("/farmacista/detallesOrdenWeb")
