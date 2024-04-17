@@ -82,6 +82,36 @@
             float: left;
             color: #999;
         }
+        /* Estilos para el input de texto */
+        .container2:last-child {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px; /* Espacio entre el último mensaje y el input */
+        }
+
+        .container2:last-child input[type="text"] {
+            width: 70%; /* Ancho del input */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px; /* Espacio entre el input y el botón */
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el botón de enviar */
+        .container2:last-child button {
+            background-color: #4CAF50; /* Color de fondo */
+            color: white; /* Color del texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Borde redondeado */
+            cursor: pointer; /* Cursor al pasar */
+        }
+
+        /* Estilos para el icono del botón */
+        .container2:last-child button i {
+            margin-right: 5px; /* Espacio entre el icono y el texto */
+        }
     </style>
 </head>
 
@@ -213,6 +243,12 @@
             <img th:src="@{/img/paciente.png}" alt="Avatar" class="right">
             <p>Perfecto, cambie el medicamento X por el Y</p>
             <span class="time-left">11:05</span>
+        </div>
+
+
+        <div class="container2 darker">
+            <input type="text" placeholder="Escribe tu mensaje aquí...">
+            <button><i class="fa fa-paper-plane"></i>Enviar</button>
         </div>
 
     </div>
