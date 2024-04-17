@@ -4,7 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "medicamento")
 public class Medicamento {
@@ -32,91 +36,4 @@ public class Medicamento {
     @Column
     private String imagen;
 
-    public Integer getIdMedicamento() {
-        return idMedicamento;
-    }
-
-    public void setIdMedicamento(Integer idmedicamento) {
-        this.idMedicamento = idmedicamento;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getVisibleSedes() {
-        return visibleSedes;
-    }
-
-    public void setVisibleSedes(String visibleSedes) {
-        this.visibleSedes = visibleSedes;
-    }
-
-    public String getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(String categorias) {
-        this.categorias = categorias;
-    }
-
-    public String getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
-
-    public String getPrecioCompra() {
-        return precioCompra;
-    }
-
-    public void setPrecioCompra(String precioCompra) {
-        this.precioCompra = precioCompra;
-    }
-
-    public String getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(String precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-
-    public String getRecetable() {
-        return recetable;
-    }
-
-    public void setRecetable(String recetable) {
-        this.recetable = recetable;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
 }

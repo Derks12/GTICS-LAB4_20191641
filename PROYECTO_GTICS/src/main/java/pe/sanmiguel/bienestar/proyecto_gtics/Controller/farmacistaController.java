@@ -5,8 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pe.sanmiguel.bienestar.proyecto_gtics.CurrentTimeSQL;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Orden;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenContenidoRepository;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
 
 import java.util.ArrayList;
@@ -17,12 +22,16 @@ import java.util.stream.Collectors;
 @Controller
 public class farmacistaController {
 
-
     final UsuarioRepository usuarioRepository;
     final MedicamentoRepository medicamentoRepository;
-    public farmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository) {
+    final OrdenRepository ordenRepository;
+    final OrdenContenidoRepository ordenContenidoRepository;
+
+    public farmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository) {
         this.usuarioRepository = usuarioRepository;
         this.medicamentoRepository = medicamentoRepository;
+        this.ordenRepository = ordenRepository;
+        this.ordenContenidoRepository = ordenContenidoRepository;
     }
 
     ArrayList<Medicamento> medicamentosSeleccionados = new ArrayList<>();
@@ -64,7 +73,48 @@ public class farmacistaController {
     }
 
     @PostMapping("/farmacista/finalizar_compra")
-    public String finalizarCompra(){
+    public String finalizarCompra(@RequestParam(value = "name", required = false) String name ,
+                                  @RequestParam(value = "lastname", required = false) String lastname,
+                                  @RequestParam(value = "dni", required = false) String dni,
+                                  @RequestParam(value = "edad", required = false) String edad,
+                                  @RequestParam(value = "doctor", required = false) String doctor,
+                                  @RequestParam(value = "fecha", required = false) String fecha,
+                                  @RequestParam(value = "seguro", required = false) String seguro,
+                                  @RequestParam(value = "correo", required = false) String correo,
+                                  @RequestParam(value = "genero", required = false) String genero,
+                                  @RequestParam(value = "listaIds", required = false) List<String> listaMedicamentos,
+                                  Model model) {
+
+        Usuario pacienteOrden = new Usuario();
+
+        if (usuarioRepository.findByDniAndCorreo(dni, correo) == null){
+            pacienteOrden.setIdUsuario(usuarioRepository.findLastUsuarioId()+1);
+            pacienteOrden.setIdRol(1);
+            pacienteOrden.setCorreo(correo);
+            pacienteOrden.setContrasena("");
+            pacienteOrden.setNombres(name);
+            pacienteOrden.setApellidos(lastname);
+            pacienteOrden.setDni(dni);
+            pacienteOrden.setDireccion("San Miguel");
+            pacienteOrden.setDistrito("San Miguel");
+            pacienteOrden.setSeguro(seguro);
+            pacienteOrden.setAceptado(false);
+            pacienteOrden.setBaneado(false);
+            usuarioRepository.save(pacienteOrden);
+        } else {
+            pacienteOrden = usuarioRepository.findByDniAndCorreo(dni, correo);
+        }
+
+        Orden nuevaOrden = new Orden();
+        nuevaOrden.setIdOrden(ordenRepository.findLastOrdenId()+1);
+        nuevaOrden.setFechaIni(CurrentTimeSQL.getCurrentDate());
+
+        for (String id : listaMedicamentos){
+            
+        }
+
+
+        ordenRepository.save(nuevaOrden);
 
         return "redirect:/farmacista/ver_orden_venta";
     }
