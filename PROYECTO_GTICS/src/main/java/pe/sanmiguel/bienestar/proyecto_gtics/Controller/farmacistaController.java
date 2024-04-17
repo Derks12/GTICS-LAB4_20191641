@@ -178,7 +178,6 @@ public class farmacistaController {
             return "/farmacista/errorPages/no_existe_orden";
         }
         */
-        model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
         return "/farmacista/ver_orden_venta";
 
     }
