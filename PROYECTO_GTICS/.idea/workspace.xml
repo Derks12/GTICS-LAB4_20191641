@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce3b6800-79c3-4ffd-bc67-818873174999" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/cambioContraseña.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/cambioContraseña.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/detallesOrdenWeb.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/detallesOrdenWeb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/facturacion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/facturacion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/notificacion.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_web.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/perfil.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/perfil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/pre_ordenes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/pre_ordenes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_web.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_web.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713358126107</updated>
-      <workItem from="1713358127107" duration="2367000" />
+      <workItem from="1713358127107" duration="3359000" />
     </task>
     <servers />
   </component>
