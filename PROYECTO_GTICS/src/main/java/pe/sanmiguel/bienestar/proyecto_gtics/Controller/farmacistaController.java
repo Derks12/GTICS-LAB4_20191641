@@ -83,10 +83,28 @@ public class farmacistaController {
                                   @RequestParam(value = "seguro") String seguro,
                                   @RequestParam(value = "correo") String correo,
                                   @RequestParam(value = "genero") String genero,
-                                  @RequestParam(value = "listaIds") List<String> listaMedicamentos,
-                                  @RequestParam(value = "cantidades") List<String> listaCantidades,
-                                  @RequestParam(value = "precioTotal") String precioTotal,
+                                  @RequestParam(value = "listaIds") List<String> listaSelectedIds,
+                                  @RequestParam(value = "priceTotal") String priceTotal,
                                   Model model) {
+
+        System.out.println(priceTotal);
+
+        ArrayList<Optional<Medicamento>> listaFinalMedicamentosOpt = new ArrayList<>();
+        ArrayList<Medicamento> listaFinalMedicamentos = new ArrayList<>();
+        ArrayList<String> listaFinalCantidades = new ArrayList<>();
+
+        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
+            listaFinalMedicamentosOpt.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+        }
+
+        for (int i = 0; i + 1 < listaSelectedIds.size(); i += 2) {
+            listaFinalCantidades.add(listaSelectedIds.get(i + 1));
+        }
+
+        listaFinalMedicamentos = (ArrayList<Medicamento>) listaFinalMedicamentosOpt.stream().flatMap(Optional::stream).collect(Collectors.toList());
+
+        System.out.println(listaFinalCantidades);
+
 
         Usuario pacienteOrden = new Usuario();
 
@@ -94,7 +112,12 @@ public class farmacistaController {
             pacienteOrden = usuarioRepository.findByDniAndCorreo(dni, correo);
 
         } else {
-            pacienteOrden.setIdUsuario(usuarioRepository.findLastUsuarioId()+1);
+
+            if (usuarioRepository.findLastUsuarioId() == null){
+                pacienteOrden.setIdUsuario(1);
+            } else {
+                pacienteOrden.setIdUsuario(usuarioRepository.findLastUsuarioId()+1);
+            }
             pacienteOrden.setIdRol(1);
             pacienteOrden.setCorreo(correo);
             pacienteOrden.setContrasena("");
@@ -112,26 +135,17 @@ public class farmacistaController {
         Integer idPaciente = pacienteOrden.getIdUsuario();
 
         Orden nuevaOrden = new Orden();
-        Integer nuevaOrdenId = ordenRepository.findLastOrdenId()+1;
+
+        Integer nuevaOrdenId = 1;
+        if (ordenRepository.findLastOrdenId() != null){
+            nuevaOrdenId = ordenRepository.findLastOrdenId()+1;
+        }
 
         nuevaOrden.setIdOrden(nuevaOrdenId);
         nuevaOrden.setFechaIni(CurrentTimeSQL.getCurrentDate());
-
-        for (int i = 0; i < listaMedicamentos.size(); i++){
-            OrdenContenido contenido = new OrdenContenido();
-            contenido.setIdOrden(nuevaOrdenId);
-            contenido.setIdMedicamento(Integer.valueOf(listaMedicamentos.get(i)));
-            contenido.setCantidad(Integer.parseInt(listaCantidades.get(i)));
-            ordenContenidoRepository.save(contenido);
-
-            if(Integer.parseInt(listaCantidades.get(i)) <= 25){
-                nuevaOrden.setNoStock(true);
-            }
-
-        }
-
+        nuevaOrden.setNoStock(false); /*Falta comprobar*/
         nuevaOrden.setPagado(true);
-        nuevaOrden.setPrecioTotal(Float.parseFloat(precioTotal));
+        nuevaOrden.setPrecioTotal(Float.parseFloat(priceTotal));
         nuevaOrden.setIdFarmacista(1);
         nuevaOrden.setIdPaciente(idPaciente);
         nuevaOrden.setIdTipo(1);
@@ -141,16 +155,29 @@ public class farmacistaController {
 
         ordenRepository.save(nuevaOrden);
 
+        for (int i = 0; i < listaFinalMedicamentos.size(); i++){
+            OrdenContenido contenido = new OrdenContenido();
+            contenido.setIdOrden(nuevaOrdenId);
+            contenido.setIdMedicamento(listaFinalMedicamentos.get(i).getIdMedicamento());
+            contenido.setCantidad(Integer.parseInt(listaFinalCantidades.get(i)));
+            ordenContenidoRepository.save(contenido);
+        }
+
         model.addAttribute("idOrden",nuevaOrdenId);
         return "redirect:/farmacista/ver_orden_venta";
     }
 
     @GetMapping("/farmacista/ver_orden_venta")
-    public String verOrdenesVenta(@RequestParam("idOrden") Integer nuevaOrdenId, Model model) {
+    public String verOrdenesVenta(@RequestParam(value = "idOrden", required = false) Integer nuevaOrdenId, Model model) {
 
-        model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
+        if (nuevaOrdenId != null){
+            model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
+            return "/farmacista/ver_orden_venta";
+        } else {
+            return "/farmacista/errorPages/no_existe_orden";
+        }
 
-        return "/farmacista/ver_orden_venta";
+
     }
 
 
