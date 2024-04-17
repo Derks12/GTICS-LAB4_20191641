@@ -21,7 +21,6 @@
     font-size: 14px;
     background-color: white;
     color: #333;
-    border:10px solid red;
 
 }
 
@@ -30,10 +29,6 @@
 }
 
 
-
-.select-p option:hover {
-    background-color: red;
-}
 
 
 
@@ -190,7 +185,7 @@ td{
     display: flex;
     flex-direction: row;
     row-gap: 28px;
-    column-gap: 40px;
+    column-gap: 242px;
     padding-top: 20px;
     padding-bottom: 22px;
     justify-content: center;
@@ -223,6 +218,15 @@ td{
     flex-direction: row;
     column-gap: 30px;
 }
+.column-buttons{
+    display: flex;
+    flex-direction: row;
+    row-gap: 28px;
+    column-gap: 30px;
+    padding-top: 20px;
+    padding-bottom: 22px;
+    justify-content: center;
+}
 
 
 
@@ -235,9 +239,9 @@ td{
     border: 1px solid #ced4da;
     border-radius: 4px;
     background-color: transparent;
-    font-size: 15px;
+    font-size: 16px;
     outline: none;
-
+    color:dimgray;
 }
 .select-form:focus{
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
