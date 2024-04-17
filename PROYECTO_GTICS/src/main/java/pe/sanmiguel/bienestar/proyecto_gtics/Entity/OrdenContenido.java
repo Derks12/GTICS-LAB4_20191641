@@ -15,7 +15,7 @@ public class OrdenContenido {
 
     @Id
     private Integer idOrden;
-    @Id
+    @Column
     private Integer idMedicamento;
     @Column
     private int cantidad;
