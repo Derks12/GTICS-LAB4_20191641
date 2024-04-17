@@ -43,6 +43,14 @@ public class pacienteController {
     @GetMapping(value="/tracking")
     public String tracking(){ return "/paciente/tracking";}
 
+    @GetMapping(value="/tracking_wait")
+    public String tracking_wait(){ return "/paciente/tracking_pendiente";}
+
+    @GetMapping(value="/tracking_end")
+    public String tracking_end(){ return "/paciente/tracking_finalizado";}
+
+
+
     @GetMapping(value="/ordenes")
     public String ordenes(){return "/paciente/ordenes";}
 

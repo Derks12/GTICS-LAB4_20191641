@@ -6,6 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <!--=============== CSS ===============-->
     <!-- Font Awesome -->
+
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.png}">
+
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -138,7 +141,7 @@
         icon: "success",
         iconColor: '#4da642',
         title: "Orden Web Creada",
-        text: "Debera esperar a que su orden sea aprobada. De haber algún problema, el farmacista encargado se comunicará con usted para que finalmente pueda realizar el pago de su orden y ser aprobada",
+        text: "Debera esperar a que su orden sea aprobada. De haber algún problema, el farmacista encargado se comunicará con usted para que finalmente pueda realizar el pago de su orden y ser aprobada.",
         confirmButtonText: "OK",
         confirmButtonColor: '#3f883b',
         width: 500,
@@ -202,7 +205,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-pend">PENDIENTE</button></td>
             <td >
-                <a style="cursor: default !important;" disabled><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_wait}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
         <tr>
@@ -210,7 +213,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-listo">ENTREGADO</button></td>
             <td  >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
         <tr>
@@ -258,7 +261,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-listo">ENTREGADO</button></td>
             <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
 

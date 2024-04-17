@@ -6,8 +6,15 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <!--=============== CSS ===============-->
     <!-- Font Awesome -->
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    />
 
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.png}">
 
 
     <link rel="stylesheet" th:href="@{/css/styles.css}">
@@ -16,8 +23,11 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/scrollbar.css}">
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
+    <link rel="stylesheet" th:href="@{/css/paciente/progress-bar.css}">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
-    <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+
+
+
 
 
 
@@ -28,61 +38,80 @@
     <!--==========================================-->
 
 
-    <title>Mensajería | Bienestar San Miguel</title>
+
+    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAce4klBZuD60aEQidMVIbsoaiitxxQFpo"></script>
+    <script scr="/js/map.js"></script>
+
+    <title>Tracking | Bienestar San Miguel</title>
 
     <style>
         body {
-            padding-top: 80px;
+            padding-top: 90px;
         }
-        .container2 {
-            border: 2px solid #dedede;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
+        #filtroEstado:focus {
+
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .medicamento{
+            max-width: 180px; max-height: 180px;
         }
 
-        /* Darker chat container */
-        .darker {
-            border-color: #ccc;
-            background-color: #ddd;
+        #map {
+            height: 800px;
+            width: 80%;
+            border: 6px solid var(--color-blue);
+            border-radius: 6px;
         }
 
-        /* Clear floats */
-        .container2::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* Style images */
-        .container2 img {
-            float: left;
-            max-width: 60px;
-            width: 100%;
-            margin-right: 20px;
-            border-radius: 50%;
-        }
-
-        /* Style the right image */
-        .container2 img.right {
-            float: right;
-            margin-left: 20px;
-            margin-right:0;
-        }
-
-        /* Style time text */
-        .time-right {
-            float: right;
-            color: #aaa;
-        }
-
-        /* Style time text */
-        .time-left {
-            float: left;
-            color: #999;
-        }
     </style>
+
+
+
+    <script>
+        // Puntos del mapa
+
+        const locations = [
+            { lat: -12.067713, lng: -77.067505 },
+            { lat: -12.067739299285414, lng: -77.07048533833166 },
+            { lat: -12.067991537715104, lng: -77.07550755645634 },
+            { lat : -12.068533248724986, lng: -77.07808532986617},
+            { lat: -12.069724275588285, lng: -77.07804924250952}
+        ]
+
+
+        // Inicializar mapa
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: locations[0],
+            });
+
+            // Crear marcador
+            const marker = new google.maps.Marker({
+                position: locations[0],
+                map: map,
+                icon: {
+                    url: "../img/moto_icon.png", // Ruta de la imagen de la moto
+                    scaledSize: new google.maps.Size(55, 50) // Tamaño personalizado (ancho, alto)
+                } // Ruta de la imagen de la moto
+            });
+
+            // Mover el marcador a través de los puntos
+
+            let i = 0;
+            const interval = setInterval(() => {
+                i++;
+                if (i >= locations.length) {
+                    clearInterval(interval); // Detener el intervalo cuando llega a la tercera posición
+                    return;
+                }
+                marker.setPosition(locations[i]);
+            }, 2000); // Cambia de ubicación cada 3 segundos
+
+        }
+
+    </script>
 </head>
 
 
@@ -101,9 +130,9 @@
                 <ul class="nav-list">
                     <li><a href="/paciente" class="menu-item roboto-regular">Pre Ordenes</a></li>
 
-                    <li><a href="/paciente/ordenes" class="menu-item roboto-regular">Ordenes Web</a></li>
+                    <li><a href="/paciente/ordenes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Ordenes Web</a></li>
 
-                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Mensajeria</a></li>
+                    <li><a href="/paciente/mensajeria" class="menu-item roboto-regular">Mensajeria</a></li>
 
 
                     <!--=============== DROPDOWN ===============-->
@@ -168,139 +197,98 @@
 
 
 
-
-
 <div class="container">
 
     <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Orden XYZWXZ</strong></h2>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Contenido de la Orden:</strong></h2>
     <div style="margin-bottom: 20px"></div>
     <hr style="border-top: 1px solid #DFDFDF;">
     <div style="margin-bottom: 40px"></div>
 
     <div style="padding-right: 0; padding-left: 0"> </div>
-    <div style="padding-top:1px; display:flex; justify-content: end " >
-        <a class="btn-p" href="/paciente/mensajeria">Regresar a la lista de chats</a>
-
-    </div>
 </div>
 
 
-<br>
-
-<div class="container" style="display: flex; flex-direction: row">
 
 
-    <div class="container">
-        <div class="container">
-            <div class="container2">
-                <img th:src="@{/img/doctor2.png}" alt="Avatar">
-                <p>Buenas tardes, el medicamento X está sin stock de momento, podemos reemplazarlo por el medicamento Y</p>
-                <span class="time-right">11:00</span>
-            </div>
+<div class="container">
 
-            <div class="container2 darker">
-                <img th:src="@{/img/paciente.png}" alt="Avatar" class="right">
-                <p>Me parece genial, cuanto sería el nuevo precio de ese medicamento</p>
-                <span class="time-left">11:01</span>
-            </div>
-
-            <div class="container2">
-                <img th:src="@{/img/doctor2.png}" alt="Avatar">
-                <p>El precio es el mismo, necesito su confirmación para realizar la orden de compra</p>
-                <span class="time-right">11:02</span>
-            </div>
-
-            <div class="container2 darker">
-                <img th:src="@{/img/paciente.png}" alt="Avatar" class="right">
-                <p>Perfecto, cambie el medicamento X por el Y</p>
-                <span class="time-left">11:05</span>
-            </div>
+    <div style="display: flex; justify-content: space-between; align-items: center">
+        <div style="display: flex; flex-direction: column">
 
         </div>
+
+        <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
     </div>
-
-    <div class="container" style="display: flex; flex-direction: column">
-        <div class="container">
-            <table id="miTabla2" class="table table-striped">
-                <h2>Contenido de la orden</h2>
-                <thead>
-                <tr style="background-color: #378fff">
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
-                </tr>
-                </thead>
+    <br>
 
 
-                <tbody>
-                <tr>
-                    <td>Paracetamol 100 mg</td>
-                    <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
-                <tr>
-                    <td>Neurobion 100 mg</td>
-                    <td><img class="medicamento" src="/img/neurobion.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
-                <tr>
-                    <td>Nastzol 100 mg</td>
-                    <td><img class="medicamento" src="/img/nastzol.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
-                <tr>
-                    <td>Panadol 100 mg</td>
-                    <td><img class="medicamento"  src="/img/panadol.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
-                <tr>
-                    <td>Apronax 100 mg</td>
-                    <td><img class="medicamento"  src="/img/apronax.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
-                <tr>
-                    <td>Doloral 100 mg</td>
-                    <td><img class="medicamento"  src="/img/doloral.jpg" style="width: 75px ; height: 75px"></td>
-                    <td>5</td>
-                    <td>S/. 6</td>
-                    <td>S/. 30</td>
-                </tr>
+
+    <table id="miTabla" class="table table-striped">
+
+        <thead>
+        <tr style="background-color: #378fff">
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
+            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
+        </tr>
+        </thead>
 
 
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <br>
-    </div>
+        <tbody>
+        <tr>
+            <td>Paracetamol 100 mg</td>
+            <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
+        <tr>
+            <td>Neurobion 100 mg</td>
+            <td><img class="medicamento" src="/img/neurobion.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
+        <tr>
+            <td>Nastzol 100 mg</td>
+            <td><img class="medicamento" src="/img/nastzol.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
+        <tr>
+            <td>Panadol 100 mg</td>
+            <td><img class="medicamento"  src="/img/panadol.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
+        <tr>
+            <td>Apronax 100 mg</td>
+            <td><img class="medicamento"  src="/img/apronax.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
+        <tr>
+            <td>Doloral 100 mg</td>
+            <td><img class="medicamento"  src="/img/doloral.jpg"></td>
+            <td>5</td>
+            <td>S/. 6</td>
+            <td>S/. 30</td>
+        </tr>
 
+
+        </tbody>
+    </table>
 
 </div>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <br>
 <br>
@@ -308,10 +296,67 @@
 <br>
 <br>
 
+
+<div class="container">
+
+    <div style="margin-bottom: 50px"></div>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
+    <div style="margin-bottom: 20px"></div>
+    <hr style="border-top: 1px solid #262626;">
+    <div style="margin-bottom: 40px"></div>
+
+    <div style="padding-right: 0; padding-left: 0"> </div>
+</div>
+
+<div class="container-progress">
+    <div class="wrapper">
+        <div class="progress-container">
+
+            <div class="barra"  style="width: 90%"></div>
+
+            <div class="progress-step">
+                <i class="fa-solid fa-file-text active"></i>Recibido
+            </div>
+            <div class="progress-step">
+                <i class="fa-solid fa fa-refresh active" ></i>En proceso
+            </div>
+
+            <div class="progress-step">
+                <i class="fa-solid fa-archive active"></i>Empaquetando
+            </div>
+            <div class="progress-step">
+                <i class="fa-solid fa fa-truck active"></i>En ruta
+            </div>
+            <div class="progress-step">
+                <i class="fa-solid fa-check-square active"></i>Entregado
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<br>
+<br>
+
+
+<div style="display: flex;justify-content: center">
+
+    <p style="font-size: 30px;color:#0d6efd ">!Su orden ha sido entregada exitosamente!</p>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <div >
-    <footer id="sticky-footer" class="footer-distributed">
+    <footer id="sticky-footer" class="footer-distributed" >
         <div class="footer-left">
             <img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo" style="width: 400px; height: auto;">
             <p class="footer-links">
@@ -358,38 +403,25 @@
 
 
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
+
+<script>
+    google.maps.event.addDomListener(window, 'load', initMap);
+</script>
 <script>
     $(document).ready(function() {
-        var table = $('#miTabla2').DataTable({
-            "pageLength":6,
+        var table = $('#miTabla').DataTable({
+            "pageLength":5,
             "lengthChange": false,
             "language": {
                 "emptyTable": "No hay registros disponibles",
                 "zeroRecords": "No se encontraron registros coincidentes",
                 "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
-                "search" : "Buscar:",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Último",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                },
-                "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
-            },
-
-        });
-        var table = $('#miTabla3').DataTable({
-            "pageLength":3,
-            "lengthChange": false,
-            "language": {
-                "emptyTable": "No hay registros disponibles",
-                "zeroRecords": "No se encontraron registros coincidentes",
-                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
-                "search" : "Buscar:",
+                "Search" : "Buscar:",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",
@@ -412,12 +444,9 @@
             table.search('').columns().search('').draw();
         });
     });
-
-
 </script>
-<!-- DataTable -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
-<!------>
+
 
 </body>
 

@@ -862,3 +862,29 @@ body{margin-top:20px;
     margin-left: 1rem;
     margin-right: 1rem;
 }
+/*==========Estados botones ============*/
+.btn-green{
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+.btn-yellow{
+    padding: 8px;
+    background-color: #ECCB44;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+}
+.btn-red{
+    padding: 9px;
+    background-color: #CF480D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 125px;
+
+}
