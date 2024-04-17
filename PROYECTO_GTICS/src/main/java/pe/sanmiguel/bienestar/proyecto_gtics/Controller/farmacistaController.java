@@ -56,45 +56,39 @@ public class farmacistaController {
         return "redirect:/farmacista/formulario_paciente";
     }
 
-    @PostMapping("/farmacista/finalizar_compra")
-    public String finalizarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
-
-        ArrayList<Optional<Medicamento>> medicamentosSeleccionados = new ArrayList<>();
-
-        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
-            medicamentosSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
-        }
-
-        return "redirect:/farmacista/detallesOrdenWeb";
-    }
-
-
-
-    @GetMapping("/farmacista/ordenes_venta")
-    public String OrdenesVenta() {
-        return "/farmacista/ordenes_venta";
-    }
-
-    @GetMapping("/farmacista/ordenes_web")
-    public String OrdenesWeb() {
-        return "/farmacista/ordenes_web";
-    }
-
-    @GetMapping("/farmacista/pre_ordenes")
-    public String preOrdenes() {
-        return "/farmacista/pre_ordenes";
-    }
     @GetMapping("/farmacista/formulario_paciente")
     public String forPaciente(Model model) {
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         model.addAttribute("listaCantidades", listaCantidades);
         return "/farmacista/formularioPaciente";
     }
-    @PostMapping("/farmacista/detallesOrdenWeb")
-    public String detaOrdenWeb() {
-        return "/farmacista/detallesOrdenWeb";
+
+    @PostMapping("/farmacista/finalizar_compra")
+    public String finalizarCompra(){
+
+        return "redirect:/farmacista/ver_orden_venta";
     }
 
+    @GetMapping("/farmacista/ver_orden_venta")
+    public String verOrdenesVenta() {
+        return "/farmacista/ver_orden_venta";
+    }
+
+
+    @GetMapping("/farmacista/ordenes_venta")
+    public String OrdenesVenta() {
+        return "/farmacista/ordenes_venta";
+    }
+    @GetMapping("/farmacista/ordenes_web")
+    public String OrdenesWeb() {
+        return "/farmacista/ordenes_web";
+    }
+    @GetMapping("/farmacista/pre_ordenes")
+    public String preOrdenes() {
+        return "/farmacista/pre_ordenes";
+    }
+    @GetMapping("/farmacista/detallesOrdenWeb")
+    public String detaOrdenWeb() {return "/farmacista/detallesOrdenWeb";}
     @GetMapping("/farmacista/perfil")
     public String profile() {
         return "/farmacista/perfil";
@@ -103,12 +97,10 @@ public class farmacistaController {
     public String facturacion() {
         return "/farmacista/facturacion";
     }
-
     @GetMapping("/farmacista/cambioContraseña")
     public String cambioContra() {
         return "/farmacista/cambioContraseña";
     }
-
     @GetMapping("/farmacista/notificacion")
     public String notificaciones() {
         return "/farmacista/notificacion";
