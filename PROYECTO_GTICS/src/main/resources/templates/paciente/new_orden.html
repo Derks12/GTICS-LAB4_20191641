@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
 
 
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.png}">
+
+
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link rel="stylesheet" th:href="@{/css/fonts.css}" >
     <link rel="stylesheet" th:href="@{/css/topbar.css}">
@@ -165,8 +168,8 @@
             </div>
 
             <div class="input-label-box">
-                <label style="font-weight: bold; color:dimgray">Edad:</label>
-                <input class="input-form" type="number" name="edad" placeholder="Ingrese su edad:" required>
+                <label style="font-weight: bold; color:dimgray">Dirección:</label>
+                <input class="input-form" type="number" name="direccion" placeholder="Ingrese su edad:" required>
             </div>
 
         </div>
@@ -185,137 +188,38 @@
             </div>
 
             <div class="input-label-box">
-                <label style="font-weight: bold; color:dimgray">Fecha de nacimiento:</label>
-                <input class="input-form" name="fecha" type="date" required>
+                <label style="font-weight: bold; color:dimgray">Distrito:</label>
+                <input class="input-form" name="distrito" type="text" placeholder="Ingrese el distrito donde reside" required>
             </div>
 
         </div>
 
 
+
+
+
         <div class="column">
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Hora de Entrega:</label>
+                <input class="input-form" type="text"  placeholder="Ingrese la hora de entrega" required>
+            </div>
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Teléfono:</label>
+                <input class="input-form" type="text"  placeholder="Ingrese su número de teléfono" required>
+            </div>
+
+        </div>
+
+        <div class="column-start">
 
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Seguro:</label>
                 <input class="input-form" type="text" name="seguro" placeholder="Ingrese su seguro" required>
             </div>
 
-            <div class="input-label-box">
-                <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
-                <input class="input-form" type="text" name="correo" placeholder="Ingrese su correo" required>
-            </div>
-
         </div>
-
-
-        <div class="column-start">
-            <div class="radio-label-box"  >
-                <label style="font-weight: bold;padding-bottom: 8px;color:dimgray">Género:</label>
-
-                <div class="input-label-radio">
-
-                    <div>
-                        <input  type="radio" name="genero" value="m" checked>
-                        <label style="font-size:16px">Hombre</label>
-                    </div>
-                    <div>
-                        <input  type="radio" name="genero" value="f">
-                        <label style="font-size:16px">Mujer</label>
-                    </div>
-                    <div>
-                        <input  type="radio" name="genero" value="na">
-                        <label style="font-size:16px">Prefiero no decirlo</label>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        <div>
-                <div class="container" style="margin-top: 20px; background-color: #EEEEEE; border-radius: 14px">
-
-                    <div style="padding-top: 20px; padding-bottom: 20px">
-                        <div  style="font-size: 20px;color:dimgray; font-weight: bold;"> Seleccion de medicamentos: </div>
-                    </div>
-
-                    <hr class="style-one">
-
-
-                    <div class="items-preview hide" id="items-preview">
-
-                        <div class="container-preview">
-
-
-                            <div class="preview-title roboto-regular">
-                                Lista de Productos Seleccionados - Nueva Orden de Venta
-
-                                <div class="price-total-div roboto-medium">
-                                    TOTAL <span class="price-total">S/0.00</span>
-                                </div>
-                                <div>
-
-                                        <input id="listaIds" type="text" name="listaIds" value=""  hidden  />
-
-                                </div>
-                            </div>
-
-                            <div class="lista-items-clicked">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-                    <div style="padding-bottom: 20px; padding-top: 20px; display: flex; flex-direction: column; row-gap:3px; align-items: start">
-                        <div>
-
-                            <input id="searchInput" type="text" class="input-form" style="outline: none" placeholder="Buscar medicamento" >
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="interface">
-
-
-
-
-
-                        <section class="medicamentos">
-                            <!-- Contenedor de elementos -->
-                            <div class="med-container">
-                                <div class="item" th:each="medicamento : ${listaMedicamentos}">
-                                    <img th:src="${medicamento.imagen}" th:alt="${medicamento.nombre}" class="img-item">
-                                    <div class="subtitulo-item roboto-bold" th:text="${medicamento.unidad}" >Unidad</div>
-                                    <div class="item-title roboto-regular" th:text="${medicamento.nombre}"   th:style="${medicamento.nombre.length()>=21 ? 'font-size:15px' : ''}"  >Medicamento</div>
-                                    <div style="display: flex; flex-direction: row; gap: 5px; align-items: end;">
-                                        <span class="item-symbol">S/. </span><span class="item-price roboto-regular" th:text="${medicamento.precioVenta}">Precio</span>
-                                    </div>
-
-                                    <button class="add-item-button montserrat-medium" type="button" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
-                                </div>
-                            </div>
-
-                        </section>
-
-                    </div>
-
-                </div>
-
-
-
-
-        </div>
-
-
-
-        <br>
-        <br>
 
         <div class="column-start">
 
@@ -408,13 +312,104 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
+
+        <br>
+        <br>
+
+
+
+        <div>
+                <div class="container" style="margin-top: 20px; background-color: #EEEEEE; border-radius: 14px">
+
+                    <div style="padding-top: 20px; padding-bottom: 20px">
+                        <div  style="font-size: 20px;color:dimgray; font-weight: bold;"> Seleccion de medicamentos: </div>
+                    </div>
+
+                    <hr class="style-one">
+
+
+                    <div class="items-preview hide" id="items-preview">
+
+                        <div class="container-preview">
+
+
+                            <div class="preview-title roboto-regular">
+                                Lista de Productos Seleccionados - Nueva Orden de Venta
+
+                                <div class="price-total-div roboto-medium">
+                                    TOTAL <span class="price-total">S/0.00</span>
+                                </div>
+                                <div>
+
+                                        <input id="listaIds" type="text" name="listaIds" value=""  hidden  />
+
+                                </div>
+                            </div>
+
+                            <div class="lista-items-clicked">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div style="padding-bottom: 20px; padding-top: 20px; display: flex; flex-direction: column; row-gap:3px; align-items: start">
+                        <div>
+
+                            <input id="searchInput" type="text" class="input-form" style="outline: none" placeholder="Buscar medicamento" >
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="interface">
+
+
+
+
+
+                        <section class="medicamentos">
+                            <!-- Contenedor de elementos -->
+                            <div class="med-container">
+                                <div class="item" th:each="medicamento : ${listaMedicamentos}">
+                                    <img th:src="${medicamento.imagen}" th:alt="${medicamento.nombre}" class="img-item">
+                                    <div class="subtitulo-item roboto-bold" th:text="${medicamento.unidad}" >Unidad</div>
+                                    <div class="item-title roboto-regular" th:text="${medicamento.nombre}"   th:style="${medicamento.nombre.length()>=21 ? 'font-size:15px' : ''}"  >Medicamento</div>
+                                    <div style="display: flex; flex-direction: row; gap: 5px; align-items: end;">
+                                        <span class="item-symbol">S/. </span><span class="item-price roboto-regular" th:text="${medicamento.precioVenta}">Precio</span>
+                                    </div>
+
+                                    <button class="add-item-button montserrat-medium" type="button" th:data-item-id="${medicamento.idMedicamento}">Añadir a la Orden</button>
+                                </div>
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+
+
+
+        </div>
+
+
+
+
         <br>
         <br>
         <br>
 
-        <div class="column">
+        <div class="column-buttons">
 
             <button class="btn-cancel" type="button">Cancelar</button>
             <button class="btn-p" type="submit">Confirmar</button>
@@ -426,9 +421,7 @@
 </form>
 
 <br>
-<br>
-<br>
-<br>
+
 
 <!--Footer-->
 <div >
@@ -575,7 +568,6 @@
         else{
             Swal.fire({
                 title: '¿Estás seguro de generar esta nueva orden de compra?',
-                text: "No se podrá volver a editar los datos",
                 icon: 'warning',
                 iconColor: '#DC3545',
                 showCancelButton: true,

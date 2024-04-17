@@ -250,7 +250,7 @@
                     </div>
 
                     <div class="order-items">
-                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSeleccionados}">
+                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSeleccionados}" th:data-item-id="${medicamento.idMedicamento}">
 
                                 <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
                                 <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
@@ -273,11 +273,14 @@
 
                     <div class="preview-title roboto-regular" style="padding-top: 20px">
 
+
+
                         <div class="price-total-div roboto-medium">
+                            <input type="hidden" name="priceTotal" id="priceTotal" value="">
                             TOTAL <span class="price-total">S/0.00</span>
                         </div>
 
-                        <input id="listaIds" type="hidden" name="listaIds" value=""/>
+                        <input type="hidden" name="listaIds" id="listaIds"  value=""/>
                         <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
                     </div>
 
@@ -342,11 +345,12 @@
 
 <script>
 
-    listaSelectedIds = [];
-
+    let listaSelectedIds = [];
+    let precioTotal;
 
     $(document).ready(function() {
 
+        setListaIds();
         actualizarMontoTotal();
 
         document.getElementById('cancel').addEventListener('click', function(event) {
@@ -392,7 +396,6 @@
             const buttonClicked = event.target;
             const idAddQuantity = buttonClicked.dataset.itemId;
             const selector = buttonClicked.parentElement;
-            console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
             let cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
             cantidadActual++;
             selector.getElementsByClassName('item-quantity-clicked')[0].value = cantidadActual;
@@ -408,8 +411,6 @@
             const buttonClicked = event.target;
             const idQuitQuantity = buttonClicked.dataset.itemId;
             const selector = buttonClicked.parentElement;
-            console.log(selector.getElementsByClassName('item-quantity-clicked')[0].value);
-
 
             let cantidadActual = selector.getElementsByClassName('item-quantity-clicked')[0].value;
             cantidadActual--;
@@ -445,6 +446,20 @@
             }
         }
 
+        function setListaIds(){
+            const listItems = document.getElementsByClassName('order-items')[0];
+            const selectedItems = listItems.getElementsByClassName('selected-item');
+            const listaCantidades = listItems.getElementsByClassName('item-quantity-clicked');
+
+
+            for (let i = 0; i < selectedItems.length; i++) {
+                let itemId = selectedItems[i].dataset.itemId;
+                let itemCant = listaCantidades[i].value;
+                listaSelectedIds.push(itemId);
+                listaSelectedIds.push(itemCant);
+            }
+        }
+
         function actualizarMontoTotal() {
             const listItems = document.getElementsByClassName('order-items')[0];
             const selectedItems = listItems.getElementsByClassName('selected-item');
@@ -461,6 +476,10 @@
 
             const listaIdsInput = document.getElementById('listaIds');
             listaIdsInput.value = listaSelectedIds.join(',');
+
+            precioTotal = document.getElementsByClassName('price-total')[0].innerText.split('/')[1];
+            const precioTotalInput = document.getElementById('priceTotal');
+            precioTotalInput.value = precioTotal;
 
         }
 
