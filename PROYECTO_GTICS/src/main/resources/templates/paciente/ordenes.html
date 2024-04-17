@@ -202,7 +202,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-pend">PENDIENTE</button></td>
             <td >
-                <a style="cursor: default !important;" disabled><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_wait}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
         <tr>
@@ -210,7 +210,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-listo">ENTREGADO</button></td>
             <td  >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
         <tr>
@@ -258,7 +258,7 @@
             <td>MM-DD-AA</td>
             <td><button class="btn-listo">ENTREGADO</button></td>
             <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
             </td>
         </tr>
 
