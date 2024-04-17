@@ -70,7 +70,7 @@ public class farmacistaController {
     public String forPaciente(Model model) {
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         model.addAttribute("listaCantidades", listaCantidades);
-        return "/farmacista/formularioPaciente";
+        return "/farmacista/formulario_paciente";
     }
 
     @PostMapping("/farmacista/finalizar_compra")
