@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pe.sanmiguel.bienestar.proyecto_gtics.CurrentTimeSQL;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Orden;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.OrdenContenido;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenContenidoRepository;
@@ -73,21 +74,26 @@ public class farmacistaController {
     }
 
     @PostMapping("/farmacista/finalizar_compra")
-    public String finalizarCompra(@RequestParam(value = "name", required = false) String name ,
-                                  @RequestParam(value = "lastname", required = false) String lastname,
-                                  @RequestParam(value = "dni", required = false) String dni,
-                                  @RequestParam(value = "edad", required = false) String edad,
-                                  @RequestParam(value = "doctor", required = false) String doctor,
-                                  @RequestParam(value = "fecha", required = false) String fecha,
-                                  @RequestParam(value = "seguro", required = false) String seguro,
-                                  @RequestParam(value = "correo", required = false) String correo,
-                                  @RequestParam(value = "genero", required = false) String genero,
-                                  @RequestParam(value = "listaIds", required = false) List<String> listaMedicamentos,
+    public String finalizarCompra(@RequestParam(value = "name") String name,
+                                  @RequestParam(value = "lastname") String lastname,
+                                  @RequestParam(value = "dni") String dni,
+                                  @RequestParam(value = "edad") String edad,
+                                  @RequestParam(value = "doctor") String doctor,
+                                  @RequestParam(value = "fecha") String fecha,
+                                  @RequestParam(value = "seguro") String seguro,
+                                  @RequestParam(value = "correo") String correo,
+                                  @RequestParam(value = "genero") String genero,
+                                  @RequestParam(value = "listaIds") List<String> listaMedicamentos,
+                                  @RequestParam(value = "cantidades") List<String> listaCantidades,
+                                  @RequestParam(value = "precioTotal") String precioTotal,
                                   Model model) {
 
         Usuario pacienteOrden = new Usuario();
 
-        if (usuarioRepository.findByDniAndCorreo(dni, correo) == null){
+        if (usuarioRepository.findByDniAndCorreo(dni, correo) != null){
+            pacienteOrden = usuarioRepository.findByDniAndCorreo(dni, correo);
+
+        } else {
             pacienteOrden.setIdUsuario(usuarioRepository.findLastUsuarioId()+1);
             pacienteOrden.setIdRol(1);
             pacienteOrden.setCorreo(correo);
@@ -101,26 +107,49 @@ public class farmacistaController {
             pacienteOrden.setAceptado(false);
             pacienteOrden.setBaneado(false);
             usuarioRepository.save(pacienteOrden);
-        } else {
-            pacienteOrden = usuarioRepository.findByDniAndCorreo(dni, correo);
         }
+
+        Integer idPaciente = pacienteOrden.getIdUsuario();
 
         Orden nuevaOrden = new Orden();
-        nuevaOrden.setIdOrden(ordenRepository.findLastOrdenId()+1);
+        Integer nuevaOrdenId = ordenRepository.findLastOrdenId()+1;
+
+        nuevaOrden.setIdOrden(nuevaOrdenId);
         nuevaOrden.setFechaIni(CurrentTimeSQL.getCurrentDate());
 
-        for (String id : listaMedicamentos){
-            
+        for (int i = 0; i < listaMedicamentos.size(); i++){
+            OrdenContenido contenido = new OrdenContenido();
+            contenido.setIdOrden(nuevaOrdenId);
+            contenido.setIdMedicamento(Integer.valueOf(listaMedicamentos.get(i)));
+            contenido.setCantidad(Integer.parseInt(listaCantidades.get(i)));
+            ordenContenidoRepository.save(contenido);
+
+            if(Integer.parseInt(listaCantidades.get(i)) <= 25){
+                nuevaOrden.setNoStock(true);
+            }
+
         }
 
+        nuevaOrden.setPagado(true);
+        nuevaOrden.setPrecioTotal(Float.parseFloat(precioTotal));
+        nuevaOrden.setIdFarmacista(1);
+        nuevaOrden.setIdPaciente(idPaciente);
+        nuevaOrden.setIdTipo(1);
+        nuevaOrden.setIdEstado(1);
+        nuevaOrden.setIdSede(1);
+        nuevaOrden.setIdDoctor(1);
 
         ordenRepository.save(nuevaOrden);
 
+        model.addAttribute("idOrden",nuevaOrdenId);
         return "redirect:/farmacista/ver_orden_venta";
     }
 
     @GetMapping("/farmacista/ver_orden_venta")
-    public String verOrdenesVenta() {
+    public String verOrdenesVenta(@RequestParam("idOrden") Integer nuevaOrdenId, Model model) {
+
+        model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
+
         return "/farmacista/ver_orden_venta";
     }
 
