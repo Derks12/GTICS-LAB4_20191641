@@ -93,7 +93,7 @@ public class pacienteController {
             return "error";
         }
 
-        return "/paciente/prueba";
-        //return "redirect:/paciente/ordenes";
+        //return "/paciente/prueba";
+        return "redirect:/paciente/ordenes";
     }
 }
