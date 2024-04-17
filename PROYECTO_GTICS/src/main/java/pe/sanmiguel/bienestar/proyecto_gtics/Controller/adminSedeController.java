@@ -59,6 +59,16 @@ public class adminSedeController {
         return "/adminsede/ver_ordenes_entregadas";
     }
 
+    @GetMapping(value = {"/cambiar_contrasena"})
+    public String vistaCambiarContra(){
+        return "/adminsede/cambiar_contrasena_adminsede";
+    }
+
+    @GetMapping(value = {"/perfil_adminsede"})
+    public String vistaPerfil(){
+        return "/adminsede/perfil_adminsede";
+    }
+
 
 
 

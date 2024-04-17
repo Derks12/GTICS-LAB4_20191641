@@ -4,22 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce3b6800-79c3-4ffd-bc67-818873174999" name="Changes" comment="">
+    <list default="true" id="db6cb8de-24fe-4d36-9e4f-ffc19b6daa64" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/cambiar_contrasena_adminsede.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/perfil_adminsede.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ver_orden_venta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/adminSedeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/adminSedeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/doctores.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/doctores.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_farmacista.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_farmacista.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_orden_reposicion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_orden_reposicion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/farmacistas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/farmacistas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/generar_orden.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/generar_orden.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/inicio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/medicamentos_sede.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/medicamentos_sede.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ordenes_reposicion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ordenes_reposicion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/solicitud_agregar_farmacista.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/solicitud_agregar_farmacista.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ver_ordenes_entregadas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ver_ordenes_entregadas.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
-    <execution />
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/adminSedeController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/adminsede/indexstyle.css" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/js/graficos.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/js/tracking.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/cambiar_contrasena_adminsede.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/doctores.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/inicio.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/medicamentos_sede.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/ordenes_reposicion.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/perfil_adminsede.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/adminsede/solicitud_agregar_farmacista.html" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -28,13 +61,17 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="2fEF2ixEXAhWAWqZ7uNr2V6dVdh" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2enm5jNVdn0Y8aXQnt0Wh6iGmiK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -44,16 +81,25 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "develop",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Gerardo/Documents/proyectoGtics/PROYECTO_GTICS/PROYECTO_GTICS",
+    "last_opened_file_path": "C:/Users/Sergio/Desktop/7mo ciclo/GTICS/proyecto/PROYECTO_GTICS/PROYECTO_GTICS",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.applicationServers",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "spring.configuration.checksum": "dbafe81f8a385fd57b41d1ad3482c46a",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sergio\Desktop\7mo ciclo\GTICS\proyecto\PROYECTO_GTICS\PROYECTO_GTICS\src\main\resources\static\img" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="ProyectoGticsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -67,12 +113,27 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce3b6800-79c3-4ffd-bc67-818873174999" name="Changes" comment="" />
-      <created>1713358126107</created>
+      <changelist id="db6cb8de-24fe-4d36-9e4f-ffc19b6daa64" name="Changes" comment="" />
+      <created>1712548539998</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713358126107</updated>
-      <workItem from="1713358127107" duration="2367000" />
+      <updated>1712548539998</updated>
+      <workItem from="1712548540988" duration="5016000" />
+      <workItem from="1712579497967" duration="4475000" />
+      <workItem from="1712584110451" duration="17181000" />
+      <workItem from="1712613479865" duration="5017000" />
+      <workItem from="1712642119648" duration="5414000" />
+      <workItem from="1712663448890" duration="4402000" />
+      <workItem from="1712687767621" duration="19508000" />
+      <workItem from="1712773560726" duration="1406000" />
+      <workItem from="1713069626946" duration="24162000" />
+      <workItem from="1713121076862" duration="5216000" />
+      <workItem from="1713347546134" duration="775000" />
+      <workItem from="1713348339207" duration="144000" />
+      <workItem from="1713376596662" duration="1024000" />
+      <workItem from="1713378090550" duration="152000" />
+      <workItem from="1713380783513" duration="343000" />
+      <workItem from="1713381268812" duration="2534000" />
     </task>
     <servers />
   </component>
