@@ -1,9 +1,6 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +11,8 @@ import lombok.Setter;
 public class OrdenContenido {
 
     @Id
+    private Integer idEntrada;
+    @Column
     private Integer idOrden;
     @Column
     private Integer idMedicamento;
