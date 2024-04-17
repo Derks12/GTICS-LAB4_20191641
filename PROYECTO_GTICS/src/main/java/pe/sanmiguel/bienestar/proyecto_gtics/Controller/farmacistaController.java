@@ -170,13 +170,16 @@ public class farmacistaController {
     @GetMapping("/farmacista/ver_orden_venta")
     public String verOrdenesVenta(@RequestParam(value = "idOrden", required = false) Integer nuevaOrdenId, Model model) {
 
+        /*
         if (nuevaOrdenId != null){
             model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
             return "/farmacista/ver_orden_venta";
         } else {
             return "/farmacista/errorPages/no_existe_orden";
         }
-
+        */
+        model.addAttribute("ordenVenta", ordenRepository.findById(nuevaOrdenId));
+        return "/farmacista/ver_orden_venta";
 
     }
 
