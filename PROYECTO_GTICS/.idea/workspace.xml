@@ -8,6 +8,8 @@
       <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/cambiar_contrasena_adminsede.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/perfil_adminsede.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
       <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/adminSedeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/adminSedeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/doctores.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/doctores.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_farmacista.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/editar_farmacista.html" afterDir="false" />
@@ -19,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ordenes_reposicion.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ordenes_reposicion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/solicitud_agregar_farmacista.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/solicitud_agregar_farmacista.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ver_ordenes_entregadas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminSede/ver_ordenes_entregadas.html" afterDir="false" />
+>>>>>>> de05e825f6ad21a0bb330130fd2530c4ee85d7fe
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
+=======
     "DefaultHtmlFileTemplate": "HTML File",
+>>>>>>> de05e825f6ad21a0bb330130fd2530c4ee85d7fe
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -117,6 +123,10 @@
       <created>1712548539998</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1713358126107</updated>
+      <workItem from="1713358127107" duration="4268000" />
+=======
       <updated>1712548539998</updated>
       <workItem from="1712548540988" duration="5016000" />
       <workItem from="1712579497967" duration="4475000" />
@@ -134,6 +144,7 @@
       <workItem from="1713378090550" duration="152000" />
       <workItem from="1713380783513" duration="343000" />
       <workItem from="1713381268812" duration="2534000" />
+>>>>>>> de05e825f6ad21a0bb330130fd2530c4ee85d7fe
     </task>
     <servers />
   </component>
