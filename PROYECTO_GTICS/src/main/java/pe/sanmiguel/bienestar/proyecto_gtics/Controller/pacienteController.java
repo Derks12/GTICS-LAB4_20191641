@@ -1,8 +1,6 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 
-import jakarta.servlet.annotation.MultipartConfig;
-import org.springframework.http.codec.multipart.Part;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +56,11 @@ public class pacienteController {
     @GetMapping(value = "/orden_paciente")
     public String ordenPaciente(){
         return "/paciente/orden_paciente";
+    }
+
+    @GetMapping(value = "/reemplazar_medicamentos")
+    public String ordenReemplazoMedicamentos(){
+        return "/paciente/reemplazar_medicamentos";
     }
 
 
