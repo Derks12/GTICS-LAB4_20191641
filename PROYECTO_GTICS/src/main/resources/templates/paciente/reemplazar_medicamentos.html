@@ -55,6 +55,38 @@
             background-color: red;
             color: white;
         }
+        .modal {
+            display: none; /* Por defecto, el modal está oculto */
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4); /* Fondo oscuro semi-transparente */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            width: 60%; /* Ancho del modal */
+            max-width: 400px; /* Ancho máximo */
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .modal-image {
+            width: 80px; /* Tamaño de la imagen */
+            margin-bottom: 10px;
+        }
+        .modal-btn {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -266,10 +298,18 @@
 <br>
     <div class="container3">
         <a class="btn btn-red" href="/paciente/orden_paciente">Cancelar</a>
-        <a class="btn btn-green" href="/paciente/orden_paciente_stock">Confirmar cambios</a>
+        <a class="btn btn-green" onclick="mostrarModal()">Confirmar cambios</a>
 
     </div>
 
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <img th:src="@{/img/alert.png}" alt="Alerta" class="modal-image"> <!-- Cambia la ruta de la imagen según tu necesidad -->
+        <p>¿Estás seguro de reemplazar estos medicamentos?</p>
+        <button class="btn btn-green modal-btn" onclick="confirmar()">Confirmar</button>
+        <button class="btn btn-red modal-btn" onclick="cerrarModal()">Cancelar</button>
+    </div>
+</div>
 <br>
 <br>
 <br>
@@ -335,12 +375,23 @@
 
 
 <script>
-    const myModal = document.getElementById('myModal')
-    const myInput = document.getElementById('myInput')
+    // Obtener el modal
+    var modal = document.getElementById("myModal");
 
-    myModal.addEventListener('shown.bs.modal', () => {
-        myInput.focus()
-    })
+    // Función para mostrar el modal
+    function mostrarModal() {
+        modal.style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function cerrarModal() {
+        modal.style.display = "none";
+    }
+
+    // Función para confirmar la acción
+    function confirmar() {
+        window.location.href = "/paciente/orden_paciente_stock";
+    }
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
