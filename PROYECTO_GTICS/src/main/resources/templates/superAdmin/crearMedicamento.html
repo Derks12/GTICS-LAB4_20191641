@@ -24,15 +24,20 @@
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
     <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
+    <!-- Agrega los enlaces a los archivos JS de jQuery y Select2 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <!--=============== JAVASCRIPT ===============-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
     <!--  Bootstrap-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!--=============== CSS ===============-->
 
-    <title>SuperAdmin | Solicitudes</title>
+    <title>SuperAdmin | Crear medicamento</title>
 
     <style>
         body {
@@ -61,6 +66,10 @@
             cursor: pointer;
             transition: background-color 0.3s, border-color 0.3s;
             font-size: 17px;
+        }
+
+        .seccion-especifica {
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
         }
         @import url('https://fonts.googleapis.com/css2?family=Aptos:wght@700&display=swap');
     </style>
@@ -188,161 +197,148 @@
     </nav>
 </header>
 
+
+
+
+
 <main style="margin-left: 20px; margin-right: 20px">
-    <br><br><br>
-    <div class="container">
-        <div style="margin-bottom: 20px"></div>
-        <div style="margin-bottom: 30px"></div>
-        <div class="titulo"><b>SOLICITUDES</b></div>
-        <div style="margin-bottom: 20px"></div>
-        <br>
-    </div>
-
-    <div class="container" style="display: flex; justify-content: center; align-items: center;">
-        <div style="padding-top: 1px; margin: 0 10px;">
-            <a class="btn-c"  href="/superadmin/solicitudes">PENDIENTES</a>
+    <br><br>
+    <div class="container seccion-especifica">
+        <div class="container">
+            <div style="margin-bottom: 20px"></div>
+            <div style="margin-bottom: 30px"></div>
+            <div class="titulo"><b>AGREGAR MEDICAMENTO</b></div>
+            <div style="margin-bottom: 20px"></div>
+            <br>
         </div>
 
-        <div style="padding-top: 1px; margin: 0 10px;">
-            <a class="btn-n" href="/superadmin/historialSolicitudes">HISTORIAL</a>
+        <div class="container seccion-especifica">
+
+            <div class="row flex-lg-nowrap">
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="e-profile">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-auto mb-3">
+                                                <div class="mx-auto" style="width: 140px;">
+                                                    <div class="d-flex justify-content-center align-items-center rounded" style="height: 140px; background-color: rgb(233, 236, 239);">
+                                                        <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                                                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                                                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Nuevo medicamento</h4>
+                                                    <p class="mb-0">Agregar información del medicamento</p>
+
+                                                    <div class="mt-2">
+                                                        <button class="btn btn-primary" type="button">
+                                                            <i class="fa fa-fw fa-camera"></i>
+                                                            <span>Subir foto</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center text-sm-right">
+                                                    <span class="badge badge-secondary">MED</span>
+                                                    <div class="text-muted"><small>Registro 09 Abr 2024</small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item"><a href class="active nav-link">Detalles</a></li>
+                                        </ul>
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <form class="form" novalidate>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Código</label>
+                                                                        <input class="form-control" type="text" name="name" placeholder="" value="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Precio compra (S/)</label>
+                                                                        <input class="form-control" type="number" name="username" placeholder="" value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Nombre genérico</label>
+                                                                        <input class="form-control" type="text" name="name" placeholder="" value="">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label>Precio venta (S/)</label>
+                                                                        <input class="form-control" type="number" name="username" placeholder="" value="">
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <div class="form-group">
+                                                                        <label>Descripción</label>
+                                                                        <textarea class="form-control" rows="5" placeholder=""></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <div class="form-group">
+                                                                        <label for="sede">Sede</label>
+                                                                        <select class="form-select" id="sede" name="sede" aria-multiselectable="true">
+                                                                            <option selected >Seleccionar sede</option>
+                                                                            <option value="San Miguel Centro">San Miguel Centro</option>
+                                                                            <option value="San Miguel Sur">San Miguel Sur</option>
+                                                                            <option value="Pando 5ta etapa">Pando 5ta etapa</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col d-flex justify-content-end">
+                                                            <a href="/superadmin/medicamentos">
+                                                                <button class="btn btn-n" type="button" >Guardar</button>
+                                                            </a>
+                                                        </div>
+
+                                                        <a href="/superadmin/medicamentos">
+                                                            <button  class="btn btn-c" type="button" data-action="cancel">Cancelar</button>
+                                                        </a>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 
-
-
-    <div class="container" >
-        <br>
-        <table id="miTabla" class="table table-striped" style="padding-top: 10px">
-            <thead >
-            <tr style="background-color: #378fff" >
-                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Farmacista</th>
-                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Sede</th>
-                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Administrador</th>
-                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Fecha de registro</th>
-                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 1</span>
-                    </div>
-                </td>
-                <td style="text-align: center">San Miguel Centro</td>
-                <td style="text-align: center">Administrador 2</td>
-                <td>MM-DD-AA</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 2</span>
-                    </div>
-                </td>
-                <td style="text-align: center">Pando 5 Etapa</td>
-                <td style="text-align: center">Administrador 4</td>
-                <td>15-05-2024</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 3</span>
-                    </div>
-                </td>
-                <td style="text-align: center">San Miguel Centro</td>
-                <td style="text-align: center">Administrador 2</td>
-                <td>MM-DD-AA</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 4</span>
-                    </div>
-                </td>
-                <td style="text-align: center">Pando 5 Etapa</td>
-                <td style="text-align: center">Administrador 4</td>
-                <td>MM-DD-AA</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 5</span>
-                    </div>
-                </td>
-                <td style="text-align: center">San Miguel Sur</td>
-                <td style="text-align: center">Administrador 2</td>
-                <td>11-03-2024</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: center">
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        <label>
-                            <img th:src="@{/img/lista-de-verificacion.png}" alt="" style="width: 45px; height: 45px;">
-                        </label>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <span>   Farmacista 6</span>
-                    </div>
-                </td>
-                <td style="text-align: center">San Miguel Centro</td>
-                <td style="text-align: center">Administrador 3</td>
-                <td>14-02-2024</td>
-                <td>
-                    <a th:href="@{/superadmin/aprobarSolicitudes}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-                </td>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
     <br><br><br>
 
 </main>
@@ -456,6 +452,12 @@
             }
             opened = !opened;
         });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        // Inicializa el combobox con Select2
+        $('#sedes').select2();
     });
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
