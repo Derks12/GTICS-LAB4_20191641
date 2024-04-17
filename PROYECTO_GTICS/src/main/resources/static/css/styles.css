@@ -5,6 +5,7 @@ body {
     font-weight: 400;
     font-style: normal;
     overflow-x: hidden;
+    background-color: #f7f9fa !important;
 }
 
 ul {
@@ -37,7 +38,7 @@ a {
 :root {
     --color-text-1: #2f3a51;
     --color-text-2: #687196;
-    --color-white: #ffffff;
+    --color-white: #f6f1f1;
     --color-light: #f1f5f9;
     --color-black: #121212;
     --color-night: #001632;

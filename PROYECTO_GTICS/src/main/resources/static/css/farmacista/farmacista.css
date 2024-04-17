@@ -478,7 +478,7 @@ hr.style-one {
     outline: none;
     border-radius: 5px;
     color: var(--color-black);
-    background: var(--color-white);
+    background: #ffffff;
 }
 
 
