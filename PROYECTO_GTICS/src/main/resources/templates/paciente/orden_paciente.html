@@ -18,6 +18,12 @@
     <link rel="stylesheet" th:href="@{/css/paciente/paciente.css}">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
     <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
+    <style>
+        .mitad{
+            width: 49%;
+            border: 1px solid black;
+        }
+    </style>
 
 
 
@@ -138,11 +144,33 @@
 </div>
 
 
+<br>
+
+<div class="container" style="display: flex; flex-direction: row">
 
 
-<div class="container">
+    <div class="container">
+        <h1>hola</h1>
+
+    </div>
+
+    <div class="container" style="display: flex; flex-direction: column">
+        <div class="container">
+            <h2>hola2</h2>
+        </div>
+
+        <div class="container">
+            <h3>hola3</h3>
+            <br>
+            <a class="btn-p" href="/paciente">Generar Pre Orden</a>
+            <a class="btn-p" href="/paciente/reemplazar_medicamentos">Reemplazar medicamento</a>
+        </div>
+
+    </div>
+
 
 </div>
+
 
 <br>
 <br>
