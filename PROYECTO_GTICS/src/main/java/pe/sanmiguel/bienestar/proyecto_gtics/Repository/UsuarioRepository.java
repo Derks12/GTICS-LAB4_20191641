@@ -10,7 +10,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Usuario findByDniAndCorreo(String dni, String correo);
 
-    @Query("SELECT MAX(u.idusuario) FROM Usuario u")
+    @Query("SELECT MAX(u.idUsuario) FROM Usuario u")
     Integer findLastUsuarioId();
 
 }

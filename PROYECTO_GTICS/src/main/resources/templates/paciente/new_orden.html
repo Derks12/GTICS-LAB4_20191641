@@ -185,8 +185,8 @@
             </div>
 
             <div class="input-label-box">
-                <label style="font-weight: bold; color:dimgray">Fecha de nacimiento:</label>
-                <input class="input-form" name="fecha" type="date" required>
+                <label style="font-weight: bold; color:dimgray">Distrito:</label>
+                <input class="input-form" name="distrito" type="text" placeholder="Ingrese el distrito donde reside" required>
             </div>
 
         </div>
@@ -202,6 +202,21 @@
             <div class="input-label-box">
                 <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
                 <input class="input-form" type="text" name="correo" placeholder="Ingrese su correo" required>
+            </div>
+
+        </div>
+
+
+        <div class="column">
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Hora de Entrega:</label>
+                <input class="input-form" type="text"  placeholder="Ingrese la hora de entrega" required>
+            </div>
+
+            <div class="input-label-box">
+                <label style="font-weight: bold; color:dimgray">Teléfono:</label>
+                <input class="input-form" type="text"  placeholder="Ingrese su número de teléfono" required>
             </div>
 
         </div>
@@ -575,7 +590,6 @@
         else{
             Swal.fire({
                 title: '¿Estás seguro de generar esta nueva orden de compra?',
-                text: "No se podrá volver a editar los datos",
                 icon: 'warning',
                 iconColor: '#DC3545',
                 showCancelButton: true,

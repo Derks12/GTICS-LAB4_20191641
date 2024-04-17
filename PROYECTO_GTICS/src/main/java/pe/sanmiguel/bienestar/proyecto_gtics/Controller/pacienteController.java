@@ -1,14 +1,21 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.SessionException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 
@@ -69,9 +76,6 @@ public class pacienteController {
     }
 
 
-
-
-
     /*----------------- Method: POST -----------------*/
 
     @PostMapping(value = "/guardarOrden")
@@ -86,7 +90,7 @@ public class pacienteController {
                                @RequestParam(value = "genero", required = false) String genero,
                                @RequestParam(value = "imagen", required = false) MultipartFile archivo,
                                @RequestParam(value = "listaIds", required = false) List<String> lista,
-                               Model model){
+                               Model model, RedirectAttributes redirectAttributes){
 
 
         System.out.println("Nombre: " + name);
@@ -94,14 +98,16 @@ public class pacienteController {
 
         try{
             byte[] bytes = archivo.getBytes();
-            String base64Encoded = java.util.Base64.getEncoder().encodeToString(bytes);
+            String base64Encoded = Base64.getEncoder().encodeToString(bytes);
             model.addAttribute("imagen", base64Encoded);
         } catch (IOException e){
             e.printStackTrace();
             return "error";
         }
 
-        //return "/paciente/prueba";
+
+        redirectAttributes.addFlashAttribute("msg", "Orden Creada");
         return "redirect:/paciente/ordenes";
+        //return "/paciente/prueba";
     }
 }

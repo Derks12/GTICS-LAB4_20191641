@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <!--=============== REMIXICONS ===============-->
@@ -29,7 +29,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--=============== DataTable ===============-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.3/css/buttons.bootstrap5.min.css"/>
@@ -42,6 +42,7 @@
 
     <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
     <title>Ordenes Web | Bienestar San Miguel</title>
+
 
     <style>
         body {
@@ -127,9 +128,22 @@
     </nav>
 </header>
 
+
+
+
 <body>
 
-
+<script th:if="${msg != null}">
+    Swal.fire({
+        icon: "success",
+        iconColor: '#4da642',
+        title: "Orden Web Creada",
+        text: "Debera esperar que su orden sea aprobada. De haber algun problema, el farmacista encargado comunicará con usted para que finalmente pueda realizar el pago de su orden",
+        confirmButtonText: "OK",
+        confirmButtonColor: '#4da642',
+        width: 500,
+    });
+</script>
 
 
 <div class="container">
@@ -319,6 +333,9 @@
     </footer>
 </div>
 
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
@@ -360,7 +377,6 @@
 
 
 </script>
-
 
 
 
