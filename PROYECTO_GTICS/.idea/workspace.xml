@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac6d9844-3389-4fc0-8a41-736daefa1e68" name="Changes" comment="" />
+    <list default="true" id="ac6d9844-3389-4fc0-8a41-736daefa1e68" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/FarmacistaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/FarmacistaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/OrdenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/OrdenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,18 +26,12 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/paciente/pre_ordenes.html" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/paciente/tracking.html" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
-  <component name="ProjectId" id="2fHIqU0mIG77TFuYjtAZf5i3XsL" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -35,16 +39,9 @@
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ProyectoGticsApplication.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+    "git-widget-placeholder": "develop",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RunManager">
