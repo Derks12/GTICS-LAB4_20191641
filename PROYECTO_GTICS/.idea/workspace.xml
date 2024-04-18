@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ac6d9844-3389-4fc0-8a41-736daefa1e68" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "git-widget-placeholder": "develop",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="ProyectoGticsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-22" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="PROYECTO_GTICS" />
@@ -10,5 +33,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="TaskManager">
+    <servers />
   </component>
 </project>
