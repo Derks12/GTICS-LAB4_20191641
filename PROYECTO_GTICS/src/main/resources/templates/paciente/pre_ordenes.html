@@ -136,24 +136,41 @@
 
 <div class="container">
 
-    <div style="display: flex; justify-content: space-between; align-items: center">
-        <div style="display: flex; flex-direction: column">
-            <label style="font-weight: 550; margin-left: 2px; margin-bottom:10px">Filtrar por Estado:</label>
+    <div class="column-start" style="padding-bottom: 1px">
+
+        <div style="display: flex;flex-direction: row;column-gap: 8px">
+
+            <div style="display: flex; flex-direction: column; justify-content: center">
+
+                <label style="color:dimgray;font-weight: bold; margin-left: 2px; margin-bottom:4px">Filtrar por Estado:</label>
+
+            </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: start">
 
 
-            <select class="select-p" id="filtroEstado" >
-                <option value="">Mostrar Todos</option>
-                <option value="RECIBIDO">Recibido</option>
-                <option value="EN PROCESO">En proceso</option>
-                <option value="EMPAQUETANDO">Empaquetando</option>
-                <option value="EN RUTA">En ruta</option>
-                <option value="ENTREGADO">Entregado</option>
-            </select>
+                <select class="select-p" id="filtroEstado" >
+                    <option value="">Mostrar Todos</option>
+                    <option value="RECIBIDO">Recibido</option>
+                    <option value="EN PROCESO">En proceso</option>
+                    <option value="EMPAQUETANDO">Empaquetando</option>
+                    <option value="EN RUTA">En ruta</option>
+                    <option value="ENTREGADO">Entregado</option>
+                </select>
 
+            </div>
+        </div>
+
+
+        <div style="display: flex; flex-direction: column; justify-content: start">
+
+            <input id="searchInput" type:text class="input-form" style="margin-top: 4px;width: 300px;height: 40px" placeholder="Buscar por número de tracking">
 
         </div>
 
-        <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
+
+
+
     </div>
     <br>
 
@@ -179,7 +196,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>aaaa</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-listo">ENTREGADO</button></td>
             <td class="action" >
@@ -187,7 +204,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>bbbbb</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-rcb">RECIBIDO</button></td>
             <td class="action" >
@@ -195,7 +212,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>ccccc</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-rcb">RECIBIDO</button></td>
             <td class="action" >
@@ -203,7 +220,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>dddd</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-pro">EN PROCESO</button></td>
             <td class="action" >
@@ -211,7 +228,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>eee</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-empa">EMPAQUETANDO</button></td>
             <td class="action" >
@@ -219,7 +236,7 @@
             </td>
         </tr>
         <tr>
-            <td>XXYYZZWW</td>
+            <td>XXY123</td>
             <td>MM-DD-AA</td>
             <td><button class="btn-ruta">EN RUTA</button></td>
             <td class="action" >
@@ -315,6 +332,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script th:src="@{/js/topbar.js}"></script>
+
+
 <script>
     $(document).ready(function() {
         var table = $('#miTabla').DataTable({
@@ -350,10 +369,33 @@
 
 
 </script>
+
 <!-- DataTable -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 <!------>
+<style>
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: right;
+        display: none !important;
+    }
+</style>
 
+
+
+<script>
+    $(document).ready(function() {
+        var table = $('#miTabla').DataTable();
+
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().trim().toLowerCase();
+            if (searchTerm === "") {
+                table.search("").draw();
+                return;
+            }
+            table.search(searchTerm).draw();
+        });
+    });
+</script>
 </body>
 
 </html>

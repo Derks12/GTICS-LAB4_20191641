@@ -57,11 +57,18 @@
         }
 
          #map {
-             height: 800px;
-             width: 80%;
+             height: 600px;
+             width: 46%;
              border: 6px solid var(--color-blue);
              border-radius: 6px;
          }
+
+
+         div.dataTables_wrapper div.dataTables_filter {
+             text-align: right;
+             display: none !important;
+         }
+
 
     </style>
 
@@ -194,7 +201,77 @@
 <body>
 
 
+<div class="container">
 
+    <div style="margin-bottom: 50px"></div>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
+    <div style="margin-bottom: 20px"></div>
+    <hr style="border-top: 1px solid #262626;">
+    <div style="margin-bottom: 40px"></div>
+
+    <div style="padding-right: 0; padding-left: 0"> </div>
+</div>
+
+
+<div style="max-width: 1536px;margin-inline: auto;padding: 0 30px 0 30px;">
+
+    <div style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+
+
+
+            <div class="container-progress">
+                <div class="wrapper">
+                    <div class="progress-container">
+
+                        <div class="barra"  style="width: 50%"></div>
+
+                        <div class="progress-step">
+                            <i class="fa-solid fa-file-text active"></i>Recibido
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa fa-refresh active" ></i>En proceso
+                        </div>
+
+                        <div class="progress-step">
+                            <i class="fa-solid fa-archive"></i>Empaquetando
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa fa-truck"></i>En ruta
+                        </div>
+                        <div class="progress-step">
+                            <i class="fa-solid fa-check-square"></i>Entregado
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        <div id="map"></div>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
 
 <div class="container">
 
@@ -208,20 +285,15 @@
 </div>
 
 
-
-
 <div class="container">
 
-    <div style="display: flex; justify-content: space-between; align-items: center">
-        <div style="display: flex; flex-direction: column">
+    <div style="display: flex; flex-direction: column; justify-content: start">
 
-        </div>
+        <input id="searchInput" type="text" class="input-form" style="margin-top: 4px;width: 370px;height: 40px;font-size: 15px" placeholder="Buscar por nombre del medicamente">
 
-        <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
     </div>
+
     <br>
-
-
 
     <table id="miTabla" class="table table-striped">
 
@@ -296,58 +368,7 @@
 <br>
 
 
-<div class="container">
 
-    <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
-    <div style="margin-bottom: 20px"></div>
-    <hr style="border-top: 1px solid #262626;">
-    <div style="margin-bottom: 40px"></div>
-
-    <div style="padding-right: 0; padding-left: 0"> </div>
-</div>
-
-<div class="container-progress">
-    <div class="wrapper">
-        <div class="progress-container">
-
-            <div class="barra"  style="width: 50%"></div>
-
-            <div class="progress-step">
-                <i class="fa-solid fa-file-text active"></i>Recibido
-            </div>
-            <div class="progress-step">
-                <i class="fa-solid fa fa-refresh active" ></i>En proceso
-            </div>
-
-            <div class="progress-step">
-                <i class="fa-solid fa-archive"></i>Empaquetando
-            </div>
-            <div class="progress-step">
-                <i class="fa-solid fa fa-truck"></i>En ruta
-            </div>
-            <div class="progress-step">
-                <i class="fa-solid fa-check-square"></i>Entregado
-            </div>
-
-
-        </div>
-    </div>
-
-</div>
-
-
-<br>
-<br>
-
-
-<div style="display: flex; justify-content: center">
-    <div id="map"></div>
-</div>
-
-
-<br>
-<br>
 <br>
 <br>
 
@@ -442,6 +463,20 @@
     });
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#miTabla').DataTable();
+
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().trim().toLowerCase();
+            if (searchTerm === "") {
+                table.search("").draw();
+                return;
+            }
+            table.search(searchTerm).draw();
+        });
+    });
+</script>
 
 
 </body>

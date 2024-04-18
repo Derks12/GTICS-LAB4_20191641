@@ -164,30 +164,50 @@
 
 
 <div class="container">
-    <div style="padding-top:1px; display:flex; justify-content: end " >
-        <a class="btn-p" href="/paciente/new_orden">Generar nueva orden</a>
 
-    </div>
     <br>
 
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <div class="column-start" style="padding-bottom: 1px">
 
-    <div style="display: flex; justify-content: space-between; align-items: center">
-        <div style="display: flex; flex-direction: column">
-            <label style="font-weight: 550; margin-left: 2px; margin-bottom:10px">Filtrar por Estado:</label>
-            <select id="filtroEstado" class="select-p">
-                <option value="">Mostrar Todos</option>
-                <option value="RECIBIDO">Recibido</option>
-                <option value="EN PROCESO">En proceso</option>
-                <option value="EMPAQUETANDO">Empaquetando</option>
-                <option value="EN RUTA">En ruta</option>
-                <option value="ENTREGADO">Entregado</option>
-            </select>
+            <div style="display: flex;flex-direction: row;column-gap: 8px">
+
+                <div style="display: flex; flex-direction: column; justify-content: center">
+
+                    <label style="color:dimgray;font-weight: bold; margin-left: 2px; margin-bottom:4px">Filtrar por Estado:</label>
+
+                </div>
+
+                <div style="display: flex; flex-direction: column; justify-content: start">
+
+
+                    <select class="select-p" id="filtroEstado" >
+                        <option value="">Mostrar Todos</option>
+                        <option value="RECIBIDO">Recibido</option>
+                        <option value="EN PROCESO">En proceso</option>
+                        <option value="EMPAQUETANDO">Empaquetando</option>
+                        <option value="EN RUTA">En ruta</option>
+                        <option value="ENTREGADO">Entregado</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+            <div style="display: flex; flex-direction: column; justify-content: start">
+                <input id="searchInput" type="text" class="input-form" style="margin-top: 4px;width: 300px;height: 40px" placeholder="Buscar por número de tracking">
+            </div>
+
         </div>
 
-        <button class="btn-p" id="limpiarFiltros"  >Limpiar Filtros</button>
-    </div>
-    <br>
+        <div style="display:flex; justify-content: end;flex-direction: column" >
+            <a class="btn-p" href="/paciente/new_orden">Generar nueva orden</a>
 
+        </div>
+
+    </div>
+
+    <br>
 
 
     <table id="miTabla" class="table table-striped">
@@ -379,6 +399,27 @@
     });
 
 
+</script>
+<style>
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: right;
+        display: none !important;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#miTabla').DataTable();
+
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().trim().toLowerCase();
+            if (searchTerm === "") {
+                table.search("").draw();
+                return;
+            }
+            table.search(searchTerm).draw();
+        });
+    });
 </script>
 
 

@@ -24,7 +24,7 @@ public class Medicamento {
     @Column
     private String visibleSedes;
     @Column
-    private String categoria;
+    private String categorias;
     @Column
     private String componente;
     @Column
