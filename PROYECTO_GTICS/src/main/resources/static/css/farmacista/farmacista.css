@@ -395,7 +395,7 @@ hr.style-one {
     background-color: var(--color-blue);
     color: #fff;
     padding: 5px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
@@ -519,10 +519,11 @@ hr.style-one {
     font-size: 0.9rem;
     margin: 10px auto;
     border: none;
-    background-color: var(--color-blue);
-    color: #fff;
+    background-color: #c6d5ec;
+    border: 1px #87888a;
+    color: var(--color-text-1);
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
@@ -539,7 +540,7 @@ hr.style-one {
     background-color: var(--color-red);
     color: #fff;
     padding: 5px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
@@ -803,7 +804,8 @@ hr.style-one {
 
 
 /*==================Perfil vista principal================*/
-body{margin-top:20px;
+body{
+
     background-color:#f2f6fc;
     color:#69707a;
 }

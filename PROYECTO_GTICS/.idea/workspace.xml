@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ac6d9844-3389-4fc0-8a41-736daefa1e68" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/farmacistaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/MedicamentoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/MedicamentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/FarmacistaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Controller/FarmacistaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/OrdenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/OrdenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pe/sanmiguel/bienestar/proyecto_gtics/Repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/farmacista/farmacista.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/formulario_paciente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/inicio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/farmacista/ordenes_venta.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +23,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RequestMappingsPanelOrder0": "0",
@@ -24,6 +37,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "git-widget-placeholder": "develop",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
