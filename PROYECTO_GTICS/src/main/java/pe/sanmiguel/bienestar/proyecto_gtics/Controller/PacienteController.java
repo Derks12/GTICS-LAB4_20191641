@@ -1,16 +1,11 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.SessionException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
 
@@ -21,14 +16,14 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value="/paciente", method= RequestMethod.GET)
-public class pacienteController {
+public class PacienteController {
 
 
 
     /*----------------- Repositories -----------------*/
     final MedicamentoRepository medicamentoRepository;
 
-    public pacienteController(MedicamentoRepository medicamentoRepository){
+    public PacienteController(MedicamentoRepository medicamentoRepository){
         this.medicamentoRepository = medicamentoRepository;
     }
 

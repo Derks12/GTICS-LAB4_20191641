@@ -19,14 +19,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
-public class farmacistaController {
+public class FarmacistaController {
 
     final UsuarioRepository usuarioRepository;
     final MedicamentoRepository medicamentoRepository;
     final OrdenRepository ordenRepository;
     final OrdenContenidoRepository ordenContenidoRepository;
 
-    public farmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository) {
+    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository) {
         this.usuarioRepository = usuarioRepository;
         this.medicamentoRepository = medicamentoRepository;
         this.ordenRepository = ordenRepository;
@@ -35,7 +35,8 @@ public class farmacistaController {
 
     ArrayList<Medicamento> medicamentosSeleccionados = new ArrayList<>();
     ArrayList<String> listaCantidades = new ArrayList<>();
-    Integer ordenIdFind;
+
+    Integer verOrdenVenta;
 
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
@@ -46,21 +47,13 @@ public class farmacistaController {
 
     @PostMapping("/farmacista/continuar_compra")
     public String continuarCompra(@RequestParam("listaIds") List<String> listaSelectedIds){
-
-        ArrayList<Optional<Medicamento>> OptSeleccionados = new ArrayList<>();
-        listaCantidades = new ArrayList<>();
-
-        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
-            OptSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+        if (!listaSelectedIds.isEmpty()){
+            fillMedicamentosFromLista(listaSelectedIds);
+            fillCantidadesFromLista(listaSelectedIds);
+            return "redirect:/farmacista/formulario_paciente";
+        } else {
+            return "redirect:/farmacista";
         }
-
-        for (int i = 0; i + 1 < listaSelectedIds.size(); i += 2) {
-            listaCantidades.add(listaSelectedIds.get(i + 1));
-        }
-
-        medicamentosSeleccionados = (ArrayList<Medicamento>) OptSeleccionados.stream().flatMap(Optional::stream).collect(Collectors.toList());
-
-        return "redirect:/farmacista/formulario_paciente";
     }
 
     @GetMapping("/farmacista/formulario_paciente")
@@ -84,7 +77,7 @@ public class farmacistaController {
                                   @RequestParam(value = "listaIds") List<String> listaSelectedIds,
                                   @RequestParam(value = "priceTotal") String priceTotal) {
 
-        ordenIdFind = 0;
+        verOrdenVenta = 0;
 
         ArrayList<Optional<Medicamento>> listaFinalMedicamentosOpt = new ArrayList<>();
         ArrayList<String> listaFinalCantidades = new ArrayList<>();
@@ -161,7 +154,7 @@ public class farmacistaController {
             ordenContenidoRepository.save(contenido);
         }
 
-        ordenIdFind = nuevaOrdenId;
+        verOrdenVenta = nuevaOrdenId;
 
         return "redirect:/farmacista/ver_orden_venta";
     }
@@ -169,16 +162,16 @@ public class farmacistaController {
     @GetMapping("/farmacista/ver_orden_venta")
     public String verOrdenesVenta(Model model) {
 
-        if (ordenIdFind != null){
+        if (verOrdenVenta != null){
 
-            Optional<Orden> ordenOptional = ordenRepository.findById(ordenIdFind);
+            Optional<Orden> ordenOptional = ordenRepository.findById(verOrdenVenta);
 
             if (ordenOptional.isPresent()){
                 Orden ordenComprobada = ordenOptional.get();
 
                 Optional<Usuario> usuarioOptional = usuarioRepository.findById(ordenComprobada.getIdPaciente());
                 Usuario usuarioComprobado = usuarioOptional.get();
-                ArrayList<OrdenContenido> medicamentosOnOrden = ordenContenidoRepository.findAllByIdOrden(ordenIdFind);
+                ArrayList<OrdenContenido> medicamentosOnOrden = ordenContenidoRepository.findAllByIdOrden(verOrdenVenta);
                 ArrayList<Optional<Medicamento>> medicamentosListOptional = new ArrayList<>();
 
                 for (OrdenContenido cont : medicamentosOnOrden){
@@ -224,7 +217,7 @@ public class farmacistaController {
     @PostMapping("/farmacista/ver_orden_venta_tabla")
     public String verOrdenesVentaTabla(@RequestParam(value = "idOrden") String idOrdenTabla){
 
-        ordenIdFind = Integer.valueOf(idOrdenTabla);
+        verOrdenVenta = Integer.valueOf(idOrdenTabla);
 
         return "redirect:/farmacista/ver_orden_venta";
     }
@@ -255,4 +248,26 @@ public class farmacistaController {
     public String notificaciones() {
         return "/farmacista/notificacion";
     }
+
+
+
+
+    public void fillMedicamentosFromLista(List<String> listaSelectedIds) {
+        ArrayList<Optional<Medicamento>> OptSeleccionados = new ArrayList<>();
+        for (int i = 0; i < listaSelectedIds.size(); i += 2) {
+            OptSeleccionados.add(medicamentoRepository.findById(Integer.valueOf(listaSelectedIds.get(i))));
+        }
+        medicamentosSeleccionados = (ArrayList<Medicamento>) OptSeleccionados.stream().flatMap(Optional::stream).collect(Collectors.toList());
+    }
+
+    public void fillCantidadesFromLista(List<String> listaSelectedIds) {
+        listaCantidades = new ArrayList<>();
+        for (int i = 0; i + 1 < listaSelectedIds.size(); i += 2) {
+            listaCantidades.add(listaSelectedIds.get(i + 1));
+        }
+    }
+
+
 }
+
+
