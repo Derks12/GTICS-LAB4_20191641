@@ -150,7 +150,9 @@
                         <option value="ENTREGADO">Entregado</option>
                     </select>
                 </div>
-
+                <div style="display:flex; justify-content: end;flex-direction: column" >
+                    <a class="btn-p" href="/paciente/new_orden">Generar nueva orden</a>
+                </div>
                 <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
             </div>
 
@@ -167,7 +169,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                    <tr th:each="preOrden: ${listaPreOrdenes}">
+                        <td th:text="${preOrden.idPreorden}"></td>
+                        <td th:text="${preOrden.tracking}"></td>
+                        <td th:text="${preOrden.paciente.nombres}"></td>
+                        <td th:text="${preOrden.estadoPreOrden.nombre}"></td> /* Un combobox*/
+                        <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
+                            <form action="/farmacista/detallesOrdenWeb" method="post">
+                                <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                <!--tr>
                     <td style="text-align: center">XXYYZZ</td>
                     <td style="text-align: center">XXYYZZ</td>
                     <td style="text-align: center">Sergio Bustamante</td>
@@ -232,9 +245,10 @@
                             <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
                         </form>
                     </td>
-                </tr>
+                </tr-->
                 </tbody>
             </table>
+
 
         </div>
 

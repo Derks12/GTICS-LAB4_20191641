@@ -6,14 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.sanmiguel.bienestar.proyecto_gtics.CurrentTimeSQL;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Orden;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.OrdenContenido;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
-import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
-import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenContenidoRepository;
-import pe.sanmiguel.bienestar.proyecto_gtics.Repository.OrdenRepository;
-import pe.sanmiguel.bienestar.proyecto_gtics.Repository.UsuarioRepository;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.*;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,17 +17,20 @@ public class FarmacistaController {
 
 
     /* Repositorios */
-    
     final UsuarioRepository usuarioRepository;
     final MedicamentoRepository medicamentoRepository;
     final OrdenRepository ordenRepository;
     final OrdenContenidoRepository ordenContenidoRepository;
+    final PreOrdenRepository preOrdenRepository;
+    final  EstadoPreOrdenRepository estadoPreOrdenRepository;
 
-    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository) {
+    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository,PreOrdenRepository preOrdenRepository, EstadoPreOrdenRepository estadoPreOrdenRepository) {
         this.usuarioRepository = usuarioRepository;
         this.medicamentoRepository = medicamentoRepository;
         this.ordenRepository = ordenRepository;
         this.ordenContenidoRepository = ordenContenidoRepository;
+        this.preOrdenRepository=preOrdenRepository;
+        this.estadoPreOrdenRepository=estadoPreOrdenRepository;
     }
 
     /* Repositorios */
@@ -133,11 +130,17 @@ public class FarmacistaController {
         return "/farmacista/ordenes_web";
     }
     @GetMapping("/farmacista/pre_ordenes")
-    public String preOrdenes() {
+    public String preOrdenes(Model model) {
+
+        model.addAttribute("listaPreOrdenes", preOrdenRepository.findAll());
+
         return "/farmacista/pre_ordenes";
     }
     @GetMapping("/farmacista/detallesOrdenWeb")
     public String detaOrdenWeb() {return "/farmacista/detallesOrdenWeb";}
+    @GetMapping("/farmacista/ver_pre_orden")
+    public String preOrden() {
+        return "/farmacista/ver_pre_orden";}
     @GetMapping("/farmacista/perfil")
     public String profile() {
         return "/farmacista/perfil";
@@ -150,10 +153,7 @@ public class FarmacistaController {
     public String cambioContra() {
         return "/farmacista/cambioContraseña";
     }
-    @GetMapping("/farmacista/notificacion")
-    public String notificaciones() {
-        return "/farmacista/notificacion";
-    }
+
 
 
 

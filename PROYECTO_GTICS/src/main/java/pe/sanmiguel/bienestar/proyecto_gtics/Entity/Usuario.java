@@ -11,7 +11,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
-
     @Id
     private Integer idUsuario;
     @Column
