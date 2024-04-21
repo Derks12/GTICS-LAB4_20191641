@@ -2,7 +2,7 @@
 /*=============== HEADER ===============*/
 .header-topbar {
     width: 100%;
-    background-color: var(--color-blue);
+    background-color: #0d6efd;
     box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
     z-index: 100;
     position: fixed;

@@ -35,6 +35,12 @@ public class PacienteController {
     @GetMapping(value="")
     public String preOrdenes(){return "/paciente/pre_ordenes";}
 
+    @GetMapping(value="/ordenes")
+    public String ordenes(){return "/paciente/ordenes";}
+
+    @GetMapping(value="/pago_tarjeta")
+    public String pago_tarjeta(){return "/paciente/pago_tarjeta";}
+
     @GetMapping(value="/tracking")
     public String tracking(){ return "/paciente/tracking";}
 
@@ -43,11 +49,6 @@ public class PacienteController {
 
     @GetMapping(value="/tracking_end")
     public String tracking_end(){ return "/paciente/tracking_finalizado";}
-
-
-
-    @GetMapping(value="/ordenes")
-    public String ordenes(){return "/paciente/ordenes";}
 
     @GetMapping(value="/new_orden")
     public String new_orden(Model model){
