@@ -21,15 +21,15 @@ public class FarmacistaController {
     final MedicamentoRepository medicamentoRepository;
     final OrdenRepository ordenRepository;
     final OrdenContenidoRepository ordenContenidoRepository;
-    final PreOrdenRepository preOrdenRepository;
+    final ReposicionRepository reposicionRepository;
     final  EstadoPreOrdenRepository estadoPreOrdenRepository;
 
-    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository,PreOrdenRepository preOrdenRepository, EstadoPreOrdenRepository estadoPreOrdenRepository) {
+    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository,EstadoPreOrdenRepository estadoPreOrdenRepository) {
         this.usuarioRepository = usuarioRepository;
         this.medicamentoRepository = medicamentoRepository;
         this.ordenRepository = ordenRepository;
         this.ordenContenidoRepository = ordenContenidoRepository;
-        this.preOrdenRepository=preOrdenRepository;
+        this.reposicionRepository=reposicionRepository;
         this.estadoPreOrdenRepository=estadoPreOrdenRepository;
     }
 
@@ -47,14 +47,14 @@ public class FarmacistaController {
 
 
 
-    @GetMapping("/farmacista")
+    /*@GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
         List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
         model.addAttribute("listaMedicamentos", listaMedicamentos);
         return "/farmacista/inicio";
-    }
+    }*/
 
-    @PostMapping("/farmacista/continuar_compra")
+    /*@PostMapping("/farmacista/continuar_compra")
     public String fillContentOrder(@RequestParam("listaIds") List<String> listaSelectedIds){
         if (!listaSelectedIds.isEmpty()){
             medicamentosSeleccionados = fillMedicamentosFromLista(listaSelectedIds);
@@ -63,16 +63,16 @@ public class FarmacistaController {
         } else {
             return "redirect:/farmacista";
         }
-    }
+    }*/
 
-    @GetMapping("/farmacista/formulario_paciente")
+    /*@GetMapping("/farmacista/formulario_paciente")
     public String formPacienteData(Model model) {
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         model.addAttribute("listaCantidades", listaCantidades);
         return "/farmacista/formulario_paciente";
-    }
+    }*/
 
-    @PostMapping("/farmacista/finalizar_compra")
+    /*@PostMapping("/farmacista/finalizar_compra")
 
     public String createOrdenVenta(@RequestParam(value = "name") String name,
                                    @RequestParam(value = "lastname") String lastname,
@@ -88,10 +88,10 @@ public class FarmacistaController {
                                    @RequestParam(value = "priceTotal") String priceTotal) {
 
 
-        crearOrdenVentaFromData(name, lastname, dni, distrito, direccion, telefono, doctor, seguro, correo, listaSelectedIds, priceTotal);
+        //crearOrdenVentaFromData(name, lastname, dni, distrito, direccion, telefono, doctor, seguro, correo, listaSelectedIds, priceTotal);
 
         return "redirect:/farmacista/ver_orden_venta";
-    }
+    }*/
 
     @PostMapping("/farmacista/ver_orden_venta_tabla")
     public String verOrdenesVentaTabla(@RequestParam(value = "idOrden") String idOrdenTabla){
@@ -101,7 +101,7 @@ public class FarmacistaController {
         return "redirect:/farmacista/ver_orden_venta";
     }
 
-    @GetMapping("/farmacista/ver_orden_venta")
+    /*@GetMapping("/farmacista/ver_orden_venta")
     public String verOrdenVenta(Model model) {
 
         Optional<Orden> ordenOptional = ordenRepository.findById(idVerOrdenCreada);
@@ -114,12 +114,12 @@ public class FarmacistaController {
 
             return "/farmacista/errorPages/no_existe_orden";
         }
-    }
+    }*/
 
     @GetMapping("/farmacista/ordenes_venta")
     public String TablaOrdenesVenta(Model model) {
 
-        listOrdenesVenta(model);
+        //listOrdenesVenta(model);
 
         return "/farmacista/ordenes_venta";
     }
@@ -132,7 +132,7 @@ public class FarmacistaController {
     @GetMapping("/farmacista/pre_ordenes")
     public String preOrdenes(Model model) {
 
-        model.addAttribute("listaPreOrdenes", preOrdenRepository.findAll());
+        model.addAttribute("listaPreOrdenes", reposicionRepository.findAll());
 
         return "/farmacista/pre_ordenes";
     }
@@ -145,7 +145,7 @@ public class FarmacistaController {
     public String profile() {
         return "/farmacista/perfil";
     }
-    @GetMapping("/farmacista/facturacion")/*LO PODEMOS USAR EN PACIENTE */
+    @GetMapping("/farmacista/facturacion")
     public String facturacion() {
         return "/farmacista/facturacion";
     }
@@ -157,7 +157,7 @@ public class FarmacistaController {
 
 
 
-    public void listOrdenesVenta(Model model){
+    /*public void listOrdenesVenta(Model model){
         List<Orden> listaOrdenes = ordenRepository.findBySedeId(1); //Adaptar segun session del farmacista
         List<Integer> IdsUsuarios = new ArrayList<>();
 
@@ -216,7 +216,7 @@ public class FarmacistaController {
         return cantidades;
     }
 
-    public void crearOrdenVentaFromData(String name, String lastname, String dni, String distrito, String direccion, String telefono, String doctor, String seguro, String correo, List<String> listaSelectedIds, String priceTotal){
+    /*public void crearOrdenVentaFromData(String name, String lastname, String dni, String distrito, String direccion, String telefono, String doctor, String seguro, String correo, List<String> listaSelectedIds, String priceTotal){
 
         idVerOrdenCreada = 0;
 
@@ -265,7 +265,7 @@ public class FarmacistaController {
         nuevaOrden.setIdOrden(nuevaOrdenId);
         nuevaOrden.setFechaIni(CurrentTimeSQL.getCurrentDate());
         nuevaOrden.setNoStock(false); /*Falta comprobar*/
-        nuevaOrden.setPagado(true);
+        /*nuevaOrden.setPagado(true);
         nuevaOrden.setPrecioTotal(Float.parseFloat(priceTotal));
         nuevaOrden.setIdFarmacista(1);
         nuevaOrden.setIdPaciente(idPaciente);
@@ -289,7 +289,7 @@ public class FarmacistaController {
         }
 
         idVerOrdenCreada = nuevaOrdenId;
-    }
+    }*/
 
 
 }

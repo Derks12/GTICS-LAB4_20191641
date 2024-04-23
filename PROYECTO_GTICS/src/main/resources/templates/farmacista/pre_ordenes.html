@@ -151,7 +151,7 @@
                     </select>
                 </div>
                 <div style="display:flex; justify-content: end;flex-direction: column" >
-                    <a class="btn-p" href="/paciente/new_orden">Generar nueva orden</a>
+                    <a class="btn-p" href="/farmacista/ver_pre_orden">Generar nueva orden</a>
                 </div>
                 <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
             </div>
@@ -163,89 +163,23 @@
                 <tr style="background-color: #378fff">
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Número de Orden</th>
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Número de Tracking</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Paciente</th>
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Paciente </th> <!--REVISAR COLOCAR FECHA INI pero deberia nombre del paciente-->
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr th:each="preOrden: ${listaPreOrdenes}">
-                        <td th:text="${preOrden.idPreorden}"></td>
+                        <td th:text="${preOrden.idReposicion}"></td>
                         <td th:text="${preOrden.tracking}"></td>
-                        <td th:text="${preOrden.paciente.nombres}"></td>
-                        <td th:text="${preOrden.estadoPreOrden.nombre}"></td> /* Un combobox*/
+                        <td th:text="${preOrden.fechaIni}"></td>  <!--REVISAR COLOCARE FECHA INI-->
+                        <td th:text="${preOrden.estado.nombre}"></td>
                         <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                            <form action="/farmacista/detallesOrdenWeb" method="post">
+                            <form action="/farmacista/ver_pre_orden" method="post">
                                 <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
                             </form>
                         </td>
                     </tr>
-                <!--tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-yellow">RECIBIDO</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-yellow">EN PROCESO</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-yellow">EN PROCESO</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-yellow">EMPAQUETADO</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-yellow">EN RUTA</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">XXYYZZ</td>
-                    <td style="text-align: center">Sergio Bustamante</td>
-                    <td style="text-align: center"><button class="btn-green">ENTREGADO</button></td>
-                    <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <form action="/farmacista/detallesOrdenWeb" method="post">
-                            <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </td>
-                </tr-->
                 </tbody>
             </table>
 

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 @Repository
 public interface OrdenContenidoRepository extends JpaRepository<OrdenContenido, Integer> {
-    ArrayList<OrdenContenido> findAllByIdOrden(Integer idOrden);
+    /*ArrayList<OrdenContenido> findAllByIdOrden(Integer idOrden);
 
     @Query("SELECT MAX(oc.idEntrada) FROM OrdenContenido oc")
-    Integer findLastOrdenContenidoId();
+    Integer findLastOrdenContenidoId();*/
 }

@@ -8,9 +8,9 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    Usuario findByCorreoAndDni(String correo, String dni);
+    /*Usuario findByCorreoAndDni(String correo, String dni);
 
     @Query("SELECT MAX(u.idUsuario) FROM Usuario u")
-    Integer findLastUsuarioId();
+    Integer findLastUsuarioId();*/
 
 }

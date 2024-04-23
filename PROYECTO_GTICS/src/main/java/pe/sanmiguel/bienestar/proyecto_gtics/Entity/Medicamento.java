@@ -21,8 +21,7 @@ public class Medicamento {
     private String unidad;
     @Column
     private String descripcion;
-    @Column
-    private String visibleSedes;
+
     @Column
     private String categorias;
     @Column

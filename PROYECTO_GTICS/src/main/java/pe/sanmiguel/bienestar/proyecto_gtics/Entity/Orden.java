@@ -1,9 +1,6 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,29 +11,36 @@ import java.util.Date;
 @Entity
 @Table(name = "orden")
 public class Orden {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer idOrden;
+    @Column
+    private String tracking;
     @Column
     private Date fechaIni;
     @Column
     private Date fechaFin;
     @Column
-    private boolean noStock;
-    @Column
-    private boolean pagado;
-    @Column
     private float precioTotal;
     @Column
     private Integer idFarmacista;
-    @Column
-    private Integer idPaciente;
-    @Column
-    private Integer idTipo;
-    @Column
-    private Integer idEstado;
-    @Column
-    private Integer idSede;
-    @Column
-    private Integer idDoctor;
+    @ManyToOne
+    @JoinColumn(name="idPaciente")
+    private Usuario idPaciente;
+    @ManyToOne
+    @JoinColumn(name = "idTipo")
+    private TipoOrden tipoOrden;
+    @ManyToOne
+    @JoinColumn(name="idEstado")
+    private EstadoOrden estadoOrden;
+    @ManyToOne
+    @JoinColumn(name="idSede")
+    private Sede sede;
+    @ManyToOne
+    @JoinColumn(name = "idDoctor")
+    private Doctor doctor;
+    @ManyToOne
+    @JoinColumn(name = "estado_pre_orden")
+    private EstadoPreOrden estadoPreOrden;
 }
