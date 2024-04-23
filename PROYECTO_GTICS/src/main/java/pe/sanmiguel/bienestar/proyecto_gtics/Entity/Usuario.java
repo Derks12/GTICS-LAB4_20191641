@@ -31,7 +31,7 @@ public class Usuario {
     private String distrito;
     @Column
     private String seguro;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "estado_usuario")
-    private EstadoUsuario estadoUsuario;
+    private EstadoUsuario estadoUsuario;*/
 }

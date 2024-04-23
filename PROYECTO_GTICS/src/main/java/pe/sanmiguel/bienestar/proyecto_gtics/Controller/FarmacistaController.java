@@ -119,21 +119,22 @@ public class FarmacistaController {
     @GetMapping("/farmacista/ordenes_venta")
     public String TablaOrdenesVenta(Model model) {
 
-        //listOrdenesVenta(model);
+        model.addAttribute("listaOrdenesVenta", reposicionRepository.findAll());
 
         return "/farmacista/ordenes_venta";
     }
 
 
     @GetMapping("/farmacista/ordenes_web")
-    public String OrdenesWeb() {
+    public String OrdenesWeb(Model model) {
+        List<Orden> listaOrdenesWeb = ordenRepository.findAllOrdenesWeb();
+        model.addAttribute("listaOrdenesWeb", listaOrdenesWeb);
         return "/farmacista/ordenes_web";
     }
     @GetMapping("/farmacista/pre_ordenes")
     public String preOrdenes(Model model) {
-
-        model.addAttribute("listaPreOrdenes", reposicionRepository.findAll());
-
+        List<Orden> listaPreOrdenes = ordenRepository.findAllPreOrdenes();
+        model.addAttribute("listaPreOrdenes", listaPreOrdenes);
         return "/farmacista/pre_ordenes";
     }
     @GetMapping("/farmacista/detallesOrdenWeb")

@@ -27,7 +27,7 @@ public class Orden {
     private Integer idFarmacista;
     @ManyToOne
     @JoinColumn(name="idPaciente")
-    private Usuario idPaciente;
+    private Usuario paciente;
     @ManyToOne
     @JoinColumn(name = "idTipo")
     private TipoOrden tipoOrden;
@@ -41,6 +41,6 @@ public class Orden {
     @JoinColumn(name = "idDoctor")
     private Doctor doctor;
     @ManyToOne
-    @JoinColumn(name = "estado_pre_orden")
+    @JoinColumn(name = "estado_preorden")
     private EstadoPreOrden estadoPreOrden;
 }

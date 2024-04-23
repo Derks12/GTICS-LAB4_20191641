@@ -9,6 +9,10 @@ import java.util.List;
 
 @Repository
 public interface OrdenRepository extends JpaRepository<Orden, Integer> {
+    @Query(value = "SELECT * FROM orden WHERE idTipo = (SELECT id FROM tipo_orden WHERE nombre = 'Web')", nativeQuery = true)
+    List<Orden> findAllOrdenesWeb();
+    @Query(value = "SELECT * FROM orden WHERE idTipo = (SELECT id FROM tipo_orden WHERE nombre = 'Pre Orden')", nativeQuery = true)
+    List<Orden> findAllPreOrdenes();
 
     /*@Query("SELECT MAX(o.idOrden) FROM Orden o")
     Integer findLastOrdenId();

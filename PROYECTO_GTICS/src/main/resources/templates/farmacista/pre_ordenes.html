@@ -170,10 +170,10 @@
                 </thead>
                 <tbody>
                     <tr th:each="preOrden: ${listaPreOrdenes}">
-                        <td th:text="${preOrden.idReposicion}"></td>
-                        <td th:text="${preOrden.tracking}"></td>
-                        <td th:text="${preOrden.fechaIni}"></td>  <!--REVISAR COLOCARE FECHA INI-->
-                        <td th:text="${preOrden.estado.nombre}"></td>
+                        <td th:text="${preOrden.idOrden}"></td>
+                        <td th:text="${preOrden.fechaIni}"></td>
+                        <td th:text="${preOrden.paciente.nombres}"></td>
+                        <td th:text="${preOrden.estadoOrden.nombre}"></td>
                         <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
                             <form action="/farmacista/ver_pre_orden" method="post">
                                 <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
