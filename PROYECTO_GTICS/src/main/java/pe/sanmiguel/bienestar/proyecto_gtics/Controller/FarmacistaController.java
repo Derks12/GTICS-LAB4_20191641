@@ -116,6 +116,8 @@ public class FarmacistaController {
             return "/farmacista/errorPages/no_existe_orden";
         }
     }*/
+
+    /* OJO LO ESTOY USANDO EN ORDENES VENTA PARA QUE PUEDA VER LA VISTA DE VER_ORDEN_VENTA
     @GetMapping("/verOrdenVenta")
     public String verOrdenVenta(Model model,
                               @RequestParam("id") Integer id) {
@@ -127,8 +129,7 @@ public class FarmacistaController {
         }else {
             return  "redirect:/farmacista/ordenes_venta";
         }
-
-    }
+    }*/
     @GetMapping("/farmacista/ordenes_venta")
     public String tablaOrdenesVenta(Model model) {
         List<Orden> listaOrdenesVenta = ordenRepository.findAll();
