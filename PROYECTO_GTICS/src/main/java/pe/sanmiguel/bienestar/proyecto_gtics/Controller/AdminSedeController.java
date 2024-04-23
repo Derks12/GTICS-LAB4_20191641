@@ -39,7 +39,7 @@ public class AdminSedeController {
         return "/adminsede/editar_orden_reposicion";
     }
 
-    @GetMapping(value = {"/medicamentos"})
+    @GetMapping(value = {"/medicamentos"}) //Aquiiiiiiiiiiiiiii
     public String showMedicamentos(){
         return "/adminsede/medicamentos_sede";
     }

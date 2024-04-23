@@ -11,4 +11,5 @@ public interface MedicamentoRepository extends JpaRepository<Medicamento, Intege
     /*@Query("SELECT MAX(m.idMedicamento) FROM Medicamento m")
     Integer findLastMedicamentoId();*/
 
+
 }
