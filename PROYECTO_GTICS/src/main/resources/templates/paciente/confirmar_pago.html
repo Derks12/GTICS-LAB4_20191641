@@ -25,11 +25,6 @@
     <link rel="stylesheet" th:href="@{/css/paciente/progress-bar.css}">
     <link rel="stylesheet" th:href="@{/css/datatables.css}">
 
-
-
-
-
-
     <!--=============== DataTable ===============-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"/>
     <!--  Bootstrap-->
@@ -37,87 +32,20 @@
     <!--==========================================-->
 
 
-
-    <script src="https://kit.fontawesome.com/a2dd6045c4.js" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAce4klBZuD60aEQidMVIbsoaiitxxQFpo"></script>
-    <script scr="/js/map.js"></script>
-
-    <title>Tracking | Bienestar San Miguel</title>
+    <title>Confirmar Pago | Bienestar San Miguel</title>
 
     <style>
         body {
             padding-top: 90px;
         }
-        #filtroEstado:focus {
-
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-        .medicamento{
-            max-width: 180px; max-height: 180px;
-        }
-
-         #map {
-             height: 600px;
-             width: 46%;
-             border: 6px solid var(--color-blue);
-             border-radius: 6px;
-         }
-
 
          div.dataTables_wrapper div.dataTables_filter {
              text-align: right;
              display: none !important;
          }
 
-
     </style>
 
-
-
-    <script>
-        // Puntos del mapa
-
-        const locations = [
-            { lat: -12.067713, lng: -77.067505 },
-            { lat: -12.067739299285414, lng: -77.07048533833166 },
-            { lat: -12.067991537715104, lng: -77.07550755645634 },
-            { lat : -12.068533248724986, lng: -77.07808532986617},
-            { lat: -12.069724275588285, lng: -77.07804924250952}
-        ]
-
-
-        // Inicializar mapa
-        function initMap() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 16,
-                center: locations[0],
-            });
-
-            // Crear marcador
-            const marker = new google.maps.Marker({
-                position: locations[0],
-                map: map,
-                icon: {
-                    url: "../img/moto_icon.png", // Ruta de la imagen de la moto
-                    scaledSize: new google.maps.Size(55, 50) // Tamaño personalizado (ancho, alto)
-                } // Ruta de la imagen de la moto
-            });
-
-            // Mover el marcador a través de los puntos
-
-            let i = 0;
-            const interval = setInterval(() => {
-                i++;
-                if (i >= locations.length) {
-                    clearInterval(interval); // Detener el intervalo cuando llega a la tercera posición
-                    return;
-                }
-                marker.setPosition(locations[i]);
-            }, 2000); // Cambia de ubicación cada 3 segundos
-
-        }
-
-    </script>
 </head>
 
 
@@ -204,77 +132,6 @@
 <div class="container">
 
     <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
-    <div style="margin-bottom: 20px"></div>
-    <hr style="border-top: 1px solid #262626;">
-    <div style="margin-bottom: 40px"></div>
-
-    <div style="padding-right: 0; padding-left: 0"> </div>
-</div>
-
-
-<div style="max-width: 1536px;margin-inline: auto;padding: 0 30px 0 30px;">
-
-    <div style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
-
-
-            <div class="container-progress">
-                <div class="wrapper">
-                    <div class="progress-container">
-
-                        <div class="barra"  style="width: 50%"></div>
-
-                        <div class="progress-step">
-                            <i class="fa-solid fa-file-text active"></i>Recibido
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa fa-refresh active" ></i>En proceso
-                        </div>
-
-                        <div class="progress-step">
-                            <i class="fa-solid fa-archive"></i>Empaquetando
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa fa-truck"></i>En ruta
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa-check-square"></i>Entregado
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
-        <div id="map"></div>
-
-    </div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<br>
-<br>
-
-<div class="container">
-
-    <div style="margin-bottom: 50px"></div>
     <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Contenido de la Orden:</strong></h2>
     <div style="margin-bottom: 20px"></div>
     <hr style="border-top: 1px solid #DFDFDF;">
@@ -284,76 +141,128 @@
 </div>
 
 
-<div class="container">
+<div style="max-width: 1540px; padding: 0 40px 0 40px;margin-inline: auto">
 
-    <div style="display: flex; flex-direction: column; justify-content: start">
+    <div style="display: flex;flex-direction: row;column-gap: 20px;justify-content: center">
 
-        <input id="searchInput" type="text" class="input-form" style="margin-top: 4px;width: 370px;height: 40px;font-size: 15px" placeholder="Buscar por nombre del medicamente">
+        <div style="width: 1000px">
+            <div style="display: flex; flex-direction: column; justify-content: start">
+
+                <input id="searchInput" type="text" class="input-form" style="margin-top: 4px;width: 370px;height: 40px;font-size: 15px" placeholder="Buscar por nombre del medicamente">
+
+            </div>
+
+            <br>
+
+            <table id="miTabla" class="table table-striped">
+
+                <thead>
+                <tr style="background-color: #378fff">
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                <tr>
+                    <td>Paracetamol 100 mg</td>
+                    <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+                <tr>
+                    <td>Neurobion 100 mg</td>
+                    <td><img class="medicamento" src="/img/neurobion.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+                <tr>
+                    <td>Nastzol 100 mg</td>
+                    <td><img class="medicamento" src="/img/nastzol.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+                <tr>
+                    <td>Panadol 100 mg</td>
+                    <td><img class="medicamento"  src="/img/panadol.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+                <tr>
+                    <td>Apronax 100 mg</td>
+                    <td><img class="medicamento"  src="/img/apronax.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+                <tr>
+                    <td>Doloral 100 mg</td>
+                    <td><img class="medicamento"  src="/img/doloral.jpg"></td>
+                    <td>5</td>
+                    <td>S/. 6</td>
+                    <td>S/. 30</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr style="border-top: 2px solid #3c3c3c">
+            <br>
+
+
+
+
+        </div>
+
+
+
+        <div style="background-color: white;border-radius: 10px;padding:20px 20px 0 20px; width: 400px;height: 250px;margin-top: 70px">
+
+            <div style="display: flex;flex-direction: row;justify-content: start">
+                <p style="font-size: 26px;font-weight: 500">Resumen:</p>
+            </div>
+
+
+            <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 15px">
+                <p style="font-size: 18px">Cantidad de Productos:</p>
+                <p style="font-size: 18px">6</p>
+            </div>
+
+
+            <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 15px">
+                <p style="font-size: 18px">Total a pagar:</p>
+                <p style="font-size: 18px">S/.300</p>
+            </div>
+
+            <br>
+            <div style="display: flex;flex-direction: row;justify-content: center">
+                <a><button class="btn-other" style="width: 300px">Pagar</button></a>
+            </div>
+
+
+
+        </div>
+
+
+
+
 
     </div>
 
-    <br>
 
-    <table id="miTabla" class="table table-striped">
-
-        <thead>
-        <tr style="background-color: #378fff">
-            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
-            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
-            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio unitario</th>
-            <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Precio total</th>
-        </tr>
-        </thead>
-
-
-        <tbody>
-        <tr>
-            <td>Paracetamol 100 mg</td>
-            <td><img id="imagen" class="medicamento" src="/img/paracetamol.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-        <tr>
-            <td>Neurobion 100 mg</td>
-            <td><img class="medicamento" src="/img/neurobion.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-        <tr>
-            <td>Nastzol 100 mg</td>
-            <td><img class="medicamento" src="/img/nastzol.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-        <tr>
-            <td>Panadol 100 mg</td>
-            <td><img class="medicamento"  src="/img/panadol.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-        <tr>
-            <td>Apronax 100 mg</td>
-            <td><img class="medicamento"  src="/img/apronax.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-        <tr>
-            <td>Doloral 100 mg</td>
-            <td><img class="medicamento"  src="/img/doloral.jpg"></td>
-            <td>5</td>
-            <td>S/. 6</td>
-            <td>S/. 30</td>
-        </tr>
-
-
-        </tbody>
-    </table>
 
 </div>
 

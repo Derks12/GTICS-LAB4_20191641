@@ -79,6 +79,23 @@ public class PacienteController {
         return "/paciente/reemplazar_medicamentos";
     }
 
+    @GetMapping(value = "/perfil")
+    public String perfil(){
+        return "/paciente/perfil";
+    }
+
+    @GetMapping(value = "/cambio_contrasena")
+    public String cambioContrasena(){
+        return "/paciente/cambioContraseña";
+    }
+
+    @GetMapping(value = "/confirmar_pago")
+    public String confirmarPago(){
+        return "/paciente/confirmar_pago";
+    }
+
+
+
 
     /*----------------- Method: POST -----------------*/
 
