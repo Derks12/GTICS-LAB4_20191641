@@ -2,6 +2,15 @@
     max-width: 110px; max-height: 110px;
 }
 
+.img-pago{
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.img-pago:hover{
+    filter: grayscale(0%);
+}
+
 
 /***********--SELECT--************/
 
@@ -80,11 +89,11 @@
 }
 
 
-.btn-other {
+.btn-back {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 9px 20px;
     color:white;
-    background-color: #1B9318;
+    background-color: dimgray;
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -94,11 +103,11 @@
 }
 
 
-.btn-other:hover {
+.btn-back:hover {
     background-color: white;
-    color: #1B9318;
-    border:2px solid #1B9318;
-    padding: 10px 18px;
+    color: dimgray;
+    border:2px solid dimgray;
+    padding: 7px 18px;
 }
 
 
@@ -128,35 +137,18 @@ td{
 /***********--BOTONES - ESTADO TRACKING --************/
 
 
-.btn-pago{
-    padding:9px;
-    background-color: #17a2b8;
-    color: white;
-    width: 65px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .btn-pend{
     padding: 9px;
-    background-color: #ee8a20;
+    background-color: #ECCB44;
     color: white;
     border: none;
     border-radius: 5px;
     width: 125px;
-
-    /*
-    width: 120px;
-    white-space: normal;
-    overflow-wrap: break-word;
-    line-height: 1.2;
-    */
 }
 
 .btn-rcb{
     padding: 8px;
-    background-color: #ECCB44;
+    background-color: dimgray;
     color: white;
     border: none;
     border-radius: 5px;
@@ -165,7 +157,7 @@ td{
 
 .btn-pro{
     padding: 8px;
-    background-color: #ECCB44;
+    background-color: dimgray;
     color: white;
     border: none;
     border-radius: 5px;
@@ -174,7 +166,7 @@ td{
 
 .btn-empa{
     padding: 8px;
-    background-color: #ECCB44;
+    background-color: dimgray;
     color: white;
     border: none;
     border-radius: 5px;
@@ -184,7 +176,7 @@ td{
 
 .btn-ruta{
     padding: 8px;
-    background-color: #ECCB44;
+    background-color: dimgray;
     color: white;
     border: none;
     border-radius: 5px;
@@ -193,7 +185,7 @@ td{
 
 .btn-listo{
     padding: 8px;
-    background-color: green;
+    background-color: rgb(34, 136, 60);
     color: white;
     border: none;
     border-radius: 5px;
@@ -342,7 +334,7 @@ td{
     display: inline-block;
     padding: 10px 20px;
     color:white;
-    background-color: #ECCB44;
+    background-color: #1B9318;
     text-decoration: none;
     border: none;
     border-radius: 5px;
@@ -354,8 +346,8 @@ td{
 
 .btn-popup:hover {
     background-color: white;
-    color: #ECCB44;
-    border:2px solid #ECCB44;
+    color: #1B9318;
+    border:2px solid #1B9318;
     padding: 8px 18px;
 }
 
@@ -382,7 +374,7 @@ td{
 }
 
 .popup-container .popup-box{
-    width: 1600px;
+    width: 1000px;
     background: white;
     border: 6px;
     box-shadow: 0 0 10px rgba(0,0,0, .1);
@@ -412,19 +404,18 @@ td{
 /***********************/
 
   .animationButton22 {
-      animation: box-shadow 0.8s linear infinite;
+      animation: box-shadow 1s linear infinite;
       padding:6px;
       color:#0d6efd;
       background-color: white;
       border: 2px solid #0d6efd;
       border-radius: 6px;
-      width: 110px;
+      width: 145px;
   }
-
 
 @keyframes box-shadow {
     50% {
-        box-shadow: 0 0 20px #0d6efd;
+        box-shadow: 0 0 15px #0d6efd;
     }
     100% {
     }
