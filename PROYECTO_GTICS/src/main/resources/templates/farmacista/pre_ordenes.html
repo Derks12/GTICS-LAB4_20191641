@@ -150,9 +150,6 @@
                         <option value="ENTREGADO">Entregado</option>
                     </select>
                 </div>
-                <div style="display:flex; justify-content: end;flex-direction: column" >
-                    <a class="btn-p" href="/farmacista/ver_pre_orden">Generar nueva orden</a>
-                </div>
                 <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
             </div>
 
@@ -163,26 +160,31 @@
                 <tr style="background-color: #378fff">
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Número de Orden</th>
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Número de Tracking</th>
-                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Paciente </th> <!--REVISAR COLOCAR FECHA INI pero deberia nombre del paciente-->
+                    <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Paciente </th>
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
                     <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="preOrden: ${listaPreOrdenes}">
-                        <td th:text="${preOrden.idOrden}"></td>
-                        <td th:text="${preOrden.fechaIni}"></td>
-                        <td th:text="${preOrden.paciente.nombres}"></td>
-                        <td th:text="${preOrden.estadoOrden.nombre}"></td>
-                        <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                            <form action="/farmacista/ver_pre_orden" method="post">
-                                <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-                            </form>
-                        </td>
-                    </tr>
+                <tr th:each="preOrden: ${listaPreOrdenes}">
+                    <td style="text-align: center" th:text="${preOrden.idOrden + 10000}"></td>
+                    <td style="text-align: center" th:text="${preOrden.tracking}"></td>
+                    <td style="text-align: center" th:text="${preOrden.paciente.nombres} + ' ' + ${preOrden.paciente.apellidos}"></td>
+                    <td style="text-align: center">
+                        <span th:if="${preOrden.estadoOrden.nombre == 'Empaquetando'}" th:text="${preOrden.estadoOrden.nombre}" class="btn-red"></span>
+                        <span th:if="${preOrden.estadoOrden.nombre == 'En proceso'}" th:text="${preOrden.estadoOrden.nombre}" class="btn-yellow"></span>
+                        <span th:if="${preOrden.estadoOrden.nombre == 'En Ruta'}" th:text="${preOrden.estadoOrden.nombre}" class="btn-yellow"></span>
+                        <span th:if="${preOrden.estadoOrden.nombre == 'Entregado'}" th:text="${preOrden.estadoOrden.nombre}" class="btn-green"></span>
+                        <span th:if="${preOrden.estadoOrden.nombre == 'Recibido'}" th:text="${preOrden.estadoOrden.nombre}" class="btn-green"></span>
+                    </td>
+                    <td style="text-align: center; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
+                        <a class="btn btn-sm btn-info" th:href="@{'/verPreOrden' + '?id=' + ${preOrden.idOrden}}">
+                            <i class="fa-regular fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
-
 
         </div>
 

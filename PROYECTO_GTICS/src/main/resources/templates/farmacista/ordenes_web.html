@@ -166,82 +166,22 @@
         </thead>
         <tbody>
           <tr th:each="ordenWeb: ${listaOrdenesWeb}">
-            <td th:text="${ordenWeb.idOrden}"></td>
-            <td th:text="${ordenWeb.fechaIni}"></td>
-            <td th:text="${ordenWeb.paciente.nombres}"></td>
-            <td th:text="${ordenWeb.estadoOrden.nombre}"></td>
-            <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-              <form action="/farmacista/ver_pre_web" method="post">
-                <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-              </form>
+            <td style="text-align: center" th:text="${ordenWeb.idOrden + 10000}"></td>
+            <td style="text-align: center" th:text="${ordenWeb.fechaIni}"></td>
+            <td style="text-align: center" th:text="${ordenWeb.paciente.nombres} + ' ' + ${ordenWeb.paciente.apellidos}"></td>
+            <td style="text-align: center">
+              <span th:if="${ordenWeb.estadoOrden.nombre == 'Empaquetando'}" th:text="${ordenWeb.estadoOrden.nombre}" class="btn-red"></span>
+              <span th:if="${ordenWeb.estadoOrden.nombre == 'En proceso'}" th:text="${ordenWeb.estadoOrden.nombre}" class="btn-yellow"></span>
+              <span th:if="${ordenWeb.estadoOrden.nombre == 'En Ruta'}" th:text="${ordenWeb.estadoOrden.nombre}" class="btn-yellow"></span>
+              <span th:if="${ordenWeb.estadoOrden.nombre == 'Entregado'}" th:text="${ordenWeb.estadoOrden.nombre}" class="btn-green"></span>
+              <span th:if="${ordenWeb.estadoOrden.nombre == 'Recibido'}" th:text="${ordenWeb.estadoOrden.nombre}" class="btn-green"></span>
+            </td>
+            <td style="text-align: center; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
+              <a class="btn btn-sm btn-info" th:href="@{'/verOrdenWeb' + '?id=' + ${ordenWeb.idOrden}}">
+                <i class="fa-regular fa-eye"></i>
+              </a>
             </td>
           </tr>
-        <!--tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-red">FALTA STOCK</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-yellow">PENDIENTE</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-yellow">PENDIENTE</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button href="/farmacista/detallesOrdenWeb" class="btn btn-sm btn-primary"><i class="fa-solid fa-pencil"></i></button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-green">PAGADO</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-green">PAGADO</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center">XXYYZZ</td>
-          <td style="text-align: center">DD/MM/YYYY</td>
-          <td style="text-align: center">Sergio Bustamante</td>
-          <td style="text-align: center"><button class="btn-green">PAGADO</button></td>
-          <td style="display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form action="/farmacista/detallesOrdenWeb" method="post">
-              <button class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button>
-            </form>
-          </td>
-        </tr-->
         </tbody>
       </table>
 
