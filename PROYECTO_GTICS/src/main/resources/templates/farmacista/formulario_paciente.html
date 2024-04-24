@@ -388,11 +388,58 @@
                     // Si el usuario confirma, redirige al usuario
                     if (result.isConfirmed) {
                         var form = document.getElementById('finalizar');
-                        form.submit();
-                    } else if (result.isDenied) {
+                        var inputs = form.getElementsByTagName('input');
+                        var todosLlenos = true;
+                        for (var i = 0; i < inputs.length; i++) {
+                            if (inputs[i].value.trim() === '') {
+                                todosLlenos = false;
+                                break;
+                            }
+                        }
+
+                        if (todosLlenos) {
+                            form.submit();
+                        } else {
+
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            }).then((result) => {
+                                // Si el usuario confirma, redirige al usuario
+                                if (result.isConfirmed) {
+                                }
+                            });
+                        }
+                    }else if (result.isDismissed) {
                         var form = document.getElementById('finalizar');
-                        form.action = '/farmacista/cambiar_medicamentos';
-                        form.submit();
+                        var inputs = form.getElementsByTagName('input');
+                        var todosLlenos = true;
+                        for (var i = 0; i < inputs.length; i++) {
+                            if (inputs[i].value.trim() === '') {
+                                todosLlenos = false;
+                                break;
+                            }
+                        }
+
+                        if (todosLlenos) {
+                            form.action = '/farmacista/cambiar_medicamentos';
+                            form.submit();
+                        } else {
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            }).then((result) => {
+                                // Si el usuario confirma, redirige al usuario
+                                if (result.isConfirmed) {
+                                }
+                            });
+                        }
                     }
                 });
             } else {
@@ -409,7 +456,32 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         var form = document.getElementById('finalizar');
-                        form.submit();
+
+                        var inputs = form.getElementsByTagName('input');
+                        var todosLlenos = true;
+                        for (var i = 0; i < inputs.length; i++) {
+                            if (inputs[i].value.trim() === '') {
+                                todosLlenos = false;
+                                break;
+                            }
+                        }
+
+                        if (todosLlenos) {
+                            form.submit();
+                        } else {
+
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            }).then((result) => {
+                                // Si el usuario confirma, redirige al usuario
+                                if (result.isConfirmed) {
+                                }
+                            });
+                        }
                     }
                 });
             }

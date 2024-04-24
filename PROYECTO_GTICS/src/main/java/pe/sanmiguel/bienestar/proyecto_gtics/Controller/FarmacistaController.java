@@ -87,10 +87,10 @@ public class FarmacistaController {
         List<Integer> stockSeleccionados = new ArrayList<>();
 
         for (Medicamento med : medicamentosSeleccionados) {
-            if (sedeStockRepository.getSedeStocksByIdSedeAndIdMedicamento(sedeSession, med).getCantidad() == 0) {
+            if (sedeStockRepository.getSedeStockByIdSedeAndIdMedicamento(sedeSession, med).getCantidad() == 0) {
                 stockSeleccionados.add(0);
             } else {
-                stockSeleccionados.add(sedeStockRepository.getSedeStocksByIdSedeAndIdMedicamento(sedeSession, med).getCantidad());
+                stockSeleccionados.add(sedeStockRepository.getSedeStockByIdSedeAndIdMedicamento(sedeSession, med).getCantidad());
             }
         }
 

@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface SedeStockRepository extends JpaRepository<SedeStock, SedeStockId> {
 
-    SedeStock getSedeStocksByIdSedeAndIdMedicamento(Sede sede, Medicamento medicamento);
+    SedeStock getSedeStockByIdSedeAndIdMedicamento(Sede sede, Medicamento medicamento);
 
 }
