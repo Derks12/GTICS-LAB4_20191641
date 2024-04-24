@@ -58,7 +58,7 @@ public class PacienteController {
 
     @GetMapping(value="/ordenes")
     public String ordenes(Model model){
-        List<Orden> lista =  ordenRepository.findAll();
+        List<Orden> lista =  ordenRepository.listarOrdenes();
         model.addAttribute("lista",lista);
 
         return "/paciente/ordenes";}
