@@ -175,66 +175,22 @@
 
 
                 <tbody>
-                    <tr>
-                        <td>Cuto Guadalupe</td>
+
+                    <tr th:each="farmacista : ${listaFarmacistas}">
+                        <td th:text="${farmacista.getNombres()} + '  ' +${farmacista.getApellidos()}"></td>
                         <td><img class="medicamento" src="/img/doctor.png"></td>
-                        <td>
-                            San Miguel
-                        </td>
+                        <td th:text="${farmacista.getDistrito()}"></td>
                         <td>
                             111000
                         </td>
+                        <td th:text="${farmacista.getCorreo()}"></td>
+                        <td th:text="${farmacista.getDni()}"></td>
                         <td>
-                            correo1@gmail.com
-                        </td>
-                        <td>
-                            11111111
-                        </td>
-                        <td>
-                            <a href="/adminsede/editar_farmacista" class="edit-icon" style="margin-left: 30px"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt" style="margin-left: 10px"></i></a>
+                            <a th:href="@{'/adminsede/editar_farmacista?id=' + ${farmacista.getIdUsuario()}}" class="edit-icon" style="margin-left: 30px"><i class="fas fa-pencil-alt"></i></a>
+                            <a th:href="@{'/adminsede/editar_farmacista?id=' + ${farmacista.getIdUsuario()}}" class="delete-icon"><i class="fas fa-trash-alt" style="margin-left: 10px"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Alejandro Villanueva</td>
-                        <td><img class="medicamento" src="/img/doctor.png"></td>
-                        <td>
-                            Surco
-                        </td>
-                        <td>
-                            123456
-                        </td>
-                        <td>
-                            correo2@gmail.com
-                        </td>
-                        <td>
-                            11111111
-                        </td>
-                        <td>
-                            <a href="/adminsede/editar_farmacista" class="edit-icon" style="margin-left: 30px"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt" style="margin-left: 10px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cesar Cueto</td>
-                        <td><img class="medicamento" src="/img/doctor.png"></td>
-                        <td>
-                            Pueblo Libre
-                        </td>
-                        <td>
-                            111077
-                        </td>
-                        <td>
-                            correo3@gmail.com
-                        </td>
-                        <td>
-                            12345678
-                        </td>
-                        <td>
-                            <a href="/adminsede/editar_farmacista" class="edit-icon" style="margin-left: 30px"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="#" class="delete-icon"><i class="fas fa-trash-alt" style="margin-left: 10px"></i></a>
-                        </td>
-                    </tr>
+
 
 
                 </tbody>

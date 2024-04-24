@@ -1,7 +1,6 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import lombok.Getter;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -304,12 +303,18 @@ public class FarmacistaController {
             Orden ordenWebComprobada = ordenWebOptional.get();
 
             model.addAttribute("contenidoOrden", contenidoOrdenWeb);
-            model.addAttribute("ordenWeb",contenidoOrdenWeb);
+            model.addAttribute("orden",ordenWebComprobada);
             return "/farmacista/ver_orden_web";
         } else {
 
             return "/farmacista/errorPages/no_existe_orden";
         }
+    }
+
+    @GetMapping("/farmacista/ver_orden_web_sinstock")
+    public String verOrdenWebSinStock(Model model) {
+
+        return "/farmacista/ver_orden_web_sinStock";
     }
 
     @PostMapping("/farmacista/ver_orden_web_tabla")
