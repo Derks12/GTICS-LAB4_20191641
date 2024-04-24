@@ -122,11 +122,11 @@
 
     <hr class="style-one">
 
-    <form th:action="@{/farmacista/finalizar_compra}" method="post">
+    <form th:action="@{/farmacista/finalizar_compra_preorden}" method="post">
 
 
 
-        <div class="interface-formulario">
+        <div class="interface-preorden">
 
 
             <section class="items-list">
@@ -136,7 +136,7 @@
                         Lista de Productos Seleccionados
                     </div>
 
-                    <div class="order-items">
+                    <div class="preorder-items">
                         <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosConStock}" th:data-item-id="${medicamento.idMedicamento}">
 
                             <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
@@ -145,7 +145,7 @@
                                 <div class="item-details">
                                     <div class="selector-cantidad">
                                         <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
-                                        <input type="text" th:value="${listaCantidades.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
+                                        <input type="text" th:value="${cantidadesExistentes.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
                                         <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
                                     </div>
 
@@ -168,7 +168,6 @@
                         </div>
 
                         <input type="hidden" name="listaIds" id="listaIdsOrden"  value=""/>
-                        <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
                     </div>
 
                 </div>
@@ -181,10 +180,10 @@
 
                 <div class="inside-items-list">
                     <div class="preview-title roboto-regular">
-                        Lista de Productos Seleccionados
+                        Nueva Pre Orden
                     </div>
 
-                    <div class="order-items">
+                    <div class="preorder-items">
                         <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSinStock}" th:data-item-id="${medicamento.idMedicamento}">
 
                             <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
@@ -193,7 +192,7 @@
                                 <div class="item-details">
                                     <div class="selector-cantidad">
                                         <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
-                                        <input type="text" th:value="${listaCantidades.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
+                                        <input type="text" th:value="${cantidadesFaltantes.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
                                         <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
                                     </div>
 
@@ -216,7 +215,6 @@
                         </div>
 
                         <input type="hidden" name="listaIds" id="listaIdsPreOrden"  value=""/>
-                        <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
                     </div>
 
                 </div>
@@ -224,6 +222,8 @@
             </section>
 
         </div>
+
+        <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
 
     </form>
 
