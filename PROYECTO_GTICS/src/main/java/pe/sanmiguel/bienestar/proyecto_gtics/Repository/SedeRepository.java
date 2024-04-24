@@ -8,4 +8,6 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Sede;
 @Repository
 public interface SedeRepository extends JpaRepository<Sede, Integer> {
 
+    Sede getSedeByIdSede(Integer id);
+
 }

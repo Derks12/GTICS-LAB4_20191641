@@ -129,98 +129,6 @@
         <div class="interface-formulario">
 
 
-            <section class="formulario">
-
-                <div class="search-bar" style="padding-bottom: 20px; padding-top: 20px;">
-                    <label class="search-label">
-                        <input type="text" placeholder="Buscar paciente...">
-                    </label>
-                    <button type="submit">Buscar</button>
-                </div>
-
-                <div class="container-formulario">
-
-                    <div class="container-form">
-
-                        <div class="column">
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Nombre del paciente:</label>
-                                <input class="input-form-2" type="text" name="name" placeholder="Ingrese sus nombres" required>
-                            </div>
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Apellidos del paciente:</label>
-                                <input class="input-form-2" type="text" name="lastname" placeholder="Ingrese sus apellidos" required>
-                            </div>
-
-                        </div>
-
-                        <div class="column">
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">DNI:</label>
-                                <input class="input-form-2" type="text" name="dni" placeholder="Ingrese su DNI" required>
-                            </div>
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Dirección:</label>
-                                <input class="input-form-2" type="text" name="direccion" placeholder="Ingrese su dirección" required>
-                            </div>
-
-                        </div>
-
-
-                        <div class="column">
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Doctor:</label>
-                                <select class="select-form" name="doctor" required>
-                                    <option selected disabled>Seleccionar Doctor</option>
-                                    <option>Doctor 1</option>
-                                    <option>Doctor 2</option>
-                                    <option>Doctor 3</option>
-                                </select>
-                            </div>
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Distrito:</label>
-                                <input class="input-form-2" name="distrito" type="text" placeholder="Ingrese el distrito donde reside" required>
-                            </div>
-
-                        </div>
-
-                        <div class="column">
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Seguro:</label>
-                                <input class="input-form-2" type="text" name="seguro" placeholder="Ingrese su seguro" required>
-                            </div>
-
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Correo:</label>
-                                <input class="input-form-2" type="email" name="correo" placeholder="Ingrese su correo" required>
-                            </div>
-
-                        </div>
-
-                        <div class="column-start">
-                            <div class="input-label-box">
-                                <label style="font-weight: bold; color:dimgray">Teléfono:</label>
-                                <input class="input-form-2" type="text" name="telefono" placeholder="Ingrese su número de teléfono" required>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <a href="/farmacista"><button class="return-button montserrat-medium" id="cancel" >Cancelar</button></a>
-
-            </section>
-
-
-
             <section class="items-list">
 
                 <div class="inside-items-list">
@@ -229,7 +137,7 @@
                     </div>
 
                     <div class="order-items">
-                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSeleccionados}" th:data-item-id="${medicamento.idMedicamento}">
+                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosConStock}" th:data-item-id="${medicamento.idMedicamento}">
 
                             <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
                             <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
@@ -255,11 +163,59 @@
 
 
                         <div class="price-total-div roboto-medium">
-                            <input type="hidden" name="priceTotal" id="priceTotal" value="">
+                            <input type="hidden" name="priceTotal" id="priceTotalOrden" value="">
                             TOTAL <span class="price-total">S/0.00</span>
                         </div>
 
-                        <input type="hidden" name="listaIds" id="listaIds"  value=""/>
+                        <input type="hidden" name="listaIds" id="listaIdsOrden"  value=""/>
+                        <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <section class="items-list">
+
+                <div class="inside-items-list">
+                    <div class="preview-title roboto-regular">
+                        Lista de Productos Seleccionados
+                    </div>
+
+                    <div class="order-items">
+                        <div class="selected-item" th:each="medicamento, iterIndex : ${medicamentosSinStock}" th:data-item-id="${medicamento.idMedicamento}">
+
+                            <img th:src="${medicamento.imagen}" width="40px" height="auto" th:alt="${medicamento.nombre}">
+                            <span class="item-title-clicked" th:text="${medicamento.nombre}">Medicamento</span>
+                            <div class="item-on-list">
+                                <div class="item-details">
+                                    <div class="selector-cantidad">
+                                        <i class="fa-solid fa-minus restar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                        <input type="text" th:value="${listaCantidades.get(iterIndex.index)}" class="item-quantity-clicked" th:data-item-id="${medicamento.idMedicamento}">
+                                        <i class="fa-solid fa-plus sumar-cantidad" th:data-item-id="${medicamento.idMedicamento}"></i>
+                                    </div>
+
+                                    <div style="display: flex; flex-direction: row; gap: 5px; align-items: center;">
+                                        <span style="padding-top: 5px;">S/. </span><span class="item-price-clicked" th:text="${medicamento.precioVenta}"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-title roboto-regular" style="padding-top: 20px">
+
+
+
+                        <div class="price-total-div roboto-medium">
+                            <input type="hidden" name="priceTotal" id="priceTotalPreOrden" value="">
+                            TOTAL <span class="price-total">S/0.00</span>
+                        </div>
+
+                        <input type="hidden" name="listaIds" id="listaIdsPreOrden"  value=""/>
                         <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
                     </div>
 
