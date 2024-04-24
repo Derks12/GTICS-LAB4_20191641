@@ -10,11 +10,21 @@ import lombok.Setter;
 @Table(name = "orden_contenido")
 public class OrdenContenido {
 
+    @EmbeddedId
+    private OrdenContenidoId id;
 
-    @Column
-    private Integer idOrden;
-    @Column
-    private Integer idMedicamento;
+    @MapsId("idOrden")
+    @ManyToOne
+    @JoinColumn(name="idOrden")
+    private Orden idOrden;
+
+
+    @MapsId("idMedicamento")
+    @ManyToOne
+    @JoinColumn(name="idMedicamento")
+    private Medicamento idMedicamento;
+
+
     @Column
     private int cantidad;
 
