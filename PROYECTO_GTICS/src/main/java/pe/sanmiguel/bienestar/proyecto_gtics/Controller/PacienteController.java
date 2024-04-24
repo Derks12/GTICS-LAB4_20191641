@@ -138,7 +138,7 @@ public class PacienteController {
             return "error";
         }
 
-    /*
+
         String tracking = new String();
         LocalDate fechaIni = LocalDate.now();
         LocalDate fechaFin = LocalDate.now();
@@ -181,7 +181,7 @@ public class PacienteController {
 
 
         }
-*/
+
 
         redirectAttributes.addFlashAttribute("msg", "Orden Creada");
         return "redirect:/paciente/ordenes";
