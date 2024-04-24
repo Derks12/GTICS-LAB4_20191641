@@ -36,7 +36,7 @@
 
     <style>
         body {
-            padding-top: 100px;
+            padding-top: 90px;
         }
         .btn-c {
             display: inline-block;
@@ -84,11 +84,9 @@
                 <ul class="nav-list">
                     <li><a href="/superadmin" class="menu-item roboto-regular">Inicio</a></li>
 
-                    <li><a href="/superadmin/pedidos" class="menu-item roboto-regular">Pedidos</a></li>
+                    <li><a href="/superadmin/pedidos" class="menu-item roboto-regular">Pedidos de reposición</a></li>
 
-                    <li><a href="/superadmin/solicitudes" class="menu-item roboto-regular">Solicitudes</a></li>
-
-                    <li><a href="/superadmin/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
+                    <li><a href="/superadmin/medicamentos" class="menu-item roboto-regular">Inventario</a></li>
 
                     <li class="dropdown-item">
                         <div class="menu-item roboto-regular">
@@ -99,7 +97,7 @@
                             <div class="inside-dropdown">
                                 <li>
                                     <a href="/superadmin/administradoresSede" class="dropdown-link">
-                                        <i class="ri-user-line menu-item roboto-regular"></i> Admnistradores de Sede
+                                        <i class="ri-user-line menu-item roboto-regular" style="text-decoration: underline; color: white;"></i> Admnistradores de Sede
                                     </a>
                                 </li>
 
@@ -158,11 +156,9 @@
                         <div class="nav-menu-small" id="nav-menu-small">
                             <ul class="nav-list-small">
                                 <li><a href="/superadmin" class="menu-item-small roboto-regular">Inicio</a></li>
-                                <li><a href="/superadmin/pedidos" class="menu-item-small roboto-regular">Pedidos</a></li>
+                                <li><a href="/superadmin/pedidos" class="menu-item-small roboto-regular">Pedidos de reposición</a></li>
 
-                                <li><a href="/superadmin/solicitudes" class="menu-item-small roboto-regular">Solicitudes</a></li>
-
-                                <li><a href="/superadmin/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                                <li><a href="/superadmin/medicamentos" class="menu-item-small roboto-regular">Inventario</a></li>
                             </ul>
 
                             <ul class="nav-list-small-perfil">
@@ -201,25 +197,47 @@
         <br>
     </div>
 
-
-    <br>
     <div class="container">
         <div style="padding-top:1px; display:flex; justify-content: end ; margin-left: 20px">
             <a class="btn-c" href="/superadmin/crearAdministrador">Crear nuevo administrador</a>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center">
-            <div style="display: flex; flex-direction: column">
-                <label style="font-weight: 550; margin-left: 2px; margin-bottom:10px">Filtrar por sede:</label>
-                <select id="filtroEstado" class="select-p">
-                    <option value="">Mostrar sedes</option>
-                    <option value="San Miguel Centro">San Miguel Centro</option>
-                    <option value="San Miguel Sur">San Miguel Sur</option>
-                    <option value="Pando 5 Etapa">Pando 5 Etapa</option>
-                </select>
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+
+            <div class="column-start" style="padding-bottom: 1px">
+
+                <div style="display: flex;flex-direction: row;column-gap: 8px">
+
+                    <div style="display: flex; flex-direction: column; justify-content: center">
+
+                        <label style="color:dimgray;font-weight: bold; margin-left: 2px; margin-bottom:4px">Filtrar por Sede:</label>
+
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; justify-content: start">
+
+
+                        <select id="filtroEstado" class="select-p">
+                            <option value="">Mostrar sedes</option>
+                            <option value="San Miguel Centro">San Miguel Centro</option>
+                            <option value="San Miguel Sur">San Miguel Sur</option>
+                            <option value="Pando 5 Etapa">Pando 5 Etapa</option>
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <div style="display: flex; flex-direction: column; justify-content: start">
+                    <input id="searchInput" type="text" class="input-form" style="margin-top: 4px;width: 300px;height: 40px" placeholder="Buscar administrador">
+                </div>
+
+                <button class="btn-p" id="limpiarFiltros"  >Limpiar Filtros</button>
+
             </div>
 
-            <button class="btn-p" id="limpiarFiltros"  >Limpiar Filtros</button>
         </div>
+        <br>
 
         <table id="miTabla2" class="display" style="padding-top: 10px">
             <thead>
@@ -444,6 +462,29 @@
         });
     });
 </script>
+
+<style>
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: right;
+        display: none !important;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        var table = $('#miTabla2').DataTable();
+
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().trim().toLowerCase();
+            if (searchTerm === "") {
+                table.search("").draw();
+                return;
+            }
+            table.search(searchTerm).draw();
+        });
+    });
+</script>
+
 <script>
     $(document).ready(function() {
         var opened = false;
