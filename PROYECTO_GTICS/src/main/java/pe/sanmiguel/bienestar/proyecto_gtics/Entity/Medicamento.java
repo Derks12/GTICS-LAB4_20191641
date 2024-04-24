@@ -24,7 +24,7 @@ public class Medicamento {
     @Column
     private String precioCompra;
     @Column
-    private String precioVenta;
+    private Float precioVenta;
     @Column
     private String recetable;
     @Column

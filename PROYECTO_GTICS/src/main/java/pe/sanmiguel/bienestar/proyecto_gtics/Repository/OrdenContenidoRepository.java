@@ -7,6 +7,7 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Entity.OrdenContenido;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.OrdenContenidoId;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface OrdenContenidoRepository extends JpaRepository<OrdenContenido, OrdenContenidoId> {
@@ -14,4 +15,8 @@ public interface OrdenContenidoRepository extends JpaRepository<OrdenContenido, 
 
     @Query("SELECT MAX(oc.idEntrada) FROM OrdenContenido oc")
     Integer findLastOrdenContenidoId();*/
+
+
+    @Query(value="select * from orden_contenido where idOrden = ?1", nativeQuery = true)
+    List<OrdenContenido> findMedicamentosByOrdenId(String id);
 }

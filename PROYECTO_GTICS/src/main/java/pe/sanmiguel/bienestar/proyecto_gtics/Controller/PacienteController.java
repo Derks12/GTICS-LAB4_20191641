@@ -11,9 +11,10 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Repository.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
-
+import java.util.Optional;
 
 
 @Controller
@@ -56,13 +57,23 @@ public class PacienteController {
     public String preOrdenes(){return "/paciente/pre_ordenes";}
 
     @GetMapping(value="/ordenes")
-    public String ordenes(){return "/paciente/ordenes";}
+    public String ordenes(Model model){
+        List<Orden> lista =  ordenRepository.findAll();
+        model.addAttribute("lista",lista);
+
+        return "/paciente/ordenes";}
 
     @GetMapping(value="/pago_tarjeta")
     public String pago_tarjeta(){return "/paciente/pago_tarjeta";}
 
     @GetMapping(value="/tracking")
-    public String tracking(){ return "/paciente/tracking";}
+    public String tracking(Model model, @RequestParam("id") String idOrden){
+
+        List<OrdenContenido> lista = ordenContenidoRepository.findMedicamentosByOrdenId(idOrden);
+        model.addAttribute("lista", lista);
+
+        return "/paciente/tracking";
+    }
 
     @GetMapping(value="/tracking_wait")
     public String tracking_wait(){ return "/paciente/tracking_pendiente";}
@@ -124,7 +135,7 @@ public class PacienteController {
                                @RequestParam(value = "doctor", required = false) String doctor,
                                @RequestParam(value = "fecha", required = false) String fecha,
                                @RequestParam(value = "imagen", required = false) MultipartFile archivo,
-                               @RequestParam(value = "listaIds", required = false) List<String> lista,
+                               @RequestParam(value = "listaIds", required = false) List<Integer> lista,
                                Model model, RedirectAttributes redirectAttributes){
 
 
@@ -140,7 +151,7 @@ public class PacienteController {
 
 
         String tracking = new String();
-        tracking="1-2024";
+        tracking= ordenRepository.findLastOrdenId()+1 + "-2024";
         LocalDate fechaIni = LocalDate.now();
         LocalDate fechaFin = LocalDate.now();
         Float precioTotal = new Float(3.14);
@@ -165,27 +176,42 @@ public class PacienteController {
         orden.setEstadoPreOrden(1);
 
 
-        System.out.println(ordenRepository.findLastOrdenId());
         System.out.println(lista);
 
-        //ordenRepository.save(orden);
+        ordenRepository.save(orden);
 
         Integer i = new Integer(0);
+        Integer cantidad = new Integer(0);
 
-        for(String n : lista){
+        OrdenContenido ordenContenido = new OrdenContenido();
+        OrdenContenidoId oid = new OrdenContenidoId();
+
+        ordenContenido.setIdOrden(orden);
+        oid.setIdOrden(orden.getIdOrden());
+
+        while(i < lista.size()){
+
+            Medicamento medicamento = medicamentoRepository.getById(lista.get(i));
+            cantidad = lista.get(i+1);
+
+            oid.setIdMedicamento(medicamento.getIdMedicamento());
+            ordenContenido.setId(oid);
+            ordenContenido.setIdMedicamento(medicamento);
+            ordenContenido.setCantidad(cantidad);
+            ordenContenidoRepository.save(ordenContenido);
 
 
 
+            System.out.println(medicamento.getNombre());
+            System.out.println(cantidad);
 
+            i = i + 2;
 
 
         }
 
-
         redirectAttributes.addFlashAttribute("msg", "Orden Creada");
         return "redirect:/paciente/ordenes";
 
-
-        //return "/paciente/prueba";
     }
 }

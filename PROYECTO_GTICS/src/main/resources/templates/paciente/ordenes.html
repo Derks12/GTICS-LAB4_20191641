@@ -220,78 +220,36 @@
         </tr>
         </thead>
         <tbody>
+
+
+        <tr th:each="orden : ${lista}">
+            <td th:text="${orden.getTracking()}"></td>
+            <td th:text="${orden.getFechaIni()}"></td>
+            <td th:switch="${orden.getEstadoOrden()}">
+                <button class="btn-pend"          th:case="1">PENDIENTE</button>
+                <button class="animationButton22" th:case="2">PAGO DISPONIBLE</button>
+                <button class="btn-rcb"           th:case="3">RECIBIDO</button>
+                <button class="btn-pro"           th:case="4">EN PROCESO</button>
+                <button class="btn-empa"          th:case="5">EMPAQUETANDO</button>
+                <button class="btn-ruta"          th:case="6">EN RUTA</button>
+                <button class="btn-listo"         th:case="7">ENTREGADO</button>
+            </td>
+            <td class="action" >
+                <a th:href="@{'/paciente/tracking' + '?id=' + ${orden.getIdOrden()} }"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
+            </td>
+        </tr>
+
+
         <tr>
             <td>12aa</td>
             <td>MM-DD-AA</td>
             <td><button class="animationButton22">PAGO DISPONIBLE</button></td>
             <td class="action" >
-                <a href="/paciente/confirmar_pago"><button  class="btn btn-sm btn-info" style="background-color: #3F71EA;border:none"><i class="fa-regular fa-credit-card"></i></i></button></a>
+                <a href="/paciente/confirmar_pago"><button  class="btn btn-sm btn-info" style="background-color: #3F71EA;border:none"><i class="fa-regular fa-credit-card"></i></button></a>
             </td>
         </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-pend">PENDIENTE</button></td>
-            <td >
-                <a th:href="@{/paciente/tracking_wait}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-listo">ENTREGADO</button></td>
-            <td  >
-                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-rcb">RECIBIDO</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-rcb">RECIBIDO</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-pro">EN PROCESO</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-empa">EMPAQUETANDO</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-ruta">EN RUTA</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
-        <tr>
-            <td>XXYYZZWW</td>
-            <td>MM-DD-AA</td>
-            <td><button class="btn-listo">ENTREGADO</button></td>
-            <td class="action" >
-                <a th:href="@{/paciente/tracking_end}"><button  class="btn btn-sm btn-info"><i class="fa-regular fa-eye"></i></button></a>
-            </td>
-        </tr>
+
+
 
 
 
