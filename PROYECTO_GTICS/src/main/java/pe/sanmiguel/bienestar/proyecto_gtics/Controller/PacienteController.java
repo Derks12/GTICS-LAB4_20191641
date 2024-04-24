@@ -69,8 +69,13 @@ public class PacienteController {
     @GetMapping(value="/tracking")
     public String tracking(Model model, @RequestParam("id") String idOrden){
 
+        Integer idInteger = Integer.parseInt(idOrden);
+        Orden orden = ordenRepository.getById(idInteger);
+
         List<OrdenContenido> lista = ordenContenidoRepository.findMedicamentosByOrdenId(idOrden);
+
         model.addAttribute("lista", lista);
+        model.addAttribute("ordenActual", orden);
 
         return "/paciente/tracking";
     }

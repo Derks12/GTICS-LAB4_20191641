@@ -204,7 +204,7 @@
 <div class="container">
 
     <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
+    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px" th:text="${'Tracking: ' + ordenActual.getTracking()}"></strong></h2>
     <div style="margin-bottom: 20px"></div>
     <hr style="border-top: 1px solid #DFDFDF;">
     <div style="margin-bottom: 40px"></div>
@@ -213,46 +213,193 @@
 </div>
 
 
-<div style="max-width: 1536px;margin-inline: auto;padding: 0 30px 0 30px;">
+<div style="max-width: 1536px;margin-inline: auto;padding: 0 30px 0 30px;" th:switch="${ordenActual.getEstadoOrden()}">
 
-    <div style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+    <div th:case="1" style="display: flex;justify-content: center">
 
-
-            <div class="container-progress">
-                <div class="wrapper">
-                    <div class="progress-container">
-
-                        <div class="barra"  style="width: 50%"></div>
-
-                        <div class="progress-step">
-                            <i class="fa-solid fa-file-text active"></i>Recibido
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa fa-refresh active" ></i>En proceso
-                        </div>
-
-                        <div class="progress-step">
-                            <i class="fa-solid fa-archive"></i>Empaquetando
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa fa-truck"></i>En ruta
-                        </div>
-                        <div class="progress-step">
-                            <i class="fa-solid fa-check-square"></i>Entregado
-                        </div>
+        <p style="font-size: 30px;color:#0d6efd ">!Para empezar con el seguimiento del pedido su orden aún debe ser aprobada!</p>
+    </div>
 
 
+    <div th:case="3" style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+
+
+        <div class="container-progress">
+            <div class="wrapper">
+                <div class="progress-container">
+
+                    <div class="barra"  style="width: 0%"></div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-file-text active"></i>Recibido
                     </div>
-                </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-refresh"></i>En proceso
+                    </div>
 
+                    <div class="progress-step">
+                        <i class="fa-solid fa-archive"></i>Empaquetando
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-truck"></i>En ruta
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa-check-square"></i>Entregado
+                    </div>
+
+
+                </div>
             </div>
 
-
+        </div>
 
         <div id="map"></div>
 
     </div>
 
+    <div th:case="4" style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+
+
+        <div class="container-progress">
+            <div class="wrapper">
+                <div class="progress-container">
+
+                    <div class="barra"  style="width: 25%"></div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-file-text active"></i>Recibido
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-refresh active" ></i>En proceso
+                    </div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-archive"></i>Empaquetando
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-truck"></i>En ruta
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa-check-square"></i>Entregado
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="map"></div>
+
+    </div>
+
+    <div th:case="5" style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+
+
+        <div class="container-progress">
+            <div class="wrapper">
+                <div class="progress-container">
+
+                    <div class="barra"  style="width: 50%"></div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-file-text active"></i>Recibido
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-refresh active" ></i>En proceso
+                    </div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-archive active"></i>Empaquetando
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-truck"></i>En ruta
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa-check-square"></i>Entregado
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="map"></div>
+
+    </div>
+
+    <div th:case="6" style="display: flex;flex-direction: row;justify-content: center;column-gap: 20px">
+
+
+        <div class="container-progress">
+            <div class="wrapper">
+                <div class="progress-container">
+
+                    <div class="barra"  style="width: 70%"></div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-file-text active"></i>Recibido
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-refresh active" ></i>En proceso
+                    </div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-archive active"></i>Empaquetando
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-truck active"></i>En ruta
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa-check-square"></i>Entregado
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="map"></div>
+
+    </div>
+
+    <div th:case="7" style="display: flex;flex-direction: column;row-gap: 15px">
+
+        <div class="container-progress" style="min-height: 18vh">
+            <div class="wrapper">
+                <div class="progress-container">
+
+                    <div class="barra"  style="width: 90%"></div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-file-text active"></i>Recibido
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-refresh active" ></i>En proceso
+                    </div>
+
+                    <div class="progress-step">
+                        <i class="fa-solid fa-archive active"></i>Empaquetando
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa fa-truck active"></i>En ruta
+                    </div>
+                    <div class="progress-step">
+                        <i class="fa-solid fa-check-square active"></i>Entregado
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div style="display: flex; flex-direction: row; justify-content: center">
+            <p style="font-size: 30px;color:#0d6efd ">!Su orden ha sido entregada exitosamente!</p>
+        </div>
+    </div>
 
 
 
