@@ -15,6 +15,7 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet" />
     <link th:href="@{/css/fonts.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/css/farmacista/farmacista.css}">
+    <link rel="stylesheet" th:href="@{/css/farmacista/detalle_ordenes.css}">
     <link rel="stylesheet" th:href="@{/css/boostrap-datatables.css}">
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
     <link th:href="@{/css/preloader.css}" rel="stylesheet" />
@@ -171,26 +172,30 @@
                 <tbody>
                 <tr th:each="orden : ${listaOrdenesVenta}">
                     <td style="text-align: center" th:text="${orden.getIdOrden() + 10000}"></td>
-                    <td style="text-align: center" th:text="${orden.getFechaFin()}"></td>
+                    <td style="text-align: center" th:text="${orden.getFechaIni()}"></td>
                     <td style="text-align: center" th:text="${orden.getPaciente().getNombres()} + ' ' + ${orden.getPaciente().getApellidos()}" ></td>
                     <td style="text-align: center">
-                        <span th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></span>
-                        <span th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></span>
+                        <div th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></div>
+                        <div th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></div>
 
-                        <span th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></span>
-                        <span th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></span>
-                        <span th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></span>
-                        <span th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></span>
-                        <span th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="btn-green"></span>
+                        <div th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></div>
+                        <div th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></div>
+                        <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></div>
+                        <div th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></div>
+                        <div th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="table-badge badge-pagado"></div>
 
 
-                        <span th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="btn-green"></span>
-                        <span th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></span>
+                        <div th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="table-badge badge-pagado"></div>
+                        <div th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></div>
                     </td>
                     <td style="text-align: center; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <a class="btn btn-sm btn-info" th:href="@{'/verOrdenVenta' + '?id=' + ${orden.getIdOrden()}}">
-                            <i class="fa-regular fa-eye"></i>
-                        </a>
+
+                        <form th:action="@{'/farmacista/ver_orden_venta_tabla'}" method="post">
+                            <input type="hidden" name="idOrden" th:value="${orden.getIdOrden()}">
+                            <button type="submit" class="btn btn-sm btn-info" >
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>

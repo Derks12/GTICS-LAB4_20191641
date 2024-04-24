@@ -255,18 +255,6 @@ public class FarmacistaController {
         model.addAttribute("listaOrdenesWeb", listaOrdenesWeb);
         return "/farmacista/ordenes_web";
     }
-    @GetMapping("/verOrdenWeb")
-    public String verOrdenWeb(Model model,
-                              @RequestParam("id") Integer id) {
-        Optional<Orden> optionalOrden = ordenRepository.findById(id);
-        if(optionalOrden.isPresent()){
-            Orden ordenWeb = optionalOrden.get();
-            model.addAttribute("ordenWeb", ordenWeb);
-            return "farmacista/ver_orden_web";
-        }else {
-            return  "redirect:/farmacista/ordenes_web";
-        }
-    }
 
     @GetMapping("/farmacista/pre_ordenes")
     public String tablaPreOrdenes(Model model) {
