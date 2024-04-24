@@ -754,7 +754,7 @@ hr.style-one {
     margin-top: 20px;
     border-radius: 0.25rem;
     color: var(--color-black);
-    background: var(--color-white);
+    background: #ffffff;
 }
 
 .inside-items-list {

@@ -38,13 +38,14 @@ a {
 :root {
     --color-text-1: #2f3a51;
     --color-text-2: #687196;
-    --color-white: #f6f1f1;
+    --color-white: #ffffff;
     --color-light: #f1f5f9;
     --color-black: #121212;
     --color-night: #001632;
 
     --color-red: #f44336;
-    --color-blue: #e6f5ff;
+    --color-blue-clear: #e6f5ff;
+    --color-blue: #106cfc;
     --color-blue--hover: #378fff;
     --color-gray: #80868b;
     --color-gray-2: #2a2a2a;
