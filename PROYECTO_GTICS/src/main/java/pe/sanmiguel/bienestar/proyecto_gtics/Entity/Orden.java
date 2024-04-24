@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -17,9 +18,9 @@ public class Orden {
     @Column
     private String tracking;
     @Column
-    private Date fechaIni;
+    private LocalDate fechaIni;
     @Column
-    private Date fechaFin;
+    private LocalDate fechaFin;
     @Column
     private float precioTotal;
     @Column

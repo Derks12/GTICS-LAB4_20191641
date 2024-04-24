@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Medicamento;
-import pe.sanmiguel.bienestar.proyecto_gtics.Repository.MedicamentoRepository;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.*;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
+
 
 
 @Controller
@@ -20,12 +22,30 @@ public class PacienteController {
 
 
 
+
     /*----------------- Repositories -----------------*/
     final MedicamentoRepository medicamentoRepository;
+    final OrdenRepository ordenRepository;
+    final UsuarioRepository usuarioRepository;
+    final TipoOrdenRepository tipoOrdenRepository;
+    final EstadoOrdenRepository estadoOrdenRepository;
+    final SedeRepository sedeRepository;
+    final DoctorRepository doctorRepository;
+    final EstadoPreOrdenRepository estadoPreOrdenRepository;
+    final OrdenContenidoRepository ordenContenidoRepository;
 
-    public PacienteController(MedicamentoRepository medicamentoRepository){
+    public PacienteController(OrdenContenidoRepository ordenContenidoRepository, EstadoPreOrdenRepository estadoPreOrdenRepository, DoctorRepository doctorRepository,EstadoOrdenRepository estadoOrdenRepository,TipoOrdenRepository tipoOrdenRepository,SedeRepository sedeRepository, MedicamentoRepository medicamentoRepository, UsuarioRepository usuarioRepository, OrdenRepository ordenRepository){
         this.medicamentoRepository = medicamentoRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.ordenRepository = ordenRepository;
+        this.sedeRepository = sedeRepository;
+        this.tipoOrdenRepository = tipoOrdenRepository;
+        this.estadoOrdenRepository = estadoOrdenRepository;
+        this.doctorRepository = doctorRepository;
+        this.estadoPreOrdenRepository = estadoPreOrdenRepository;
+        this.ordenContenidoRepository = ordenContenidoRepository;
     }
+
 
 
 
@@ -100,22 +120,14 @@ public class PacienteController {
     /*----------------- Method: POST -----------------*/
 
     @PostMapping(value = "/guardarOrden")
-    public String guardarOrden(@RequestParam(value = "name", required = false) String name ,
-                               @RequestParam(value = "lastname", required = false) String lastname,
-                               @RequestParam(value = "dni", required = false) String dni,
-                               @RequestParam(value = "edad", required = false) String edad,
+    public String guardarOrden(Usuario usuario,
                                @RequestParam(value = "doctor", required = false) String doctor,
                                @RequestParam(value = "fecha", required = false) String fecha,
-                               @RequestParam(value = "seguro", required = false) String seguro,
-                               @RequestParam(value = "correo", required = false) String correo,
-                               @RequestParam(value = "genero", required = false) String genero,
                                @RequestParam(value = "imagen", required = false) MultipartFile archivo,
                                @RequestParam(value = "listaIds", required = false) List<String> lista,
                                Model model, RedirectAttributes redirectAttributes){
 
 
-        System.out.println("Nombre: " + name);
-        System.out.println("Lista: " + lista);
 
         try{
             byte[] bytes = archivo.getBytes();
@@ -127,8 +139,56 @@ public class PacienteController {
         }
 
 
+        String tracking = new String();
+        tracking="1-2024";
+        LocalDate fechaIni = LocalDate.now();
+        LocalDate fechaFin = LocalDate.now();
+        Float precioTotal = new Float(3.14);
+        Integer idFarmacista = new Integer(1);
+        Usuario udb = usuarioRepository.getById(1);
+        TipoOrden to = tipoOrdenRepository.getById(1);
+        EstadoOrden eo = estadoOrdenRepository.getById(1);
+        Sede s = sedeRepository.getById(1);
+        Doctor doc = doctorRepository.getById(1);
+        EstadoPreOrden esp = estadoPreOrdenRepository.getById(1);
+
+
+        Orden orden = new Orden();
+        orden.setIdOrden(ordenRepository.findLastOrdenId() + 1);
+        orden.setTracking(tracking);
+        orden.setFechaIni(fechaIni);
+        orden.setFechaFin(fechaFin);
+        orden.setPrecioTotal(precioTotal);
+        orden.setIdFarmacista(idFarmacista);
+        orden.setPaciente(udb);
+        orden.setTipoOrden(to);
+        orden.setEstadoOrden(eo);
+        orden.setSede(s);
+        orden.setDoctor(doc);
+        orden.setEstadoPreOrden(esp);
+
+
+        System.out.println(ordenRepository.findLastOrdenId());
+        System.out.println(lista);
+
+        //ordenRepository.save(orden);
+
+        Integer i = new Integer(0);
+
+        for(String n : lista){
+
+
+
+
+
+
+        }
+
+
         redirectAttributes.addFlashAttribute("msg", "Orden Creada");
         return "redirect:/paciente/ordenes";
+
+
         //return "/paciente/prueba";
     }
 }
