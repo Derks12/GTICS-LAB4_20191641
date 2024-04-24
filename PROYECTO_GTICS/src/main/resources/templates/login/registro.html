@@ -10,7 +10,7 @@
   <div class="container">
     <div class="title">Registro</div>
     <div class="content">
-      <form action="#">
+      <form method="post" th:action="@{/login/save}">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Nombres</span>
@@ -30,15 +30,15 @@
           </div>
           <div class="input-box">
             <span class="details">Fecha de nacimiento</span>
-            <input type="text" placeholder="Ingrese su dirección" required>
+            <input type="text" id ="birthdate" placeholder="Ingrese su fecha de nacimiento" required>
           </div>
           <div class="input-box">
             <span class="details">Correo electronico</span>
-            <input type="text" placeholder="Ingrese su correo electronico" required>
+            <input type="email" placeholder="Ingrese su correo electronico" required>
           </div>
           <div class="input-box">
             <span class="details">Contraseña</span>
-            <input type="text" placeholder="Ingrese su contraseña" required>
+            <input type="password" placeholder="Ingrese su contraseña" required>
           </div>
           <div class="input-box">
             <span class="details">Confirmar su contraseña</span>
