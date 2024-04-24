@@ -1,13 +1,41 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pe.sanmiguel.bienestar.proyecto_gtics.Entity.Usuario;
+import pe.sanmiguel.bienestar.proyecto_gtics.Repository.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = {"/adminsede"}, method = RequestMethod.GET)
 public class AdminSedeController {
+
+    /* Repositorios */
+    final UsuarioRepository usuarioRepository;
+    final SedeRepository sedeRepository;
+    final SedeStockRepository sedeStockRepository;
+    final MedicamentoRepository medicamentoRepository;
+    final OrdenRepository ordenRepository;
+    final OrdenContenidoRepository ordenContenidoRepository;
+    final ReposicionRepository reposicionRepository;
+    final EstadoPreOrdenRepository estadoPreOrdenRepository;
+    final DoctorRepository doctorRepository;
+
+    public AdminSedeController(UsuarioRepository usuarioRepository, SedeRepository sedeRepository, SedeStockRepository sedeStockRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository, EstadoPreOrdenRepository estadoPreOrdenRepository, DoctorRepository doctorRepository) {
+        this.usuarioRepository = usuarioRepository;
+        this.sedeRepository = sedeRepository;
+        this.sedeStockRepository = sedeStockRepository;
+        this.medicamentoRepository = medicamentoRepository;
+        this.ordenRepository = ordenRepository;
+        this.ordenContenidoRepository = ordenContenidoRepository;
+        this.reposicionRepository  =reposicionRepository;
+        this.estadoPreOrdenRepository = estadoPreOrdenRepository;
+        this.doctorRepository = doctorRepository;
+    }
 
     @GetMapping(value = {""})
     public String showIndexAdminSede(){
@@ -20,7 +48,9 @@ public class AdminSedeController {
     }
 
     @GetMapping(value = {"/farmacista"})
-    public String showFarmacistas(){
+    public String showFarmacistas(Model model){
+        List<Usuario> listaFarmacistas = usuarioRepository.listarFarmacistas();
+        model.addAttribute("listaFarmacistas", listaFarmacistas);
         return "/adminsede/farmacistas";
     }
 
@@ -30,7 +60,10 @@ public class AdminSedeController {
     }
 
     @GetMapping(value = {"/editar_farmacista"})
-    public String editFarmacista(){
+    public String editFarmacista(@RequestParam("id") int id,
+                                 Model model){
+        Usuario usuarioFarmacista = usuarioRepository.encontrarFarmacistaporId(id);
+        model.addAttribute("farmacista", usuarioFarmacista);
         return "/adminsede/editar_farmacista";
     }
 
@@ -72,6 +105,26 @@ public class AdminSedeController {
     @GetMapping(value = {"/verDetalles"})
     public String verDetalles(){
         return "/adminsede/verDetalles";
+    }
+
+    /*
+    @PostMapping(value = {"/editarFarmacista"})
+    @ResponseBody
+    public String editarFarmacista(@RequestParam("idUsuario") int id,
+                                   @RequestParam("nombres") String nombre,
+                                   @RequestParam("apellidos") String apellido,
+                                   @RequestParam("dni") String dni,
+                                   @RequestParam("distrito") String distrito,
+                                   @RequestParam("correo") String correo){
+
+        usuarioRepository.editarFarmacista(id,nombre,apellido,dni,distrito,correo);
+        return "redirect: /adminsede/farmacista";
+    }*/
+
+    @PostMapping(value = {"/editarFarmacista"})
+    public String editarFarmacista(Usuario usuario, RedirectAttributes attr){
+        usuarioRepository.save(usuario);
+        return "redirect:/adminsede/farmacista";
     }
 
 

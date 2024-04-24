@@ -161,21 +161,28 @@
 
 
 
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" th:action="@{/adminsede/editarFarmacista}" th:object="${farmacista}" enctype="multipart/form-data">
 
             <div class="container-form">
 
                 <div>
                     <div class="column">
+                        <input th:field="*{idUsuario}" name="idUsuario" type="hidden"/>
+                        <input th:field="*{rol}" name="rol" type="hidden"/>
+                        <input th:field="*{contrasena}" name="contrasena" type="hidden"/>
+                        <input th:field="*{celular}" name="celular" type="hidden"/>
+                        <input th:field="*{seguro}" name="seguro" type="hidden"/>
+                        <input th:field="*{estadoUsuario}" name="estadoUsuario" type="hidden"/>
+                        <input th:field="*{direccion}" name="direccion" type="hidden"/>
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Nombre del farmacista:</label>
-                            <input class="input-form" type="text" placeholder="Ingrese sus nombres" required>
+                            <input th:field="*{nombres}" name="nombres" class="input-form" type="text" placeholder="Ingrese sus nombres" required>
                         </div>
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Apellidos del farmacista:</label>
-                            <input class="input-form" type="text" placeholder="Ingrese sus apellidos" required>
+                            <input th:field="*{apellidos}" name="apellidos" class="input-form" type="text" placeholder="Ingrese sus apellidos"required>
                         </div>
 
                     </div>
@@ -184,12 +191,12 @@
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">DNI:</label>
-                            <input class="input-form" type="text" placeholder="Ingrese su DNI" required>
+                            <input th:field="*{dni}" name="dni" class="input-form" type="text" placeholder="Ingrese su DNI" required>
                         </div>
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Distrito de residencia:</label>
-                            <input class="input-form" type="text" placeholder="Ingrese su distrito" required>
+                            <input th:field="*{distrito}" name="distrito" class="input-form" type="text" placeholder="Ingrese su distrito" required>
                         </div>
 
                     </div>
@@ -203,7 +210,7 @@
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Correo electrónico:</label>
-                            <input class="input-form" type="text" placeholder="Ingrese su correo" required>
+                            <input th:field="*{correo}" name="correo" class="input-form" type="text" placeholder="Ingrese su correo" required>
                         </div>
 
                     </div>
@@ -309,8 +316,8 @@
 
                 <div class="column">
 
-                    <button class="btn-cancel" type="button" onclick="window.location.href = '/adminsede/farmacista'">Cancelar</button>
-                    <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/farmacista'">Confirmar</button>
+                    <button class="btn-cancel" type="button" th:href="@{/adminsede/farmacistas}">Cancelar</button>
+                    <button class="btn-p" type="submit">Confirmar</button>
 
                 </div>
 
