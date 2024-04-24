@@ -10,8 +10,7 @@ import lombok.Setter;
 @Table(name = "orden_contenido")
 public class OrdenContenido {
 
-    @Id
-    private Integer idEntrada;
+
     @Column
     private Integer idOrden;
     @Column

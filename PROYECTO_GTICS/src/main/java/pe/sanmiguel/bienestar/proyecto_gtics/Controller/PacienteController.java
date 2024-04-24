@@ -140,6 +140,7 @@ public class PacienteController {
 
 
         String tracking = new String();
+        tracking="1-2024";
         LocalDate fechaIni = LocalDate.now();
         LocalDate fechaFin = LocalDate.now();
         Float precioTotal = new Float(3.14);
@@ -166,7 +167,8 @@ public class PacienteController {
         orden.setDoctor(doc);
         orden.setEstadoPreOrden(esp);
 
-        System.out.println(ordenRepository.findLastOrdenId() + 1);
+
+        System.out.println(ordenRepository.findLastOrdenId());
         System.out.println(lista);
 
         //ordenRepository.save(orden);
