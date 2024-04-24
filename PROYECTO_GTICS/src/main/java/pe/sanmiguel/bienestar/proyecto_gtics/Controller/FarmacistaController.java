@@ -250,13 +250,6 @@ public class FarmacistaController {
         return "/farmacista/ordenes_venta";
     }
 
-    @GetMapping("/farmacista/ordenes_web")
-    public String tablaOrdenesWeb(Model model) {
-        List<Orden> listaOrdenesWeb = ordenRepository.findAllOrdenesWeb();
-        model.addAttribute("listaOrdenesWeb", listaOrdenesWeb);
-        return "/farmacista/ordenes_web";
-    }
-
     @GetMapping("/farmacista/ver_pre_orden")
     public String verPreOrden(Model model) {
 
@@ -296,6 +289,48 @@ public class FarmacistaController {
         return "/farmacista/pre_ordenes";
     }
 
+
+
+    
+
+    @GetMapping("/farmacista/ver_orden_web")
+    public String verOrdenWeb(Model model) {
+
+        Optional<Orden> preOrdenOptional = ordenRepository.findById(idVerOrdenCreada);
+        List<OrdenContenido> contenidoPreOrden = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(idVerOrdenCreada));
+
+
+        if (preOrdenOptional.isPresent()){
+            Orden preOrdenComprobada = preOrdenOptional.get();
+            Orden ordenParent = ordenRepository.getOrdenByIdOrden(preOrdenComprobada.getOrdenParent());
+
+            List<OrdenContenido> contenidoOrden = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(ordenParent.getIdOrden()));
+
+            model.addAttribute("orden",ordenParent);
+            model.addAttribute("contenidoOrden", contenidoOrden);
+            model.addAttribute("preOrden",preOrdenComprobada);
+            model.addAttribute("contenidoPreOrden", contenidoPreOrden);
+            return "/farmacista/ver_orden_web";
+        } else {
+
+            return "/farmacista/errorPages/no_existe_orden";
+        }
+    }
+
+    @PostMapping("/farmacista/ver_orden_web_tabla")
+    public String verPreOrdenesWebTabla(@RequestParam(value = "idOrden") String idOrdenTabla){
+
+        idVerOrdenCreada = Integer.valueOf(idOrdenTabla);
+
+        return "redirect:/farmacista/ver_orden_web";
+    }
+
+    @GetMapping("/farmacista/ordenes_web")
+    public String tablaOrdenesWeb(Model model) {
+        List<Orden> listaOrdenesWeb = ordenRepository.findAllOrdenesWeb();
+        model.addAttribute("listaOrdenesWeb", listaOrdenesWeb);
+        return "/farmacista/ordenes_web";
+    }
 
 
     @GetMapping("/farmacista/perfil")

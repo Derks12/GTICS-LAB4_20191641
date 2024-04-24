@@ -129,7 +129,7 @@
 
 
     <div style="padding-top: 20px; padding-bottom: 20px">
-        <div class="main-title open-sans-bold"> Detalle de Orden de Venta - PreOrden </div>
+        <div class="main-title open-sans-bold"> Detalle de Orden de Venta - Preorden </div>
     </div>
 
     <hr class="style-one">
@@ -148,7 +148,7 @@
 
                 <div th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></div>
                 <div th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></div>
-                <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></div>
+                <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetado" class="btn-red"></div>
                 <div th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></div>
                 <div th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="badge badge-pagado"></div>
 
@@ -287,7 +287,7 @@
 <div class="container">
 
     <div style="padding-top: 60px; padding-bottom: 20px">
-        <div class="main-title open-sans-regular"> Estado de la Preorden </div>
+        <div class="main-title open-sans-regular"> Estado de la Preorden <span th:text="${'#TRK' + preOrden.getTracking()}"></span></div>
     </div>
     <hr style="border-top: 1px solid #262626;">
     <div style="margin-bottom: 40px"></div>
@@ -315,7 +315,7 @@
                     </div>
 
                     <div class="progress-step">
-                        <i class="fa-solid fa-archive"></i>Empaquetando
+                        <i class="fa-solid fa-archive"></i>Empaquetado
                     </div>
                     <div class="progress-step">
                         <i class="fa-solid fa fa-truck"></i>En ruta
@@ -333,21 +333,31 @@
 
     </div>
 
-</div>
 
+    <div style="padding-top: 60px; padding-bottom: 20px">
+        <div class="main-title open-sans-regular"> Realizar un Comentario </div>
+    </div>
+    <hr style="border-top: 1px solid #262626;">
+    <div style="margin-bottom: 40px"></div>
 
-<div class="container">
-    <div class="flex justify-center items-center min-h-screen bg-[#ccc]">
-        <div class="h-80 px-7 w-[700px] rounded-[12px] bg-white p-4">
-            <p class="text-xl font-semibold text-blue-900 cursor-pointer transition-all hover:text-black">Agregar comentarios</p>
-            <textarea class="h-40 px-3 text-sm py-1 mt-5 outline-none border-pink-300 w-full resize-none border rounded-lg placeholder:text-sm" placeholder="Ingrese comentario" style="resize: none;"></textarea>
+    <div class="container">
 
-            <div class="flex justify-between mt-2">
-                <button class="h-12 w-[150px] bg-blue-400 text-sm text-white rounded-lg transition-all cursor-pointer hover:bg-blue-600">Subir comentario</button>
-                <p class="text-sm text-blue-900">Ingrese al menos 15 caracteres</p>
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="bg-light p-2">
+                    <div style="display: flex; flex-direction: row; align-items: start; gap: 30px">
+                        <div style="background-color: #3F71EA; border-radius: 50px; width: 50px; height: 50px; color: white; text-align: center; font-size: 0.8rem; padding-top: 15px">User</div>
+                        <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: end; gap: 30px; padding-top: 15px">
+                        <button class="continue-button" type="button">Comentar</button>
+                        <button class="btn btn-danger" type="button">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <div>

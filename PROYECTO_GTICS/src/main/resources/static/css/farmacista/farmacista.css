@@ -402,7 +402,7 @@ hr.style-one {
     background-color: var(--color-blue);
     color: #fff;
     padding: 5px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
@@ -556,7 +556,7 @@ hr.style-one {
     background-color: var(--color-red);
     color: #fff;
     padding: 5px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color ease 0.2s;
 }
@@ -802,6 +802,9 @@ hr.style-one {
     max-height: 480px;
     overflow: auto;
 }
+
+
+
 
 
 /*=============== FIN PROCESO PRE ORDEN ================*/
