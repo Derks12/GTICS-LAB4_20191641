@@ -83,6 +83,18 @@ public class FarmacistaController {
 
     @GetMapping("/farmacista/formulario_paciente")
     public String formPacienteData(Model model) {
+
+        List<Integer> stockSeleccionados = new ArrayList<>();
+
+        for (Medicamento med : medicamentosSeleccionados) {
+            if (sedeStockRepository.getSedeStocksByIdSedeAndIdMedicamento(sedeSession, med).getCantidad() == 0) {
+                stockSeleccionados.add(0);
+            } else {
+                stockSeleccionados.add(sedeStockRepository.getSedeStocksByIdSedeAndIdMedicamento(sedeSession, med).getCantidad());
+            }
+        }
+
+        model.addAttribute("stockSeleccionados", stockSeleccionados);
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         model.addAttribute("listaCantidades", listaCantidades);
         return "/farmacista/formulario_paciente";
