@@ -123,3 +123,80 @@
     font-weight: 900;
     font-style: italic;
 }
+
+/* HELVETICA NEUE VARIATIONS */
+
+.helvetica-light {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.helvetica-regular {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.helvetica-medium {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.helvetica-semi-bold {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.helvetica-bold {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.helvetica-extra-bold {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.helvetica-black {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+/* OPEN SANS VARIATIONS */
+
+.open-sans-light {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.open-sans-regular {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.open-sans-semi-bold {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.open-sans-bold {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.open-sans-extra-bold {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
