@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name= "estado_reposicion")
 public class EstadoReposicion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idEstado;
     @Column

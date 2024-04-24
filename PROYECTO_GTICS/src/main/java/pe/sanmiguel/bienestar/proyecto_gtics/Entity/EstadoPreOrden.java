@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name = "estado_preorden")
 public class EstadoPreOrden {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idEstadoPreOrden;
     @Column

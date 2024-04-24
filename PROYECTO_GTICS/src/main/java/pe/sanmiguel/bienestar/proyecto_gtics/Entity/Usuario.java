@@ -9,12 +9,10 @@ import lombok.Setter;
 @Table(name = "usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idUsuario;
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private Rol rol;
+    @Column(name = "idRol")
+    private Integer rol;
     @Column
     private String correo;
     @Column
@@ -24,6 +22,8 @@ public class Usuario {
     @Column
     private String apellidos;
     @Column
+    private String celular;
+    @Column
     private String dni;
     @Column
     private String direccion;
@@ -31,9 +31,8 @@ public class Usuario {
     private String distrito;
     @Column
     private String seguro;
-    /*@ManyToOne
-    @JoinColumn(name = "estado_usuario")
-    private EstadoUsuario estadoUsuario;*/
+    @Column(name = "estado_usuario")
+    private Integer estadoUsuario;
 
 
 

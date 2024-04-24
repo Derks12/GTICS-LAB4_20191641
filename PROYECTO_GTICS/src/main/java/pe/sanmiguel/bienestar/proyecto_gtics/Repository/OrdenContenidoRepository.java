@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface OrdenContenidoRepository extends JpaRepository<OrdenContenido, OrdenContenidoId> {
+
     /*ArrayList<OrdenContenido> findAllByIdOrden(Integer idOrden);
 
     @Query("SELECT MAX(oc.idEntrada) FROM OrdenContenido oc")
     Integer findLastOrdenContenidoId();*/
-
 
     @Query(value="select * from orden_contenido where idOrden = ?1", nativeQuery = true)
     List<OrdenContenido> findMedicamentosByOrdenId(String id);

@@ -1,6 +1,7 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import lombok.Getter;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -109,7 +110,7 @@ public class FarmacistaController {
                                    @RequestParam(value = "doctor") String doctor,
                                    @RequestParam(value = "seguro") String seguro,
                                    @RequestParam(value = "correo") String correo,
-                                   @RequestParam(value = "telefono") String telefono,
+                                   @RequestParam(value = "celular") String celular,
 
                                    @RequestParam(value = "listaIds") List<String> listaSelectedIds,
                                    @RequestParam(value = "priceTotal") String priceTotal) {
@@ -118,12 +119,16 @@ public class FarmacistaController {
         listaCantidades = getCantidadesFromLista(listaSelectedIds);
 
         verificationStock verificationStock = new verificationStock(medicamentosSeleccionados, listaCantidades);
+        verificationUser verificationUser = new verificationUser(name,lastname,dni,distrito,direccion,seguro,correo,celular);
+
 
         if (verificationStock.getMedicamentosSinStock().isEmpty()){
 
             Orden newOrden = new Orden();
 
-            newOrden.setIdOrden(ordenRepository.findLastOrdenId() + 1);
+            Integer lastOrderId = ordenRepository.findLastOrdenId();
+            int newOrderId = (lastOrderId != null) ? lastOrderId + 1 : 1;
+            newOrden.setIdOrden(newOrderId);
             newOrden.setFechaIni(CurrentTimeSQL.getCurrentDate());
             newOrden.setPrecioTotal(Float.parseFloat(priceTotal));
             //Id conocido porque no hay session
@@ -136,10 +141,19 @@ public class FarmacistaController {
                 newOrden.setDoctor(doctorRepository.getByIdDoctor(Integer.valueOf(doctor)));
             }
 
+            newOrden.setPaciente(verificationUser.getUser());
+
+            ordenRepository.save(newOrden);
+
             int i = 0;
             for (Medicamento med : medicamentosSeleccionados){
 
+                OrdenContenidoId contenidoId = new OrdenContenidoId();
+                contenidoId.setIdOrden(newOrderId);
+                contenidoId.setIdMedicamento(med.getIdMedicamento());
+
                 OrdenContenido contenido = new OrdenContenido();
+                contenido.setId(contenidoId);
                 contenido.setIdOrden(newOrden);
                 contenido.setIdMedicamento(med);
                 contenido.setCantidad(Integer.parseInt(listaCantidades.get(i)));
@@ -147,6 +161,7 @@ public class FarmacistaController {
                 i++;
             }
 
+            idVerOrdenCreada = newOrderId;
             return "redirect:/farmacista/ver_orden_venta";
         } else {
 
@@ -160,6 +175,9 @@ public class FarmacistaController {
     }
 
 
+
+
+
     @GetMapping("/farmacista/crear_preorden")
     public String createPreOrden(Model model) {
 
@@ -169,6 +187,17 @@ public class FarmacistaController {
         model.addAttribute("cantidadesExistentes", cantidadesExistentes);
 
         return "/farmacista/crear_preorden";
+    }
+
+    @GetMapping("/farmacista/cambiar_medicamentos")
+    public String changeMedicamentos(Model model) {
+
+        model.addAttribute("medicamentosSinStock", medicamentosSinStock);
+        model.addAttribute("medicamentosConStock", medicamentosConStock);
+        model.addAttribute("cantidadesFaltantes", cantidadesFaltantes);
+        model.addAttribute("cantidadesExistentes", cantidadesExistentes);
+
+        return "/farmacista/cambiar_medicamentos";
     }
 
     @GetMapping("/farmacista/ver_pre_orden")
@@ -191,10 +220,12 @@ public class FarmacistaController {
     public String verOrdenVenta(Model model) {
 
         Optional<Orden> ordenOptional = ordenRepository.findById(idVerOrdenCreada);
+        List<OrdenContenido> contenidoOrden = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(idVerOrdenCreada));
 
         if (ordenOptional.isPresent()){
             Orden ordenComprobada = ordenOptional.get();
             model.addAttribute("orden",ordenComprobada);
+            model.addAttribute("contenidoOrden", contenidoOrden);
             return "/farmacista/ver_orden_venta";
         } else {
 
@@ -290,6 +321,54 @@ public class FarmacistaController {
         return cantidades;
     }
 
+
+
+    @Getter
+    public class verificationUser {
+
+        private final boolean userExist;
+        private final Usuario user;
+
+        public verificationUser(String name, String lastname, String dni, String distrito, String direccion, String seguro, String correo, String celular) {
+
+            boolean userExist = false;
+            Usuario user = new Usuario();
+
+            Optional<Usuario> userOptional = usuarioRepository.findByCorreoAndDni(correo, dni);
+
+            if (userOptional.isPresent()) {
+                userExist = true;
+                user = userOptional.get();
+
+            } else {
+                Usuario newUser = new Usuario();
+
+                Integer lastUserId = usuarioRepository.findLastUsuarioId();
+                int newUserId = (lastUserId != null) ? lastUserId + 1 : 1;
+                newUser.setIdUsuario(newUserId);
+
+                newUser.setRol(5);
+                newUser.setCorreo(correo);
+                newUser.setContrasena("");
+                newUser.setNombres(name);
+                newUser.setApellidos(lastname);
+                newUser.setCelular(celular);
+                newUser.setDni(dni);
+                newUser.setDireccion(direccion);
+                newUser.setDistrito(distrito);
+                newUser.setSeguro(seguro);
+
+                newUser.setEstadoUsuario(2);
+
+                user = newUser;
+            }
+
+            usuarioRepository.save(user);
+
+            this.userExist = userExist;
+            this.user = user;
+        }
+    }
 
     @Getter
     public class verificationStock{

@@ -13,7 +13,7 @@ public interface OrdenRepository extends JpaRepository<Orden, Integer> {
     List<Orden> findAllOrdenesWeb();
     @Query(value = "SELECT * FROM orden WHERE idTipo = (SELECT id FROM tipo_orden WHERE nombre = 'PREORDEN')", nativeQuery = true)
     List<Orden> findAllPreOrdenes();
-    @Query(value="SELECT MAX(o.id) FROM Orden o", nativeQuery = true)
+    @Query(value="SELECT MAX(orden.id) FROM Orden orden", nativeQuery = true)
     Integer findLastOrdenId();
 
     Orden findByIdOrdenAndTipoOrden(Integer idOrden, Integer tipoOrden);

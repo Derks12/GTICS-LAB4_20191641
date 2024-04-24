@@ -13,9 +13,10 @@ import java.io.Serializable;
 @Embeddable
 public class OrdenContenidoId implements Serializable {
 
-    @Column
+    @Column(name = "idOrden")
     private Integer idOrden;
-    @Column
+
+    @Column(name = "idMedicamento")
     private Integer idMedicamento;
 
 }

@@ -170,18 +170,25 @@
                 </thead>
                 <tbody>
                 <tr th:each="orden : ${listaOrdenesVenta}">
-                    <td style="text-align: center" th:text="${orden.idOrden + 10000}"></td>
-                    <td style="text-align: center" th:text="${orden.fechaIni}"></td>
-                    <td style="text-align: center" th:text="${orden.paciente.nombres} + ' ' + ${orden.paciente.apellidos}" ></td>
+                    <td style="text-align: center" th:text="${orden.getIdOrden() + 10000}"></td>
+                    <td style="text-align: center" th:text="${orden.getFechaFin()}"></td>
+                    <td style="text-align: center" th:text="${orden.getPaciente().getNombres()} + ' ' + ${orden.getPaciente().getApellidos()}" ></td>
                     <td style="text-align: center">
-                        <span th:if="${orden.estadoOrden.nombre == 'Empaquetando'}" th:text="${orden.estadoOrden.nombre}" class="btn-red"></span>
-                        <span th:if="${orden.estadoOrden.nombre == 'En proceso'}" th:text="${orden.estadoOrden.nombre}" class="btn-yellow"></span>
-                        <span th:if="${orden.estadoOrden.nombre == 'En Ruta'}" th:text="${orden.estadoOrden.nombre}" class="btn-yellow"></span>
-                        <span th:if="${orden.estadoOrden.nombre == 'Entregado'}" th:text="${orden.estadoOrden.nombre}" class="btn-green"></span>
-                        <span th:if="${orden.estadoOrden.nombre == 'Recibido'}" th:text="${orden.estadoOrden.nombre}" class="btn-green"></span>
+                        <span th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></span>
+                        <span th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></span>
+
+                        <span th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></span>
+                        <span th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></span>
+                        <span th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></span>
+                        <span th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></span>
+                        <span th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="btn-green"></span>
+
+
+                        <span th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="btn-green"></span>
+                        <span th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></span>
                     </td>
                     <td style="text-align: center; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-                        <a class="btn btn-sm btn-info" th:href="@{'/verOrdenVenta' + '?id=' + ${orden.idOrden}}">
+                        <a class="btn btn-sm btn-info" th:href="@{'/verOrdenVenta' + '?id=' + ${orden.getIdOrden()}}">
                             <i class="fa-regular fa-eye"></i>
                         </a>
                     </td>

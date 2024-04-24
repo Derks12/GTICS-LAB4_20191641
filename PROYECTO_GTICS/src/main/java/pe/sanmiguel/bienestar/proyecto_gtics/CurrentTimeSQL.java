@@ -8,6 +8,6 @@ public class CurrentTimeSQL {
 
     public static LocalDate getCurrentDate() {
         LocalDateTime now = LocalDateTime.now();
-        return Date.valueOf(now.toLocalDate()).toLocalDate();
+        return now.toLocalDate();
     }
 }

@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name = "estado_usuario")
 public class EstadoUsuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idEstadoUsuario;
     @Column

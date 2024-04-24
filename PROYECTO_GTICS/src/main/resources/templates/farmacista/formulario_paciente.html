@@ -207,7 +207,7 @@
                             <div class="column-start">
                                 <div class="input-label-box">
                                     <label style="font-weight: bold; color:dimgray">Teléfono:</label>
-                                    <input class="input-form-2" type="text" name="telefono" placeholder="Ingrese su número de teléfono" required>
+                                    <input class="input-form-2" type="text" name="celular" placeholder="Ingrese su número de celular" required>
                                 </div>
                             </div>
 
@@ -356,7 +356,6 @@
 
 
         document.getElementById('continue').addEventListener('click', function(event) {
-            event.preventDefault(); // Evita que el enlace se ejecute de inmediato
             const Swal = window.Swal;
 
             const listItems = document.getElementsByClassName('order-items')[0];
@@ -459,6 +458,7 @@
                 });
             }
         });
+
 
         var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');
         for(var i=0;i<botonesSumarCantidad.length; i++){

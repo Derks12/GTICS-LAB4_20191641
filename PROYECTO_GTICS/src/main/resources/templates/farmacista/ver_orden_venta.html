@@ -133,7 +133,7 @@
             <div class="title roboto-medium data-label">Farmacia Bienestar San Miguel | La Marina</div>
 
             <div class="title-info">
-                <div class="roboto-bold title data-label">Orden #<span th:text="${OrdenComprobada.getIdOrden() + 10000}"></span> </div>
+                <div class="roboto-bold title data-label">Orden #<span th:text="${orden.getIdOrden() + 10000}"></span> </div>
                 <div class="badge badge-pagado">Pagado</div>
             </div>
         </div>
@@ -149,10 +149,10 @@
         <div class="client-info">
             <div class="data-label roboto-medium">Datos del Cliente:</div>
             <div class="invoice-data">
-                <div th:text="${usuarioComprobado.getNombres() + ' ' + usuarioComprobado.getApellidos()}"><span class="data-label roboto-medium">Nombre:</span> Leonardo Ernesto Aldoradin Yaranga</div>
-                <div th:text="${usuarioComprobado.getSeguro()}"><span class="data-label roboto-medium">Seguro:</span> La positiva </div>
-                <div th:text="${usuarioComprobado.getCorreo()}"><span class="data-label roboto-medium">Correo:</span> aldoradin@gmail.com</div>
-                <div th:text="${usuarioComprobado.getDni()}"><span class="data-label roboto-medium">DNI:</span> 71236854</div>
+                <div th:text="${orden.getPaciente().getNombres() + ' ' + orden.getPaciente().getApellidos()}"><span class="data-label roboto-medium">Nombre:</span> Leonardo Ernesto Aldoradin Yaranga</div>
+                <div th:text="${orden.getPaciente().getSeguro()}"><span class="data-label roboto-medium">Seguro:</span> La positiva </div>
+                <div th:text="${orden.getPaciente().getCorreo()}"><span class="data-label roboto-medium">Correo:</span> aldoradin@gmail.com</div>
+                <div th:text="${orden.getPaciente().getDni()}"><span class="data-label roboto-medium">DNI:</span> 71236854</div>
             </div>
         </div>
 
@@ -161,8 +161,8 @@
         <div class="invoice-info">
             <div class="data-label roboto-medium">Datos de la Orden:</div>
             <div class="invoice-data">
-                <div th:text="${OrdenComprobada.getIdOrden() + 10000}" ><span class="data-label roboto-medium">Número de Orden:</span> #DS0204</div>
-                <div th:text="${OrdenComprobada.getFechaIni()}"><span class="data-label roboto-medium">Fecha de Pago:</span> 12 Oct, 2029 </div>
+                <div th:text="${orden.getIdOrden() + 10000}" ><span class="data-label roboto-medium">Número de Orden:</span> #DS0204</div>
+                <div th:text="${orden.getFechaIni()}"><span class="data-label roboto-medium">Fecha de Pago:</span> 12 Oct, 2029 </div>
                 <div><span class="data-label roboto-medium">Sede:</span> Farmacia Bienestar San Miguel - La Marina 12330</div>
                 <div><span class="data-label roboto-medium">Atendido por:</span> Manuel Yarlequé</div>
             </div>
@@ -185,17 +185,17 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="medicamento, iterIndex : ${medicamentosList}">
-                    <th class="text-start" style="width: 90px;">0 <span th:text="iterIndex.index"></span></th>
+                <tr th:each="contenido, iterIndex : ${contenidoOrden}">
+                    <th class="text-start" style="width: 90px;"><span th:text="${iterIndex.index}"></span></th>
                     <td>
                         <div class="name-unit-item">
-                            <div class="text-truncate font-size-14 mb-1">Panadol</div>
-                            <div class="text-muted mb-0">TABLETAS 50 U.</div>
+                            <div class="text-truncate font-size-14 mb-1" th:text="${contenido.getIdMedicamento().getNombre()}">Panadol</div>
+                            <div class="text-muted mb-0" th:text="${contenido.getIdMedicamento().getUnidad()}">TABLETAS 50 U.</div>
                         </div>
                     </td>
-                    <td class="text-center">$ 245.50</td>
-                    <td class="text-center">1</td>
-                    <td class="text-end">$ 245.50</td>
+                    <td class="text-center" th:text="${contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                    <td class="text-center" th:text="${contenido.getCantidad()}">1</td>
+                    <td class="text-end" th:text="${contenido.getCantidad() * contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
                 </tr>
                 </tbody>
 
@@ -204,7 +204,7 @@
 
         <div class="full-total">
             <div class="roboto-regular data-label" style="padding-top: 20px">Total</div>
-            <div class="title roboto-medium data-label">S/. 750.00</div>
+            <div class="title roboto-medium data-label" th:text="${orden.getPrecioTotal()}">S/. 750.00</div>
         </div>
 
 
