@@ -54,13 +54,22 @@
             display: inline-block;
             padding: 12px 20px;
             color:white;
-            background-color: #1a72e7;
+            background-color: #2071b7;
             text-decoration: none;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, border-color 0.3s;
             font-size: 17px;
+        }
+
+        .btn-rechazo{
+            padding: 8px;
+            background-color: rgb(155, 36, 36);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 125px;
         }
         @import url('https://fonts.googleapis.com/css2?family=Aptos:wght@700&display=swap');
     </style>
@@ -84,11 +93,9 @@
                 <ul class="nav-list">
                     <li><a href="/superadmin" class="menu-item roboto-regular">Inicio</a></li>
 
-                    <li><a href="/superadmin/pedidos" class="menu-item roboto-regular" >Pedidos</a></li>
+                    <li><a href="/superadmin/pedidos" class="menu-item roboto-regular" >Pedidos de reposición</a></li>
 
-                    <li><a href="/superadmin/solicitudes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Solicitudes</a></li>
-
-                    <li><a href="/superadmin/medicamentos" class="menu-item roboto-regular">Medicamentos</a></li>
+                    <li><a href="/superadmin/medicamentos" class="menu-item roboto-regular">Inventario</a></li>
 
                     <li class="dropdown-item">
                         <div class="menu-item roboto-regular">
@@ -99,13 +106,13 @@
                             <div class="inside-dropdown">
                                 <li>
                                     <a href="/superadmin/administradoresSede" class="dropdown-link">
-                                        <i class="ri-user-line menu-item roboto-regular"></i> Admnistradores de Sede
+                                        <i class="ri-user-line menu-item roboto-regular" ></i> Admnistradores de Sede
                                     </a>
                                 </li>
 
                                 <li>
                                     <a  href="/superadmin/farmacistas"  class="dropdown-link">
-                                        <i class="ri-user-line  menu-item roboto-regular"></i> Farmacistas
+                                        <i class="ri-user-line  menu-item roboto-regular" style="text-decoration: underline; color: white;"></i> Farmacistas
                                     </a>
                                 </li>
                                 <li>
@@ -158,11 +165,9 @@
                         <div class="nav-menu-small" id="nav-menu-small">
                             <ul class="nav-list-small">
                                 <li><a href="/superadmin" class="menu-item-small roboto-regular">Inicio</a></li>
-                                <li><a href="/superadmin/pedidos" class="menu-item-small roboto-regular">Pedidos</a></li>
+                                <li><a href="/superadmin/pedidos" class="menu-item-small roboto-regular">Pedidos de reposición</a></li>
 
-                                <li><a href="/superadmin/solicitudes" class="menu-item-small roboto-regular">Solicitudes</a></li>
-
-                                <li><a href="/superadmin/medicamentos" class="menu-item-small roboto-regular">Medicamentos</a></li>
+                                <li><a href="/superadmin/medicamentos" class="menu-item-small roboto-regular">Inventario</a></li>
                             </ul>
 
                             <ul class="nav-list-small-perfil">
@@ -193,21 +198,10 @@
     <div class="container">
         <div style="margin-bottom: 20px"></div>
         <div style="margin-bottom: 30px"></div>
-        <div class="titulo"><b>SOLICITUDES</b></div>
+        <div class="titulo"><b>HISTORIAL DE SOLICITUDES</b></div>
         <div style="margin-bottom: 20px"></div>
         <br>
     </div>
-
-    <div class="container" style="display: flex; justify-content: center; align-items: center;">
-        <div style="padding-top: 1px; margin: 0 10px;">
-            <a class="btn-n"  href="/superadmin/solicitudes">PENDIENTES</a>
-        </div>
-
-        <div style="padding-top: 1px; margin: 0 10px;">
-            <a class="btn-c" href="/superadmin/historialSolicitudes">HISTORIAL</a>
-        </div>
-    </div>
-
 
 
     <div class="container" >
@@ -305,7 +299,7 @@
                 </td>
                 <td style="text-align: center">Pando 5 Etapa</td>
                 <td style="text-align: center">Administrador 2</td>
-                <td><button class="btn-pend">RECHAZADO</button></td>
+                <td><button class="btn-rechazo">RECHAZADO</button></td>
 
             </tr>
             <tr>

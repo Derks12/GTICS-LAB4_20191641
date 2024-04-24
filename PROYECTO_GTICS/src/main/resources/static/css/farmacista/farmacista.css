@@ -275,6 +275,7 @@
 }
 .main-subtitle {
     font-size: 1.2rem;
+    padding-top: 5px;
     color: var(--color-gray);
 }
 
@@ -286,9 +287,10 @@ hr.style-one {
 
 /* INTERFAZ TOTAL */
 .interface {
+    padding-top: 10px;
     display: grid;
     grid-template-columns: 0.2fr 0.8fr;
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
 }
 /* END INTERFAZ TOTAL */
@@ -299,9 +301,10 @@ hr.style-one {
 .filtros {
     margin-top: 10px;
     border-radius: 0.25rem;
-    max-height: 440px;
+    max-height: 500px;
     color: var(--color-black);
     background: var(--color-white);
+    border: 1px solid #dedede;
 }
 
 .container-filters {
@@ -315,7 +318,7 @@ hr.style-one {
 }
 
 .list-categorias{
-    max-height: 240px;
+    max-height: 300px;
     overflow: auto;
 }
 
@@ -325,10 +328,14 @@ hr.style-one {
     padding-bottom: 20px;
 }
 
+.categoria-div {
+    padding-bottom: 10px;
+}
+
 .categoria {
     cursor: pointer;
-    padding-bottom: 10px;
-    padding-right: 20px;
+    color: var(--color-text-1) !important;
+    text-decoration: none;
 }
 
 .alert {
@@ -476,6 +483,7 @@ hr.style-one {
     transition: .3s;
     width: auto;
     outline: none;
+    border: 1px solid #dedede;
     border-radius: 5px;
     color: var(--color-black);
     background: #ffffff;
@@ -492,20 +500,27 @@ hr.style-one {
     display: block;
     color: var(--color-text-1);
     padding-top: 5px;
-    font-size: 1rem;
+    font-size: 1.55rem;
     text-align: start;
 }
 .subtitulo-item {
     display: block;
     color: var(--color-text-2);
     padding-top: 5px;
+    padding-bottom: 5px;
     font-size: 0.8rem;
     text-align: start;
+}
+.items-details {
+    padding-top: 5px;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    color: var(--color-blue--hover);
 }
 .item-price {
     display: block;
     text-align: start;
-    padding-top: 15px;
+    padding-top: 10px;
     font-size: 1.15rem;
 }
 .item-symbol {
@@ -516,12 +531,12 @@ hr.style-one {
 }
 .add-item-button {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin: 10px auto;
-    border: none;
-    background-color: #c6d5ec;
-    border: 1px #87888a;
-    color: var(--color-text-1);
+    width: 100%;
+    border: 1px none;
+    background-color: #1f73ef;
+    color: #e7e9ee;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -529,6 +544,7 @@ hr.style-one {
 }
 
 .add-item-button:hover{
+    color: #e7e9ee;
     background-color: var(--color-blue--hover);
 }
 
@@ -596,17 +612,6 @@ hr.style-one {
 }
 
 
-
-.input-form{
-    width: 400px;
-    margin-top:6px;
-    padding-left: 15px;
-    outline: none;
-    height: 42px;
-    border: 1px solid #DFDFDF;
-    border-radius: 5px;
-    font-size: 17px;
-}
 
 
 
@@ -710,8 +715,8 @@ hr.style-one {
 }
 
 .input-form{
-    width: 400px;
-    margin-top:6px;
+    width: 30vw;
+    margin-top: 10px;
     padding-left: 15px;
     outline: none;
     height: 42px;
@@ -719,6 +724,7 @@ hr.style-one {
     border-radius: 5px;
     font-size: 17px;
 }
+
 
 .input-form:focus{
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);

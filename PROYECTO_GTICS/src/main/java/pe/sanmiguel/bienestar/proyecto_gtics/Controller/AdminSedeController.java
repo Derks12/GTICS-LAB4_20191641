@@ -69,6 +69,11 @@ public class AdminSedeController {
         return "/adminsede/perfil_adminsede";
     }
 
+    @GetMapping(value = {"/verDetalles"})
+    public String verDetalles(){
+        return "/adminsede/verDetalles";
+    }
+
 
 
 
