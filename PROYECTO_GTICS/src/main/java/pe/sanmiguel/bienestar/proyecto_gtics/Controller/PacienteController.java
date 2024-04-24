@@ -146,11 +146,8 @@ public class PacienteController {
         Float precioTotal = new Float(3.14);
         Integer idFarmacista = new Integer(1);
         Usuario udb = usuarioRepository.getById(1);
-        TipoOrden to = tipoOrdenRepository.getById(1);
-        EstadoOrden eo = estadoOrdenRepository.getById(1);
         Sede s = sedeRepository.getById(1);
         Doctor doc = doctorRepository.getById(1);
-        EstadoPreOrden esp = estadoPreOrdenRepository.getById(1);
 
 
         Orden orden = new Orden();
@@ -161,11 +158,11 @@ public class PacienteController {
         orden.setPrecioTotal(precioTotal);
         orden.setIdFarmacista(idFarmacista);
         orden.setPaciente(udb);
-        orden.setTipoOrden(to);
-        orden.setEstadoOrden(eo);
+        orden.setTipoOrden(1);
+        orden.setEstadoOrden(1);
         orden.setSede(s);
         orden.setDoctor(doc);
-        orden.setEstadoPreOrden(esp);
+        orden.setEstadoPreOrden(1);
 
 
         System.out.println(ordenRepository.findLastOrdenId());
