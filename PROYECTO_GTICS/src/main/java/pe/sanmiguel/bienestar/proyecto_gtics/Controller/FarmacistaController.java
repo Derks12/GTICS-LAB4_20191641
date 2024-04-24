@@ -132,7 +132,7 @@ public class FarmacistaController {
         }
     }*/
 
-    /* OJO LO ESTOY USANDO EN ORDENES VENTA PARA QUE PUEDA VER LA VISTA DE VER_ORDEN_VENTA
+    /* OJO LO ESTOY USANDO EN ORDENES VENTA PARA QUE PUEDA VER LA VISTA DE VER_ORDEN_VENTA FUNCIONA LO QUE FALLA ES LA VISTA POR ESO SALE ERROR
     @GetMapping("/verOrdenVenta")
     public String verOrdenVenta(Model model,
                               @RequestParam("id") Integer id) {
