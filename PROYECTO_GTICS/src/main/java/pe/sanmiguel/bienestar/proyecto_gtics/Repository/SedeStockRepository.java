@@ -8,10 +8,13 @@ import pe.sanmiguel.bienestar.proyecto_gtics.Entity.SedeStock;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.SedeStockId;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface SedeStockRepository extends JpaRepository<SedeStock, SedeStockId> {
 
-    SedeStock getSedeStockByIdSedeAndIdMedicamento(Sede sede, Medicamento medicamento);
+    Optional<SedeStock> getSedeStockByIdSedeAndIdMedicamento(Sede sede, Medicamento medicamento);
+
+    SedeStock getSedeStockByIdMedicamentoAndIdSede(Medicamento medicamento, Sede sede);
 
 }
