@@ -133,7 +133,7 @@
 
                 <div class="search-bar" style="padding-bottom: 20px; padding-top: 20px;">
                     <label class="search-label">
-                        <input type="text" placeholder="Buscar paciente...">
+                        <input type="text" id="search-input" placeholder="Buscar paciente...">
                     </label>
                     <button type="submit">Buscar</button>
                 </div>
@@ -323,6 +323,21 @@
 
 </body>
 
+<script>
+    // Obtener el formulario por su ID
+    var form = document.getElementById('finalizar');
+
+    // Agregar un event listener para el evento 'keypress'
+    form.addEventListener('keypress', function(event) {
+        // Verificar si la tecla presionada es 'Enter' (keycode 'Enter' es 'Enter')
+        if (event.key === 'Enter') {
+            // Prevenir el comportamiento por defecto del 'Enter'
+            event.preventDefault();
+            return false;
+        }
+    });
+</script>
+
 <script th:inline="javascript">
 
     let listaSelectedIds = [];
@@ -356,108 +371,63 @@
 
 
         document.getElementById('continue').addEventListener('click', function(event) {
+            event.preventDefault();
             const Swal = window.Swal;
 
-            const listItems = document.getElementsByClassName('order-items')[0];
-            const selectedItems = listItems.getElementsByClassName('selected-item');
+            const listItems = document.querySelector('.order-items');
+            const selectedItems = listItems.querySelectorAll('.selected-item');
+            const stockSeleccionados = [[${stockSeleccionados}]];
+            let hayProblemaConStock = Array.from(selectedItems).some((item, i) => {
+                const cantidadItem = item.querySelector('.item-quantity-clicked').value;
+                return stockSeleccionados[i] < cantidadItem || stockSeleccionados[i] === null;
+            });
 
-            let stockSeleccionados = [[${stockSeleccionados}]];
-            let hayProblemaConStock = 0;
-
-            // Verificar si hay problemas con el stock
-            for (let i = 0; i < selectedItems.length; i++) {
-                const item = selectedItems[i];
-                const cantidadItem = item.getElementsByClassName('item-quantity-clicked')[0].value;
-
-                if (stockSeleccionados[i] < cantidadItem || stockSeleccionados[i] === null) {
-                    hayProblemaConStock = 1;
-                    break; // Salir del bucle al encontrar un problema de stock
-                }
-            }
-
-            // Función para verificar si todos los campos están llenos
             function verificarCamposLlenos(form) {
-                var inputs = form.getElementsByTagName('input');
-                var todosLlenos = true;
-                for (var i = 0; i < inputs.length; i++) {
-                    if (inputs[i].value.trim() === '') {
-                        todosLlenos = false;
-                        break;
-                    }
-                }
-                return todosLlenos;
+                // Obtener todos los inputs del formulario, excluyendo los campos de tipo 'hidden' y el input con ID "search-input"
+                const inputs = Array.from(form.querySelectorAll('input:not([type="hidden"]):not(#search-input)'));
+                // Verificar si todos los campos de texto están llenos
+                const result = inputs.every(input => input.value.trim() !== '');
+                return result;
             }
 
-            if (hayProblemaConStock === 1) {
-                // Mostrar alerta para preguntar por preorden o cambiar medicamentos
-                Swal.fire({
-                    title: 'Existen problemas por Stock',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Nueva Preorden',
-                    cancelButtonText: 'Cambiar Medicinas'
-                }).then((result) => {
-                    // Si el usuario confirma, redirige al usuario
-                    if (result.isConfirmed) {
-                        var form = document.getElementById('finalizar');
-                        if (verificarCamposLlenos(form)) {
-                            form.submit();
-                        } else {
-                            Swal.fire({
-                                title: 'Faltan Datos',
-                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
-                                icon: 'warning',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'Continuar',
-                            });
-                        }
-                    } else if (result.isDismissed) {
-                        var form = document.getElementById('finalizar');
-                        if (verificarCamposLlenos(form)) {
-                            form.action = '/farmacista/cambiar_medicamentos';
-                            form.submit();
-                        } else {
-                            Swal.fire({
-                                title: 'Faltan Datos',
-                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
-                                icon: 'warning',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'Continuar',
-                            });
-                        }
+            const form = document.getElementById('finalizar');
+            Swal.fire({
+                title: hayProblemaConStock ? 'Existen problemas por Stock' : '¿Estás seguro?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: hayProblemaConStock ? 'Nueva Preorden' : 'Continuar',
+                cancelButtonText: hayProblemaConStock ? 'Cambiar Medicinas' : 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if (verificarCamposLlenos(form)) {
+                        event.preventDefault();
+                        form.submit();
+                    } else {
+                        Swal.fire({
+                            title: 'Faltan Datos',
+                            text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                            icon: 'warning',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Continuar',
+                        });
                     }
-                });
-            } else {
-                // Mostrar alerta para preguntar si está seguro de generar la boleta
-                Swal.fire({
-                    title: '¿Estás seguro?',
-                    text: 'Esta acción registrará la boleta como pagada.',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Continuar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        var form = document.getElementById('finalizar');
-                        if (verificarCamposLlenos(form)) {
-                            form.submit();
-                        } else {
-                            Swal.fire({
-                                title: 'Faltan Datos',
-                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
-                                icon: 'warning',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'Continuar',
-                            });
-                        }
-                    }
-                });
-            }
+                } else if (result.isDismissed && hayProblemaConStock && verificarCamposLlenos(form)) {
+                    window.location.href = '/farmacista/cambiar_medicamentos';
+                } else {
+                    Swal.fire({
+                        title: 'Faltan Datos',
+                        text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                        icon: 'warning',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Continuar',
+                    });
+                }
+            });
         });
+
+
 
 
         var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');

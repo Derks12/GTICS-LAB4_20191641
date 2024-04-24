@@ -407,6 +407,7 @@ hr.style-one {
     transition: background-color ease 0.2s;
 }
 
+
 .continue-button:hover{
     background-color: var(--color-blue--hover);
 }
@@ -533,7 +534,6 @@ hr.style-one {
     display: block;
     font-size: 0.95rem;
     margin: 10px auto;
-    width: 100%;
     border: 1px none;
     background-color: #1f73ef;
     color: #e7e9ee;
@@ -551,7 +551,7 @@ hr.style-one {
 .return-button {
     display: block;
     font-size: 1rem;
-    margin: 10px auto;
+    margin-inline: auto;
     border: none;
     background-color: var(--color-red);
     color: #fff;
@@ -771,6 +771,7 @@ hr.style-one {
     border-radius: 0.25rem;
     color: var(--color-black);
     background: #ffffff;
+    border: 1px solid #dedede;
 }
 
 .inside-items-list {

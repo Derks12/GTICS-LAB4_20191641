@@ -223,7 +223,17 @@
 
         </div>
 
-        <button type="submit" id="continue" class="continue-button montserrat-medium">Generar Boleta</button>
+        <div style="display: flex; flex-direction: row; justify-content: space-around">
+            <button type="button" class="return-button montserrat-medium" onclick="goBack()">Retroceder</button>
+
+            <button type="submit" id="continue" class="continue-button montserrat-medium">Generar Preorden</button>
+        </div>
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 
     </form>
 
