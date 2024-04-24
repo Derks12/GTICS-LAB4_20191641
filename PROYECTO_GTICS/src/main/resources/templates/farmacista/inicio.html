@@ -48,7 +48,7 @@
 
         <div class="nav-data">
             <div>
-                <a href="/"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
+                <a href="/farmacista"><img class="logo" th:src="@{/media/logo_large_2.png}" alt="Logo"></a>
             </div>
 
             <!--=============== NAV MENU ===============-->
@@ -207,11 +207,13 @@
 
             <section class="medicamentos">
 
-                <div style="display: flex; flex-direction: column; align-items: center">
+                <div style="display: grid; justify-content: space-between; grid-template-columns: 1fr 0.2fr;">
                     <div>
                         <input id="searchInput" type="text" class="input-form" style="outline: none" placeholder="Buscar medicamento" >
-
                     </div>
+
+                    <a href="/farmacista"><button class="add-item-button open-sans-regular">Borrar Filtros</button></a>
+
                 </div>
 
                 <!-- Contenedor de elementos -->
