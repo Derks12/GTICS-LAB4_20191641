@@ -12,7 +12,6 @@ import java.util.Date;
 @Table(name = "orden")
 public class Orden {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idOrden;
     @Column
@@ -28,19 +27,16 @@ public class Orden {
     @ManyToOne
     @JoinColumn(name="idPaciente")
     private Usuario paciente;
-    @ManyToOne
-    @JoinColumn(name = "idTipo")
-    private TipoOrden tipoOrden;
-    @ManyToOne
-    @JoinColumn(name="idEstado")
-    private EstadoOrden estadoOrden;
+    @Column(name="idTipo")
+    private Integer tipoOrden;
+    @Column(name="idEstado")
+    private Integer estadoOrden;
     @ManyToOne
     @JoinColumn(name="idSede")
     private Sede sede;
     @ManyToOne
     @JoinColumn(name = "idDoctor")
     private Doctor doctor;
-    @ManyToOne
-    @JoinColumn(name = "estado_preorden")
-    private EstadoPreOrden estadoPreOrden;
+    @Column(name = "estado_preorden")
+    private Integer estadoPreOrden;
 }
