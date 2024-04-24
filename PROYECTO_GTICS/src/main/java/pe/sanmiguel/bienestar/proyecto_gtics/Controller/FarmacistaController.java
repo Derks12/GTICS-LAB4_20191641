@@ -1,11 +1,11 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
+import lombok.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pe.sanmiguel.bienestar.proyecto_gtics.CurrentTimeSQL;
 import pe.sanmiguel.bienestar.proyecto_gtics.Entity.*;
 import pe.sanmiguel.bienestar.proyecto_gtics.Repository.*;
 
@@ -18,14 +18,18 @@ public class FarmacistaController {
 
     /* Repositorios */
     final UsuarioRepository usuarioRepository;
+    final SedeRepository sedeRepository;
+    final SedeStockRepository sedeStockRepository;
     final MedicamentoRepository medicamentoRepository;
     final OrdenRepository ordenRepository;
     final OrdenContenidoRepository ordenContenidoRepository;
     final ReposicionRepository reposicionRepository;
-    final  EstadoPreOrdenRepository estadoPreOrdenRepository;
+    final EstadoPreOrdenRepository estadoPreOrdenRepository;
 
-    public FarmacistaController(UsuarioRepository usuarioRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository,EstadoPreOrdenRepository estadoPreOrdenRepository) {
+    public FarmacistaController(UsuarioRepository usuarioRepository, SedeRepository sedeRepository, SedeStockRepository sedeStockRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository, EstadoPreOrdenRepository estadoPreOrdenRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.sedeRepository = sedeRepository;
+        this.sedeStockRepository = sedeStockRepository;
         this.medicamentoRepository = medicamentoRepository;
         this.ordenRepository = ordenRepository;
         this.ordenContenidoRepository = ordenContenidoRepository;
@@ -56,8 +60,8 @@ public class FarmacistaController {
     @PostMapping("/farmacista/continuar_compra")
     public String fillContentOrder(@RequestParam("listaIds") List<String> listaSelectedIds){
         if (!listaSelectedIds.isEmpty()){
-            medicamentosSeleccionados = fillMedicamentosFromLista(listaSelectedIds);
-            listaCantidades = fillCantidadesFromLista(listaSelectedIds);
+            medicamentosSeleccionados = getMedicamentosFromLista(listaSelectedIds);
+            listaCantidades = getCantidadesFromLista(listaSelectedIds);
             return "redirect:/farmacista/formulario_paciente";
         } else {
             return "redirect:/farmacista";
@@ -86,11 +90,66 @@ public class FarmacistaController {
                                    @RequestParam(value = "listaIds") List<String> listaSelectedIds,
                                    @RequestParam(value = "priceTotal") String priceTotal) {
 
+        medicamentosSeleccionados = getMedicamentosFromLista(listaSelectedIds);
+        listaCantidades = getCantidadesFromLista(listaSelectedIds);
 
-        return "redirect:/farmacista/ver_orden_venta";
+        verificationStock verificationStock = new verificationStock(medicamentosSeleccionados, listaCantidades);
+
+        if (verificationStock.getMedicamentosSinStock().isEmpty()){
+
+
+            return "redirect:/farmacista/ver_orden_venta";
+        } else {
+
+
+
+            return "redirect:/farmacista/ver_orden_venta";
+        }
     }
 
 
+    @Getter
+    public class verificationStock{
+        private final List<Medicamento> medicamentosSinStock;
+        private final List<String> cantidadesFaltantes;
+
+        public verificationStock(List<Medicamento> medicamentosSeleccionados, List<String> listaCantidades) {
+            List<Medicamento> medicamentosSinStock = new ArrayList<>();
+            List<String> cantidadesFaltantes = new ArrayList<>();
+
+            int i = 0;
+
+            /* Usaremos la Sede 1 porque aún no contamos con Session*/
+            SedeStockId sedeStockId = new SedeStockId();
+            sedeStockId.setIdSede(1);
+
+            for (Medicamento med : medicamentosSeleccionados) {
+
+                sedeStockId.setIdMedicamento(med.getIdMedicamento());
+                Optional<SedeStock> sedeStockOptional = sedeStockRepository.findById(sedeStockId);
+
+                if (sedeStockOptional.isPresent()) {
+                    SedeStock sedeStock = sedeStockOptional.get();
+
+                    Medicamento medicamentoNoStock = sedeStock.getIdMedicamento();
+
+                    if(Integer.parseInt(listaCantidades.get(i)) > sedeStock.getCantidad()){
+                        medicamentosSinStock.add(medicamentoNoStock);
+                        cantidadesFaltantes.add(String.valueOf(Integer.parseInt(listaCantidades.get(i)) - sedeStock.getCantidad()));
+                    }
+
+                } else {
+                    medicamentosSinStock.add(med);
+                    cantidadesFaltantes.add(listaCantidades.get(i));
+                }
+
+                i++;
+            }
+
+            this.medicamentosSinStock = medicamentosSinStock;
+            this.cantidadesFaltantes = cantidadesFaltantes;
+        }
+    }
 
     @GetMapping("/farmacista/ver_orden_venta")
     public String verOrdenVenta(Model model) {
@@ -136,8 +195,10 @@ public class FarmacistaController {
         model.addAttribute("listaPreOrdenes", listaPreOrdenes);
         return "/farmacista/pre_ordenes";
     }
-    @GetMapping("/farmacista/detallesOrdenWeb")
-    public String detaOrdenWeb() {return "/farmacista/detallesOrdenWeb";}
+    @GetMapping("/farmacista/ver_orden_web")
+    public String detaOrdenWeb() {return "/farmacista/ver_orden_web";}
+
+
     @GetMapping("/farmacista/ver_pre_orden")
     public String preOrden() {
         return "/farmacista/ver_pre_orden";}
@@ -155,7 +216,7 @@ public class FarmacistaController {
     }
 
 
-    public List<Medicamento> fillMedicamentosFromLista(List<String> listaSelectedIds) {
+    public List<Medicamento> getMedicamentosFromLista(List<String> listaSelectedIds) {
         List<Optional<Medicamento>> optionals = new ArrayList<>();
         List<Medicamento> seleccionados;
         for (int i = 0; i < listaSelectedIds.size(); i += 2) {
@@ -166,7 +227,7 @@ public class FarmacistaController {
         return seleccionados;
     }
 
-    public List<String> fillCantidadesFromLista(List<String> listaSelectedIds) {
+    public List<String> getCantidadesFromLista(List<String> listaSelectedIds) {
         List<String> cantidades = new ArrayList<>();
         for (int i = 0; i + 1 < listaSelectedIds.size(); i += 2) {
             cantidades.add(listaSelectedIds.get(i + 1));
