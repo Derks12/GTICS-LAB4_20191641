@@ -38,6 +38,8 @@ public class Orden {
     @ManyToOne
     @JoinColumn(name = "idDoctor")
     private Doctor doctor;
+    @Column(name="idOrden")
+    private Integer ordenParent;
     @Column(name = "estado_preorden")
     private Integer estadoPreOrden;
 }

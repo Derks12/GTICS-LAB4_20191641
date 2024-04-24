@@ -56,11 +56,11 @@
                 <ul class="nav-list">
                     <li><a href="/farmacista" class="menu-item roboto-regular">Inicio</a></li>
 
-                    <li><a href="/farmacista/ordenes_venta" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Ordenes de Venta</a></li>
+                    <li><a href="/farmacista/ordenes_venta" class="menu-item roboto-regular">Ordenes de Venta</a></li>
 
                     <li><a href="/farmacista/ordenes_web" class="menu-item roboto-regular">Ordenes Web</a></li>
 
-                    <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular">Pre Ordenes</a></li>
+                    <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Pre Ordenes</a></li>
 
                     <!--=============== DROPDOWN ===============-->
                     <li class="dropdown-item">
@@ -96,13 +96,13 @@
                     <div class="inside-menu-small">
                         <div class="nav-menu-small" id="nav-menu-small">
                             <ul class="nav-list-small">
-                                <li><a href="/farmacista" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Inicio</a></li>
+                                <li><a href="/farmacista" class="menu-item roboto-regular">Inicio</a></li>
 
                                 <li><a href="/farmacista/ordenes_venta" class="menu-item-small roboto-regular">Ordenes de Venta</a></li>
 
                                 <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular">Ordenes Web</a></li>
 
-                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular">Pre Ordenes</a></li>
+                                <li><a href="/farmacista/pre_ordenes" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Pre Ordenes</a></li>
                             </ul>
 
                             <ul class="nav-list-small-perfil">
@@ -129,7 +129,7 @@
 
 
     <div style="padding-top: 20px; padding-bottom: 20px">
-        <div class="main-title montserrat-bold"> Detalle de Orden de Venta </div>
+        <div class="main-title open-sans-bold"> Detalle de Orden de Venta - Preorden </div>
     </div>
 
     <hr class="style-one">
@@ -138,16 +138,29 @@
 
         <div class="invoice-title">
 
-            <div class="title roboto-medium data-label">Farmacia Bienestar San Miguel | La Marina</div>
+            <div class="title roboto-medium data-label">Bienestar San Miguel | <span th:text="${orden.getSede().getNombre()}">Sede</span></div>
 
             <div class="title-info">
-                <div class="roboto-bold title data-label">Orden #DS0204 </div>
-                <div class="badge badge-pagado">Pagado</div>
+                <div class="roboto-bold title data-label">Orden #<span th:text="${orden.getIdOrden() + 10000}"></span> </div>
+
+                <div th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></div>
+                <div th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></div>
+
+                <div th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></div>
+                <div th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></div>
+                <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetado" class="btn-red"></div>
+                <div th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></div>
+                <div th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="badge badge-pagado"></div>
+
+
+                <div th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="badge badge-pagado"></div>
+                <div th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></div>
             </div>
         </div>
 
         <div class="invoice-contact">
-            <div><span class="data-label roboto-medium">Dirección:</span> San Miguel La Marina 2001</div>
+
+            <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Dirección:</span><div th:text="${orden.getSede().getDireccion()}">Aldoradin</div></div>
             <div><span class="data-label roboto-medium">Correo:</span> clinica.bienestar@sanmiguel.pe</div>
             <div><span class="data-label roboto-medium">Número:</span> +51 998524112</div>
         </div>
@@ -157,10 +170,10 @@
         <div class="client-info">
             <div class="data-label roboto-medium">Datos del Cliente:</div>
             <div class="invoice-data">
-                <div><span class="data-label roboto-medium">Nombre:</span> Leonardo Ernesto Aldoradin Yaranga</div>
-                <div><span class="data-label roboto-medium">Seguro:</span> La positiva </div>
-                <div><span class="data-label roboto-medium">Correo:</span> aldoradin@armyspy.com</div>
-                <div><span class="data-label roboto-medium">DNI:</span> 71236854</div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Nombre: </span><div th:text="${orden.getPaciente().getNombres() + ' ' + orden.getPaciente().getApellidos()}"> Leonardo Ernesto Aldoradin Yaranga</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Seguro:</span><div th:text="${orden.getPaciente().getSeguro()}">Aldoradin </div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">DNI:</span><div th:text="${orden.getPaciente().getDni()}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Celular:</span><div th:text="${orden.getPaciente().getCelular()}">Aldoradin</div></div>
             </div>
         </div>
 
@@ -168,11 +181,16 @@
 
         <div class="invoice-info">
             <div class="data-label roboto-medium">Datos de la Orden:</div>
+
             <div class="invoice-data">
-                <div><span class="data-label roboto-medium">Número de Orden:</span> #DS0204</div>
-                <div><span class="data-label roboto-medium">Fecha de Pago:</span> 12 Oct, 2029 </div>
-                <div><span class="data-label roboto-medium">Sede:</span> Farmacia Bienestar San Miguel - La Marina 12330</div>
-                <div><span class="data-label roboto-medium">Atendido por:</span> Manuel Yarlequé</div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Tipo: </span>
+                    <div th:if="${orden.getTipoOrden() == 1}" class="data-label roboto-regular">Orden Física <span></span> </div>
+                    <div th:if="${orden.getTipoOrden() == 2}" class="data-label roboto-regular">Orden Web <span></span> </div>
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Número de Orden: </span><div th:text="${orden.getIdOrden() + 10000}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Fecha:</span><div th:text="${orden.getFechaIni()}">Aldoradin </div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Sede:</span><div th:text="${orden.getSede().getNombre()}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Atendido por:</span><div>Leonardo Ernesto Aldoradin Yaranga</div></div>
             </div>
         </div>
 
@@ -193,17 +211,17 @@
                 </thead>
 
                 <tbody>
-                <tr>
-                    <th class="text-start" style="width: 90px;">01</th>
+                <tr th:each="contenido, iterIndex : ${contenidoOrden}">
+                    <th class="text-start" style="width: 90px;"><span th:text="${iterIndex.index + 1}"></span></th>
                     <td>
                         <div class="name-unit-item">
-                            <div class="text-truncate font-size-14 mb-1">Panadol</div>
-                            <div class="text-muted mb-0">TABLETAS 50 U.</div>
+                            <div class="text-truncate font-size-14 mb-1" th:text="${contenido.getIdMedicamento().getNombre()}">Panadol</div>
+                            <div class="text-muted mb-0" th:text="${contenido.getIdMedicamento().getUnidad()}">TABLETAS 50 U.</div>
                         </div>
                     </td>
-                    <td class="text-center">$ 245.50</td>
-                    <td class="text-center">1</td>
-                    <td class="text-end">$ 245.50</td>
+                    <td class="text-center" th:text="${'S/. ' + contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                    <td class="text-center" th:text="${contenido.getCantidad()}">1</td>
+                    <td class="text-end" th:text="${'S/. ' + contenido.getCantidad() * contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
                 </tr>
                 </tbody>
 
@@ -212,24 +230,65 @@
 
         <div class="full-total">
             <div class="roboto-regular data-label" style="padding-top: 20px">Total</div>
-            <div class="title roboto-medium data-label">S/. 750.00</div>
+            <div class="title roboto-medium data-label" th:text="${'S/. ' + orden.getPrecioTotal()}">S/. 750.00</div>
         </div>
 
 
+        <hr class="my-4" style="margin-bottom: 50px; margin-top: 20px;">
+
+        <div class="title roboto-medium data-label" style="padding-bottom: 20px">Lista de Medicamentos Preorden</div>
+
+        <div>
+            <table class="order-table">
+                <thead style="padding-bottom: 10px">
+                <tr>
+                    <th class="text-start" style="max-width: 90px;">No.</th>
+                    <th class="text-start" style="max-width: 200px;">Artículo</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-end" style="width: 120px;">Total</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="contenido, iterIndex : ${contenidoPreOrden}">
+                    <th class="text-start" style="width: 90px;"><span th:text="${iterIndex.index + 1}"></span></th>
+                    <td>
+                        <div class="name-unit-item">
+                            <div class="text-truncate font-size-14 mb-1" th:text="${contenido.getIdMedicamento().getNombre()}">Panadol</div>
+                            <div class="text-muted mb-0" th:text="${contenido.getIdMedicamento().getUnidad()}">TABLETAS 50 U.</div>
+                        </div>
+                    </td>
+                    <td class="text-center" th:text="${'S/. ' + contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                    <td class="text-center" th:text="${contenido.getCantidad()}">1</td>
+                    <td class="text-end" th:text="${'S/. ' + contenido.getCantidad() * contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="full-total">
+            <div class="roboto-regular data-label" style="padding-top: 20px">Total</div>
+            <div class="title roboto-medium data-label" th:text="${'S/. ' + preOrden.getPrecioTotal()}">S/. 750.00</div>
+        </div>
 
     </div>
+
+    <!--
+     <button class="btn btn-green float-end">
+        <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+    </button>
+     -->
+
 </div>
 
-<div class="float-end">
-    <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
-    <a href="#" class="btn btn-primary w-md">Enviar</a>
-</div>
 
 <div class="container">
 
-    <div style="margin-bottom: 50px"></div>
-    <h2><i class="fa-solid fa-star" style="color: #8de7ef;"></i><strong style="padding-left: 10px">Tracking: XXYYZZWW</strong></h2>
-    <div style="margin-bottom: 20px"></div>
+    <div style="padding-top: 60px; padding-bottom: 20px">
+        <div class="main-title open-sans-regular"> Estado de la Preorden <span th:text="${'#TRK' + preOrden.getTracking()}"></span></div>
+    </div>
     <hr style="border-top: 1px solid #262626;">
     <div style="margin-bottom: 40px"></div>
 
@@ -246,7 +305,7 @@
             <div class="wrapper">
                 <div class="progress-container">
 
-                    <div class="barra"  style="width: 50%"></div>
+                    <div class="barra" style="width: 50%"></div>
 
                     <div class="progress-step">
                         <i class="fa-solid fa-file-text active"></i>Recibido
@@ -256,7 +315,7 @@
                     </div>
 
                     <div class="progress-step">
-                        <i class="fa-solid fa-archive"></i>Empaquetando
+                        <i class="fa-solid fa-archive"></i>Empaquetado
                     </div>
                     <div class="progress-step">
                         <i class="fa-solid fa fa-truck"></i>En ruta
@@ -274,21 +333,31 @@
 
     </div>
 
-</div>
 
+    <div style="padding-top: 60px; padding-bottom: 20px">
+        <div class="main-title open-sans-regular"> Realizar un Comentario </div>
+    </div>
+    <hr style="border-top: 1px solid #262626;">
+    <div style="margin-bottom: 40px"></div>
 
-<div class="container">
-    <div class="flex justify-center items-center min-h-screen bg-[#ccc]">
-        <div class="h-80 px-7 w-[700px] rounded-[12px] bg-white p-4">
-            <p class="text-xl font-semibold text-blue-900 cursor-pointer transition-all hover:text-black">Agregar comentarios</p>
-            <textarea class="h-40 px-3 text-sm py-1 mt-5 outline-none border-pink-300 w-full resize-none border rounded-lg placeholder:text-sm" placeholder="Ingrese comentario" style="resize: none;"></textarea>
+    <div class="container">
 
-            <div class="flex justify-between mt-2">
-                <button class="h-12 w-[150px] bg-blue-400 text-sm text-white rounded-lg transition-all cursor-pointer hover:bg-blue-600">Subir comentario</button>
-                <p class="text-sm text-blue-900">Ingrese al menos 15 caracteres</p>
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="bg-light p-2">
+                    <div style="display: flex; flex-direction: row; align-items: start; gap: 30px">
+                        <div style="background-color: #3F71EA; border-radius: 50px; width: 50px; height: 50px; color: white; text-align: center; font-size: 0.8rem; padding-top: 15px">User</div>
+                        <textarea class="form-control ml-1 shadow-none textarea"></textarea>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: end; gap: 30px; padding-top: 15px">
+                        <button class="continue-button" type="button">Comentar</button>
+                        <button class="btn btn-danger" type="button">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <div>
