@@ -153,24 +153,17 @@
 
         <div class="container">
 
-            <div style="display: flex; justify-content: right; align-items: center; margin-bottom: 20px">
-                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
-            </div>
-
-            <div style="display: flex; justify-content: right; align-items: center">
-                <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/generar_orden'">Generar nueva orden</button>
-            </div>
-            <br>
-
-
-
             <table id="miTabla" class="table table-striped">
+                <div style="display: flex">
+                    <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
+                    <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/generar_orden'" style="margin-left: 20px">Generar nueva orden</button>
+                </div>
 
                 <thead>
                     <tr style="background-color: #378fff">
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Medicamento</th>
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Cantidad</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Stock</th>
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Estado</th>
                     </tr>
                 </thead>

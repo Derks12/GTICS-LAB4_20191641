@@ -153,24 +153,22 @@
 
         <div class="container">
 
-            <div style="display: flex; justify-content: right; align-items: center; margin-bottom: 20px">
-                <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
-            </div>
-
-            <div style="display: flex; justify-content: right; align-items: center">
-                <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/solicitud_farmacista'">Solicitud de nuevo farmacista</button>
-            </div>
-            <br>
-
-
-
             <table id="miTabla" class="table table-striped">
+                <div style="display: flex">
+                    <button id="limpiarFiltros" class="btn-p">Limpiar Filtros</button>
+                    <button class="btn-p" type="button" onclick="window.location.href = '/adminsede/solicitud_farmacista'" style="margin-left: 20px">Solicitud de nuevo farmacista</button>
+                </div>
+
+
 
                 <thead>
                     <tr style="background-color: #378fff">
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Nombre y apellidos</th>
                         <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Imagen</th>
-                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Datos</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Distrito de residencia</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Código (colegio médico)</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Correo</th>
+                        <th style="text-align: center; color: #ffffff; font-weight: normal !important;">DNI</th>
                     </tr>
                 </thead>
 
@@ -180,45 +178,48 @@
                         <td>Cuto Guadalupe</td>
                         <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
-                            Distrito de residencia: San Miguel
-                            <br/><br/>
-                            Código (colegio médico): 111000
-                            <br/><br/>
-                            correo: correo6@gmail.com
-                            <br/><br/>
-                            DNI: 11111111
+                            San Miguel
+                        </td>
+                        <td>
+                            111000
+                        </td>
+                        <td>
+                            correo1@gmail.com
+                        </td>
+                        <td>
+                            11111111
                         </td>
                     </tr>
                     <tr>
                         <td>Alejandro Villanueva</td>
                         <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
-                            Distrito de residencia: San Miguel
-                            <br/><br/>
-
-                            Código (colegio médico): 111000
-                            <br/><br/>
-
-                            correo: correo5@gmail.com
-                            <br/><br/>
-
-                            DNI: 11111111
+                            Surco
+                        </td>
+                        <td>
+                            123456
+                        </td>
+                        <td>
+                            correo2@gmail.com
+                        </td>
+                        <td>
+                            11111111
                         </td>
                     </tr>
                     <tr>
                         <td>Cesar Cueto</td>
                         <td><img class="medicamento" src="/img/doctor.png"></td>
                         <td>
-                            Distrito de residencia: San Miguel
-                            <br/><br/>
-
-                            Código (colegio médico): 111000
-                            <br/><br/>
-
-                            correo: correo4@gmail.com
-                            <br/><br/>
-
-                            DNI: 11111111
+                            Pueblo Libre
+                        </td>
+                        <td>
+                            111077
+                        </td>
+                        <td>
+                            correo3@gmail.com
+                        </td>
+                        <td>
+                            12345678
                         </td>
                     </tr>
 
