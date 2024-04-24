@@ -1,9 +1,7 @@
 package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import lombok.Getter;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,16 +26,18 @@ public class FarmacistaController {
     final OrdenContenidoRepository ordenContenidoRepository;
     final ReposicionRepository reposicionRepository;
     final EstadoPreOrdenRepository estadoPreOrdenRepository;
+    final DoctorRepository doctorRepository;
 
-    public FarmacistaController(UsuarioRepository usuarioRepository, SedeRepository sedeRepository, SedeStockRepository sedeStockRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository, EstadoPreOrdenRepository estadoPreOrdenRepository) {
+    public FarmacistaController(UsuarioRepository usuarioRepository, SedeRepository sedeRepository, SedeStockRepository sedeStockRepository, MedicamentoRepository medicamentoRepository, OrdenRepository ordenRepository, OrdenContenidoRepository ordenContenidoRepository, ReposicionRepository reposicionRepository, EstadoPreOrdenRepository estadoPreOrdenRepository, DoctorRepository doctorRepository) {
         this.usuarioRepository = usuarioRepository;
         this.sedeRepository = sedeRepository;
         this.sedeStockRepository = sedeStockRepository;
         this.medicamentoRepository = medicamentoRepository;
         this.ordenRepository = ordenRepository;
         this.ordenContenidoRepository = ordenContenidoRepository;
-        this.reposicionRepository=reposicionRepository;
-        this.estadoPreOrdenRepository=estadoPreOrdenRepository;
+        this.reposicionRepository  =reposicionRepository;
+        this.estadoPreOrdenRepository = estadoPreOrdenRepository;
+        this.doctorRepository = doctorRepository;
     }
 
     /* Repositorios */
@@ -45,8 +45,14 @@ public class FarmacistaController {
 
     /* Variables Internas */
 
+    Sede sedeSession;
     List<Medicamento> medicamentosSeleccionados = new ArrayList<>();
     List<String> listaCantidades = new ArrayList<>();
+
+    List<Medicamento> medicamentosSinStock = new ArrayList<>();
+    List<Medicamento> medicamentosConStock = new ArrayList<>();
+    List<String> cantidadesFaltantes = new ArrayList<>();
+    List<String> cantidadesExistentes = new ArrayList<>();
 
     Integer idVerOrdenCreada;
     Integer idVerPreOrdenCreada;
@@ -58,6 +64,8 @@ public class FarmacistaController {
     @GetMapping("/farmacista")
     public String farmacistaInicio(Model model) {
         List<Medicamento> listaMedicamentos = medicamentoRepository.findAll();
+        sedeSession = sedeRepository.getSedeByIdSede(1);
+        model.addAttribute("sedeSession", sedeSession);
         model.addAttribute("listaMedicamentos", listaMedicamentos);
         return "/farmacista/inicio";
     }
@@ -75,6 +83,18 @@ public class FarmacistaController {
 
     @GetMapping("/farmacista/formulario_paciente")
     public String formPacienteData(Model model) {
+
+        List<Integer> stockSeleccionados = new ArrayList<>();
+
+        for (Medicamento med : medicamentosSeleccionados) {
+            if (sedeStockRepository.getSedeStockByIdSedeAndIdMedicamento(sedeSession, med).isPresent()) {
+                stockSeleccionados.add(sedeStockRepository.getSedeStockByIdMedicamentoAndIdSede(med,sedeSession).getCantidad());
+            } else {
+                stockSeleccionados.add(0);
+            }
+        }
+
+        model.addAttribute("stockSeleccionados", stockSeleccionados);
         model.addAttribute("medicamentosSeleccionados", medicamentosSeleccionados);
         model.addAttribute("listaCantidades", listaCantidades);
         return "/farmacista/formulario_paciente";
@@ -92,8 +112,7 @@ public class FarmacistaController {
                                    @RequestParam(value = "telefono") String telefono,
 
                                    @RequestParam(value = "listaIds") List<String> listaSelectedIds,
-                                   @RequestParam(value = "priceTotal") String priceTotal,
-                                   Model model) {
+                                   @RequestParam(value = "priceTotal") String priceTotal) {
 
         medicamentosSeleccionados = getMedicamentosFromLista(listaSelectedIds);
         listaCantidades = getCantidadesFromLista(listaSelectedIds);
@@ -109,9 +128,33 @@ public class FarmacistaController {
             newOrden.setPrecioTotal(Float.parseFloat(priceTotal));
             //Id conocido porque no hay session
             newOrden.setIdFarmacista(7);
+            newOrden.setTipoOrden(1);
+            newOrden.setEstadoOrden(8);
+            newOrden.setSede(sedeSession);
+
+            if (!doctor.equals("sin-doctor")) {
+                newOrden.setDoctor(doctorRepository.getByIdDoctor(Integer.valueOf(doctor)));
+            }
+
+            int i = 0;
+            for (Medicamento med : medicamentosSeleccionados){
+
+                OrdenContenido contenido = new OrdenContenido();
+                contenido.setIdOrden(newOrden);
+                contenido.setIdMedicamento(med);
+                contenido.setCantidad(Integer.parseInt(listaCantidades.get(i)));
+                ordenContenidoRepository.save(contenido);
+                i++;
+            }
 
             return "redirect:/farmacista/ver_orden_venta";
         } else {
+
+            this.medicamentosSinStock = verificationStock.getMedicamentosSinStock();
+            this.medicamentosConStock = verificationStock.getMedicamentosConStock();
+            this.cantidadesFaltantes = verificationStock.getCantidadesFaltantes();
+            this.cantidadesExistentes = verificationStock.getCantidadesExistentes();
+
             return "redirect:/farmacista/crear_preorden";
         }
     }
@@ -119,6 +162,12 @@ public class FarmacistaController {
 
     @GetMapping("/farmacista/crear_preorden")
     public String createPreOrden(Model model) {
+
+        model.addAttribute("medicamentosSinStock", medicamentosSinStock);
+        model.addAttribute("medicamentosConStock", medicamentosConStock);
+        model.addAttribute("cantidadesFaltantes", cantidadesFaltantes);
+        model.addAttribute("cantidadesExistentes", cantidadesExistentes);
+
         return "/farmacista/crear_preorden";
     }
 
@@ -245,11 +294,15 @@ public class FarmacistaController {
     @Getter
     public class verificationStock{
         private final List<Medicamento> medicamentosSinStock;
+        private final List<Medicamento> medicamentosConStock;
         private final List<String> cantidadesFaltantes;
+        private final List<String> cantidadesExistentes;
 
         public verificationStock(List<Medicamento> medicamentosSeleccionados, List<String> listaCantidades) {
             List<Medicamento> medicamentosSinStock = new ArrayList<>();
+            List<Medicamento> medicamentosConStock = new ArrayList<>();
             List<String> cantidadesFaltantes = new ArrayList<>();
+            List<String> cantidadesExistentes = new ArrayList<>();
 
             int i = 0;
 
@@ -265,11 +318,14 @@ public class FarmacistaController {
                 if (sedeStockOptional.isPresent()) {
                     SedeStock sedeStock = sedeStockOptional.get();
 
-                    Medicamento medicamentoNoStock = sedeStock.getIdMedicamento();
+                    Medicamento medicamentoToVerify = sedeStock.getIdMedicamento();
 
                     if(Integer.parseInt(listaCantidades.get(i)) > sedeStock.getCantidad()){
-                        medicamentosSinStock.add(medicamentoNoStock);
+                        medicamentosSinStock.add(medicamentoToVerify);
                         cantidadesFaltantes.add(String.valueOf(Integer.parseInt(listaCantidades.get(i)) - sedeStock.getCantidad()));
+                    } else {
+                        medicamentosConStock.add(medicamentoToVerify);
+                        cantidadesExistentes.add(listaCantidades.get(i));
                     }
 
                 } else {
@@ -281,7 +337,9 @@ public class FarmacistaController {
             }
 
             this.medicamentosSinStock = medicamentosSinStock;
+            this.medicamentosConStock = medicamentosConStock;
             this.cantidadesFaltantes = cantidadesFaltantes;
+            this.cantidadesExistentes = cantidadesExistentes;
         }
     }
 

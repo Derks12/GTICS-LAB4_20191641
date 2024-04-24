@@ -787,6 +787,24 @@ hr.style-one {
 /*===============FIN FORMULARIO PACIENTE================*/
 
 
+/*=============== PROCESO PRE ORDEN ================*/
+
+.interface-preorden{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.preorder-items {
+    min-height: 480px;
+    max-height: 480px;
+    overflow: auto;
+}
+
+
+/*=============== FIN PROCESO PRE ORDEN ================*/
+
 .footer {
     background-color: var(--color-gray-2);
     position: relative;

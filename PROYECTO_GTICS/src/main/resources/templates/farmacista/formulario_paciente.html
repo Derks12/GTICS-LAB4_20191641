@@ -122,7 +122,7 @@
 
         <hr class="style-one">
 
-        <form th:action="@{/farmacista/finalizar_compra}" method="post">
+        <form id="finalizar" th:action="@{/farmacista/finalizar_compra}" method="post">
 
 
 
@@ -177,9 +177,10 @@
                                     <label style="font-weight: bold; color:dimgray">Doctor:</label>
                                     <select class="select-form" name="doctor" required>
                                         <option selected disabled>Seleccionar Doctor</option>
-                                        <option>Doctor 1</option>
-                                        <option>Doctor 2</option>
-                                        <option>Doctor 3</option>
+                                        <option value="sin-doctor">Sin doctor</option>
+                                        <option value="1">Doctor 1</option>
+                                        <option value="2">Doctor 2</option>
+                                        <option value="3">Doctor 3</option>
                                     </select>
                                 </div>
 
@@ -260,7 +261,7 @@
                         </div>
 
                         <input type="hidden" name="listaIds" id="listaIds"  value=""/>
-                        <button type="submit" class="continue-button montserrat-medium">Generar Boleta</button>
+                        <button type="submit" id="continue" class="continue-button montserrat-medium">Generar Boleta</button>
                     </div>
 
                 </div>
@@ -322,7 +323,7 @@
 
 </body>
 
-<script>
+<script th:inline="javascript">
 
     let listaSelectedIds = [];
     let precioTotal;
@@ -351,6 +352,112 @@
                     window.location.href = '/farmacista';
                 }
             });
+        });
+
+
+        document.getElementById('continue').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el enlace se ejecute de inmediato
+            const Swal = window.Swal;
+
+            const listItems = document.getElementsByClassName('order-items')[0];
+            const selectedItems = listItems.getElementsByClassName('selected-item');
+
+            let stockSeleccionados = [[${stockSeleccionados}]];
+            let hayProblemaConStock = 0;
+
+            // Verificar si hay problemas con el stock
+            for (let i = 0; i < selectedItems.length; i++) {
+                const item = selectedItems[i];
+                const cantidadItem = item.getElementsByClassName('item-quantity-clicked')[0].value;
+
+                if (stockSeleccionados[i] < cantidadItem || stockSeleccionados[i] === null) {
+                    hayProblemaConStock = 1;
+                    break; // Salir del bucle al encontrar un problema de stock
+                }
+            }
+
+            // Función para verificar si todos los campos están llenos
+            function verificarCamposLlenos(form) {
+                var inputs = form.getElementsByTagName('input');
+                var todosLlenos = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.trim() === '') {
+                        todosLlenos = false;
+                        break;
+                    }
+                }
+                return todosLlenos;
+            }
+
+            if (hayProblemaConStock === 1) {
+                // Mostrar alerta para preguntar por preorden o cambiar medicamentos
+                Swal.fire({
+                    title: 'Existen problemas por Stock',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Nueva Preorden',
+                    cancelButtonText: 'Cambiar Medicinas'
+                }).then((result) => {
+                    // Si el usuario confirma, redirige al usuario
+                    if (result.isConfirmed) {
+                        var form = document.getElementById('finalizar');
+                        if (verificarCamposLlenos(form)) {
+                            form.submit();
+                        } else {
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            });
+                        }
+                    } else if (result.isDismissed) {
+                        var form = document.getElementById('finalizar');
+                        if (verificarCamposLlenos(form)) {
+                            form.action = '/farmacista/cambiar_medicamentos';
+                            form.submit();
+                        } else {
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            });
+                        }
+                    }
+                });
+            } else {
+                // Mostrar alerta para preguntar si está seguro de generar la boleta
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: 'Esta acción registrará la boleta como pagada.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Continuar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var form = document.getElementById('finalizar');
+                        if (verificarCamposLlenos(form)) {
+                            form.submit();
+                        } else {
+                            Swal.fire({
+                                title: 'Faltan Datos',
+                                text: 'Por favor, completa todos los campos antes de enviar el formulario.',
+                                icon: 'warning',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Continuar',
+                            });
+                        }
+                    }
+                });
+            }
         });
 
         var botonesSumarCantidad = document.getElementsByClassName('sumar-cantidad');
