@@ -3,6 +3,7 @@
     padding: 25px 30px 25px 30px;
     border-radius: 10px;
     background-color: #ffffff;
+    border: 1px solid #dedede;
     margin-top: 20px;
 }
 
@@ -35,6 +36,12 @@
     flex-direction: row;
     gap: 30px;
     align-items: center;
+}
+
+.table-badge {
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 0.9rem;
 }
 
 .badge {

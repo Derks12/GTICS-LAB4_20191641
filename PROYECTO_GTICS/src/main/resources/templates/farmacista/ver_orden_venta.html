@@ -134,7 +134,18 @@
 
             <div class="title-info">
                 <div class="roboto-bold title data-label">Orden #<span th:text="${orden.getIdOrden() + 10000}"></span> </div>
-                <div class="badge badge-pagado">Pagado</div>
+                <div th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></div>
+                <div th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></div>
+
+                <div th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></div>
+                <div th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></div>
+                <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></div>
+                <div th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></div>
+                <div th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="badge badge-pagado"></div>
+
+
+                <div th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="badge badge-pagado"></div>
+                <div th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></div>
             </div>
         </div>
 
@@ -149,10 +160,10 @@
         <div class="client-info">
             <div class="data-label roboto-medium">Datos del Cliente:</div>
             <div class="invoice-data">
-                <div th:text="${orden.getPaciente().getNombres() + ' ' + orden.getPaciente().getApellidos()}"><span class="data-label roboto-medium">Nombre:</span> Leonardo Ernesto Aldoradin Yaranga</div>
-                <div th:text="${orden.getPaciente().getSeguro()}"><span class="data-label roboto-medium">Seguro:</span> La positiva </div>
-                <div th:text="${orden.getPaciente().getCorreo()}"><span class="data-label roboto-medium">Correo:</span> aldoradin@gmail.com</div>
-                <div th:text="${orden.getPaciente().getDni()}"><span class="data-label roboto-medium">DNI:</span> 71236854</div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Nombre: </span><div th:text="${orden.getPaciente().getNombres() + ' ' + orden.getPaciente().getApellidos()}"> Leonardo Ernesto Aldoradin Yaranga</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Seguro:</span><div th:text="${orden.getPaciente().getSeguro()}">Aldoradin </div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">DNI:</span><div th:text="${orden.getPaciente().getDni()}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Celular:</span><div th:text="${orden.getPaciente().getCelular()}">Aldoradin</div></div>
             </div>
         </div>
 
@@ -160,11 +171,12 @@
 
         <div class="invoice-info">
             <div class="data-label roboto-medium">Datos de la Orden:</div>
+
             <div class="invoice-data">
-                <div th:text="${orden.getIdOrden() + 10000}" ><span class="data-label roboto-medium">Número de Orden:</span> #DS0204</div>
-                <div th:text="${orden.getFechaIni()}"><span class="data-label roboto-medium">Fecha de Pago:</span> 12 Oct, 2029 </div>
-                <div><span class="data-label roboto-medium">Sede:</span> Farmacia Bienestar San Miguel - La Marina 12330</div>
-                <div><span class="data-label roboto-medium">Atendido por:</span> Manuel Yarlequé</div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Número de Orden: </span><div th:text="${orden.getIdOrden() + 10000}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Fecha:</span><div th:text="${orden.getFechaIni()}">Aldoradin </div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Sede:</span><div th:text="${orden.getSede().getNombre()}"> Aldoradin</div></div>
+                <div style="display: flex; flex-direction: row; gap: 3px;"><span class="data-label roboto-medium">Atendido por:</span><div>Leonardo Ernesto Aldoradin Yaranga</div></div>
             </div>
         </div>
 
@@ -193,9 +205,9 @@
                             <div class="text-muted mb-0" th:text="${contenido.getIdMedicamento().getUnidad()}">TABLETAS 50 U.</div>
                         </div>
                     </td>
-                    <td class="text-center" th:text="${contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                    <td class="text-center" th:text="${'S/. ' + contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
                     <td class="text-center" th:text="${contenido.getCantidad()}">1</td>
-                    <td class="text-end" th:text="${contenido.getCantidad() * contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
+                    <td class="text-end" th:text="${'S/. ' + contenido.getCantidad() * contenido.getIdMedicamento().getPrecioVenta()}">$ 245.50</td>
                 </tr>
                 </tbody>
 
@@ -204,17 +216,19 @@
 
         <div class="full-total">
             <div class="roboto-regular data-label" style="padding-top: 20px">Total</div>
-            <div class="title roboto-medium data-label" th:text="${orden.getPrecioTotal()}">S/. 750.00</div>
+            <div class="title roboto-medium data-label" th:text="${'S/. ' + orden.getPrecioTotal()}">S/. 750.00</div>
         </div>
 
 
 
     </div>
-</div>
 
-<div class="float-end">
-    <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
-    <a href="#" class="btn btn-primary w-md">Enviar</a>
+    <!--
+     <button class="btn btn-green float-end">
+        <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+    </button>
+     -->
+
 </div>
 
 
