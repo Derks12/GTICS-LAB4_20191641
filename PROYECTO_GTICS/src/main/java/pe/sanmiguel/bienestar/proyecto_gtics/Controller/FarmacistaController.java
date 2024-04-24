@@ -2,6 +2,7 @@ package pe.sanmiguel.bienestar.proyecto_gtics.Controller;
 
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +49,7 @@ public class FarmacistaController {
     Integer idVerOrdenCreada;
 
     /* Variables Internas */
+
 
 
     @GetMapping("/farmacista")
@@ -174,34 +176,80 @@ public class FarmacistaController {
         return "redirect:/farmacista/ver_orden_venta";
     }
 
+    /*@GetMapping("/farmacista/verOrdenVenta")
+    public String verOrdenVenta(Model model) {
+
+        Optional<Orden> ordenOptional = ordenRepository.findById(idVerOrdenCreada);
+
+        if (ordenOptional.isPresent()){
+            Orden ordenComprobada = ordenOptional.get();
+            getOrdenVenta(model, ordenComprobada);
+            return "/farmacista/ver_orden_venta";
+        } else {
+
+            return "/farmacista/errorPages/no_existe_orden";
+        }
+    }*/
+
+    /* OJO LO ESTOY USANDO EN ORDENES VENTA PARA QUE PUEDA VER LA VISTA DE VER_ORDEN_VENTA FUNCIONA LO QUE FALLA ES LA VISTA POR ESO SALE ERROR
+    @GetMapping("/verOrdenVenta")
+    public String verOrdenVenta(Model model,
+                              @RequestParam("id") Integer id) {
+        Optional<Orden> optionalOrden = ordenRepository.findById(id);
+        if(optionalOrden.isPresent()){
+            Orden ordenVenta = optionalOrden.get();
+            model.addAttribute("ordenVenta", ordenVenta);
+            return "farmacista/ver_orden_venta";
+        }else {
+            return  "redirect:/farmacista/ordenes_venta";
+        }
+    }*/
+
     @GetMapping("/farmacista/ordenes_venta")
-    public String TablaOrdenesVenta(Model model) {
-
-        model.addAttribute("listaOrdenesVenta", reposicionRepository.findAll());
-
+    public String tablaOrdenesVenta(Model model) {
+        List<Orden> listaOrdenesVenta = ordenRepository.findAll();
+        model.addAttribute("listaOrdenesVenta", listaOrdenesVenta);
         return "/farmacista/ordenes_venta";
     }
 
-
     @GetMapping("/farmacista/ordenes_web")
-    public String OrdenesWeb(Model model) {
+    public String tablaOrdenesWeb(Model model) {
         List<Orden> listaOrdenesWeb = ordenRepository.findAllOrdenesWeb();
         model.addAttribute("listaOrdenesWeb", listaOrdenesWeb);
         return "/farmacista/ordenes_web";
     }
+    @GetMapping("/verOrdenWeb")
+    public String verOrdenWeb(Model model,
+                              @RequestParam("id") Integer id) {
+        Optional<Orden> optionalOrden = ordenRepository.findById(id);
+        if(optionalOrden.isPresent()){
+            Orden ordenWeb = optionalOrden.get();
+            model.addAttribute("ordenWeb", ordenWeb);
+            return "farmacista/ver_orden_web";
+        }else {
+            return  "redirect:/farmacista/ordenes_web";
+        }
+
+    }
     @GetMapping("/farmacista/pre_ordenes")
-    public String preOrdenes(Model model) {
+    public String tablaPreOrdenes(Model model) {
         List<Orden> listaPreOrdenes = ordenRepository.findAllPreOrdenes();
         model.addAttribute("listaPreOrdenes", listaPreOrdenes);
         return "/farmacista/pre_ordenes";
     }
-    @GetMapping("/farmacista/ver_orden_web")
-    public String detaOrdenWeb() {return "/farmacista/ver_orden_web";}
+    @GetMapping("/verPreOrden")
+    public String verPreOrden(Model model,
+                              @RequestParam("id") Integer id) {
+        Optional<Orden> optionalOrden = ordenRepository.findById(id);
+        if(optionalOrden.isPresent()){
+            Orden preorden = optionalOrden.get();
+            model.addAttribute("preorden", preorden);
+            return "farmacista/ver_pre_orden";
+        }else {
+            return  "redirect:/farmacista/pre_ordenes";
+        }
 
-
-    @GetMapping("/farmacista/ver_pre_orden")
-    public String preOrden() {
-        return "/farmacista/ver_pre_orden";}
+    }
     @GetMapping("/farmacista/perfil")
     public String profile() {
         return "/farmacista/perfil";

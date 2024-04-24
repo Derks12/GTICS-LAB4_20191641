@@ -9,7 +9,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "medicamento")
 public class Medicamento {
-
     @Id
     private Integer idMedicamento;
     @Column
@@ -18,7 +17,6 @@ public class Medicamento {
     private String unidad;
     @Column
     private String descripcion;
-
     @Column
     private String categorias;
     @Column
@@ -31,7 +29,4 @@ public class Medicamento {
     private String recetable;
     @Column
     private String imagen;
-
-
-
 }
