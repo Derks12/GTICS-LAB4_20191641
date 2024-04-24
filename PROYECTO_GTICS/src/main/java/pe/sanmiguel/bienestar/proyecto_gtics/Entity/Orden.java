@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -12,15 +13,14 @@ import java.util.Date;
 @Table(name = "orden")
 public class Orden {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer idOrden;
     @Column
     private String tracking;
     @Column
-    private Date fechaIni;
+    private LocalDate fechaIni;
     @Column
-    private Date fechaFin;
+    private LocalDate fechaFin;
     @Column
     private float precioTotal;
     @Column

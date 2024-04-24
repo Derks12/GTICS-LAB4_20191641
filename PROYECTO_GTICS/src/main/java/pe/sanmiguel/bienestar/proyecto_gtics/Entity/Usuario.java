@@ -34,4 +34,9 @@ public class Usuario {
     /*@ManyToOne
     @JoinColumn(name = "estado_usuario")
     private EstadoUsuario estadoUsuario;*/
+
+
+
+
+
 }
