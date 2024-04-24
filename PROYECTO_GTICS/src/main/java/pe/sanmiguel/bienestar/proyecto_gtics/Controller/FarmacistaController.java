@@ -291,25 +291,20 @@ public class FarmacistaController {
 
 
 
-    
+
 
     @GetMapping("/farmacista/ver_orden_web")
     public String verOrdenWeb(Model model) {
 
-        Optional<Orden> preOrdenOptional = ordenRepository.findById(idVerOrdenCreada);
-        List<OrdenContenido> contenidoPreOrden = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(idVerOrdenCreada));
+        Optional<Orden> ordenWebOptional = ordenRepository.findById(idVerOrdenCreada);
+        List<OrdenContenido> contenidoOrdenWeb = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(idVerOrdenCreada));
 
 
-        if (preOrdenOptional.isPresent()){
-            Orden preOrdenComprobada = preOrdenOptional.get();
-            Orden ordenParent = ordenRepository.getOrdenByIdOrden(preOrdenComprobada.getOrdenParent());
+        if (ordenWebOptional.isPresent()){
+            Orden ordenWebComprobada = ordenWebOptional.get();
 
-            List<OrdenContenido> contenidoOrden = ordenContenidoRepository.findMedicamentosByOrdenId(String.valueOf(ordenParent.getIdOrden()));
-
-            model.addAttribute("orden",ordenParent);
-            model.addAttribute("contenidoOrden", contenidoOrden);
-            model.addAttribute("preOrden",preOrdenComprobada);
-            model.addAttribute("contenidoPreOrden", contenidoPreOrden);
+            model.addAttribute("contenidoOrden", contenidoOrdenWeb);
+            model.addAttribute("ordenWeb",contenidoOrdenWeb);
             return "/farmacista/ver_orden_web";
         } else {
 

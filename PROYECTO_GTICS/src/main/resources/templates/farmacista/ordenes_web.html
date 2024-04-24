@@ -56,9 +56,9 @@
 
           <li><a href="/farmacista/ordenes_venta" class="menu-item roboto-regular">Ordenes de Venta</a></li>
 
-          <li><a href="/farmacista/ordenes_web" class="menu-item roboto-regular">Ordenes Web</a></li>
+          <li><a href="/farmacista/ordenes_web" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Ordenes Web</a></li>
 
-          <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Pre Ordenes</a></li>
+          <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular">Pre Ordenes</a></li>
 
           <!--=============== DROPDOWN ===============-->
           <li class="dropdown-item">
@@ -98,9 +98,9 @@
 
                 <li><a href="/farmacista/ordenes_venta" class="menu-item-small roboto-regular">Ordenes de Venta</a></li>
 
-                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular">Ordenes Web</a></li>
+                <li><a href="/farmacista/ordenes_web" class="menu-item-small roboto-regular" style="text-decoration: underline; color: white;">Ordenes Web</a></li>
 
-                <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular" style="text-decoration: underline; color: white;">Pre Ordenes</a></li>
+                <li><a href="/farmacista/pre_ordenes" class="menu-item roboto-regular">Pre Ordenes</a></li>
               </ul>
 
               <ul class="nav-list-small-perfil">
@@ -167,23 +167,28 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="ordenWeb: ${listaOrdenesWeb}">
-          <td style="text-align: center" th:text="${ordenWeb.getOrdenParent() + 10000}"></td>
-          <td style="text-align: center" th:text="${'#TRK' + ordenWeb.getTracking()}"></td>
-          <td style="text-align: center" th:text="${ordenWeb.getPaciente().getNombres()} + ' ' + ${ordenWeb.getPaciente().getApellidos()}"></td>
+        <tr th:each="orden : ${listaOrdenesWeb}">
+          <td style="text-align: center" th:text="${orden.getIdOrden() + 10000}"></td>
+          <td style="text-align: center" th:text="${orden.getFechaIni()}"></td>
+          <td style="text-align: center" th:text="${orden.getPaciente().getNombres()} + ' ' + ${orden.getPaciente().getApellidos()}" ></td>
           <td style="text-align: center">
-            <div th:if="${ordenWeb.getEstadoOrden()== 1}" th:text="Recibido" class="btn-secondary"></div>
-            <div th:if="${ordenWeb.getEstadoOrden() == 2}" th:text="En proceso" class="btn-secondary"></div>
+            <div th:if="${orden.getEstadoOrden() == 1}" th:text="Pendiente" class="btn-secondary"></div>
+            <div th:if="${orden.getEstadoOrden() == 2}" th:text="Pendiente" class="btn-secondary"></div>
 
-            <div th:if="${ordenWeb.getEstadoOrden() == 3}" th:text="Empaquetado" class="table-badge badge-pagado"></div>
-            <div th:if="${ordenWeb.getEstadoOrden() == 4}" th:text="En Ruta" class="btn-yellow"></div>
-            <div th:if="${ordenWeb.getEstadoOrden() == 5}" th:text="Entregado" class="btn-red"></div>
-            <div th:if="${ordenWeb.getEstadoOrden() == 6}" th:text="Pendiente" class="btn-yellow"></div>
+            <div th:if="${orden.getEstadoOrden() == 3}" th:text="Recibido" class="btn-green"></div>
+            <div th:if="${orden.getEstadoOrden() == 4}" th:text="En proceso" class="btn-yellow"></div>
+            <div th:if="${orden.getEstadoOrden() == 5}" th:text="Empaquetando" class="btn-red"></div>
+            <div th:if="${orden.getEstadoOrden() == 6}" th:text="En Ruta" class="btn-yellow"></div>
+            <div th:if="${orden.getEstadoOrden() == 7}" th:text="Entregado" class="table-badge badge-pagado"></div>
 
+
+            <div th:if="${orden.getEstadoOrden() == 8}" th:text="Pagado" class="table-badge badge-pagado"></div>
+            <div th:if="${orden.getEstadoOrden() == 9}" th:text="Anulado" class="btn-secondary"></div>
           </td>
           <td style="text-align: center; display: flex; flex-direction: row; justify-content: center; gap: 5px;">
-            <form th:action="@{'/farmacista/ver_pre_orden_tabla'}" method="post">
-              <input type="hidden" name="idOrden" th:value="${ordenWeb.getIdOrden()()}">
+
+            <form th:action="@{'/farmacista/ver_orden_web_tabla'}" method="post">
+              <input type="hidden" name="idOrden" th:value="${orden.getIdOrden()}">
               <button type="submit" class="btn btn-sm btn-info" >
                 <i class="fa-regular fa-eye"></i>
               </button>

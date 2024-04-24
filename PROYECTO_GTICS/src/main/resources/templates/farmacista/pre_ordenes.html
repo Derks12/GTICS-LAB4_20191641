@@ -167,7 +167,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="preOrden: ${listaPreOrdenes}">
+                <tr th:each="preOrden : ${listaPreOrdenes}">
                     <td style="text-align: center" th:text="${preOrden.getOrdenParent() + 10000}"></td>
                     <td style="text-align: center" th:text="${'#TRK' + preOrden.getTracking()}"></td>
                     <td style="text-align: center" th:text="${preOrden.getPaciente().getNombres()} + ' ' + ${preOrden.getPaciente().getApellidos()}"></td>
