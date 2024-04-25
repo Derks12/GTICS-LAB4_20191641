@@ -12,16 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-public class P1_controller {
-    @GetMapping(value = "")
-    public String pregunta1(){return "/P1/Recursos_Humanos-GTICS";}
-
-    @GetMapping(value = "/Empleados")
-    public String empleados(){return "/P1/Empleados";}
-
-    @GetMapping(value = "/Historial")
-    public String historial(){return "/P1/Historial";}
-
-    @GetMapping(value = "/Reportes")
+public class P3_controller {
+    @GetMapping(value = "/P3/Reportes1")
     public String reportes(){return "/P3/Reportes1";}
+
+    @GetMapping(value = "/P3/Reporte_sueldos")
+    public String reportesSueldos(){return "/P3/Reporte_sueldos";}
+
 }

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Reportes y Dashboards</title>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/Empleados}">Empleados <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/Historial}">Historial <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/Reportes}">Reportes <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container" style="display: flex; flex-direction: column">
+    <div class="container">
+        <table id="miTabla2" class="table table-striped">
+            <h2>Reporte - Sueldos</h2>
+            <thead>
+            <tr style="background-color: #378fff">
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Puesto</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Salario Máximo</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Salario Mínimo</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Salario Total</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Ver empleados</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Editar</th>
+                <th style="text-align: center; color: #ffffff; font-weight: normal !important;">Borrar</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+
+</div>
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#miTabla2').DataTable({
+                "pageLength":10,
+                "lengthChange": false,
+                "language": {
+                    "emptyTable": "No hay registros disponibles",
+                    "zeroRecords": "No se encontraron registros coincidentes",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                    "search" : "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas",
+                },
+
+            });
+
+            $('#filtroEstado').on('change', function() {
+                var estado = $(this).val();
+                table.column(2).search(estado).draw();
+
+            });
+
+            $('#limpiarFiltros').on('click', function() {
+                $('#filtroEstado').val('');
+                table.search('').columns().search('').draw();
+            });
+        });
+    </script>
+
+
+
+
+</body>
+</html>
