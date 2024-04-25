@@ -58,13 +58,15 @@ public class PacienteController {
 
     @GetMapping(value="/ordenes")
     public String ordenes(Model model){
-        List<Orden> lista =  ordenRepository.findAll();
+        List<Orden> lista =  ordenRepository.listarOrdenes();
         model.addAttribute("lista",lista);
 
         return "/paciente/ordenes";}
 
     @GetMapping(value="/pago_tarjeta")
-    public String pago_tarjeta(){return "/paciente/pago_tarjeta";}
+    public String pago_tarjeta(){
+
+        return "/paciente/pago_tarjeta";}
 
     @GetMapping(value="/tracking")
     public String tracking(Model model, @RequestParam("id") String idOrden){
@@ -126,7 +128,16 @@ public class PacienteController {
     }
 
     @GetMapping(value = "/confirmar_pago")
-    public String confirmarPago(){
+    public String confirmarPago(Model model, @RequestParam("id") String idOrden){
+
+        Integer idInteger = Integer.parseInt(idOrden);
+        Orden orden = ordenRepository.getById(idInteger);
+
+        List<OrdenContenido> lista = ordenContenidoRepository.findMedicamentosByOrdenId(idOrden);
+
+        model.addAttribute("lista", lista);
+        model.addAttribute("ordenActual", orden);
+
         return "/paciente/confirmar_pago";
     }
 

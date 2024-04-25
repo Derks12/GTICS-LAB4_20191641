@@ -29,14 +29,14 @@
 </header>
 
 <body>
-
+x
     <div class="main-container">
         <div class="login-container">
 
             <div class="wrapper">
                 <div class="login-title montserrat-bold">Iniciar Sesión</div>
 
-                <p class="text text-normal">¿No tiene cuenta? <span>  &#160 <a href="#" class="text text-links">Registrarse</a></span></p>
+                <p class="text text-normal">¿No tiene cuenta? <span>  &#160 <a th:href="@{login/new}" class="text text-links">Registrarse</a></span></p>
 
 
                 <form name="signin" class="login-form">
@@ -49,7 +49,7 @@
                         <input type="password" name="password" id="password" class="input-field" placeholder="Contraseña">
                     </div>
                     <div class="input-control">
-                        <a th:href="@{'login1/new'}" class="text text-links">Recuperar Contraseña</a>
+                        <a th:href="@{login/recuperarContraseña}" class="text text-links">Recuperar Contraseña</a>
                         <input type="submit" name="submit" class="input-submit" value="Iniciar Sesión" disabled>
                     </div>
                 </form>

@@ -182,7 +182,7 @@
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Apellidos del farmacista:</label>
-                            <input th:field="*{apellidos}" name="apellidos" class="input-form" type="text" placeholder="Ingrese sus apellidos"required>
+                            <input th:field="*{apellidos}" name="apellidos" class="input-form" type="text" placeholder="Ingrese sus apellidos" required>
                         </div>
 
                     </div>
@@ -205,7 +205,7 @@
 
                         <div class="input-label-box">
                             <label style="font-weight: bold; color:dimgray">Código (colegio médico):</label>
-                            <input class="input-form" type="text" placeholder="Ingrese su código" required>
+                            <input th:value="${sedeFarmacista.getCodigoMed()}" name="codigoMed" class="input-form" type="text" placeholder="Ingrese su código" required>
                         </div>
 
                         <div class="input-label-box">
@@ -316,7 +316,7 @@
 
                 <div class="column">
 
-                    <button class="btn-cancel" type="button" th:href="@{/adminsede/farmacistas}">Cancelar</button>
+                    <button class="btn-cancel" type="button" onclick="window.location.href = '/adminsede/farmacista'">Cancelar</button>
                     <button class="btn-p" type="submit">Confirmar</button>
 
                 </div>
